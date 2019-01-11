@@ -5,6 +5,7 @@
 #include <cmath>
 #include "dimensional_phantom.hpp"
 #include "dimensional_traits.hpp"
+#include <tuple>
 
 namespace mitama::mitamagic {
     template < class , class > struct prod;
