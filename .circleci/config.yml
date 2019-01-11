@@ -1,0 +1,48 @@
+version: 2.1
+executors:
+  default:
+    docker:
+      - image: buildpack-deps:bionic-curl
+
+jobs:
+  test:
+    description: Testing the library using wandbox
+    parameters:
+      compiler:
+        description: "compiler-version"
+        default: "clang-head"
+        type: string
+    executor: default
+    steps:
+      - checkout
+      - run: curl -sLJO https://github.com/LoliGothick/cbt/releases/download/v0.5.2/cbt_linux_amd64.tar
+      - run: tar -vzxf ./cbt_linux_amd64.tar
+      - run: chmod +x ./cbt
+      - run: ./cbt wandbox cpp src/sample.cpp --compiler=<< parameters.compiler >> --std=c++17 --warning --pedantic=errors
+      - store_artifacts:
+          path: /results/permlink
+          destination: raw-test-output
+      - store_artifacts:
+          path: /results
+
+workflows:
+  build:
+    jobs:
+      - test:
+          compiler: clang-head
+      - test:
+          compiler: clang-7.0.0
+      - test:
+          compiler: clang-6.0.1
+      - test:
+          compiler: clang-6.0.0
+      - test:
+          compiler: gcc-8.2.0
+      - test:
+          compiler: gcc-8.1.0
+      - test:
+          compiler: gcc-7.3.0
+      - test:
+          compiler: gcc-7.2.0
+      - test:
+          compiler: gcc-7.1.0
