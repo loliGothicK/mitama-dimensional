@@ -12,7 +12,7 @@ namespace mitama::mitamagic {
     template < class D, class Exp1, class Exp2, class S1, class S2 >
     struct prod<units_t<D, Exp1, S1>, units_t<D, Exp2, S2>>
     {
-        using type = std::tuple<Exp1, S1, Exp2, S2>;
+        using type = type_list<Exp1, S1, Exp2, S2>;
     };
     template < class, class > struct scaler;
 
@@ -29,7 +29,7 @@ namespace mitama::mitamagic {
         using type = std::conditional_t<
             std::is_same_v<typename U::tag, typename H::tag>,
             typename prod<U, H>::type,
-            std::tuple<>>;
+            type_list<>>;
     };
 
     template < class... U1, class... U2 >
@@ -43,7 +43,7 @@ namespace mitama::mitamagic {
 
         template < class T, class... Seq >
         static constexpr auto eval() {
-            auto c = ((convert<std::tuple_element_t<1,Seq>, std::tuple_element_t<0,Seq>>() / convert<std::tuple_element_t<3,Seq>, std::tuple_element_t<2,Seq>>()) * ... * 1.0l);
+            auto c = ((convert<tlist_element_t<1,Seq>, tlist_element_t<0,Seq>>() / convert<tlist_element_t<3,Seq>, tlist_element_t<2,Seq>>()) * ... * 1.0l);
             return c < 1.0l ? std::tuple{false, static_cast<T>(1.0l/c)} : std::tuple{true, static_cast<T>(c)};
         }
         template < class T >
@@ -74,9 +74,9 @@ namespace mitama::mitamagic {
     struct scaled_demension<dimensional_t<L...>, dimensional_t<R...>, std::index_sequence<I...>>{
         using type = dimensional_t<
             units_t<
-                typename std::tuple_element_t<I, std::tuple<L...>>::dimension_type,
-                typename std::tuple_element_t<I, std::tuple<L...>>::exponent,
-                ratio_min<typename std::tuple_element_t<I, std::tuple<L...>>::scale, typename std::tuple_element_t<I, std::tuple<R...>>::scale>
+                typename tlist_element_t<I, type_list<L...>>::dimension_type,
+                typename tlist_element_t<I, type_list<L...>>::exponent,
+                ratio_min<typename tlist_element_t<I, type_list<L...>>::scale, typename tlist_element_t<I, type_list<R...>>::scale>
             >...
         >;
     };

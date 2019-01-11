@@ -9,21 +9,38 @@ namespace mitama {
 // Type List Modules
 namespace mitamagic {
     template < class ... >
-    struct type_pack {}; // Type List
+    struct type_list {}; // Type List
     
-    template <class...> struct pack_cat; // List concatenate: primary
+    template <class...> struct tlist_cat; // List concatenate: primary
 
     template <template <class...> class Pack, class... Left, class... Right>
-    struct pack_cat<Pack<Left...>, Pack<Right...>>
+    struct tlist_cat<Pack<Left...>, Pack<Right...>>
         { using type = Pack<Left..., Right...>; }; // List concatenate: binary
 
     template <class Pack1st, class Pack2nd, class... PackTail>
-    struct pack_cat<Pack1st, Pack2nd, PackTail...>
-        : pack_cat<typename pack_cat<Pack1st, Pack2nd>::type, PackTail...>
+    struct tlist_cat<Pack1st, Pack2nd, PackTail...>
+        : tlist_cat<typename tlist_cat<Pack1st, Pack2nd>::type, PackTail...>
     {};  // List concatenate: variadic(recursive class)
 
-    template <class... Packs> using pack_cat_t = typename pack_cat<Packs...>::type; // alias template
-    
+    template <class... Packs> using tlist_cat_t = typename tlist_cat<Packs...>::type; // alias template
+
+    template <std::size_t I, class T> struct tlist_element;
+
+    // recursive case
+    template <std::size_t I, template <class...> class Pack, class Head,
+            class... Tail>
+    struct tlist_element<I, Pack<Head, Tail...>>
+        : tlist_element<I - 1, Pack<Tail...>>
+        { static_assert(I <= sizeof...(Tail), "pack out of range."); };
+
+    // base case
+    template <template <class...> class Pack, class Head, class... Tail>
+    struct tlist_element<0, Pack<Head, Tail...>>
+        { using type = Head; };
+
+    template <size_t N, typename Pack>
+    using tlist_element_t = typename tlist_element<N, Pack>::type;
+
     template < class T, class... Types >
     inline constexpr std::size_t dimension_count_v = (static_cast<std::size_t>(std::is_same_v<typename T::dimension_type, typename Types::dimension_type>) + ... + std::size_t{}); // type count meta-function
 } // ! mitamagic
@@ -95,26 +112,26 @@ namespace mitamagic {
     // Induction-Sweeper
     // recursive template guardian
     template < class T, class... Result, class... Remainders >
-    struct quotient_<T, type_pack<>, type_pack<Remainders...>, type_pack<Result...>>
+    struct quotient_<T, type_list<>, type_list<Remainders...>, type_list<Result...>>
     {
-        using result = type_pack<Result...>;
-        using remainder = type_pack<Remainders...>;
+        using result = type_list<Result...>;
+        using remainder = type_list<Remainders...>;
     };
     
     // Induction-Sweeper
     // recursive template guardian    
     template < class T, class Head, class... Tail, class... Remainders, class... Results >
-    struct quotient_<T, type_pack<Head, Tail...>, type_pack<Remainders...>, type_pack<Results...>>
+    struct quotient_<T, type_list<Head, Tail...>, type_list<Remainders...>, type_list<Results...>>
         : std::conditional_t<
             // if: << has same dimension? >>
             std::is_same_v<typename T::dimension_type, typename Head::dimension_type>,
             // then => calc dimension
-            quotient_<T, type_pack<>, type_pack<Remainders..., Tail...>, 
+            quotient_<T, type_list<>, type_list<Remainders..., Tail...>, 
                     std::conditional_t</* if: << into dimensionless? >> */ std::is_same_v<dimensionless,typename product<T, Head>::type>,
-                                       /* thne => remove                */ type_pack<Results...>,
-                                       /* else => add to result         */ type_pack<Results..., typename product<T, Head>::type> >>,
+                                       /* thne => remove                */ type_list<Results...>,
+                                       /* else => add to result         */ type_list<Results..., typename product<T, Head>::type> >>,
             // else => keep Head to remain
-            quotient_<T, type_pack<Tail...>, type_pack<Remainders..., Head>, type_pack<Results...>>
+            quotient_<T, type_list<Tail...>, type_list<Remainders..., Head>, type_list<Results...>>
         >
     {
     };
@@ -126,11 +143,11 @@ namespace mitamagic {
     // magical quotient type for induction new dimension type
     // recursive partial template specialization
     template < class Head, class... Tail, class... R, class... Results >
-    struct quotient_impl<type_pack<Head, Tail...>, type_pack<R...>, type_pack<Results...>>
+    struct quotient_impl<type_list<Head, Tail...>, type_list<R...>, type_list<Results...>>
         : quotient_impl<
-            type_pack<Tail...>,
-            typename quotient_< Head, type_pack<R...>, type_pack<>, type_pack<Results...> >::remainder,
-            pack_cat_t<type_pack<Results...>, typename quotient_< Head, type_pack<R...>, type_pack<>, type_pack<Results...> >::result>
+            type_list<Tail...>,
+            typename quotient_< Head, type_list<R...>, type_list<>, type_list<Results...> >::remainder,
+            tlist_cat_t<type_list<Results...>, typename quotient_< Head, type_list<R...>, type_list<>, type_list<Results...> >::result>
         >
     {
     };
@@ -138,7 +155,7 @@ namespace mitamagic {
     // magical quotient type for induction new dimension type
     // recursive partial template specialization guardian
     template < class... R, class... Results >
-    struct quotient_impl<type_pack<>, type_pack<R...>, type_pack<Results...>>
+    struct quotient_impl<type_list<>, type_list<R...>, type_list<Results...>>
     {   // inducted dimension type
         using result_type = dimensional_t<Results..., R...>;
     };
@@ -152,7 +169,7 @@ template < class, class > struct quotient;
 template < class... LeftPhantomTypes, class... RightPhantomTypes >
 struct quotient<dimensional_t<LeftPhantomTypes...>, dimensional_t<RightPhantomTypes...>>
 {
-    using type = typename mitamagic::quotient_impl<mitamagic::type_pack<LeftPhantomTypes...>, mitamagic::type_pack<RightPhantomTypes...>, mitamagic::type_pack<>>::result_type;
+    using type = typename mitamagic::quotient_impl<mitamagic::type_list<LeftPhantomTypes...>, mitamagic::type_list<RightPhantomTypes...>, mitamagic::type_list<>>::result_type;
 };
 
 template < class L, class R > using quotient_t = typename quotient<L, R>::type;
