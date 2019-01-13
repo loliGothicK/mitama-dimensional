@@ -1,7 +1,5 @@
 #pragma once
-#include "dimensional_phantom.hpp"
-#include "dimensions.hpp"
-#include "dimensional_traits.hpp"
+#include "quotient.hpp"
 
 namespace mitama {
 
@@ -28,8 +26,23 @@ public:
     >
     explicit constexpr quantity_t(U&& u) : value_(std::forward<U>(u)) {}
 
-    template < class U, std::enable_if_t<std::is_convertible_v<U, T>, bool> = false >
-    static constexpr quantity_t from_value(U&& u) { return quantity_t(std::forward<U>(u)); }
+    template < class D, class U,
+        std::enable_if_t<
+            is_same_dimensional_v<quantity_t, quantity_t<D, U>> &&
+            std::is_constructible_v<T, U> &&
+            std::is_convertible_v<U, T>
+        , bool> = false
+    >
+    constexpr quantity_t(quantity_t<D, U> const& o): value_(mitamagic::converted_value<quantity_t>(o)) {}
+
+    template < class D, class U,
+        std::enable_if_t<
+            is_same_dimensional_v<quantity_t, quantity_t<D, U>> &&
+            std::is_constructible_v<T, U> &&
+            !std::is_convertible_v<U, T>
+        , bool> = false
+    >
+    explicit constexpr quantity_t(quantity_t<Dim, U> const& o): value_(mitamagic::converted_value<quantity_t>(o)) {}
     
     T get() const { return value_; }
 };
@@ -39,6 +52,12 @@ template < class Dim >
 struct into_dimensional {
     using type = dimensional_t<units_t<Dim>>;
 };
+
+template < class Dim >
+struct into_dimensional<units_t<Dim>> {
+    using type = dimensional_t<units_t<Dim>>;
+};
+
 
 template < class... Units >
 struct into_dimensional<dimensional_t<Units...>> {
@@ -52,3 +71,31 @@ template < class Dim, class T >
 using quantity = quantity_t<mitamagic::into_dimensional_t<Dim>, T>;
 
 }
+
+
+namespace mitama {
+template < class U1, class U2, std::enable_if_t<is_dimensional_v<U1> && is_dimensional_v<U2>, bool> = false >
+constexpr mitamagic::quotient_t<mitamagic::into_dimensional_t<U1>, mitamagic::into_dimensional_t<U2>>
+operator*(U1, U2) {
+    return {};
+}
+
+template < class U1, class U2, std::enable_if_t<is_dimensional_v<U1> && is_dimensional_v<U2>, bool> = false >
+constexpr mitamagic::quotient_t<mitamagic::into_dimensional_t<U1>, mitamagic::inverse_t<mitamagic::into_dimensional_t<U2>>>
+operator/(U1, U2) {
+    return {};
+}
+
+template < std::intmax_t N, class U, std::enable_if_t<is_dimensional_v<U>, bool> = false >
+constexpr typename mitamagic::powered_dimensional<U, N>::type
+pow(U) {
+    return {};
+}
+
+template < class Dim, class T >
+constexpr std::enable_if_t<is_dimensional_v<Dim>, quantity_t<Dim, T>>
+operator|(T&& t, Dim) {
+    return {std::forward<T>(t)};
+}
+}
+
