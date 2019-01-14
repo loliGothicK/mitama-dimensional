@@ -53,7 +53,7 @@ namespace mitama::mitamagic {
 
 
 namespace mitama::mitamagic {
-template < class , class > struct prod;
+template < class , class > struct prod{ using type = void; };
 
 template < class D, class Exp1, class Exp2, class S1, class S2 >
 struct prod<units_t<D, Exp1, S1>, units_t<D, Exp2, S2>>
@@ -70,12 +70,14 @@ struct find_if: std::conditional_t<
 >
 {};
 
+using not_found = type_list<std::ratio<1>, std::ratio<1>, std::ratio<1>, std::ratio<1>>;
+
 template < class U, class H >
 struct find_if<U, H> {
     using type = std::conditional_t<
         std::is_same_v<typename U::tag, typename H::tag>,
         typename prod<U, H>::type,
-        type_list<>>;
+        not_found>;
 };
 
 template < class... U1, class... U2 >
@@ -166,7 +168,7 @@ struct dimensionless;
 
 // meta-operator for product with two same dimensions
 // parimary template
-template < class , class > struct product;
+template < class , class > struct product{ using type = void; };
 
 // meta-operator for product with two same dimensions
 // partial template specialization for phantom_t
@@ -192,6 +194,14 @@ struct quotient_<T, type_list<>, type_list<Remainders...>, type_list<Result...>>
     using result = type_list<Result...>;
     using remainder = type_list<Remainders...>;
 };
+
+template < class T, class... Remainders >
+struct quotient_<T, type_list<>, type_list<Remainders...>, type_list<>>
+{
+    using result = type_list<T>;
+    using remainder = type_list<Remainders...>;
+};
+
 
 // Induction-Sweeper
 // recursive template guardian    
@@ -254,4 +264,9 @@ struct powered_dimensional<dimensional_t<PhantomTypes...>, N>
 
 
 template < class L, class R > using quotient_t = typename quotient<L, R>::type;
+}
+
+namespace mitama {
+    template < class U, std::intmax_t N >
+    using powered_t = typename mitamagic::powered_dimensional<U, N>::type;
 }

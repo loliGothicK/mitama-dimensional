@@ -4,11 +4,6 @@
 
 namespace mitama {
 // Dimension Types
-struct Length {};
-
-struct Mass {};
-
-struct Time {};
 
 template < class Dim, class Exponent > struct dimension_tag{};
 

@@ -3,7 +3,7 @@
 
 namespace mitama {
 
-template < class Dim, class T >
+template < class Dim, class T = double >
 class quantity_t {
     T value_;
 public:
@@ -67,9 +67,17 @@ struct into_dimensional<dimensional_t<Units...>> {
 template < class Unit > using into_dimensional_t = typename into_dimensional<Unit>::type;
 } // ! mitamagic
 
-template < class Dim, class T >
+template < class Dim, class T = double >
 using quantity = quantity_t<mitamagic::into_dimensional_t<Dim>, T>;
 
+template < class T >
+struct is_quantity: std::false_type {};
+
+template < class D, class T >
+struct is_quantity<quantity_t<D, T>>: std::true_type {};
+
+template < class T >
+inline constexpr bool is_quantity_v = is_quantity<T>::value;
 }
 
 

@@ -2,7 +2,14 @@
 #include <iostream>
 #include <type_traits>
 #include "quantity.hpp"
-#include "si/meters.hpp"
+#include "si/meter.hpp"
+#include "si/second.hpp"
+#include "si/ampare.hpp"
+#include "si/candela.hpp"
+#include "si/kelvin.hpp"
+#include "si/mol.hpp"
+#include "si/kilogram.hpp"
+
 namespace mitama {
 template < class ... > inline constexpr bool abbreviation_error_v = false;
 template <class T, class=void>
@@ -17,13 +24,30 @@ template < class >
 struct abbreviation;
 
 template < >
-struct abbreviation<meters_t> {
+struct abbreviation<meter_t> {
     static constexpr char str[] = "m";
 };
 template < >
-struct abbreviation<millimeters_t> {
+struct abbreviation<millimeter_t> {
     static constexpr char str[] = "mm";
 };
+template < >
+struct abbreviation<nanometer_t> {
+    static constexpr char str[] = "nm";
+};
+template < >
+struct abbreviation<second_t> {
+    static constexpr char str[] = "s";
+};
+template < >
+struct abbreviation<millisecond_t> {
+    static constexpr char str[] = "ms";
+};
+template < >
+struct abbreviation<nanosecond_t> {
+    static constexpr char str[] = "ns";
+};
+
 
 template < class E >
 inline std::string exponent = []{
@@ -40,7 +64,7 @@ template < class T, class... Units>
     //,std::enable_if_t<std::conjunction_v<is_complete_type<abbreviation<typename Units::basic_type>>...>, bool> = false >
 std::ostream& operator<<(std::ostream& os, quantity_t<dimensional_t<Units...>, T> const& quantity) {
     if constexpr (is_complete_type<abbreviation<dimensional_t<Units...>>>::value){
-        os << "[ " << abbreviation<dimensional_t<Units...>>::str << " ]";
+        return os << quantity.get() << "[ " << abbreviation<dimensional_t<Units...>>::str << " ]";
     }
     else if constexpr (std::conjunction_v<is_complete_type<abbreviation<dimensional_t<typename Units::basic_type>>>...>) {
         os << quantity.get() << "[ ";
