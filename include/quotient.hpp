@@ -2,12 +2,12 @@
 #include <type_traits>
 #include <ratio>
 #include <utility>
-#include <cmath>
 #include "units.hpp"
 #include "dimensional_phantom.hpp"
 #include "dimensional_traits.hpp"
 #include <tuple>
 #include <variant>
+#include <sprout/math/pow.hpp>
 
 // Type List Modules
 namespace mitama::mitamagic {
@@ -83,8 +83,8 @@ struct find_if<U, H> {
 template < class... U1, class... U2 >
 struct scaler<dimensional_t<U1...>, dimensional_t<U2...>> {
     template <class R1, class R2>
-    static long double convert(){
-        return std::pow(
+    static constexpr long double convert(){
+        return sprout::math::pow(
                 static_cast<long double>(R1::num) / static_cast<long double>(R1::den),
                 static_cast<long double>(R2::num) / static_cast<long double>(R2::den));
     }

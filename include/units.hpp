@@ -9,6 +9,7 @@ template < class Dim, class Exponent > struct dimension_tag{};
 
 template < class Dim, class Exponent = std::ratio<1>, class Scale = std::ratio<1> >
 struct units_t: private dimension_tag<Dim, Exponent> {
+    static_assert(std::ratio_greater_v<Scale, std::ratio<0>>, "scale must be positive number!");
     using dimension_type    = Dim;
     using exponent          = Exponent;
     using scale             = Scale;

@@ -44,7 +44,7 @@ public:
     >
     explicit constexpr quantity_t(quantity_t<Dim, U> const& o): value_(mitamagic::converted_value<quantity_t>(o)) {}
     
-    T get() const { return value_; }
+    constexpr T get() const { return value_; }
 };
 
 namespace mitamagic {
