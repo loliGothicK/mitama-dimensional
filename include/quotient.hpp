@@ -71,14 +71,11 @@ struct scaler<dimensional_t<_1, U1...>, dimensional_t<_2, U2...>> {
         long double left = 1.0l;
         long double right = 1.0l;
         (
-            [&]{
-                using scale1 = tlist_element_t<1, Seq>;
-                using scale2 = tlist_element_t<3, Seq>;
-                if(std::ratio_less_v<scale1, scale2>)
-                    right *= convert<std::ratio_divide<scale2, scale1>,tlist_element_t<2, Seq>>();
-                else
-                    left *= convert<std::ratio_divide<scale1, scale2>,tlist_element_t<0, Seq>>();
-            }() , ...
+            (
+                (std::ratio_less_v<tlist_element_t<1, Seq>, tlist_element_t<3, Seq>>)
+                    ? (right *= convert<std::ratio_divide<tlist_element_t<3, Seq>, tlist_element_t<1, Seq>>,tlist_element_t<2, Seq>>())
+                    : (left *= convert<std::ratio_divide<tlist_element_t<1, Seq>, tlist_element_t<3, Seq>>,tlist_element_t<0, Seq>>())
+            ) , ...
         );
         return std::tuple{static_cast<T>(left), static_cast<T>(right)};
     }
