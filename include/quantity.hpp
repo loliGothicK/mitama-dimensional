@@ -1,9 +1,33 @@
 #pragma once
 #include "quotient.hpp"
 
+
+namespace mitama {
+template < class Dim, class T = double >
+class quantity_t;
+
+// meta-operator for dimension equivalence
+// primary template
+template < class, class >
+struct is_same_dimensional: std::false_type {};
+
+// meta-operator for dimension equivalence
+// template partial specialization for dimensional_t
+template < class T, class U, class S1, class S2, class... Units1, class... Units2 >
+struct is_same_dimensional<quantity_t<dimensional_t<S1, Units1...>, T>, quantity_t<dimensional_t<S2, Units2...>, U>>
+    : std::conjunction<std::bool_constant<sizeof...(Units1) == sizeof...(Units2)>, std::is_base_of<typename Units1::tag, dimensional_t<S2, Units2...>>...>
+{};
+
+// alias variable template
+template < class L, class R >
+inline constexpr bool is_same_dimensional_v = is_same_dimensional<L, R>::value;
+
+}
+
+
 namespace mitama {
 
-template < class Dim, class T = double >
+template < class Dim, class T >
 class quantity_t {
     T value_;
 public:
@@ -43,6 +67,17 @@ public:
         , bool> = false
     >
     explicit constexpr quantity_t(quantity_t<Dim, U> const& o): value_(mitamagic::converted_value<quantity_t>(o)) {}
+
+    template < class D, class U,
+        std::enable_if_t<
+            is_same_dimensional_v<quantity_t, quantity_t<D, U>> &&
+            std::is_convertible_v<U, T>
+        , bool> = false
+    >
+    constexpr quantity_t& operator=(quantity_t<Dim, U> const& o) & {
+        this->value_ = mitamagic::converted_value<quantity_t>(o);
+        return *this;
+    }
     
     constexpr T get() const { return value_; }
 };
@@ -107,3 +142,13 @@ operator|(T&& t, Dim) {
 }
 }
 
+
+namespace mitama{
+template < class To, class From, std::enable_if_t<is_same_dimensional_v<To, std::decay_t<From>>, bool> = false >
+inline constexpr From scale_cast(From&& from)
+{
+    
+}
+
+
+}

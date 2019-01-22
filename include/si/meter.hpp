@@ -36,18 +36,18 @@ inline constexpr megameter_t megameters;
 inline constexpr gigameter_t gigameters;
 inline constexpr terameter_t terameters;
 
-template < std::intmax_t N > inline constexpr powered_t<meter_t, N> meter{};
+template < std::intmax_t N = 1 > inline constexpr powered_t<meter_t, N> meter{};
 
-template < std::intmax_t N > inline constexpr powered_t<picometer_t, N> picometer{};
-template < std::intmax_t N > inline constexpr powered_t<nanometer_t, N> nanometer{};
-template < std::intmax_t N > inline constexpr powered_t<micrometer_t, N> micrometer{};
-template < std::intmax_t N > inline constexpr powered_t<millimeter_t, N> millimeter{};
-template < std::intmax_t N > inline constexpr powered_t<centimeter_t, N> centimeter{};
+template < std::intmax_t N = 1 > inline constexpr powered_t<picometer_t, N> picometer{};
+template < std::intmax_t N = 1 > inline constexpr powered_t<nanometer_t, N> nanometer{};
+template < std::intmax_t N = 1 > inline constexpr powered_t<micrometer_t, N> micrometer{};
+template < std::intmax_t N = 1 > inline constexpr powered_t<millimeter_t, N> millimeter{};
+template < std::intmax_t N = 1 > inline constexpr powered_t<centimeter_t, N> centimeter{};
 
-template < std::intmax_t N > inline constexpr powered_t<kilometer_t, N> kilometer{};
-template < std::intmax_t N > inline constexpr powered_t<megameter_t, N> megameter{};
-template < std::intmax_t N > inline constexpr powered_t<gigameter_t, N> gigameter{};
-template < std::intmax_t N > inline constexpr powered_t<terameter_t, N> terameter{};
+template < std::intmax_t N = 1 > inline constexpr powered_t<kilometer_t, N> kilometer{};
+template < std::intmax_t N = 1 > inline constexpr powered_t<megameter_t, N> megameter{};
+template < std::intmax_t N = 1 > inline constexpr powered_t<gigameter_t, N> gigameter{};
+template < std::intmax_t N = 1 > inline constexpr powered_t<terameter_t, N> terameter{};
 
 
 }

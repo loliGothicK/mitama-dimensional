@@ -5,7 +5,6 @@
 namespace mitama {
 // Dimension Types
 
-template < class Dim, class Exponent > struct dimension_tag{};
 
 template < class Dim, class Exponent = std::ratio<1>, class Scale = std::ratio<1> >
 struct units_t: private dimension_tag<Dim, Exponent> {
@@ -24,13 +23,13 @@ template < class D, class E, class S > struct is_units<units_t<D, E, S>>: std::t
 template < class U >
 inline constexpr bool is_units_v = is_units<U>::value;
 
-template <class D> using make_unit_t = dimensional_t<units_t<D>>;
+template <class D> using make_unit_t = make_dimensional_t<units_t<D>>;
 
 template < class, class > struct scaled_unit;
 
-template < class Base, class Scale >
-struct scaled_unit<dimensional_t<Base>, Scale>
-    { using type = dimensional_t<units_t<typename Base::dimension_type, typename Base::exponent, Scale>>; };
+template < class S,class Base, class Scale >
+struct scaled_unit<dimensional_t<S, Base>, Scale>
+    { using type = make_dimensional_t<units_t<typename Base::dimension_type, typename Base::exponent, Scale>>; };
 
 template < class Base, class R >
 using scaled_unit_t = typename scaled_unit<Base, R>::type;

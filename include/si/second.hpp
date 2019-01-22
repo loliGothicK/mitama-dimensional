@@ -15,10 +15,10 @@ inline constexpr millisecond_t milliseconds{};
 inline constexpr microsecond_t microseconds{};
 inline constexpr nanosecond_t nanoseconds{};
 
-template < std::intmax_t N > inline constexpr powered_t<second_t, N> second{};
-template < std::intmax_t N > inline constexpr powered_t<millisecond_t, N> millisecond{};
-template < std::intmax_t N > inline constexpr powered_t<microsecond_t, N> microsecond{};
-template < std::intmax_t N > inline constexpr powered_t<nanosecond_t, N> nanosecond{};
+template < std::intmax_t N = 1 > inline constexpr powered_t<second_t, N> second{};
+template < std::intmax_t N = 1 > inline constexpr powered_t<millisecond_t, N> millisecond{};
+template < std::intmax_t N = 1 > inline constexpr powered_t<microsecond_t, N> microsecond{};
+template < std::intmax_t N = 1 > inline constexpr powered_t<nanosecond_t, N> nanosecond{};
 
 
 }

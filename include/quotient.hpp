@@ -1,55 +1,32 @@
 #pragma once
 #include <type_traits>
 #include <ratio>
+#include <cmath>
+#include <tuple>
 #include <utility>
 #include "units.hpp"
 #include "dimensional_phantom.hpp"
-#include "dimensional_traits.hpp"
-#include <tuple>
-#include <variant>
-#include <sprout/math/pow.hpp>
+#include "mitamagic/utility.hpp"
+#include <iostream>
+#include <boost/type_index.hpp>
 
-// Type List Modules
-namespace mitama::mitamagic {
-    template < class R1, class R2 >
-    using ratio_max = std::conditional_t<std::ratio_greater_v<R1, R2>, R1, R2>;
+namespace mitama {
 
-    template < class R1, class R2 >
-    using ratio_min = std::conditional_t<std::ratio_less_v<R1, R2>, R1, R2>;
-
-    template < class ... >
-    struct type_list {}; // Type List
-    
-    template <class...> struct tlist_cat; // List concatenate: primary
-
-    template <template <class...> class Pack, class... Left, class... Right>
-    struct tlist_cat<Pack<Left...>, Pack<Right...>>
-        { using type = Pack<Left..., Right...>; }; // List concatenate: binary
-
-    template <class Pack1st, class Pack2nd, class... PackTail>
-    struct tlist_cat<Pack1st, Pack2nd, PackTail...>
-        : tlist_cat<typename tlist_cat<Pack1st, Pack2nd>::type, PackTail...>
-    {};  // List concatenate: variadic(recursive class)
-
-    template <class... Packs> using tlist_cat_t = typename tlist_cat<Packs...>::type; // alias template
-
-    template <std::size_t I, class T> struct tlist_element;
-
-    // recursive case
-    template <std::size_t I, template <class...> class Pack, class Head,
-            class... Tail>
-    struct tlist_element<I, Pack<Head, Tail...>>
-        : tlist_element<I - 1, Pack<Tail...>>
-        { static_assert(I <= sizeof...(Tail), "pack out of range."); };
-
-    // base case
-    template <template <class...> class Pack, class Head, class... Tail>
-    struct tlist_element<0, Pack<Head, Tail...>>
-        { using type = Head; };
-
-    template <size_t N, typename Pack>
-    using tlist_element_t = typename tlist_element<N, Pack>::type;
-} // ! mitamagic
+    template < class... Tags >
+    struct dimensionless {
+        using dimension_type = dimensionless<>;
+        using exponent = std::ratio<1>;
+        using scale = std::ratio<1>;
+        using tag = dimensionless<Tags...>;
+        using basic_type = dimensionless<Tags...>;
+    };
+    template < class D, class E >
+    struct dimensionless<D, E> {
+        using tag = dimension_tag<D, E>;
+    };
+    template < class > struct is_dimensionless_type: std::false_type {};
+    template < class... Tags > struct is_dimensionless_type<dimensionless<Tags...>>: std::true_type {};
+}
 
 
 namespace mitama::mitamagic {
@@ -64,7 +41,7 @@ template < class, class > struct scaler;
 
 template < class U, class Head, class... Tail >
 struct find_if: std::conditional_t<
-    std::is_same_v<typename U::tag, typename Head::tag>,
+    std::is_same_v<typename U::dimension_type, typename Head::dimension_type>,
     prod<U, Head>,
     find_if<U, Tail...>
 >
@@ -75,29 +52,55 @@ using not_found = type_list<std::ratio<1>, std::ratio<1>, std::ratio<1>, std::ra
 template < class U, class H >
 struct find_if<U, H> {
     using type = std::conditional_t<
-        std::is_same_v<typename U::tag, typename H::tag>,
+        std::is_same_v<typename U::dimension_type, typename H::dimension_type>,
         typename prod<U, H>::type,
         not_found>;
 };
 
-template < class... U1, class... U2 >
-struct scaler<dimensional_t<U1...>, dimensional_t<U2...>> {
+template < class _1, class _2, class... U1, class... U2 >
+struct scaler<dimensional_t<_1, U1...>, dimensional_t<_2, U2...>> {
     template <class R1, class R2>
     static constexpr long double convert(){
-        return sprout::math::pow(
+        return std::pow(
                 static_cast<long double>(R1::num) / static_cast<long double>(R1::den),
                 static_cast<long double>(R2::num) / static_cast<long double>(R2::den));
     }
 
     template < class T, class... Seq >
     static constexpr auto eval() {
-        auto c = ((convert<tlist_element_t<1,Seq>, tlist_element_t<0,Seq>>() / convert<tlist_element_t<3,Seq>, tlist_element_t<2,Seq>>()) * ... * 1.0l);
-        return c < 1.0l ? std::tuple{false, static_cast<T>(1.0l/c)} : std::tuple{true, static_cast<T>(c)};
+        long double left = 1.0l;
+        long double right = 1.0l;
+        (
+            [&]{
+                using scale1 = tlist_element_t<1, Seq>;
+                using scale2 = tlist_element_t<3, Seq>;
+                if(std::ratio_less_v<scale1, scale2>)
+                    right *= convert<std::ratio_divide<scale2, scale1>,tlist_element_t<2, Seq>>();
+                else
+                    left *= convert<std::ratio_divide<scale1, scale2>,tlist_element_t<0, Seq>>();
+            }() , ...
+        );
+        return std::tuple{static_cast<T>(left), static_cast<T>(right)};
     }
     template < class T >
     static constexpr auto value() {
         return eval<T, typename find_if<U1, U2...>::type...>();
     }
+
+    template < class T, class... Seq >
+    static constexpr auto cast() {
+        long double value = 1.0l;
+        (
+            (value *= convert<std::ratio_divide<tlist_element_t<3, Seq>, tlist_element_t<1, Seq>>,tlist_element_t<2, Seq>>()) , ...
+        );
+        return value;
+    }
+
+    template < class T >
+    static constexpr auto cast_coefficient() {
+        return cast<T, typename find_if<U1, U2...>::type...>();
+    }
+
 };
 
 template <class Q1, class Q2, class F>
@@ -105,28 +108,29 @@ constexpr auto scaled_value(Q1&& q1, Q2&& q2, F&& f){
     using lhs_t = std::decay_t<Q1>;
     using rhs_t = std::decay_t<Q2>;
     using common_t = std::common_type_t<typename lhs_t::value_type, typename rhs_t::value_type>;
-    if (auto [flag, c] = scaler<typename lhs_t::dimension_type, typename rhs_t::dimension_type>::template value<common_t>(); flag)
-    {
-        return std::forward<F>(f)(std::forward<Q1>(q1).get() * c, std::forward<Q2>(q2).get());
-    }
-    else
-    {
-        return std::forward<F>(f)(std::forward<Q1>(q1).get(), std::forward<Q2>(q2).get() * c);
-    }
+    auto [l, r] = scaler<typename lhs_t::dimension_type, typename rhs_t::dimension_type>::template value<common_t>();
+    return std::forward<F>(f)(std::forward<Q1>(q1).get() * l, std::forward<Q2>(q2).get() * r);
 }
+
 
 template <class To, class From>
 constexpr auto converted_value(From&& quantity){
-    return std::forward<From>(quantity).get() * std::get<1>(scaler<typename To::dimension_type, typename std::decay_t<From>::dimension_type>::template value<typename To::value_type>());
+    return std::forward<From>(quantity).get() * scaler<typename To::dimension_type, typename std::decay_t<From>::dimension_type>::template cast_coefficient<typename To::value_type>();
 }
 
 
 template < class, class, class >
 struct scaled_demension;
 
-template < class... L, class... R, std::size_t... I>
-struct scaled_demension<dimensional_t<L...>, dimensional_t<R...>, std::index_sequence<I...>>{
+template < class StorageL, class StorageR, class... L, class... R, std::size_t... I>
+struct scaled_demension<dimensional_t<StorageL, L...>, dimensional_t<StorageR, R...>, std::index_sequence<I...>>{
     using type = dimensional_t<
+        scale_storage_t<
+            indexed_scale_t<
+                typename tlist_element_t<I, type_list<L...>>::dimension_type,
+                ratio_min<typename tlist_element_t<I, type_list<L...>>::scale, typename tlist_element_t<I, type_list<R...>>::scale>
+            >...
+        >,
         units_t<
             typename tlist_element_t<I, type_list<L...>>::dimension_type,
             typename tlist_element_t<I, type_list<L...>>::exponent,
@@ -155,16 +159,14 @@ struct inverse;
 
 // meta-function for dimension exponent inverse
 // partial template specialization
-template < class... Units >
-struct inverse<dimensional_t<Units...>>
+template < class S, class... Units >
+struct inverse<dimensional_t<S, Units...>>
 {   // invoke to mitamagic::inversed
-using type = dimensional_t<typename mitamagic::inversed<Units>::type...>;
+using type = dimensional_t<S, typename mitamagic::inversed<Units>::type...>;
 };
 
 // alias template for inverse
 template < class T > using inverse_t = typename inverse<T>::type;
-
-struct dimensionless;
 
 // meta-operator for product with two same dimensions
 // parimary template
@@ -177,7 +179,7 @@ struct product<units_t<D, Exp1, S1>, units_t<D, Exp2, S2>>
 {
     using type = std::conditional_t<
                     std::ratio_equal_v<std::ratio_add<Exp1, Exp2>, std::ratio<0>>,
-                        dimensionless,
+                        dimensionless<dimension_tag<D, ratio_max<Exp1, Exp2>>>,
                         units_t<D, std::ratio_add<Exp1, Exp2>, ratio_min<S1, S2>>
                 >;
 };
@@ -212,9 +214,9 @@ struct quotient_<T, type_list<Head, Tail...>, type_list<Remainders...>, type_lis
         std::is_same_v<typename T::dimension_type, typename Head::dimension_type>,
         // then => calc dimension
         quotient_<T, type_list<>, type_list<Remainders..., Tail...>, 
-                std::conditional_t</* if: << into dimensionless? >> */ std::is_same_v<dimensionless,typename product<T, Head>::type>,
-                                    /* thne => remove                */ type_list<Results...>,
-                                    /* else => add to result         */ type_list<Results..., typename product<T, Head>::type> >>,
+                std::conditional_t</* if: << into dimensionless? >> */ is_dimensionless_type<typename product<T, Head>::type>::value,
+                                   /* thne => remove                */ type_list<typename product<T, Head>::type>,
+                                   /* else => add to result         */ type_list<Results..., typename product<T, Head>::type> >>,
         // else => keep Head to remain
         quotient_<T, type_list<Tail...>, type_list<Remainders..., Head>, type_list<Results...>>
     >
@@ -242,7 +244,17 @@ struct quotient_impl<type_list<Head, Tail...>, type_list<R...>, type_list<Result
 template < class... R, class... Results >
 struct quotient_impl<type_list<>, type_list<R...>, type_list<Results...>>
 {   // inducted dimension type
-    using result_type = dimensional_t<Results..., R...>;
+    template < class Storage >
+    using result_type = std::conditional_t<tlist_all_match_if_v<is_dimensionless_type, type_list<Results..., R...>>,
+        dimensional_t<Storage, tlist_cat_t<dimensionless<Results..., R...>>>,
+        repack_t<
+            dimensional_t,
+            tlist_filter_t<
+                is_dimensionless_type,
+                type_list<Storage, Results..., R...>
+            >
+        >
+    >;
 };
 
 // quotient facade
@@ -250,16 +262,23 @@ struct quotient_impl<type_list<>, type_list<R...>, type_list<Results...>>
 template < class, class > struct quotient;
 
 // quotient facade
-template < class... LeftPhantomTypes, class... RightPhantomTypes >
-struct quotient<dimensional_t<LeftPhantomTypes...>, dimensional_t<RightPhantomTypes...>>
+template < class StorageL, class StorageR, class... LeftPhantomTypes, class... RightPhantomTypes >
+struct quotient<dimensional_t<StorageL, LeftPhantomTypes...>, dimensional_t<StorageR, RightPhantomTypes...>>
 {
-    using type = typename mitamagic::quotient_impl<mitamagic::type_list<LeftPhantomTypes...>, mitamagic::type_list<RightPhantomTypes...>, mitamagic::type_list<>>::result_type;
+    using type
+        = typename mitamagic::quotient_impl<
+            mitamagic::type_list<LeftPhantomTypes...>,
+            mitamagic::type_list<RightPhantomTypes...>,
+            mitamagic::type_list<>
+        >::template result_type<lexical_scale_storage_t<StorageL, StorageR>>;
 };
+
 template <class,std::intmax_t> struct powered_dimensional;
-template < std::intmax_t N, class... PhantomTypes >
-struct powered_dimensional<dimensional_t<PhantomTypes...>, N>
+
+template < std::intmax_t N, class S, class... PhantomTypes >
+struct powered_dimensional<dimensional_t<S, PhantomTypes...>, N>
 {
-    using type = dimensional_t<units_t<typename PhantomTypes::dimension_type, std::ratio_multiply<typename PhantomTypes::exponent, std::ratio<N>>, typename PhantomTypes::scale>...>;
+    using type = dimensional_t<S, units_t<typename PhantomTypes::dimension_type, std::ratio_multiply<typename PhantomTypes::exponent, std::ratio<N>>, typename PhantomTypes::scale>...>;
 };
 
 
@@ -270,3 +289,9 @@ namespace mitama {
     template < class U, std::intmax_t N >
     using powered_t = typename mitamagic::powered_dimensional<U, N>::type;
 }
+
+namespace mitama::mitamagic {
+template < class > struct is_dimensionless: std::false_type {};
+template < class S,class... Tags > struct is_dimensionless<dimensional_t<S, dimensionless<Tags...>>>: std::true_type {};
+}
+

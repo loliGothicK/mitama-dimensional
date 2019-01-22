@@ -1,5 +1,5 @@
 #pragma once
-#include "quotient.hpp"
+#include "quantity.hpp"
 
 
 namespace mitama {
