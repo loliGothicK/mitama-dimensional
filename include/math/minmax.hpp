@@ -1,27 +1,36 @@
 #ifndef MITAMA_DIMENSIONAL_MATH_MINMAX_HPP
 #define MITAMA_DIMENSIONAL_MATH_MINMAX_HPP
 
-#include <cmath>
-#include "../quantity.hpp"
 #include "../comparison.hpp"
+#include "../quantity.hpp"
+#include <cmath>
 
 namespace mitama {
 
-template < class... Quantities >
-auto min(Quantities... quantities) {
-    return std::min({
-        static_cast<::mitama::common_type_t<std::decay_t<Quantities>...>>(quantities)...
-    });
+template <class First, class Second, class... Quantities>
+auto min(First first, Second second, Quantities... quantities) {
+  using ret = ::mitama::common_type_t<First, Second, Quantities...>;
+  if constexpr (sizeof...(Quantities) == 0) {
+    return first < second ? static_cast<ret>(first) : static_cast<ret>(second);
+  } else {
+    return ::mitama::min(first < second ? static_cast<ret>(first)
+                                        : static_cast<ret>(second),
+                         quantities...);
+  }
 }
 
-template < class... Quantities >
-auto max(Quantities... quantities) {
-    return std::max({
-        static_cast<::mitama::common_type_t<std::decay_t<Quantities>...>>(quantities)...
-    });
+template <class First, class Second, class... Quantities>
+auto max(First first, Second second, Quantities... quantities) {
+  using ret = ::mitama::common_type_t<First, Second, Quantities...>;
+  if constexpr (sizeof...(Quantities) == 0) {
+    return first > second ? static_cast<ret>(first) : static_cast<ret>(second);
+  } else {
+    return ::mitama::max(first > second ? static_cast<ret>(first)
+                                        : static_cast<ret>(second),
+                         quantities...);
+  }
 }
 
-
-}
+} // namespace mitama
 
 #endif
