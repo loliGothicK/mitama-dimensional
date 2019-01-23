@@ -3,9 +3,17 @@ executors:
   default:
     docker:
       - image: buildpack-deps:bionic-curl
+  test-env:
+    parameters:
+      compiler:
+        description: "compiler-version"
+        default: "clang-7.0.0"
+        type: string
+    docker:
+      - image: enumack/buildcontainers:<< parameters.compiler >>
 
 jobs:
-  test:
+  wandbox-test:
     description: Testing the library using wandbox
     parameters:
       compiler:
@@ -24,25 +32,44 @@ jobs:
           destination: raw-test-output
       - store_artifacts:
           path: /results
+  full-test:
+    description: Testing the library using Catch2
+    parameters:
+      compiler:
+        description: "compiler-version"
+        default: "clang-7.0.0"
+        type: string
+    executor:
+      name: test-env
+      compiler: << parameters.compiler >>
+    steps:
+      - checkout
+      - run: apt upgrade -y && apt update -y && apt install -y git
+      - run: git submodule update --init --recursive
+      - run: mkdir build && cd build && cmake .. &&  make && ./tests
 
 workflows:
   build:
     jobs:
-      - test:
+      - wandbox-test:
           compiler: clang-head
-      - test:
+      - wandbox-test:
           compiler: clang-7.0.0
-      - test:
+      - wandbox-test:
           compiler: clang-6.0.1
-      - test:
+      - wandbox-test:
           compiler: clang-6.0.0
-      - test:
+      - wandbox-test:
+          compiler: gcc-head
+      - wandbox-test:
           compiler: gcc-8.2.0
-      - test:
+      - wandbox-test:
           compiler: gcc-8.1.0
-      - test:
+      - wandbox-test:
           compiler: gcc-7.3.0
-      - test:
+      - wandbox-test:
           compiler: gcc-7.2.0
-      - test:
+      - wandbox-test:
           compiler: gcc-7.1.0
+      - full-test:
+          compiler: clang-7.0.0

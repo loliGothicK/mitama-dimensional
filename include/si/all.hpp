@@ -1,5 +1,5 @@
 #pragma ocne
-#include "./ampare.hpp"
+#include "./ampere.hpp"
 #include "./candela.hpp"
 #include "./kelvin.hpp"
 #include "./kilogram.hpp"
