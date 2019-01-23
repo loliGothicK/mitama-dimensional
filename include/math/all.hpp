@@ -5,5 +5,6 @@
 #include "minmax.hpp"
 #include "pow.hpp"
 #include "root.hpp"
+#include "nearest_integer.hpp"
 
 #endif
