@@ -15,17 +15,15 @@ include_directories(
   )
 
 
-set(target basics)
+set(target tests)
 set(sources
-	tests/basics.cpp
+  tests/tests-main.cpp
+	tests/basic-tests.cpp
 )
 add_executable(${target} ${sources})
 message(STATUS "Building library ${target}...")
 
-
-
-
-add_test(basics "${EXECUTABLE_OUTPUT_PATH}/${target}")
+add_test(tests "${EXECUTABLE_OUTPUT_PATH}/${target}")
 enable_testing()
 
 
