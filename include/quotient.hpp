@@ -270,12 +270,12 @@ struct quotient<dimensional_t<StorageL, LeftPhantomTypes...>, dimensional_t<Stor
         >::template result_type<lexical_scale_storage_t<StorageL, StorageR>>;
 };
 
-template <class,std::intmax_t> struct powered_dimensional;
+template <class,class> struct powered_dimensional;
 
-template < std::intmax_t N, class S, class... PhantomTypes >
-struct powered_dimensional<dimensional_t<S, PhantomTypes...>, N>
+template < std::intmax_t N, std::intmax_t D, class S, class... PhantomTypes >
+struct powered_dimensional<dimensional_t<S, PhantomTypes...>, std::ratio<N, D>>
 {
-    using type = dimensional_t<S, units_t<typename PhantomTypes::dimension_type, std::ratio_multiply<typename PhantomTypes::exponent, std::ratio<N>>, typename PhantomTypes::scale>...>;
+    using type = dimensional_t<S, units_t<typename PhantomTypes::dimension_type, std::ratio_multiply<typename PhantomTypes::exponent, std::ratio<N, D>>, typename PhantomTypes::scale>...>;
 };
 
 
@@ -284,11 +284,11 @@ template < class L, class R > using quotient_t = typename quotient<L, R>::type;
 
 namespace mitama {
     template < class U, std::intmax_t N >
-    using powered_t = typename mitamagic::powered_dimensional<U, N>::type;
+    using powered_t = typename mitamagic::powered_dimensional<U, std::ratio<N>>::type;
 }
 
 namespace mitama::mitamagic {
 template < class > struct is_dimensionless: std::false_type {};
-template < class S,class... Tags > struct is_dimensionless<dimensional_t<S, dimensionless<Tags...>>>: std::true_type {};
+template < class S, class... Tags > struct is_dimensionless<dimensional_t<S, dimensionless<Tags...>>>: std::true_type {};
 }
 

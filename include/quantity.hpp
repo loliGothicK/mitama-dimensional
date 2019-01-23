@@ -130,7 +130,7 @@ operator/(U1, U2) {
 }
 
 template < std::intmax_t N, class U, std::enable_if_t<is_dimensional_v<U>, bool> = false >
-constexpr typename mitamagic::powered_dimensional<U, N>::type
+constexpr powered_t<U, N>
 pow(U) {
     return {};
 }
@@ -140,15 +140,20 @@ constexpr std::enable_if_t<is_dimensional_v<Dim>, quantity_t<Dim, T>>
 operator|(T&& t, Dim) {
     return {std::forward<T>(t)};
 }
-}
 
-
-namespace mitama{
-template < class To, class From, std::enable_if_t<is_same_dimensional_v<To, std::decay_t<From>>, bool> = false >
-inline constexpr From scale_cast(From&& from)
+template < class Q1, class Q2, class... Quantities >
+struct common_type
+    : ::mitama::common_type<
+        quantity_t<mitamagic::scaled_demension_t<typename Q1::dimension_type, typename Q2::dimension_type>, std::common_type_t<typename Q1::value_type, typename Q2::value_type>>,
+        Quantities...>
 {
-    
-}
+    static_assert( std::conjunction_v<is_same_dimensional<Q1, Q2>, is_same_dimensional<Q1, Quantities>...>,
+            "dimension type refinement error: common_type requires same dimensions" );
+};
 
+template < class... Quantities > using common_type_t = typename common_type<Quantities...>::type;
+
+template < class Q1, class Q2 >
+struct common_type<Q1, Q2> { using type = quantity_t<mitamagic::scaled_demension_t<typename Q1::dimension_type, typename Q2::dimension_type>, std::common_type_t<typename Q1::value_type, typename Q2::value_type>>; };
 
 }
