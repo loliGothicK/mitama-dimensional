@@ -42,7 +42,7 @@ public:
   template <class U, std::enable_if_t<std::is_constructible_v<T, U> &&
                                           !std::is_convertible_v<U, T>,
                                       bool> = false>
-  explicit constexpr quantity_t(U &&u) : value_(std::forward<U>(u)) {}
+  explicit constexpr quantity_t(U &&u) : value_{std::forward<U>(u)} {}
 
   template <
       class D, class U,
@@ -60,7 +60,7 @@ public:
                            !std::is_convertible_v<U, T>,
                        bool> = false>
   explicit constexpr quantity_t(quantity_t<Dim, U> const &o)
-      : value_(mitamagic::converted_value<quantity_t>(o)) {}
+      : value_{mitamagic::converted_value<quantity_t>(o)} {}
 
   template <
       class D, class U,
