@@ -4,6 +4,7 @@
 #include "../include/si/second.hpp"
 #include "../include/io.hpp"
 #include "../include/refinement.hpp"
+#include "../include/prefix.hpp"
 #include "../include/math/all.hpp"
 #include <boost/type_index.hpp>
 #include <iostream>
@@ -119,7 +120,7 @@ int main(){
         REPL(nearbyint(2.2|meters));
         REPL(rint(2.2|meters));
         REPL(lrint(2.2|meters));
-        REPL(llrint(2.2|meters));
+        REPL(llrint(2.2|mitama::milli*meters));
     }
 
 }
