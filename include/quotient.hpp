@@ -172,78 +172,49 @@ struct product<units_t<D, Exp1, S1>, units_t<D, Exp2, S2>> {
       units_t<D, std::ratio_add<Exp1, Exp2>, ratio_min<S1, S2>>>;
 };
 
-// Induction-Sweeper
-// parimary template
-template <class, class, class, class> struct quotient_;
+template <class, class, class, class = void> struct quotient_;
 
-// Induction-Sweeper
-// recursive template guardian
-template <class T, class... Result, class... Remainders>
-struct quotient_<T, type_list<>, type_list<Remainders...>,
-                 type_list<Result...>> {
-  using result = type_list<Result...>;
+template <class SP, class Head, class... Tail, class... Remainders>
+struct quotient_<SP, type_list<Head, Tail...>,
+                type_list<Remainders...>>
+    : std::conditional_t<std::is_same_v<typename SP::dimension_type,
+                                        typename Head::dimension_type>,
+                         quotient_<SP, type_list<>,
+                                  type_list<Remainders..., Tail...>,
+                                  typename product<SP, Head>::type>,
+                         quotient_<SP, type_list<Tail...>,
+                                  type_list<Remainders..., Head>>> {};
+
+template <class SP, class Inter, class... Tail, class... Remainders>
+struct quotient_<SP, type_list<Tail...>, type_list<Remainders...>,
+                Inter> {
+  using result = type_list<Inter>;
+  using remainder = type_list<Tail...>;
+};
+
+template <class SP, class... Remainders>
+struct quotient_<SP, type_list<>, type_list<Remainders...>> {
+  using result = type_list<SP>;
   using remainder = type_list<Remainders...>;
 };
 
-template <class T, class... Remainders>
-struct quotient_<T, type_list<>, type_list<Remainders...>, type_list<>> {
-  using result = type_list<T>;
-  using remainder = type_list<Remainders...>;
-};
-
-// Induction-Sweeper
-// recursive template guardian
-template <class T, class Head, class... Tail, class... Remainders,
-          class... Results>
-struct quotient_<T, type_list<Head, Tail...>, type_list<Remainders...>,
-                 type_list<Results...>>
-    : std::conditional_t<
-          // if: << has same dimension? >>
-          std::is_same_v<typename T::dimension_type,
-                         typename Head::dimension_type>,
-          // then => calc dimension
-          quotient_<
-              T, type_list<>, type_list<Remainders..., Tail...>,
-              std::conditional_t<
-                  /* if: << into dimensionless? >> */ is_dimensionless_type<
-                      typename product<T, Head>::type>::value,
-                  /* thne => remove                */
-                  type_list<typename product<T, Head>::type>,
-                  /* else => add to result         */
-                  type_list<Results..., typename product<T, Head>::type>>>,
-          // else => keep Head to remain
-          quotient_<T, type_list<Tail...>, type_list<Remainders..., Head>,
-                    type_list<Results...>>> {};
-
-// magical quotient type for induction new dimension combination
-// parimary template
 template <class, class, class> struct quotient_impl;
 
-// magical quotient type for induction new dimension type
-// recursive partial template specialization
 template <class Head, class... Tail, class... R, class... Results>
-struct quotient_impl<type_list<Head, Tail...>, type_list<R...>,
-                     type_list<Results...>>
-    : quotient_impl<
-          type_list<Tail...>,
-          typename quotient_<Head, type_list<R...>, type_list<>,
-                             type_list<Results...>>::remainder,
-          tlist_cat_t<type_list<Results...>,
-                      typename quotient_<Head, type_list<R...>, type_list<>,
-                                         type_list<Results...>>::result>> {};
+struct quotient_impl<type_list<Head, Tail...>, type_list<R...>,type_list<Results...>>
+    : quotient_impl<type_list<Tail...>,
+                   typename quotient_<Head, type_list<R...>,
+                                     type_list<>>::remainder,
+                   mitamagic::tlist_cat_t<
+                       type_list<Results...>,
+                       typename quotient_<Head, type_list<R...>,
+                                         type_list<>>::result>> {};
 
-// magical quotient type for induction new dimension type
-// recursive partial template specialization guardian
+
 template <class... R, class... Results>
-struct quotient_impl<type_list<>, type_list<R...>,
-                     type_list<Results...>> { // inducted dimension type
-  template <class Storage>
-  using result_type = std::conditional_t<
-      tlist_all_match_if_v<is_dimensionless_type, type_list<Results..., R...>>,
-      dimensional_t<Storage, tlist_cat_t<dimensionless<Results..., R...>>>,
-      repack_t<dimensional_t,
-               tlist_filter_t<is_dimensionless_type,
-                              type_list<Storage, Results..., R...>>>>;
+struct quotient_impl<type_list<>, type_list<R...>, type_list<Results...>> {
+  template < class StorageType >
+  using result_type = dimensional_t<StorageType, Results..., R...>;
 };
 
 // quotient facade
@@ -257,8 +228,10 @@ struct quotient<dimensional_t<StorageL, LeftPhantomTypes...>,
                 dimensional_t<StorageR, RightPhantomTypes...>> {
   using type = typename mitamagic::quotient_impl<
       mitamagic::type_list<LeftPhantomTypes...>,
-      mitamagic::type_list<RightPhantomTypes...>, mitamagic::type_list<>>::
-      template result_type<lexical_scale_storage_t<StorageL, StorageR>>;
+      mitamagic::type_list<RightPhantomTypes...>,
+      mitamagic::type_list<>
+    >::template
+      result_type<lexical_scale_storage_t<StorageL, StorageR>>;
 };
 
 template <class, class> struct powered_dimensional;
