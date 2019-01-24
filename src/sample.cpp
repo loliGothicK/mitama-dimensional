@@ -71,6 +71,7 @@ int main(){
         constexpr quantity<second_t> T(0.3);
         // unit is automatically convert from m/s to km/h
         quantity<velocity_t> V = L/T;
+        std::cout << boost::typeindex::type_id<decltype(L*T)>().pretty_name() << std::endl;
 
         std::cout << V.get() << "[ km/h ]" << std::endl;
         {
