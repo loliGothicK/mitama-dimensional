@@ -2,6 +2,7 @@
 #include "../include/arithmetic.hpp"
 #include "../include/si/meter.hpp"
 #include "../include/si/second.hpp"
+#include "../include/si_derived/named_units.hpp"
 #include "../include/io.hpp"
 #include "../include/refinement.hpp"
 #include "../include/prefix.hpp"
@@ -73,8 +74,10 @@ int main(){
 
         std::cout << V.get() << "[ km/h ]" << std::endl;
         {
-            auto&& v = refined<sym::L<>,sym::T<-1>>(V).get();
-            std::cout << v << std::endl;
+            auto w = 36|kilogram<> * meter<2> * second<-2> * ampere<-1>;
+            std::cout << boost::typeindex::type_id<decltype(w)>().pretty_name() << std::endl;
+            // auto refined_ = refined<sym::L<>,sym::T<-1>>(w).get();
+            // std::cout << refined_ << std::endl;
         }
         std::cout << "------------------------\n";
     }
