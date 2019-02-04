@@ -29,7 +29,7 @@ using henry_t = decltype(kilogram<> * meter<2> * second<-2> * ampere<-2>);
 // TODO:
 // using celsius_t = ???<kelvin_t, ???>;
 using lumen_t = decltype(candela<> * steradian);
-using lux_t = decltype(meter<-2> * candela);
+using lux_t = decltype(meter<-2> * candela<>);
 using becquerel_t = powered_t<second_t, -1>;
 using gray_t = decltype(meter<2> * second<-2>);
 using sievert_t = decltype(meter<2> * second<-2>);

@@ -1,5 +1,6 @@
 #pragma once
 #include "../units.hpp"
+#include "../quotient.hpp"
 
 namespace mitama {
 // base dimesnion
