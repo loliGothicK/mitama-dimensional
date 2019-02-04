@@ -1,0 +1,9 @@
+[package]
+name = "repl"
+version = "0.1.0"
+authors = ["mitama <loligothick@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+clap = "~2.27.0"
+colored = "1.6"
