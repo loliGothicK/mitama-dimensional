@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MITAMA_DIMENSIONAL_ARITHMETIC_HPP
+#define MITAMA_DIMENSIONAL_ARITHMETIC_HPP
 #include "quantity.hpp"
 
 
@@ -50,3 +51,4 @@ operator/(L&& lhs, R&& rhs) {
         };
 }
 }
+#endif

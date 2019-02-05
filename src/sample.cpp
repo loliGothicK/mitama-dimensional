@@ -7,6 +7,7 @@
 #include "../include/refinement.hpp"
 #include "../include/prefix.hpp"
 #include "../include/math/all.hpp"
+#include "../include/currency/jpy.hpp"
 #include <boost/type_index.hpp>
 #include <iostream>
 
@@ -127,4 +128,7 @@ int main(){
         REPL(llrint(2.2|mitama::milli*meters));
     }
 
+    {
+        REPL(100|yen);
+    }
 }

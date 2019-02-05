@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MITAMA_DIMENSIONAL_PHANTOM_HPP
+#define MITAMA_DIMENSIONAL_PHANTOM_HPP
 #include "mitamagic/utility.hpp"
 #include <type_traits>
 
@@ -109,3 +110,4 @@ template <class D>
 inline constexpr bool is_dimensional_v = is_dimensional<D>::value;
 
 } // namespace mitama
+#endif

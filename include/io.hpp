@@ -76,7 +76,7 @@ std::string
 to_string(quantity_t<dimensional_t<_, Units...>, T> const &quantity) {
   using std::to_string;
   using namespace std::literals;
-  return to_string(quantity.get()) + "[" +
+  return to_string(quantity.get()) + " [" +
          (si_formatter<Units>::format() + ...) + "]";
 }
 
@@ -105,7 +105,7 @@ operator<<(std::ostream &os,
            quantity_t<dimensional_t<_, Units...>, T> const &quantity) {
   if constexpr (is_complete_type<
                            abbreviation<dimensional_t<_, Units...>>>::value) {
-    return os << quantity.get() << "[ "
+    return os << quantity.get() << " [ "
               << abbreviation<dimensional_t<_, Units...>>::str << " ]";
   } else if constexpr (std::conjunction_v<
                     is_complete_type<prefix_<typename Units::scale>>...>) {
