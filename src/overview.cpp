@@ -128,7 +128,8 @@ int main(){
         REPL(llrint(2.2|mitama::milli*meters));
     }
 
-    {
+    { // User defined dimension examples
+        // currency units
         REPL(100|yen);
     }
 }
