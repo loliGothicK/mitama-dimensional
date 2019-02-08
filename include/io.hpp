@@ -71,9 +71,9 @@ struct si_formatter<
   }
 };
 
-template <class T, class _, class... Units>
+template <class T, class... Units>
 std::string
-to_string(quantity_t<dimensional_t<_, Units...>, T> const &quantity) {
+to_string(quantity_t<dimensional_t<Units...>, T> const &quantity) {
   using std::to_string;
   using namespace std::literals;
   return to_string(quantity.get()) + " [" +
@@ -97,21 +97,21 @@ inline std::string exponent = [] {
     return "^"s + std::to_string(E::num) + "/" + std::to_string(E::den);
 }();
 
-template <class T, class _, class... Units>
+template <class T, class... Units>
 //,std::enable_if_t<std::conjunction_v<is_complete_type<abbreviation<typename
 // Units::basic_type>>...>, bool> = false >
 std::ostream &
 operator<<(std::ostream &os,
-           quantity_t<dimensional_t<_, Units...>, T> const &quantity) {
+           quantity_t<dimensional_t<Units...>, T> const &quantity) {
   if constexpr (is_complete_type<
-                           abbreviation<dimensional_t<_, Units...>>>::value) {
+                           abbreviation<dimensional_t<Units...>>>::value) {
     return os << quantity.get() << " [ "
-              << abbreviation<dimensional_t<_, Units...>>::str << " ]";
+              << abbreviation<dimensional_t<Units...>>::str << " ]";
   } else if constexpr (std::conjunction_v<
                     is_complete_type<prefix_<typename Units::scale>>...>) {
     return os << ::mitama::to_string(quantity);
   } else {
-    static_assert(abbreviation_error_v<dimensional_t<_, Units...>>,
+    static_assert(abbreviation_error_v<dimensional_t<Units...>>,
                   "error: abbreviation is not available");
   }
 }

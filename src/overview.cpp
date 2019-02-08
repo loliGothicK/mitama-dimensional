@@ -12,7 +12,7 @@
 #include <iostream>
 
 #define REPL(...) \
-    do { std::cout << "$> " << #__VA_ARGS__ << "\n=> " << (__VA_ARGS__) << std::endl; } while(false)
+    do { std::cout << "$ " << #__VA_ARGS__ << "\n=> " << (__VA_ARGS__) << std::endl; } while(false)
 int main(){
     using namespace mitama;
     { // Homogeneous dimension examples
@@ -65,18 +65,18 @@ int main(){
         std::cout << "--[Heterogeneous dimension examples]--\n";
         // 1 hour := 3600 s
         using hour_t = scaled_unit_t<second_t, std::ratio<3600>>;
-        // velocity := km/h
-        using velocity_t = decltype(kilometers/hour_t{});
+        // speed := km/h
+        using speed_t = decltype(kilometers/hour_t{});
 
         constexpr quantity<meter_t> L(1.2);
         constexpr quantity<second_t> T(0.3);
         // unit is automatically convert from m/s to km/h
-        quantity<velocity_t> V = L/T;
+        quantity<speed_t> V = L/T;
         std::cout << boost::typeindex::type_id<decltype(L*T)>().pretty_name() << std::endl;
 
         std::cout << V.get() << "[ km/h ]" << std::endl;
         {
-            auto w = 36|kilogram<> * meter<2> * second<-2> * ampere<-1>;
+            auto w = 36 | kilogram<> * meter<2> * second<-2> * ampere<-1>;
             std::cout << boost::typeindex::type_id<decltype(w)>().pretty_name() << std::endl;
             // auto refined_ = refined<sym::L<>,sym::T<-1>>(w).get();
             // std::cout << refined_ << std::endl;

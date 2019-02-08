@@ -5,8 +5,8 @@
 #include <prefix.hpp>
 #include <io.hpp>
 #include <arithmetic.hpp>
+#include <boost/format.hpp>
 #include "test_util.hpp"
-#include "boost/format.hpp"
 
 using namespace mitama;
 inline auto fmt = [](auto const& a){ return (boost::format("%1%") % a).str(); };
@@ -15,12 +15,12 @@ using namespace std::literals;
 template < class Prefix, class Unit, class = void >
 struct test_c {
     inline static constexpr auto value = 1 | Prefix{} * Unit{};
-    static std::string expexted() { return std::to_string(1) + "[" + std::string(prefix_<Prefix>::str) + std::string(symbol_<typename basis_<Unit>::template type<0>>::str) + "]";  }
+    static std::string expexted() { return std::to_string(1) + " [" + std::string(prefix_<Prefix>::str) + std::string(symbol_<typename basis_<Unit>::template type<0>>::str) + "]";  }
 };
 template < class Prefix, class Unit >
 struct test_c<Prefix, Unit, std::enable_if_t<std::is_same_v<typename basis_<Unit>::template type<0>, mass>>> {
     inline static constexpr auto value = 1 | Prefix{} * Unit{};
-    static std::string expexted() { return std::to_string(1) + "[" + std::string(prefix_<std::ratio_multiply<Prefix, std::kilo>>::str) + std::string(symbol_<typename basis_<Unit>::template type<0>>::str) + "]";  }
+    static std::string expexted() { return std::to_string(1) + " [" + std::string(prefix_<std::ratio_multiply<Prefix, std::kilo>>::str) + std::string(symbol_<typename basis_<Unit>::template type<0>>::str) + "]";  }
 };
 TEST_CASE("prefix format tests",
           "[prefix]")
@@ -83,13 +83,6 @@ TEMPLATE_TEST_CASE("kelvin_t format tests",
     REQUIRE( fmt(test_c<TestType, kelvin_t>::value) == test_c<TestType, kelvin_t>::expexted() );
 }
 
-TEMPLATE_TEST_CASE("kilogram_t format tests",
-                   "[quantity][symbol][prefix]",
-                   std::pico, std::nano, std::micro, std::milli, std::kilo, std::mega, std::giga)
-{
-    REQUIRE( fmt(test_c<TestType, kilogram_t>::value) == test_c<TestType, kilogram_t>::expexted() );
-}
-
 TEMPLATE_TEST_CASE("mol_t format tests",
                    "[quantity][symbol][prefix]",
                    std::pico, std::nano, std::micro, std::milli, std::centi, std::deci,
@@ -104,4 +97,14 @@ TEMPLATE_TEST_CASE("second_t format tests",
                    std::deca, std::hecto, std::kilo, std::mega, std::giga, std::tera)
 {
     REQUIRE( fmt(test_c<TestType, second_t>::value) == test_c<TestType, second_t>::expexted() );
+}
+
+TEST_CASE("kilogram_t format tests",
+            "[quantity][symbol][prefix]")
+{
+    REQUIRE( fmt(1|mega*kilograms) == "1 [Gg]" );
+    REQUIRE( fmt(1|kilo*kilograms) == "1 [Mg]" );
+    REQUIRE( fmt(1|kilograms) == "1 [kg]" );
+    REQUIRE( fmt(1|milli*kilograms) == "1 [g]" );
+    REQUIRE( fmt(1|micro*kilograms) == "1 [mg]" );
 }

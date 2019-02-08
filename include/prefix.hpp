@@ -5,11 +5,11 @@
 #include "units.hpp"
 namespace mitama {
 template <
-    class Rational, class _, class Unit,
+    class Rational, class Unit,
     std::enable_if_t<mitamagic::is_rational_v<Rational> && is_units_v<Unit>,
                      bool> = false>
-constexpr auto operator*(Rational, dimensional_t<_, Unit>) {
-  return scaled_unit_t<dimensional_t<_, Unit>, Rational>{};
+constexpr auto operator*(Rational, dimensional_t<Unit>) {
+  return scaled_unit_t<dimensional_t<Unit>, Rational>{};
 }
 
 inline constexpr auto pico = std::pico{};

@@ -10,14 +10,14 @@ template <class, class> struct is_same_dimensional : std::false_type {};
 
 // meta-operator for dimension equivalence
 // template partial specialization for dimensional_t
-template <class T, class U, class S1, class S2, class... Units1,
+template <class T, class U, class... Units1,
           class... Units2>
-struct is_same_dimensional<quantity_t<dimensional_t<S1, Units1...>, T>,
-                           quantity_t<dimensional_t<S2, Units2...>, U>>
+struct is_same_dimensional<quantity_t<dimensional_t<Units1...>, T>,
+                           quantity_t<dimensional_t<Units2...>, U>>
     : std::conjunction<
           std::bool_constant<sizeof...(Units1) == sizeof...(Units2)>,
           std::is_base_of<typename Units1::tag,
-                          dimensional_t<S2, Units2...>>...> {};
+                          dimensional_t<Units2...>>...> {};
 
 // alias variable template
 template <class L, class R>
