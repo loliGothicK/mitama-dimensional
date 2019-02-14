@@ -3,6 +3,8 @@
 #include <type_traits>
 // Type List Modules
 namespace mitama::mitamagic {
+template < class... > inline constexpr bool always_false_v = false;
+
 template <class> struct is_rational : std::false_type {};
 
 template <std::intmax_t N, std::intmax_t D>
