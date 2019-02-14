@@ -4,7 +4,9 @@
 
 namespace mitama {
 
-struct time {};
+struct time {
+    using is_base_dimension = void;
+};
 
 using second_t = make_unit_t<time>;
 using millisecond_t = scaled_unit_t<second_t, std::milli>;

@@ -4,7 +4,9 @@
 
 namespace mitama {
 // base dimesnion
-struct amount_of_substance {};
+struct amount_of_substance {
+    using is_base_dimension = void;
+};
 
 using mol_t = make_unit_t<amount_of_substance>;
 

@@ -3,7 +3,9 @@
 #include "../quotient.hpp"
 
 namespace mitama {
-struct electric_current {};
+struct electric_current {
+    using is_base_dimension = void;
+};
 
 using ampere_t = make_unit_t<electric_current>;
 

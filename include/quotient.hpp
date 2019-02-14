@@ -17,6 +17,7 @@ template <class... Tags> struct dimensionless {
   using scale = std::ratio<1>;
   using tag = dimensionless<Tags...>;
   using basic_type = dimensionless<Tags...>;
+  using is_base_dimension = void;
 };
 template <class D, class E> struct dimensionless<D, E> {
   using tag = dimension_tag<D, E>;
