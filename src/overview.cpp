@@ -2,7 +2,7 @@
 #include "../include/arithmetic.hpp"
 #include "../include/si/meter.hpp"
 #include "../include/si/second.hpp"
-#include "../include/si_derived/named_units.hpp"
+#include "../include/derived_units/named_units.hpp"
 #include "../include/io.hpp"
 #include "../include/refinement.hpp"
 #include "../include/prefix.hpp"
@@ -41,6 +41,7 @@ int main(){
         // a / b := a * b^{-1}
         auto r4 = a / b;
         REPL(r4);
+        REPL(boost::typeindex::type_id<decltype(r4)>().pretty_name());
 
         quantity<millimeter_t, int> d(a);
         REPL(d);
