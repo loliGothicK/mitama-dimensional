@@ -5,7 +5,7 @@
 
 namespace mitama {
 
-
+using dgree_celsius_t = make_unit_t<thermodynamic_temperature>;
 
 }
 
