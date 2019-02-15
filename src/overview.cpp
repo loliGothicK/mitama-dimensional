@@ -2,12 +2,12 @@
 #include "../include/arithmetic.hpp"
 #include "../include/si/meter.hpp"
 #include "../include/si/second.hpp"
-#include "../include/derived_units/named_units.hpp"
 #include "../include/io.hpp"
 #include "../include/refinement.hpp"
 #include "../include/prefix.hpp"
 #include "../include/math/all.hpp"
 #include "../include/currency/jpy.hpp"
+#include "../include/derived_units/dgree_celsius.hpp"
 #include <boost/type_index.hpp>
 #include <iostream>
 
@@ -133,4 +133,12 @@ int main(){
         // currency units
         REPL(100|yen);
     }
+
+    { // User defined dimension examples
+        // currency units
+        REPL(100|dgree_celsius);
+        quantity<kelvin_t> s( 100.|dgree_celsius );
+        REPL(s);
+    }
+
 }
