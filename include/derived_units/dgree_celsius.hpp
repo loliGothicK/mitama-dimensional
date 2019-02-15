@@ -25,14 +25,14 @@ struct converter<quantity_t<dgree_celsius_t, From>,
                  quantity_t<kelvin_t, To>>
 {
     static constexpr To convert(quantity_t<dgree_celsius_t, From> const& c)
-        { return static_cast<To>(c.get() - 273.15); }
+        { return static_cast<To>(c.get() + 273.15); }
 };
 template <class From, class To>
 struct converter<quantity_t<kelvin_t, From>,
                  quantity_t<dgree_celsius_t, To>>
 {
     static constexpr To convert(quantity_t<kelvin_t, From> const& s)
-        { return static_cast<To>(s + 273.15); }
+        { return static_cast<To>(s.get() - 273.15); }
 };
 
 }
