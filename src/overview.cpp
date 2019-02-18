@@ -8,6 +8,7 @@
 #include "../include/math/all.hpp"
 #include "../include/currency/jpy.hpp"
 #include "../include/derived_units/dgree_celsius.hpp"
+#include "../include/expr.hpp"
 #include <boost/type_index.hpp>
 #include <iostream>
 
@@ -139,6 +140,11 @@ int main(){
         REPL(100|dgree_celsius);
         quantity<kelvin_t> s( 100.|dgree_celsius );
         REPL(s);
+    }
+
+    {
+        quantity<meter_t> hoge = as_expr(1|meters) + (2|meters);
+        REPL(hoge);
     }
 
 }
