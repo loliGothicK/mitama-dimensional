@@ -36,6 +36,8 @@ public:
   using value_type = T;
   using dimension_type = Dim;
 
+  constexpr quantity_t(): value_{} {}
+  
   template <class U, std::enable_if_t<std::is_constructible_v<T, U> &&
                                           std::is_convertible_v<U, T>,
                                       bool> = false>
