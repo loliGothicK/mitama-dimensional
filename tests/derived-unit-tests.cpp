@@ -6,6 +6,8 @@
 #include <prefix.hpp>
 #include <random>
 #include "test_util.hpp"
+#include <expr.hpp>
+#include <arithmetic.hpp>
 
 using namespace mitama;
 
@@ -39,5 +41,13 @@ TEST_CASE("dgree celsius and kelvin generate tests",
         REQUIRE(s.get() - c.get() == 273.15_a);
         }
     }
+}
+
+TEST_CASE("dgree celsius and kelvin lexical tests",
+          "[quantity][derived-units][temperature]")
+{
+    using namespace Catch::literals;
+    quantity<decltype(kelvin<>/mol<>)> _ = as_expr(1|kelvins) / (2|mols) + as_expr(2|dgree_celsius) / (2|mols);
+    REQUIRE(_.get() == 137.575_a);
 }
 
