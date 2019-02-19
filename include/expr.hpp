@@ -8,94 +8,6 @@
 
 namespace mitama
 {
-template <class Quantity>
-class delta
-{
-  Quantity value_;
-
-public:
-  using value_type = typename Quantity::value_type;
-
-  constexpr explicit delta(Quantity const &value) : value_(value) {}
-
-  template <class Target, std::enable_if_t<std::is_convertible_v<Target, Quantity>, bool> = false>
-  constexpr operator Target() { return {value_}; }
-
-  constexpr value_type count() const { value_.get(); }
-  constexpr value_type get() const { value_; }
-};
-
-template <class Q1, class Q2>
-inline constexpr auto operator+(Q1 const &q1, delta<Q2> const &d2) -> decltype(std::declval<Q1>() + std::declval<Q2>())
-{
-  return q1 + d2.get();
-}
-
-template <class Q1, class Q2>
-inline constexpr auto operator-(Q1 const &q1, delta<Q2> const &d2) -> decltype(std::declval<Q1>() - std::declval<Q2>())
-{
-  return q1 - d2.get();
-}
-
-template <class Q1, class Q2>
-inline constexpr auto operator*(Q1 const &q1, delta<Q2> const &d2) -> decltype(std::declval<Q1>() * std::declval<Q2>())
-{
-  return q1 * d2.get();
-}
-
-template <class Q1, class Q2>
-inline constexpr auto operator/(Q1 const &q1, delta<Q2> const &d2) -> decltype(std::declval<Q1>() / std::declval<Q2>())
-{
-  return q1 / d2.get();
-}
-
-template <class Q1, class Q2>
-inline constexpr auto operator+(delta<Q1> const &d1, Q2 const &q2) -> decltype(std::declval<Q1>() + std::declval<Q2>())
-{
-  return d1.get() + q2;
-}
-
-template <class Q1, class Q2>
-inline constexpr auto operator-(delta<Q1> const &d1, Q2 const &q2) -> decltype(std::declval<Q1>() - std::declval<Q2>())
-{
-  return d1.get() + q2;
-}
-
-template <class Q1, class Q2>
-inline constexpr auto operator*(delta<Q1> const &d1, Q2 const &q2) -> decltype(std::declval<Q1>() * std::declval<Q2>())
-{
-  return d1.get() + q2;
-}
-
-template <class Q1, class Q2>
-inline constexpr auto operator/(delta<Q1> const &d1, Q2 const &q2) -> decltype(std::declval<Q1>() / std::declval<Q2>())
-{
-  return d1.get() + q2;
-}
-
-template <class Q1, class Q2>
-inline constexpr auto operator+(delta<Q1> const &d1, delta<Q2> const &q2) -> decltype(std::declval<Q1>() + std::declval<Q2>())
-{
-  return d1.get() + q2.get();
-}
-
-template <class Q1, class Q2>
-inline constexpr auto operator-(delta<Q1> const &d1, delta<Q2> const &q2) -> decltype(std::declval<Q1>() - std::declval<Q2>())
-{
-  return d1.get() + q2.get();
-}
-
-template <class Q1, class Q2>
-inline constexpr auto operator*(delta<Q1> const &d1, delta<Q2> const &q2) -> decltype(std::declval<Q1>() * std::declval<Q2>())
-{
-  return d1.get() + q2.get();
-}
-
-template <class Q1, class Q2>
-inline constexpr auto operator/(delta<Q1> const &d1, delta<Q2> const &q2) -> decltype(std::declval<Q1>() / std::declval<Q2>())
-{
-  return d1.get() + q2.get();
-}
 
 struct expr_tag{};
 
@@ -217,7 +129,7 @@ struct Sub_
   template <typename L, typename R>
   static constexpr auto apply(L const &lhs, R const &rhs)
   {
-    return delta{lhs - rhs};
+    return lhs - rhs;
   }
 };
 
