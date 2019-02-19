@@ -1,8 +1,20 @@
 #pragma once
 #include <ratio>
 #include <type_traits>
+
+namespace mitama {
+template <class T, class = void> struct is_complete_type : std::false_type {};
+
+template <class T>
+struct is_complete_type<T, std::void_t<decltype(sizeof(T))>> : std::true_type {
+};
+
+template <class T> inline constexpr bool is_complete_type_v = is_complete_type<T>::value;
+}
 // Type List Modules
 namespace mitama::mitamagic {
+template < class... > inline constexpr bool always_false_v = false;
+
 template <class> struct is_rational : std::false_type {};
 
 template <std::intmax_t N, std::intmax_t D>
@@ -110,4 +122,5 @@ struct repack<Pack, _<Elems...>> {
 
 template <template <class...> class P, class P_>
 using repack_t = typename repack<P, P_>::type;
+
 } // namespace mitama::mitamagic

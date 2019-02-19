@@ -17,6 +17,7 @@ template <class... Tags> struct dimensionless {
   using scale = std::ratio<1>;
   using tag = dimensionless<Tags...>;
   using basic_type = dimensionless<Tags...>;
+  using is_base_dimension = void;
 };
 template <class D, class E> struct dimensionless<D, E> {
   using tag = dimension_tag<D, E>;
@@ -50,8 +51,8 @@ template <class U, class H> struct find_if<U, H> {
       typename prod<U, H>::type, not_found>;
 };
 
-template <class _1, class _2, class... U1, class... U2>
-struct scaler<dimensional_t<_1, U1...>, dimensional_t<_2, U2...>> {
+template <class... U1, class... U2>
+struct scaler<dimensional_t<U1...>, dimensional_t<U2...>> {
   template <class R1, class R2> static constexpr long double convert() {
     return std::pow(
         static_cast<long double>(R1::num) / static_cast<long double>(R1::den),
@@ -112,16 +113,12 @@ constexpr auto converted_value(From &&quantity) {
 
 template <class, class, class> struct scaled_demension;
 
-template <class StorageL, class StorageR, class... L, class... R,
+template <class... L, class... R,
           std::size_t... I>
-struct scaled_demension<dimensional_t<StorageL, L...>,
-                        dimensional_t<StorageR, R...>,
+struct scaled_demension<dimensional_t<L...>,
+                        dimensional_t<R...>,
                         std::index_sequence<I...>> {
   using type = dimensional_t<
-      scale_storage_t<indexed_scale_t<
-          typename tlist_element_t<I, type_list<L...>>::dimension_type,
-          ratio_min<typename tlist_element_t<I, type_list<L...>>::scale,
-                    typename tlist_element_t<I, type_list<R...>>::scale>>...>,
       units_t<
           typename tlist_element_t<I, type_list<L...>>::dimension_type,
           typename tlist_element_t<I, type_list<L...>>::exponent,
@@ -150,9 +147,9 @@ template <class> struct inverse;
 
 // meta-function for dimension exponent inverse
 // partial template specialization
-template <class S, class... Units>
-struct inverse<dimensional_t<S, Units...>> { // invoke to mitamagic::inversed
-  using type = dimensional_t<S, typename mitamagic::inversed<Units>::type...>;
+template <class... Units>
+struct inverse<dimensional_t<Units...>> { // invoke to mitamagic::inversed
+  using type = dimensional_t<typename mitamagic::inversed<Units>::type...>;
 };
 
 // alias template for inverse
@@ -213,8 +210,7 @@ struct quotient_impl<type_list<Head, Tail...>, type_list<R...>,type_list<Results
 
 template <class... R, class... Results>
 struct quotient_impl<type_list<>, type_list<R...>, type_list<Results...>> {
-  template < class StorageType >
-  using result_type = dimensional_t<StorageType, Results..., R...>;
+  using result_type = dimensional_t<Results..., R...>;
 };
 
 // quotient facade
@@ -222,26 +218,24 @@ struct quotient_impl<type_list<>, type_list<R...>, type_list<Results...>> {
 template <class, class> struct quotient;
 
 // quotient facade
-template <class StorageL, class StorageR, class... LeftPhantomTypes,
+template <class... LeftPhantomTypes,
           class... RightPhantomTypes>
-struct quotient<dimensional_t<StorageL, LeftPhantomTypes...>,
-                dimensional_t<StorageR, RightPhantomTypes...>> {
+struct quotient<dimensional_t<LeftPhantomTypes...>,
+                dimensional_t<RightPhantomTypes...>> {
   using type = typename mitamagic::quotient_impl<
       mitamagic::type_list<LeftPhantomTypes...>,
       mitamagic::type_list<RightPhantomTypes...>,
       mitamagic::type_list<>
-    >::template
-      result_type<lexical_scale_storage_t<StorageL, StorageR>>;
+    >::result_type;
 };
 
 template <class, class> struct powered_dimensional;
 
-template <std::intmax_t N, std::intmax_t D, class S, class... PhantomTypes>
-struct powered_dimensional<dimensional_t<S, PhantomTypes...>,
+template <std::intmax_t N, std::intmax_t D, class... PhantomTypes>
+struct powered_dimensional<dimensional_t<PhantomTypes...>,
                            std::ratio<N, D>> {
   using type =
-      dimensional_t<S,
-                    units_t<typename PhantomTypes::dimension_type,
+      dimensional_t<units_t<typename PhantomTypes::dimension_type,
                             std::ratio_multiply<typename PhantomTypes::exponent,
                                                 std::ratio<N, D>>,
                             typename PhantomTypes::scale>...>;
@@ -258,7 +252,7 @@ using powered_t =
 
 namespace mitama::mitamagic {
 template <class> struct is_dimensionless : std::false_type {};
-template <class S, class... Tags>
-struct is_dimensionless<dimensional_t<S, dimensionless<Tags...>>>
+template <class... Tags>
+struct is_dimensionless<dimensional_t<dimensionless<Tags...>>>
     : std::true_type {};
 } // namespace mitama::mitamagic

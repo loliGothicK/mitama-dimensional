@@ -4,7 +4,9 @@
 
 namespace mitama {
 // base dimension
-struct length {};
+struct length {
+    using is_base_dimension = void;
+};
 
 // base unit
 using meter_t = make_unit_t<length>;
