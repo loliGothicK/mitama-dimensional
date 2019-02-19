@@ -21,6 +21,7 @@ set(sources
 	tests/basic-tests.cpp
 	tests/arithmetic-tests.cpp
 	tests/symbol-io-tests.cpp
+	tests/derived-unit-tests.cpp
 )
 add_executable(${target} ${sources})
 message(STATUS "Building library ${target}...")

@@ -2,16 +2,12 @@
 #define MITAMA_DIMENSIONAL_IO_HPP
 #include "quantity.hpp"
 #include "si/all.hpp"
+#include "mitamagic/utility.hpp"
 #include <iostream>
 #include <type_traits>
 
 namespace mitama {
 template <class...> inline constexpr bool abbreviation_error_v = false;
-template <class T, class = void> struct is_complete_type : std::false_type {};
-
-template <class T>
-struct is_complete_type<T, std::void_t<decltype(sizeof(T))>> : std::true_type {
-};
 
 template <class, class = void> struct abbreviation;
 template <class, class = void> struct symbol_;

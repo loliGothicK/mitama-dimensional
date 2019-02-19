@@ -4,7 +4,9 @@
 
 namespace mitama {
 // base dimension
-struct thermodynamic_temperature {};
+struct thermodynamic_temperature {
+    using is_base_dimension = void;
+};
 
 using kelvin_t = make_unit_t<thermodynamic_temperature>;
 

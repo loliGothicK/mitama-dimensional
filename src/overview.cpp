@@ -2,12 +2,13 @@
 #include "../include/arithmetic.hpp"
 #include "../include/si/meter.hpp"
 #include "../include/si/second.hpp"
-#include "../include/si_derived/named_units.hpp"
 #include "../include/io.hpp"
 #include "../include/refinement.hpp"
 #include "../include/prefix.hpp"
 #include "../include/math/all.hpp"
 #include "../include/currency/jpy.hpp"
+#include "../include/derived_units/dgree_celsius.hpp"
+#include "../include/expr.hpp"
 #include <boost/type_index.hpp>
 #include <iostream>
 
@@ -41,6 +42,7 @@ int main(){
         // a / b := a * b^{-1}
         auto r4 = a / b;
         REPL(r4);
+        REPL(boost::typeindex::type_id<decltype(r4)>().pretty_name());
 
         quantity<millimeter_t, int> d(a);
         REPL(d);
@@ -132,4 +134,17 @@ int main(){
         // currency units
         REPL(100|yen);
     }
+
+    { // User defined dimension examples
+        // currency units
+        REPL(100|dgree_celsius);
+        quantity<kelvin_t> s( 100.|dgree_celsius );
+        REPL(s);
+    }
+
+    {
+        quantity<kelvin_t> hoge = as_expr(1|kelvins) + (2|dgree_celsius);
+        REPL(hoge);
+    }
+
 }

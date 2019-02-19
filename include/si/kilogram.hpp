@@ -4,7 +4,9 @@
 
 namespace mitama {
 // base dimension
-struct mass {};
+struct mass {
+    using is_base_dimension = void;
+};
 
 // base unit
 using kilogram_t = make_unit_t<mass>;

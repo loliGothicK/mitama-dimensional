@@ -3,11 +3,11 @@
 
 // dimensionless
 namespace mitama {
-struct angle {}; 
+struct angle { using is_base_dimension = void; };
 using radian_t = make_unit_t<angle>;
 inline constexpr radian_t radian{};
 
-struct solid_angle {};
+struct solid_angle { using is_base_dimension = void; };
 using steradian_t = make_unit_t<solid_angle>;
 inline constexpr steradian_t steradian{};
 }

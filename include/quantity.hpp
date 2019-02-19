@@ -23,6 +23,29 @@ struct is_same_dimensional<quantity_t<dimensional_t<Units1...>, T>,
 template <class L, class R>
 inline constexpr bool is_same_dimensional_v = is_same_dimensional<L, R>::value;
 
+template <class From, class To> struct converter;
+
+template <class From, class To>
+struct is_dimensional_convertible
+    : std::conjunction<
+        is_complete_type<converter<From, To>>,
+        is_same_dimensional<From, To>>
+{};
+
+template < class From, class To >
+inline constexpr bool is_dimensional_convertible_v = is_dimensional_convertible<From, To>::value;
+
+template < class To, class From >
+inline constexpr std::enable_if_t<is_dimensional_convertible_v<From, To>, To>
+dimensional_convert(From const& from) {
+  if constexpr (is_complete_type_v<converter<From, To>>){
+    return To{::mitama::converter<From, To>::convert(from)};
+  }
+  else {
+    return To{::mitama::mitamagic::converted_value<To>(from)};
+  }
+}
+
 } // namespace mitama
 
 namespace mitama {
@@ -34,6 +57,8 @@ public:
   using value_type = T;
   using dimension_type = Dim;
 
+  constexpr quantity_t(): value_{} {}
+  
   template <class U, std::enable_if_t<std::is_constructible_v<T, U> &&
                                           std::is_convertible_v<U, T>,
                                       bool> = false>
@@ -59,16 +84,44 @@ public:
                            std::is_constructible_v<T, U> &&
                            !std::is_convertible_v<U, T>,
                        bool> = false>
-  explicit constexpr quantity_t(quantity_t<Dim, U> const &o)
+  explicit constexpr quantity_t(quantity_t<D, U> const &o)
       : value_{mitamagic::converted_value<quantity_t>(o)} {}
+
+  template <
+      class D, class U,
+      std::enable_if_t<is_complete_type_v<::mitama::converter<quantity_t<D, U>, quantity_t>> &&
+                           std::is_constructible_v<T, U> &&
+                           std::is_convertible_v<U, T>,
+                       bool> = false>
+  constexpr quantity_t(quantity_t<D, U> const &o)
+      : value_(::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o)) {}
+
+  template <
+      class D, class U,
+      std::enable_if_t<is_complete_type_v<::mitama::converter<quantity_t<D, U>, quantity_t>> &&
+                           std::is_constructible_v<T, U> &&
+                           !std::is_convertible_v<U, T>,
+                       bool> = false>
+  explicit constexpr quantity_t(quantity_t<D, U> const &o)
+      : value_{::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o)} {}
 
   template <
       class D, class U,
       std::enable_if_t<is_same_dimensional_v<quantity_t, quantity_t<D, U>> &&
                            std::is_convertible_v<U, T>,
                        bool> = false>
-  constexpr quantity_t &operator=(quantity_t<Dim, U> const &o) & {
+  constexpr quantity_t &operator=(quantity_t<D, U> const &o) & {
     this->value_ = mitamagic::converted_value<quantity_t>(o);
+    return *this;
+  }
+
+  template <
+      class D, class U,
+      std::enable_if_t<is_complete_type_v<::mitama::converter<quantity_t<D, U>, quantity_t>> &&
+                           std::is_convertible_v<U, T>,
+                       bool> = false>
+  constexpr quantity_t &operator=(quantity_t<D, U> const &o) & {
+    this->value_ = ::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o);
     return *this;
   }
 
