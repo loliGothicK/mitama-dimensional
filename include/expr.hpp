@@ -3,6 +3,7 @@
 #include <type_traits>
 #include <utility>
 #include "quantity.hpp"
+#include "derived_units/dgree_celsius.hpp"
 #include "mitamagic/utility.hpp"
 
 namespace mitama
@@ -104,14 +105,40 @@ inline constexpr bool is_expr_v = std::is_base_of_v<expr_tag, T>;
 
 template < class T > struct lexical_converter;
 
-template < class T, class... Units >
-struct lexical_converter<quantity_t<dimensional_t<Units...>, T>>
+template < class T, class Head, class... Tail >
+struct lexical_converter<quantity_t<dimensional_t<Head, Tail...>, T>>
 {
-  template < class Expr >
-  static constexpr auto convert(Expr&& expr) {
-    
+  template < class Quantity >
+  static constexpr auto convert(Quantity&& value) {
+    if constexpr (is_complete_type_v<converter<std::decay_t<Quantity>, quantity_t<dimensional_t<Head>, T>>>)
+    {
+      return quantity_t<dimensional_t<Head>, T>{
+          converter<std::decay_t<Quantity>, quantity_t<dimensional_t<Head>, T>>::convert(value)};
+    }
+    else
+    {
+      return lexical_converter<quantity_t<dimensional_t<Tail...>, T>>::convert(value);
+    }
   }
 };
+
+template < class T, class Head >
+struct lexical_converter<quantity_t<dimensional_t<Head>, T>>
+{
+  template < class Quantity >
+  static constexpr auto convert(Quantity&& value) {
+    if constexpr (is_complete_type_v<converter<std::decay_t<Quantity>, quantity_t<dimensional_t<Head>, T>>>)
+    {
+      return quantity_t<dimensional_t<Head>, T>{
+          converter<std::decay_t<Quantity>, quantity_t<dimensional_t<Head>, T>>::convert(value)};
+    }
+    else
+    {
+      return value;
+    }
+  }
+};
+
 
 template <class Quantity>
 struct quantity_wrapper : private expr_tag
@@ -119,6 +146,8 @@ struct quantity_wrapper : private expr_tag
   Quantity value_;
   constexpr quantity_wrapper(Quantity value) : value_(value) {}
   constexpr Quantity eval() const { return value_; }
+  template < class To >
+  constexpr auto lexical_evaluate() const { return lexical_converter<To>::template convert(value_); }
 };
 
 template < class T > quantity_wrapper(T&&) -> quantity_wrapper<std::decay_t<T>>;
@@ -143,9 +172,9 @@ class LexicalExpression : private expr_tag
   L lhs_;
   R rhs_;
 
-  template < class TO >
+  template < class To >
   auto lexical_evaluate() const {
-    BinaryOperator::apply(lhs_.lexical_evaluate(), rhs_.lexical_evaluate());
+    return BinaryOperator::apply(lhs_.template lexical_evaluate<To>(), rhs_.template lexical_evaluate<To>());
   }
 
 public:
@@ -158,10 +187,9 @@ public:
 
   template <class Target,
       std::enable_if_t<std::conjunction_v<
-        is_quantity<Target>,
-        std::is_convertible<std::decay_t<decltype(BinaryOperator::apply(lhs_.eval(), rhs_.eval()))>, Target>
+        is_quantity<Target>
       >, bool> = false>
-  constexpr operator Target() { return {this->eval()}; }
+  constexpr operator Target() const { return {this->lexical_evaluate<Target>()}; }
 
 };
 

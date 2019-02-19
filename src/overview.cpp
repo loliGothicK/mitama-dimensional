@@ -143,7 +143,7 @@ int main(){
     }
 
     {
-        quantity<meter_t> hoge = as_expr(1|meters) + (2|meters);
+        quantity<kelvin_t> hoge = as_expr(1|kelvins) + (2|dgree_celsius);
         REPL(hoge);
     }
 
