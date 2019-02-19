@@ -47,7 +47,13 @@ TEST_CASE("dgree celsius and kelvin lexical tests",
           "[quantity][derived-units][temperature]")
 {
     using namespace Catch::literals;
-    quantity<decltype(kelvin<>/mol<>)> _ = as_expr(1|kelvins) / (2|mols) + as_expr(2|dgree_celsius) / (2|mols);
-    REQUIRE(_.get() == 137.575_a);
+    {
+        quantity<decltype(kelvin<>/mol<>)> _ = as_expr(1|kelvins) / (2|mols) + as_expr(2|dgree_celsius) / (2|mols);
+        REQUIRE(_.get() == 137.575_a);
+    }
+    {
+        quantity<decltype(kelvin<>/mol<>)> _ = (as_expr(11|kelvins) - as_expr(1|kelvins)) / (2|mols) + (as_expr(21|dgree_celsius) - as_expr(1|dgree_celsius)) / (2|mols);
+        REQUIRE(_.get() == 15._a);
+    }
 }
 
