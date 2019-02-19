@@ -101,6 +101,18 @@ struct expr_tag{};
 template <class T>
 inline constexpr bool is_expr_v = std::is_base_of_v<expr_tag, T>;
 
+
+template < class T > struct lexical_converter;
+
+template < class T, class... Units >
+struct lexical_converter<quantity_t<dimensional_t<Units...>, T>>
+{
+  template < class Expr >
+  static constexpr auto convert(Expr&& expr) {
+    
+  }
+};
+
 template <class Quantity>
 struct quantity_wrapper : private expr_tag
 {
@@ -124,16 +136,6 @@ inline constexpr auto as_expr(T&& t) {
 template < class T >
 using as_expr_t = std::decay_t<decltype(as_expr(std::declval<T>()))>;
 
-template < class T > struct lexical_converter;
-
-template < class T, class... Units >
-struct lexical_converter<quantity_t<dimensional_t<Units...>, T>>
-{
-  template < class Expr >
-  static constexpr auto convert(Expr&& expr) {
-    expr.li
-  }
-};
 
 template <class BinaryOperator, class L, class R>
 class LexicalExpression : private expr_tag
@@ -143,7 +145,7 @@ class LexicalExpression : private expr_tag
 
   template < class TO >
   auto lexical_evaluate() const {
-
+    BinaryOperator::apply(lhs_.lexical_evaluate(), rhs_.lexical_evaluate());
   }
 
 public:

@@ -23,7 +23,28 @@ struct is_same_dimensional<quantity_t<dimensional_t<Units1...>, T>,
 template <class L, class R>
 inline constexpr bool is_same_dimensional_v = is_same_dimensional<L, R>::value;
 
-template <class, class> struct converter;
+template <class From, class To> struct converter;
+
+template <class From, class To>
+struct is_dimensional_convertible
+    : std::conjunction<
+        is_complete_type<converter<From, To>>,
+        is_same_dimensional<From, To>>
+{};
+
+template < class From, class To >
+inline constexpr bool is_dimensional_convertible_v = is_dimensional_convertible<From, To>::value;
+
+template < class To, class From >
+inline constexpr std::enable_if_t<is_dimensional_convertible_v<From, To>, To>
+dimensional_convert(From const& from) {
+  if constexpr (is_complete_type_v<converter<From, To>>){
+    return To{::mitama::converter<From, To>::convert(from)};
+  }
+  else {
+    return To{::mitama::mitamagic::converted_value<To>(from)};
+  }
+}
 
 } // namespace mitama
 
