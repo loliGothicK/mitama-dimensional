@@ -171,14 +171,13 @@ class LexicalExpression : private expr_tag
 {
   L lhs_;
   R rhs_;
+public:
+  constexpr LexicalExpression(L const& lhs, R const& rhs): lhs_(lhs), rhs_(rhs) {}
 
   template < class To >
   auto lexical_evaluate() const {
     return BinaryOperator::apply(lhs_.template lexical_evaluate<To>(), rhs_.template lexical_evaluate<To>());
   }
-
-public:
-  constexpr LexicalExpression(L const& lhs, R const& rhs): lhs_(lhs), rhs_(rhs) {}
 
   constexpr auto eval() const
   {
