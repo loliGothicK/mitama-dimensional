@@ -55,8 +55,8 @@ template <class... Ts> struct type_transfer { using type = std::tuple<Ts...>; };
 template < class >
 struct basis_;
 
-template < class _, class... Units, template < class, class... > class D >
-struct basis_<D<_, Units...>>
+template < class... Units, template < class... > class D >
+struct basis_<D<Units...>>
 { template < int N > using type = typename std::tuple_element_t<N,std::tuple<Units...>>::dimension_type; };
 
 } // namespace mitama
