@@ -10,7 +10,7 @@ executors:
         default: "clang-7.0.0"
         type: string
     docker:
-      - image: enumack/buildcontainers:<< parameters.compiler >>
+      - image: enumack/mitama-env:<< parameters.compiler >>
 
 jobs:
   wandbox-test:
@@ -54,22 +54,22 @@ workflows:
       - wandbox-test:
           compiler: clang-head
       - wandbox-test:
-          compiler: clang-7.0.0
-      - wandbox-test:
-          compiler: clang-6.0.1
-      - wandbox-test:
-          compiler: clang-6.0.0
-      - wandbox-test:
           compiler: gcc-head
-      - wandbox-test:
-          compiler: gcc-8.2.0
-      - wandbox-test:
-          compiler: gcc-8.1.0
-      - wandbox-test:
-          compiler: gcc-7.3.0
-      - wandbox-test:
-          compiler: gcc-7.2.0
-      - wandbox-test:
-          compiler: gcc-7.1.0
+      - full-test:
+          compiler: clang-7.0.1
       - full-test:
           compiler: clang-7.0.0
+      - full-test:
+          compiler: clang-6.0.1
+      - full-test:
+          compiler: clang-6.0.0
+      - full-test:
+          compiler: gcc-8.2
+      - full-test:
+          compiler: gcc-8.1
+      - full-test:
+          compiler: gcc-7.3
+      - full-test:
+          compiler: gcc-7.2
+      - full-test:
+          compiler: gcc-7.1 

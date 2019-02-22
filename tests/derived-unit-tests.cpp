@@ -1,13 +1,13 @@
 // main is provided in tests-main.cpp
 #include <catch2/catch.hpp>
-#include <quantity.hpp>
-#include <si/all.hpp>
-#include <derived_units/dgree_celsius.hpp>
-#include <prefix.hpp>
+#include <dimensional/quantity.hpp>
+#include <dimensional/si/all.hpp>
+#include <dimensional/derived_units/dgree_celsius.hpp>
+#include <dimensional/prefix.hpp>
 #include <random>
 #include "test_util.hpp"
-#include <expr.hpp>
-#include <arithmetic.hpp>
+#include <dimensional/expr.hpp>
+#include <dimensional/arithmetic.hpp>
 
 using namespace mitama;
 

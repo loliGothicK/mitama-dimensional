@@ -19,7 +19,9 @@ set(target tests)
 set(sources
   tests/tests-main.cpp
 	tests/basic-tests.cpp
-	tests/arithmetic-tests.cpp
+  tests/arithmetic-tests.cpp
+  tests/derived-unit-tests.cpp
+  tests/math-tests.cpp
 )
 add_executable(${target} ${sources})
 message(STATUS "Building library ${target}...")

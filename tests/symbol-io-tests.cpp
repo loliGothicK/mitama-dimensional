@@ -1,10 +1,10 @@
 // main is provided in tests-main.cpp
 #include <catch2/catch.hpp>
-#include <quantity.hpp>
-#include <si/all.hpp>
-#include <prefix.hpp>
-#include <io.hpp>
-#include <arithmetic.hpp>
+#include <dimensional/quantity.hpp>
+#include <dimensional/si/all.hpp>
+#include <dimensional/prefix.hpp>
+#include <dimensional/io.hpp>
+#include <dimensional/arithmetic.hpp>
 #include <boost/format.hpp>
 #include "test_util.hpp"
 

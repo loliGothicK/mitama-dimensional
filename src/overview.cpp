@@ -1,14 +1,14 @@
-#include "../include/quantity.hpp"
-#include "../include/arithmetic.hpp"
-#include "../include/si/meter.hpp"
-#include "../include/si/second.hpp"
-#include "../include/io.hpp"
-#include "../include/refinement.hpp"
-#include "../include/prefix.hpp"
-#include "../include/math/all.hpp"
-#include "../include/currency/jpy.hpp"
-#include "../include/derived_units/dgree_celsius.hpp"
-#include "../include/expr.hpp"
+#include "../include/dimensional/quantity.hpp"
+#include "../include/dimensional/arithmetic.hpp"
+#include "../include/dimensional/si/meter.hpp"
+#include "../include/dimensional/si/second.hpp"
+#include "../include/dimensional/io.hpp"
+#include "../include/dimensional/refinement.hpp"
+#include "../include/dimensional/prefix.hpp"
+#include "../include/dimensional/math/all.hpp"
+#include "../include/dimensional/currency/jpy.hpp"
+#include "../include/dimensional/derived_units/dgree_celsius.hpp"
+#include "../include/dimensional/expr.hpp"
 #include <boost/type_index.hpp>
 #include <iostream>
 
@@ -83,6 +83,9 @@ int main(){
             // auto refined_ = refined<sym::L<>,sym::T<-1>>(w).get();
             // std::cout << refined_ << std::endl;
         }
+        using newton_t = decltype(kilogram<> * meter<> * second<-2>);
+        quantity<newton_t> N = (1.0|kilograms) * V / (2|seconds);
+        REPL(N);
         std::cout << "------------------------\n";
     }
 
