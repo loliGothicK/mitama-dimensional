@@ -1,17 +1,19 @@
-#include "../include/quantity.hpp"
-#include "../include/arithmetic.hpp"
-#include "../include/si/meter.hpp"
-#include "../include/si/second.hpp"
-#include "../include/si_derived/named_units.hpp"
-#include "../include/io.hpp"
-#include "../include/refinement.hpp"
-#include "../include/prefix.hpp"
-#include "../include/math/all.hpp"
+#include "../include/dimensional/quantity.hpp"
+#include "../include/dimensional/arithmetic.hpp"
+#include "../include/dimensional/si/meter.hpp"
+#include "../include/dimensional/si/second.hpp"
+#include "../include/dimensional/io.hpp"
+#include "../include/dimensional/refinement.hpp"
+#include "../include/dimensional/prefix.hpp"
+#include "../include/dimensional/math/all.hpp"
+#include "../include/dimensional/currency/jpy.hpp"
+#include "../include/dimensional/derived_units/dgree_celsius.hpp"
+#include "../include/dimensional/expr.hpp"
 #include <boost/type_index.hpp>
 #include <iostream>
 
 #define REPL(...) \
-    do { std::cout << "$> " << #__VA_ARGS__ << "\n=> " << (__VA_ARGS__) << std::endl; } while(false)
+    do { std::cout << "$ " << #__VA_ARGS__ << "\n=> " << (__VA_ARGS__) << std::endl; } while(false)
 int main(){
     using namespace mitama;
     { // Homogeneous dimension examples
@@ -40,6 +42,7 @@ int main(){
         // a / b := a * b^{-1}
         auto r4 = a / b;
         REPL(r4);
+        REPL(boost::typeindex::type_id<decltype(r4)>().pretty_name());
 
         quantity<millimeter_t, int> d(a);
         REPL(d);
@@ -64,22 +67,25 @@ int main(){
         std::cout << "--[Heterogeneous dimension examples]--\n";
         // 1 hour := 3600 s
         using hour_t = scaled_unit_t<second_t, std::ratio<3600>>;
-        // velocity := km/h
-        using velocity_t = decltype(kilometers/hour_t{});
+        // speed := km/h
+        using speed_t = decltype(kilometers/hour_t{});
 
         constexpr quantity<meter_t> L(1.2);
         constexpr quantity<second_t> T(0.3);
         // unit is automatically convert from m/s to km/h
-        quantity<velocity_t> V = L/T;
+        quantity<speed_t> V = L/T;
         std::cout << boost::typeindex::type_id<decltype(L*T)>().pretty_name() << std::endl;
 
         std::cout << V.get() << "[ km/h ]" << std::endl;
         {
-            auto w = 36|kilogram<> * meter<2> * second<-2> * ampere<-1>;
+            auto w = 36 | kilogram<> * meter<2> * second<-2> * ampere<-1>;
             std::cout << boost::typeindex::type_id<decltype(w)>().pretty_name() << std::endl;
             // auto refined_ = refined<sym::L<>,sym::T<-1>>(w).get();
             // std::cout << refined_ << std::endl;
         }
+        using newton_t = decltype(kilogram<> * meter<> * second<-2>);
+        quantity<newton_t> N = (1.0|kilograms) * V / (2|seconds);
+        REPL(N);
         std::cout << "------------------------\n";
     }
 
@@ -125,6 +131,23 @@ int main(){
         REPL(rint(2.2|meters));
         REPL(lrint(2.2|meters));
         REPL(llrint(2.2|mitama::milli*meters));
+    }
+
+    { // User defined dimension examples
+        // currency units
+        REPL(100|yen);
+    }
+
+    { // User defined dimension examples
+        // currency units
+        REPL(100|dgree_celsius);
+        quantity<kelvin_t> s( 100.|dgree_celsius );
+        REPL(s);
+    }
+
+    {
+        quantity<kelvin_t> hoge = as_expr(1|kelvins) + (2|dgree_celsius);
+        REPL(hoge);
     }
 
 }

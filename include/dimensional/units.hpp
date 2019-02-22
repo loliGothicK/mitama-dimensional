@@ -1,5 +1,6 @@
 #pragma once
 #include "dimensional_phantom.hpp"
+#include "quotient.hpp"
 #include <ratio>
 
 namespace mitama {
@@ -28,8 +29,8 @@ template <class D> using make_unit_t = make_dimensional_t<units_t<D>>;
 
 template <class, class> struct scaled_unit;
 
-template <class S, class Base, class Scale>
-struct scaled_unit<dimensional_t<S, Base>, Scale> {
+template <class Base, class Scale>
+struct scaled_unit<dimensional_t<Base>, Scale> {
   using type = make_dimensional_t<
       units_t<typename Base::dimension_type, typename Base::exponent, Scale>>;
 };
