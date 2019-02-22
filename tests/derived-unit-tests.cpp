@@ -6,7 +6,7 @@
 #include <dimensional/prefix.hpp>
 #include <random>
 #include "test_util.hpp"
-#include <expr.hpp>
+#include <dimensional/expr.hpp>
 #include <dimensional/arithmetic.hpp>
 
 using namespace mitama;

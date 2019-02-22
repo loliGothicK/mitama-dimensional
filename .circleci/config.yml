@@ -10,7 +10,7 @@ executors:
         default: "clang-7.0.0"
         type: string
     docker:
-      - image: enumack/buildcontainers:<< parameters.compiler >>
+      - image: enumack/mitama-env:<< parameters.compiler >>
 
 jobs:
   wandbox-test:
