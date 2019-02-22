@@ -1,5 +1,6 @@
 #pragma once
 #include "dimensional_phantom.hpp"
+#include "quotient.hpp"
 #include <ratio>
 
 namespace mitama {

@@ -1,8 +1,8 @@
 // main is provided in tests-main.cpp
 #include <catch2/catch.hpp>
-#include <quantity.hpp>
-#include <si/all.hpp>
-#include <prefix.hpp>
+#include <dimensional/quantity.hpp>
+#include <dimensional/si/all.hpp>
+#include <dimensional/prefix.hpp>
 #include "test_util.hpp"
 
 using namespace mitama;

@@ -67,13 +67,13 @@ struct si_formatter<
   }
 };
 
-template <class T, class... Units>
+template <class T, class Head, class... Tail>
 std::string
-to_string(quantity_t<dimensional_t<Units...>, T> const &quantity) {
+to_string(quantity_t<dimensional_t<Head, Tail...>, T> const &quantity) {
   using std::to_string;
   using namespace std::literals;
-  return to_string(quantity.get()) + " [" +
-         (si_formatter<Units>::format() + ...) + "]";
+  return to_string(quantity.get()) + " [" + si_formatter<Head>::format() +
+         ((" "s + si_formatter<Tail>::format()) + ... + "]");
 }
 
 template <class D>
@@ -81,17 +81,6 @@ struct abbreviation<D,
                     std::enable_if_t<mitamagic::is_dimensionless<D>::value>> {
   static constexpr char str[] = "dimensionless";
 };
-
-template <class E>
-inline std::string exponent = [] {
-  using namespace std::literals;
-  if constexpr (std::ratio_equal_v<E, std::ratio<1>>)
-    return "";
-  else if constexpr (E::den == 1)
-    return "^"s + std::to_string(E::num);
-  else
-    return "^"s + std::to_string(E::num) + "/" + std::to_string(E::den);
-}();
 
 template <class T, class... Units>
 //,std::enable_if_t<std::conjunction_v<is_complete_type<abbreviation<typename
