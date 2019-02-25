@@ -15,7 +15,7 @@ include_directories(
 
 set(target a.out)
 set(sources
-  tests/tests-main.cpp
+  main.cpp
 )
 add_executable(${target} ${sources})
 message(STATUS "Building library ${target}...")
