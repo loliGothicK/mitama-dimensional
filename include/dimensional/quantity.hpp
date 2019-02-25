@@ -136,6 +136,99 @@ public:
   constexpr auto validate(F&& validator) && {
     return std::forward<F>(validator)(std::move(*this));
   }
+
+  template <
+      class D, class U,
+      std::enable_if_t<is_complete_type_v<::mitama::converter<quantity_t<D, U>, quantity_t>>,
+                       bool> = false>
+  constexpr bool operator==(quantity_t<D, U> const &o) const {
+    return this->value_ == ::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o);
+  }
+
+  template <
+      class D, class U,
+      std::enable_if_t<is_same_dimensional_v<quantity_t, quantity_t<D, U>>,
+                       bool> = false>
+  constexpr bool operator==(quantity_t<D, U> const &o) const {
+    return this->value_ == mitamagic::converted_value<quantity_t>(o);
+  }
+  template <
+      class D, class U,
+      std::enable_if_t<is_complete_type_v<::mitama::converter<quantity_t<D, U>, quantity_t>>,
+                       bool> = false>
+  constexpr bool operator!=(quantity_t<D, U> const &o) const {
+    return this->value_ != ::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o);
+  }
+
+  template <
+      class D, class U,
+      std::enable_if_t<is_same_dimensional_v<quantity_t, quantity_t<D, U>>,
+                       bool> = false>
+  constexpr bool operator!=(quantity_t<D, U> const &o) const {
+    return this->value_ != mitamagic::converted_value<quantity_t>(o);
+  }
+  template <
+      class D, class U,
+      std::enable_if_t<is_complete_type_v<::mitama::converter<quantity_t<D, U>, quantity_t>>,
+                       bool> = false>
+  constexpr bool operator<(quantity_t<D, U> const &o) const {
+    return this->value_ < ::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o);
+  }
+
+  template <
+      class D, class U,
+      std::enable_if_t<is_same_dimensional_v<quantity_t, quantity_t<D, U>>,
+                       bool> = false>
+  constexpr bool operator<(quantity_t<D, U> const &o) const {
+    return this->value_ < mitamagic::converted_value<quantity_t>(o);
+  }
+  template <
+      class D, class U,
+      std::enable_if_t<is_complete_type_v<::mitama::converter<quantity_t<D, U>, quantity_t>>,
+                       bool> = false>
+  constexpr bool operator<=(quantity_t<D, U> const &o) const {
+    return this->value_ <= ::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o);
+  }
+
+  template <
+      class D, class U,
+      std::enable_if_t<is_same_dimensional_v<quantity_t, quantity_t<D, U>>,
+                       bool> = false>
+  constexpr bool operator<=(quantity_t<D, U> const &o) const {
+    return this->value_ <= mitamagic::converted_value<quantity_t>(o);
+  }
+  
+  template <
+      class D, class U,
+      std::enable_if_t<is_complete_type_v<::mitama::converter<quantity_t<D, U>, quantity_t>>,
+                       bool> = false>
+  constexpr bool operator>(quantity_t<D, U> const &o) const {
+    return this->value_ > ::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o);
+  }
+
+  template <
+      class D, class U,
+      std::enable_if_t<is_same_dimensional_v<quantity_t, quantity_t<D, U>>,
+                       bool> = false>
+  constexpr bool operator>(quantity_t<D, U> const &o) const {
+    return this->value_ > mitamagic::converted_value<quantity_t>(o);
+  }
+
+  template <
+      class D, class U,
+      std::enable_if_t<is_complete_type_v<::mitama::converter<quantity_t<D, U>, quantity_t>>,
+                       bool> = false>
+  constexpr bool operator>=(quantity_t<D, U> const &o) const {
+    return this->value_ >= ::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o);
+  }
+
+  template <
+      class D, class U,
+      std::enable_if_t<is_same_dimensional_v<quantity_t, quantity_t<D, U>>,
+                       bool> = false>
+  constexpr bool operator>=(quantity_t<D, U> const &o) const {
+    return this->value_ >= mitamagic::converted_value<quantity_t>(o);
+  }
 };
 
 namespace mitamagic {

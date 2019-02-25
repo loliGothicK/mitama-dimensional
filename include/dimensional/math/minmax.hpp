@@ -1,7 +1,6 @@
 #ifndef MITAMA_DIMENSIONAL_MATH_MINMAX_HPP
 #define MITAMA_DIMENSIONAL_MATH_MINMAX_HPP
 
-#include "../comparison.hpp"
 #include "../quantity.hpp"
 #include <cmath>
 
