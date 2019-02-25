@@ -10,11 +10,11 @@
   IS_INVALID_EXPR_IMPL2
 
 #define IS_INVALID_EXPR_IMPL1(...) bool(false ? ::mitama::make_overload([](auto x)->decltype(__VA_ARGS__, std::false_type{}){return{};},[](...)->std::true_type{return{};})
-#define IS_INVALID_EXPR_IMPL2(...) (::mitama::type_transfer<__VA_ARGS__>{}): ::mitama::protean_bool{})
+#define IS_INVALID_EXPR_IMPL2(...) (::test_util::mitama::type_transfer<__VA_ARGS__>{}): ::test_util::mitama::protean_bool{})
 #define DECLVAL(N) std::declval<std::tuple_element_t<N,typename decltype(x)::type>>()
 #define DECLTYPE(N) std::tuple_element_t<N,typename decltype(x)::type>
 
-namespace mitama {
+namespace test_util::mitama {
 template <class, class = void> struct is_comparable : std::false_type {};
 
 template <class T>
@@ -52,6 +52,10 @@ template <class... F> inline constexpr Overload<F...> make_overload(F &&... f) {
 }
 template <class... Ts> struct type_transfer { using type = std::tuple<Ts...>; };
 
+
+} // namespace mitama
+
+namespace mitama {
 template < class >
 struct basis_;
 
@@ -59,5 +63,5 @@ template < class... Units, template < class... > class D >
 struct basis_<D<Units...>>
 { template < int N > using type = typename std::tuple_element_t<N,std::tuple<Units...>>::dimension_type; };
 
-} // namespace mitama
+}
 #endif
