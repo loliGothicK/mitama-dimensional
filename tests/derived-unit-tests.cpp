@@ -26,21 +26,23 @@ TEST_CASE("dgree celsius and kelvin generate tests",
           "[quantity][derived-units][temperature]")
 {
     using namespace Catch::literals;
-    std::mt19937_64 mt{std::random_device{}()};
-    std::uniform_int_distribution<> dist{-273, 10000};
 
-    for (std::size_t i{}; i < 100; i++) {
-        {
-        quantity<dgree_celsius_t> c = dist(mt);
-        quantity<kelvin_t> s = c;
-        REQUIRE(s.get() - c.get() == 273.15_a);
-        }
-        {
-        quantity<kelvin_t> s = dist(mt);
-        quantity<dgree_celsius_t> c = s;
-        REQUIRE(s.get() - c.get() == 273.15_a);
-        }
-    }
+    REQUIRE(
+        test_util::RandomGenerator<int>::uniform(-273, 10000)
+            .take(1000)
+            .required([](auto value){
+                quantity<dgree_celsius_t> c = value;
+                quantity<kelvin_t> s = c;
+                return s.get() - c.get() == 273.15_a;
+            }));
+    REQUIRE(
+        test_util::RandomGenerator<int>::uniform(-273, 10000)
+            .take(1000)
+            .required([](auto value){
+                quantity<kelvin_t> s = value;
+                quantity<dgree_celsius_t> c = s;
+                return s.get() - c.get() == 273.15_a;
+            }));
 }
 
 TEST_CASE("dgree celsius and kelvin lexical tests",

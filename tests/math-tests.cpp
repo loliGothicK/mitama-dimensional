@@ -48,3 +48,39 @@ TEMPLATE_TEST_CASE("tan with arg not radian", "[math],[quantity],[tan]",
     REQUIRE(IS_INVALID_EXPR(tan(DECLVAL(0)))(quantity<TestType>));
 }
 
+TEST_CASE("asin", "[math],[quantity],[asin]")
+{
+    quantity<radian_t> rad = std::asin(1) | radian;
+    REQUIRE(mitama::asin(1) == rad);
+}
+
+TEST_CASE("acos", "[math],[quantity],[acos]")
+{
+    quantity<radian_t> rad = std::acos(1) | radian;
+    REQUIRE(mitama::acos(1) == rad);
+}
+
+TEST_CASE("atan", "[math],[quantity],[atan]")
+{
+    quantity<radian_t> rad = std::atan(1) | radian;
+    REQUIRE(mitama::atan(1) == rad);
+}
+
+TEMPLATE_TEST_CASE("asin with si", "[math],[quantity],[asin]",
+                   radian_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
+{
+    REQUIRE(IS_INVALID_EXPR(mitama::asin(DECLVAL(0)))(quantity<TestType>));
+}
+
+TEMPLATE_TEST_CASE("acos with si", "[math],[quantity],[acos]",
+                   radian_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
+{
+    REQUIRE(IS_INVALID_EXPR(mitama::acos(DECLVAL(0)))(quantity<TestType>));
+}
+
+TEMPLATE_TEST_CASE("atan with si", "[math],[quantity],[atan]",
+                   radian_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
+{
+    REQUIRE(IS_INVALID_EXPR(mitama::atan(DECLVAL(0)))(quantity<TestType>));
+}
+

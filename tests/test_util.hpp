@@ -4,6 +4,8 @@
 #include <type_traits>
 #include <utility>
 #include <tuple>
+#include <random>
+#include <catch2/catch.hpp>
 
 #define IS_INVALID_EXPR(...)                                     \
   IS_INVALID_EXPR_IMPL1(__VA_ARGS__)                             \
@@ -13,6 +15,37 @@
 #define IS_INVALID_EXPR_IMPL2(...) (::test_util::mitama::type_transfer<__VA_ARGS__>{}): ::test_util::mitama::protean_bool{})
 #define DECLVAL(N) std::declval<std::tuple_element_t<N,typename decltype(x)::type>>()
 #define DECLTYPE(N) std::tuple_element_t<N,typename decltype(x)::type>
+
+namespace test_util {
+  template < class ValueType >
+  class RandomGenerator {
+    ValueType lower, upper;
+    mutable std::size_t limit;
+  public:
+    RandomGenerator(ValueType a, ValueType b): lower(a), upper(b) {}
+
+    static constexpr auto uniform(ValueType a, ValueType b) -> RandomGenerator {
+      return RandomGenerator{a, b};
+    }
+
+    auto& take(std::size_t lim) {
+      limit = lim;
+      return *this;
+    }
+
+    template < class Pred >
+    bool required(Pred&& pred) const {
+      bool res = true;
+      std::mt19937_64 mt(std::random_device{}());
+      std::uniform_int_distribution<> dist(lower, upper);
+      while (bool(limit--) && res) {
+        res = pred(dist(mt));
+      }
+      return res;
+    }
+
+  };
+}
 
 namespace test_util::mitama {
 template <class, class = void> struct is_comparable : std::false_type {};
