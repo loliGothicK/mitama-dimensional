@@ -1,7 +1,8 @@
 #pragma once
 #include "quotient.hpp"
-
+#include "../../result/include/Result.hpp"
 namespace mitama {
+
 template <class Dim, class T = double> class quantity_t;
 
 // meta-operator for dimension equivalence
@@ -126,6 +127,15 @@ public:
   }
 
   constexpr T get() const { return value_; }
+
+  template < class F >
+  constexpr auto validate(F&& validator) const & {
+    return std::forward<F>(validator)(*this);
+  }
+  template < class F >
+  constexpr auto validate(F&& validator) && {
+    return std::forward<F>(validator)(std::move(*this));
+  }
 };
 
 namespace mitamagic {
