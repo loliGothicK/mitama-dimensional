@@ -4,17 +4,85 @@
 #include <type_traits>
 #include <utility>
 #include <tuple>
+#include <random>
+#include <catch2/catch.hpp>
+#include <Result.hpp>
 
 #define IS_INVALID_EXPR(...)                                     \
   IS_INVALID_EXPR_IMPL1(__VA_ARGS__)                             \
   IS_INVALID_EXPR_IMPL2
 
 #define IS_INVALID_EXPR_IMPL1(...) bool(false ? ::mitama::make_overload([](auto x)->decltype(__VA_ARGS__, std::false_type{}){return{};},[](...)->std::true_type{return{};})
-#define IS_INVALID_EXPR_IMPL2(...) (::mitama::type_transfer<__VA_ARGS__>{}): ::mitama::protean_bool{})
+#define IS_INVALID_EXPR_IMPL2(...) (::test_util::mitama::type_transfer<__VA_ARGS__>{}): ::test_util::mitama::protean_bool{})
 #define DECLVAL(N) std::declval<std::tuple_element_t<N,typename decltype(x)::type>>()
 #define DECLTYPE(N) std::tuple_element_t<N,typename decltype(x)::type>
 
-namespace mitama {
+namespace test_util {
+  template < class ValueType >
+  class RandomGenerator {
+    ValueType lower, upper;
+    mutable std::size_t limit;
+  public:
+    RandomGenerator(ValueType a, ValueType b): lower(a), upper(b) {}
+
+    static constexpr auto uniform(ValueType a, ValueType b) -> RandomGenerator {
+      return RandomGenerator{a, b};
+    }
+
+    auto& take(std::size_t lim) {
+      limit = lim;
+      return *this;
+    }
+
+    template < int N = 1, class Pred >
+    auto required(Pred&& pred) const {
+      bool res = true;
+      std::mt19937_64 mt(std::random_device{}());
+      if constexpr (std::is_integral_v<ValueType>){
+        std::uniform_int_distribution<ValueType> dist(lower, upper);
+        if constexpr (N==1) {
+          while (bool(limit--) && res) {
+            res = pred(dist(mt));
+          }
+          return res;
+        }
+        else if constexpr (N==2) {
+          while (bool(limit--) && res) {
+            res = pred(dist(mt), dist(mt));
+          }
+          return res;
+        }
+        else {
+          return false;
+        }
+      }
+      else if constexpr (std::is_floating_point_v<ValueType>){
+        std::uniform_real_distribution<ValueType> dist(lower, upper);
+        if constexpr (N==1) {
+          while (bool(limit--) && res) {
+            res = pred(dist(mt));
+          }
+          return res;
+        }
+        else if constexpr (N==2) {
+          while (bool(limit--) && res) {
+            res = pred(dist(mt), dist(mt));
+          }
+          return res;
+        }
+        else {
+          return false;
+        }
+      }
+      else {
+        return false;
+      }
+    }
+
+  };
+}
+
+namespace test_util::mitama {
 template <class, class = void> struct is_comparable : std::false_type {};
 
 template <class T>
@@ -52,6 +120,10 @@ template <class... F> inline constexpr Overload<F...> make_overload(F &&... f) {
 }
 template <class... Ts> struct type_transfer { using type = std::tuple<Ts...>; };
 
+
+} // namespace mitama
+
+namespace mitama {
 template < class >
 struct basis_;
 
@@ -59,5 +131,5 @@ template < class... Units, template < class... > class D >
 struct basis_<D<Units...>>
 { template < int N > using type = typename std::tuple_element_t<N,std::tuple<Units...>>::dimension_type; };
 
-} // namespace mitama
+}
 #endif

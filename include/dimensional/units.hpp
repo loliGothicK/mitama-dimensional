@@ -32,7 +32,7 @@ template <class, class> struct scaled_unit;
 template <class Base, class Scale>
 struct scaled_unit<dimensional_t<Base>, Scale> {
   using type = make_dimensional_t<
-      units_t<typename Base::dimension_type, typename Base::exponent, Scale>>;
+      units_t<typename Base::dimension_type, typename Base::exponent, std::ratio_multiply<typename Base::scale, Scale>>>;
 };
 
 template <class Base, class R>

@@ -90,8 +90,8 @@ operator<<(std::ostream &os,
            quantity_t<dimensional_t<Units...>, T> const &quantity) {
   if constexpr (is_complete_type<
                            abbreviation<dimensional_t<Units...>>>::value) {
-    return os << quantity.get() << " [ "
-              << abbreviation<dimensional_t<Units...>>::str << " ]";
+    return os << quantity.get() << " ["
+              << abbreviation<dimensional_t<Units...>>::str << "]";
   } else if constexpr (std::conjunction_v<
                     is_complete_type<prefix_<typename Units::scale>>...>) {
     return os << ::mitama::to_string(quantity);

@@ -1,15 +1,18 @@
 #pragma once
 #include "../si/all.hpp"
 #include "../quantity.hpp"
+#include "../io.hpp"
 // dimensionless
 namespace mitama {
 struct angle { using is_base_dimension = void; };
 using radian_t = make_unit_t<angle>;
 inline constexpr radian_t radian{};
+template <> struct symbol_<angle> { static constexpr char str[] = "rad"; };
 
 struct solid_angle { using is_base_dimension = void; };
 using steradian_t = make_unit_t<solid_angle>;
 inline constexpr steradian_t steradian{};
+template <> struct symbol_<solid_angle> { static constexpr char str[] = "sr"; };
 }
 
 namespace mitama {

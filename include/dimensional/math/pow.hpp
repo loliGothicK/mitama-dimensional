@@ -26,7 +26,7 @@ template < class T, class _, class... Units >
 auto square(quantity_t<dimensional_t<_, Units...>, T> const& quantity) {
     return quantity_t<typename mitamagic::powered_dimensional<dimensional_t<_, Units...>, std::ratio<2>>::type, T>
         {
-            static_cast<T>(std::pow(quantity.get(), 2.0l))
+            static_cast<T>(quantity.get() * quantity.get())
         };
 }
 
@@ -34,7 +34,7 @@ template < class T, class _, class... Units >
 auto cubic(quantity_t<dimensional_t<_, Units...>, T> const& quantity) {
     return quantity_t<typename mitamagic::powered_dimensional<dimensional_t<_, Units...>, std::ratio<3>>::type, T>
         {
-            static_cast<T>(std::pow(quantity.get(), 3.0l))
+            static_cast<T>(quantity.get() * quantity.get() * quantity.get())
         };
 }
 }

@@ -66,3 +66,18 @@ TEMPLATE_TEST_CASE("second_t from other quantities",
 {
     REQUIRE( IS_INVALID_EXPR(DECLTYPE(0){DECLVAL(1)})(second_t, TestType) );
 }
+
+TEMPLATE_TEST_CASE("validates",
+                   "[quantity][validate]",
+                   second_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t)
+{
+    auto validator = [](auto v) -> mitama::Result<quantity<TestType, int>, int> {
+        if (v.get() < 0)
+            return mitama::Err(v.get());
+        else
+            return mitama::Ok(v);
+    };
+
+    REQUIRE( (1|TestType{}).validate(validator) == Ok(1|TestType{}) );
+    REQUIRE( (-1|TestType{}).validate(validator) == Err(-1) );
+}
