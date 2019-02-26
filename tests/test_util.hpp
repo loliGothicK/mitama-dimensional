@@ -6,6 +6,7 @@
 #include <tuple>
 #include <random>
 #include <catch2/catch.hpp>
+#include <Result.hpp>
 
 #define IS_INVALID_EXPR(...)                                     \
   IS_INVALID_EXPR_IMPL1(__VA_ARGS__)                             \
@@ -33,15 +34,49 @@ namespace test_util {
       return *this;
     }
 
-    template < class Pred >
-    bool required(Pred&& pred) const {
+    template < int N = 1, class Pred >
+    auto required(Pred&& pred) const {
       bool res = true;
       std::mt19937_64 mt(std::random_device{}());
-      std::uniform_int_distribution<> dist(lower, upper);
-      while (bool(limit--) && res) {
-        res = pred(dist(mt));
+      if constexpr (std::is_integral_v<ValueType>){
+        std::uniform_int_distribution<ValueType> dist(lower, upper);
+        if constexpr (N==1) {
+          while (bool(limit--) && res) {
+            res = pred(dist(mt));
+          }
+          return res;
+        }
+        else if constexpr (N==2) {
+          while (bool(limit--) && res) {
+            res = pred(dist(mt), dist(mt));
+          }
+          return res;
+        }
+        else {
+          return false;
+        }
       }
-      return res;
+      else if constexpr (std::is_floating_point_v<ValueType>){
+        std::uniform_real_distribution<ValueType> dist(lower, upper);
+        if constexpr (N==1) {
+          while (bool(limit--) && res) {
+            res = pred(dist(mt));
+          }
+          return res;
+        }
+        else if constexpr (N==2) {
+          while (bool(limit--) && res) {
+            res = pred(dist(mt), dist(mt));
+          }
+          return res;
+        }
+        else {
+          return false;
+        }
+      }
+      else {
+        return false;
+      }
     }
 
   };
