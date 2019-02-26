@@ -37,7 +37,7 @@ TEMPLATE_TEST_CASE("min tests",
     REQUIRE(
         test_util::RandomGenerator<int>::uniform(-10000, 10000)
             .take(1000)
-            .required<2>([](auto v1, auto v2){
+            .template required<2>([](auto v1, auto v2){
                 quantity<TestType, int> q1 = v1;
                 quantity<TestType, int> q2 = v2;
                 return min(q1, q2).get() == std::min({v1, v2});
@@ -53,7 +53,7 @@ TEMPLATE_TEST_CASE("max tests",
     REQUIRE(
         test_util::RandomGenerator<int>::uniform(-10000, 10000)
             .take(1000)
-            .required<2>([](auto v1, auto v2){
+            .template required<2>([](auto v1, auto v2){
                 quantity<TestType, int> q1 = v1;
                 quantity<TestType, int> q2 = v2;
                 return max(q1, q2).get() == std::max({v1, v2});
