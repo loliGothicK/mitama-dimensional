@@ -19,7 +19,7 @@ struct dgree_angle {
 
 using radian_t = make_unit_t<dgree_angle>;
 
-using angle_t = scaled_unit_t<radian_t, std::ratio<180,M_PI>>;
+using angle_t = scaled_unit_t<radian_t, std::ratio<180*100000000000000,(long long)(M_PI)*100000000000000> >;
 
 inline constexpr radian_t radians;
 
