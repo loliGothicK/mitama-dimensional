@@ -35,4 +35,22 @@ using becquerel_t = powered_t<second_t, -1>;
 using gray_t = decltype(meter<2> * second<-2>);
 using sievert_t = decltype(meter<2> * second<-2>);
 using katal_t = decltype(second<-1> * mol<>);
+
+template <> struct abbreviation<hertz_t> { static constexpr char str[] = "Hz"; };
+template <> struct abbreviation<newton_t> { static constexpr char str[] = "N"; };
+template <> struct abbreviation<pascal_t> { static constexpr char str[] = "Pa"; };
+template <> struct abbreviation<joule_t> { static constexpr char str[] = "J"; };
+template <> struct abbreviation<watt_t> { static constexpr char str[] = "W"; };
+template <> struct abbreviation<coulomb_t> { static constexpr char str[] = "C"; };
+template <> struct abbreviation<volt_t> { static constexpr char str[] = "V"; };
+template <> struct abbreviation<farad_t> { static constexpr char str[] = "F"; };
+template <> struct abbreviation<siemens_t> { static constexpr char str[] = "S"; };
+template <> struct abbreviation<weber_t> { static constexpr char str[] = "Wb"; };
+template <> struct abbreviation<tesla_t> { static constexpr char str[] = "T"; };
+template <> struct abbreviation<henry_t> { static constexpr char str[] = "H"; };
+template <> struct abbreviation<lumen_t> { static constexpr char str[] = "lm"; };
+template <> struct abbreviation<lux_t> { static constexpr char str[] = "lx"; };
+template <> struct abbreviation<gray_t> { static constexpr char str[] = "Gy"; };
+// template <> struct abbreviation<sievert_t> { static constexpr char str[] = "Sv"; };
+template <> struct abbreviation<katal_t> { static constexpr char str[] = "kat"; };
 }

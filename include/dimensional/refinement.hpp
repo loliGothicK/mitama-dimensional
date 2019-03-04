@@ -43,7 +43,7 @@ template <class... Symbols> struct refinement_type {
             std::decay_t<Q>,
             quantity<make_dimensional_t<
                 units_t<typename Symbols::basis, typename Symbols::exp>...>>>,
-        "refinement error: not satisfied");
+        "refinement error: refinedment requires not satisfied");
     return std::forward<Q>(q);
   }
 };
