@@ -64,22 +64,18 @@ constexpr auto
 operator/(L &&lhs, R &&rhs)
 {
     if constexpr (is_quantity_v<std::decay_t<L>> && is_quantity_v<std::decay_t<R>>) {
-        return quantity_t<mitamagic::quotient_t<typename std::decay_t<L>::dimension_type, mitamagic::inverse_t<typename std::decay_t<R>::dimension_type>>, std::common_type_t<typename std::decay_t<L>::value_type, typename std::decay_t<R>::value_type>>
-            {
+        return quantity_t<
+                mitamagic::quotient_t<typename std::decay_t<L>::dimension_type, mitamagic::inverse_t<typename std::decay_t<R>::dimension_type>>,
+                std::common_type_t<typename std::decay_t<L>::value_type, typename std::decay_t<R>::value_type>
+            >{
                 mitamagic::scaled_value(std::forward<L>(lhs), std::forward<R>(rhs), [](auto a, auto b){ return a / b; })
             };
     }
     else if constexpr (is_quantity_v<std::decay_t<R>>) {
         return quantity<
-            mitamagic::inverse_t<
-                typename std::decay_t<R>::dimension_type
-            >,
-            std::common_type_t<
-                typename std::decay_t<R>::value_type,
-                std::decay_t<L>
-            >
-        >
-            {
+                mitamagic::inverse_t<typename std::decay_t<R>::dimension_type>, // dimension type
+                std::common_type_t<typename std::decay_t<R>::value_type, std::decay_t<L>> // common value_type
+            >{
                 lhs / rhs.get()
             };
     }
