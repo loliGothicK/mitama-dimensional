@@ -36,7 +36,7 @@ TEST_CASE("dgree amgle and radian generate tests",
                 return c.get() / s.get() == 57.295779_a;
             }));
     REQUIRE(
-        test_util::RandomGenerator<int>::uniform( -6.283185, 6.283185)
+        test_util::RandomGenerator<double>::uniform( -6.283185, 6.283185)
             .take(1)
             .required([](auto value){
                 quantity<radian_t> s = value;
