@@ -28,19 +28,19 @@ TEST_CASE("dgree amgle and radian generate tests",
     using namespace Catch::literals;
 
     REQUIRE(
-        test_util::RandomGenerator<int>::uniform(-273, 10000)
+        test_util::RandomGenerator<double>::uniform( -360, 360 )
             .take(1000)
             .required([](auto value){
-                quantity<dgree_celsius_t> c = value;
-                quantity<kelvin_t> s = c;
-                return s.get() - c.get() == 0.00_a;
+                quantity<dgree_angle_t> c = value;
+                quantity<radian_t> s = c;
+                return c.get() / s.get() == 57.295779513_a;
             }));
     REQUIRE(
-        test_util::RandomGenerator<int>::uniform(-273, 1)
+        test_util::RandomGenerator<int>::uniform( -6.2831, 6.2831)
             .take(1)
             .required([](auto value){
                 quantity<radian_t> s = value;
-                quantity<dgree_celsius_t> c = s;
-                return 57.2957795130823208767l - c.get() == 00.00_a;
+                quantity<dgree_angle_t> c = s;
+                return c.get() / s.get() == 57.295779513_a;
             }));
 }
