@@ -17,7 +17,7 @@ TEST_CASE("dgree angle and radian",
     using namespace Catch::literals;
     quantity<dgree_angle_t> s1 = 90;
     quantity<radian_t> c = s1;
-    REQUIRE(c.get() == 373.15_a);
+    REQUIRE(c.get() == 1.570796_a);
     quantity<dgree_angle_t> s2 = c;
     REQUIRE(s2.get() == 90._a);
 }
