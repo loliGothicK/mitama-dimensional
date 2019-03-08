@@ -35,7 +35,7 @@ namespace test_util {
     }
 
     template < int N = 1, class Pred >
-    auto required(Pred&& pred) const {
+    auto required(Pred&& pred) const -> bool {
       bool res = true;
       std::mt19937_64 mt(std::random_device{}());
       if constexpr (std::is_integral_v<ValueType>){
