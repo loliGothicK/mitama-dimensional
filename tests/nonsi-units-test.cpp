@@ -33,14 +33,14 @@ TEST_CASE("dgree amgle and radian generate tests",
             .required([](auto value){
                 quantity<dgree_angle_t> c = value;
                 quantity<radian_t> s = c;
-                return c.get() / s.get() == 57.295779513_a;
+                return c.get() / s.get() == 57.295779_a;
             }));
     REQUIRE(
-        test_util::RandomGenerator<int>::uniform( -6.2831, 6.2831)
+        test_util::RandomGenerator<int>::uniform( -6.283185, 6.283185)
             .take(1)
             .required([](auto value){
                 quantity<radian_t> s = value;
                 quantity<dgree_angle_t> c = s;
-                return c.get() / s.get() == 57.295779513_a;
+                return c.get() / s.get() == 57.295779_a;
             }));
 }
