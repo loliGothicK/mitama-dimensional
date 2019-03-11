@@ -3,6 +3,9 @@
 #include <dimensional/quantity.hpp>
 #include <dimensional/si/all.hpp>
 #include <dimensional/prefix.hpp>
+#include <dimensional/arithmetic.hpp>
+#include <dimensional/refinement.hpp>
+#include <dimensional/derived_units/named_units.hpp>
 #include "test_util.hpp"
 
 using namespace mitama;
@@ -81,3 +84,72 @@ TEMPLATE_TEST_CASE("validates",
     REQUIRE( (1|TestType{}).validate(validator) == Ok(1|TestType{}) );
     REQUIRE( (-1|TestType{}).validate(validator) == Err(-1) );
 }
+
+TEMPLATE_TEST_CASE("refinement T^1",
+                   "[quantity][refinement]",
+                   meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t)
+{
+    REQUIRE( IS_INVALID_EXPR( refined<sym::T<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
+}
+
+TEMPLATE_TEST_CASE("refinement L^1",
+                   "[quantity][refinement]",
+                   second_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t)
+{
+    REQUIRE( IS_INVALID_EXPR( refined<sym::L<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
+}
+
+TEMPLATE_TEST_CASE("refinement M^1",
+                   "[quantity][refinement]",
+                   second_t, meter_t, ampere_t, candela_t, kelvin_t, mol_t)
+{
+    REQUIRE( IS_INVALID_EXPR( refined<sym::M<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
+}
+
+TEMPLATE_TEST_CASE("refinement I^1",
+                   "[quantity][refinement]",
+                   second_t, meter_t, candela_t, kelvin_t, kilogram_t, mol_t)
+{
+    REQUIRE( IS_INVALID_EXPR( refined<sym::I<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
+}
+
+TEMPLATE_TEST_CASE("refinement S^1",
+                   "[quantity][refinement]",
+                   second_t, meter_t, ampere_t, candela_t, kilogram_t, mol_t)
+{
+    REQUIRE( IS_INVALID_EXPR( refined<sym::S<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
+}
+
+TEMPLATE_TEST_CASE("refinement N^1",
+                   "[quantity][refinement]",
+                   second_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t)
+{
+    REQUIRE( IS_INVALID_EXPR( refined<sym::N<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
+}
+
+TEMPLATE_TEST_CASE("refinement J^1",
+                   "[quantity][refinement]",
+                   second_t, meter_t, ampere_t, kelvin_t, kilogram_t, mol_t)
+{
+    REQUIRE( IS_INVALID_EXPR( refined<sym::J<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
+}
+
+TEMPLATE_TEST_CASE("refinement L^1 positive",
+                   "[quantity][refinement]",
+                   picometer_t, nanometer_t, micrometer_t, millimeter_t, centimeter_t, decimeter_t, kilometer_t, megameter_t)
+{
+    REQUIRE( !IS_INVALID_EXPR( refined<sym::L<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
+}
+
+TEMPLATE_TEST_CASE("refinement L^1 positive",
+                   "[quantity][refinement]",
+                   second_t, millisecond_t, microsecond_t, nanosecond_t, minute_t, hour_t, day_t)
+{
+    REQUIRE( !IS_INVALID_EXPR( refined<sym::T<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
+}
+
+    // REQUIRE( !IS_INVALID_EXPR( refined<sym::I<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
+    // REQUIRE( !IS_INVALID_EXPR( refined<sym::S<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
+    // REQUIRE( !IS_INVALID_EXPR( refined<sym::N<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
+    // REQUIRE( !IS_INVALID_EXPR( refined<sym::J<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
+
