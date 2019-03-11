@@ -245,10 +245,16 @@ template <class L, class R> using quotient_t = typename quotient<L, R>::type;
 } // namespace mitama::mitamagic
 
 namespace mitama {
+
 template <class U, std::intmax_t N>
 using powered_t =
     typename mitamagic::powered_dimensional<U, std::ratio<N>>::type;
+
+template < class U >
+using reciprocal_t = powered_t<U, -1>;
+
 }
+
 
 namespace mitama::mitamagic {
 template <class> struct is_dimensionless : std::false_type {};
