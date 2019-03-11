@@ -85,49 +85,49 @@ TEMPLATE_TEST_CASE("validates",
     REQUIRE( (-1|TestType{}).validate(validator) == Err(-1) );
 }
 
-TEMPLATE_TEST_CASE("refinement T^1",
+TEMPLATE_TEST_CASE("refinement T^1 negative",
                    "[quantity][refinement]",
                    meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t)
 {
     REQUIRE( IS_INVALID_EXPR( refined<sym::T<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
 }
 
-TEMPLATE_TEST_CASE("refinement L^1",
+TEMPLATE_TEST_CASE("refinement L^1 negative",
                    "[quantity][refinement]",
                    second_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t)
 {
     REQUIRE( IS_INVALID_EXPR( refined<sym::L<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
 }
 
-TEMPLATE_TEST_CASE("refinement M^1",
+TEMPLATE_TEST_CASE("refinement M^1 negative",
                    "[quantity][refinement]",
                    second_t, meter_t, ampere_t, candela_t, kelvin_t, mol_t)
 {
     REQUIRE( IS_INVALID_EXPR( refined<sym::M<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
 }
 
-TEMPLATE_TEST_CASE("refinement I^1",
+TEMPLATE_TEST_CASE("refinement I^1 negative",
                    "[quantity][refinement]",
                    second_t, meter_t, candela_t, kelvin_t, kilogram_t, mol_t)
 {
     REQUIRE( IS_INVALID_EXPR( refined<sym::I<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
 }
 
-TEMPLATE_TEST_CASE("refinement S^1",
+TEMPLATE_TEST_CASE("refinement S^1 negative",
                    "[quantity][refinement]",
                    second_t, meter_t, ampere_t, candela_t, kilogram_t, mol_t)
 {
     REQUIRE( IS_INVALID_EXPR( refined<sym::S<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
 }
 
-TEMPLATE_TEST_CASE("refinement N^1",
+TEMPLATE_TEST_CASE("refinement N^1 negative",
                    "[quantity][refinement]",
                    second_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t)
 {
     REQUIRE( IS_INVALID_EXPR( refined<sym::N<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
 }
 
-TEMPLATE_TEST_CASE("refinement J^1",
+TEMPLATE_TEST_CASE("refinement J^1 negative",
                    "[quantity][refinement]",
                    second_t, meter_t, ampere_t, kelvin_t, kilogram_t, mol_t)
 {
@@ -148,8 +148,31 @@ TEMPLATE_TEST_CASE("refinement L^1 positive",
     REQUIRE( !IS_INVALID_EXPR( refined<sym::T<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
 }
 
-    // REQUIRE( !IS_INVALID_EXPR( refined<sym::I<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
-    // REQUIRE( !IS_INVALID_EXPR( refined<sym::S<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
-    // REQUIRE( !IS_INVALID_EXPR( refined<sym::N<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
-    // REQUIRE( !IS_INVALID_EXPR( refined<sym::J<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
+TEMPLATE_TEST_CASE("refinement I^1 positive",
+                   "[quantity][refinement]",
+                   ampere_t, milliampere_t, microampere_t, nanoampere_t, kiloampere_t, megaampere_t)
+{
+    REQUIRE( !IS_INVALID_EXPR( refined<sym::I<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
+}
+
+TEMPLATE_TEST_CASE("refinement S^1 positive",
+                   "[quantity][refinement]",
+                   kelvin_t, millikelvin_t)
+{
+    REQUIRE( !IS_INVALID_EXPR( refined<sym::S<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
+}
+
+TEMPLATE_TEST_CASE("refinement N^1 positive",
+                   "[quantity][refinement]",
+                   micromol_t, millimol_t, mol_t, kilomol_t)
+{
+    REQUIRE( !IS_INVALID_EXPR( refined<sym::N<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
+}
+
+TEMPLATE_TEST_CASE("refinement J^1 positive",
+                   "[quantity][refinement]",
+                   candela_t)
+{
+    REQUIRE( !IS_INVALID_EXPR( refined<sym::J<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
+}
 
