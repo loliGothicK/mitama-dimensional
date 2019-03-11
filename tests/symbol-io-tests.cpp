@@ -6,6 +6,7 @@
 #include <dimensional/io.hpp>
 #include <dimensional/arithmetic.hpp>
 #include <boost/format.hpp>
+#include <dimensional/derived_units/named_units.hpp>
 #include "test_util.hpp"
 
 using namespace mitama;
@@ -107,4 +108,132 @@ TEST_CASE("kilogram_t format tests",
     REQUIRE( fmt(1|kilograms) == "1 [kg]" );
     REQUIRE( fmt(1|milli*kilograms) == "1 [g]" );
     REQUIRE( fmt(1|micro*kilograms) == "1 [mg]" );
+}
+
+TEST_CASE("dose_equivalence format test",
+            "[quantity][abbreviation]")
+{
+    REQUIRE( fmt(1|sievert) == "1 [Sv]" );
+}
+
+TEST_CASE("activity format test",
+            "[quantity][abbreviation]")
+{
+    REQUIRE( fmt(1|becquerel) == "1 [Bq]" );
+}
+
+TEST_CASE("radian format test",
+            "[quantity][abbreviation]")
+{
+    REQUIRE( fmt(1|radian) == "1 [rad]" );
+}
+
+TEST_CASE("steradian format test",
+            "[quantity][abbreviation]")
+{
+    REQUIRE( fmt(1|steradian) == "1 [sr]" );
+}
+
+TEST_CASE("frequency format test",
+            "[quantity][abbreviation]")
+{
+    REQUIRE( fmt(1|hertz) == "1 [Hz]" );
+}
+
+TEST_CASE("force format test",
+            "[quantity][abbreviation]")
+{
+    REQUIRE( fmt(1|newton) == "1 [N]" );
+    REQUIRE( fmt(1|kilogram<> * meter<> * second<-2>) == "1 [N]" );
+}
+
+TEST_CASE("pressure format test",
+            "[quantity][abbreviation]")
+{
+    REQUIRE( fmt(1|pascal) == "1 [Pa]" );
+}
+
+TEST_CASE("energy format test",
+            "[quantity][abbreviation]")
+{
+    REQUIRE( fmt(1|joule) == "1 [J]" );
+}
+
+TEST_CASE("power format test",
+            "[quantity][abbreviation]")
+{
+    REQUIRE( fmt(1|watt) == "1 [W]" );
+}
+
+
+TEST_CASE("electric charge format test",
+            "[quantity][abbreviation]")
+{
+    REQUIRE( fmt(1|coulomb) == "1 [C]" );
+}
+
+TEST_CASE("electric potential format test",
+            "[quantity][abbreviation]")
+{
+    REQUIRE( fmt(1|volt) == "1 [V]" );
+}
+
+TEST_CASE("capacitance potential format test",
+            "[quantity][abbreviation]")
+{
+    REQUIRE( fmt(1|farad) == "1 [F]" );
+}
+
+TEST_CASE("resistance potential format test",
+            "[quantity][abbreviation]")
+{
+    REQUIRE( fmt(1|ohm) == "1 [Ω]" );
+}
+
+TEST_CASE("conductance format test",
+            "[quantity][abbreviation]")
+{
+    REQUIRE( fmt(1|siemens) == "1 [S]" );
+}
+
+TEST_CASE("magnetic flux format test",
+            "[quantity][abbreviation]")
+{
+    REQUIRE( fmt(1|weber) == "1 [Wb]" );
+}
+
+TEST_CASE("magnetic flux density format test",
+            "[quantity][abbreviation]")
+{
+    REQUIRE( fmt(1|tesla) == "1 [T]" );
+}
+
+TEST_CASE("inductance format test",
+            "[quantity][abbreviation]")
+{
+    REQUIRE( fmt(1|henry) == "1 [H]" );
+}
+
+TEST_CASE("luminous flux format test",
+            "[quantity][abbreviation]")
+{
+    REQUIRE( fmt(1|lumen) == "1 [lm]" );
+}
+
+TEST_CASE("illuminance flux format test",
+            "[quantity][abbreviation]")
+{
+    REQUIRE( fmt(1|lux) == "1 [lx]" );
+}
+
+TEST_CASE("absorbed dose format test",
+            "[quantity][abbreviation]")
+{
+    REQUIRE( fmt(1|gray) == "1 [Gy]" );
+}
+
+TEST_CASE("katalytic activity format test",
+            "[quantity][abbreviation]")
+{
+    REQUIRE( fmt(1|katal) == "1 [kat]" );
 }
