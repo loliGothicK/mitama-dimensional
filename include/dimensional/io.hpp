@@ -73,7 +73,7 @@ to_string(quantity_t<dimensional_t<Head, Tail...>, T> const &quantity) {
   using std::to_string;
   using namespace std::literals;
   return to_string(quantity.get()) + " [" + si_formatter<Head>::format() +
-         ((" "s + si_formatter<Tail>::format()) + ... + "]");
+         (("·"s + si_formatter<Tail>::format()) + ... + "]");
 }
 
 template <class D>
