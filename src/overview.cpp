@@ -151,13 +151,19 @@ int main(){
     {
         quantity_t a1 = refined<area_r> |= (2|meters) * (7|meters);
         REPL(a1);
+
         quantity_t a2 = refined<area_r> |= (2|millimeters) * (7|millimeters);
         REPL(a2);
+
         // error!
         // quantity_t a3 = refined<area_r> |= (2|millimeters);
+
+        quantity_t a3 = partial_refined<sym::M<>> |= (2|meters) * (2|meters) * (2|kilograms) / (2|second<2>);
+        REPL(a3);
     }
 
     {
         delta d = (2|meters) - (1|meters);
+        REPL(d + (1|meters));
     }
 }
