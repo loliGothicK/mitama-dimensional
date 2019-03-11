@@ -31,18 +31,19 @@ template <> struct symbol_<solid_angle> { static constexpr char str[] = "sr"; };
 struct dose_equivalence { using is_base_dimension = void; };
 using sievert_t = make_unit_t<dose_equivalence>;
 inline constexpr sievert_t sievert{};
-template <> struct symbol_<sievert_t> { static constexpr char str[] = "Sv"; };
+template <> struct symbol_<dose_equivalence> { static constexpr char str[] = "Sv"; };
 
 struct activity { using is_base_dimension = void; };
 using activity_t = make_unit_t<activity>;
 inline constexpr activity_t becquerel{};
-template <> struct symbol_<activity_t> { static constexpr char str[] = "Bq"; };
+template <> struct symbol_<activity> { static constexpr char str[] = "Bq"; };
 
 }
 
 namespace mitama {
 using frequency_t = powered_t<second_t, -1>;
 using force_t = decltype(kilogram<> * meter<> * second<-2>);
+using momentum_t = decltype(kilogram<> * meter<> * second<-1>);
 using pressure_t = decltype(kilogram<> * meter<-1> * second<-2>);
 using energy_t = decltype(kilogram<> * meter<2> * second<-2>);
 using power_t = decltype(kilogram<> * meter<2> * second<-3>);
@@ -62,6 +63,7 @@ using catalytic_activity_t = decltype(second<-1> * mol<>);
 
 inline constexpr frequency_t hertz{}; 
 inline constexpr force_t newton{}; 
+inline constexpr momentum_t momentum{};
 inline constexpr pressure_t pascal{}; 
 inline constexpr energy_t joule{}; 
 inline constexpr power_t watt{}; 
@@ -87,7 +89,8 @@ template <> struct abbreviation<power_t> { static constexpr char str[] = "W"; };
 template <> struct abbreviation<electric_charge_t> { static constexpr char str[] = "C"; };
 template <> struct abbreviation<electric_potential_t> { static constexpr char str[] = "V"; };
 template <> struct abbreviation<capacitance_t> { static constexpr char str[] = "F"; };
-template <> struct abbreviation<resistance_t> { static constexpr char str[] = "S"; };
+template <> struct abbreviation<resistance_t> { static constexpr char str[] = "Ω"; };
+template <> struct abbreviation<conductance_t> { static constexpr char str[] = "S"; };
 template <> struct abbreviation<magnetic_flux_t> { static constexpr char str[] = "Wb"; };
 template <> struct abbreviation<magnetic_flux_density_t> { static constexpr char str[] = "T"; };
 template <> struct abbreviation<inductance_t> { static constexpr char str[] = "H"; };
@@ -112,7 +115,7 @@ using electric_field_strength_t = decltype(volt / meters);
 using charge_density_t = decltype(coulomb / meter<3>);
 using electric_flux_density_t = decltype(coulomb / meter<2>);
 using permittivity_t = decltype(farad / meter<>);
-using magnetic_permeability_t = decltype(henry / meter<>);
+using permeability_t = decltype(henry / meter<>);
 using exposure_t = decltype(coulomb / kilogram<>);
 
 
