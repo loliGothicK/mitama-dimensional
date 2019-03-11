@@ -137,6 +137,70 @@ struct refinement_type<
 
 template <class... Requires>
 inline constexpr refinement_type<void, Requires...> refined{};
+
+
+template <class = void, class...> struct partial_refinement_type;
+
+template <class... Symbols>
+struct partial_refinement_type<
+    std::enable_if_t<(sym::is_refinement_symbol_v<Symbols> && ...)>,
+    Symbols...> {
+  template <class Q,
+            std::enable_if_t<std::conjunction_v<std::is_base_of<dimension_tag<typename Symbols::basis, typename Symbols::exp>, typename std::decay_t<Q>::dimension_type>...>,
+                bool> = false>
+  decltype(auto) operator()(Q &&q) const {
+    return std::forward<Q>(q);
+  }
+
+  template <class Q,
+            std::enable_if_t<!std::conjunction_v<std::is_base_of<dimension_tag<typename Symbols::basis, typename Symbols::exp>, typename std::decay_t<Q>::dimension_type>...>,
+                bool> = false>
+  decltype(auto) operator()(Q &&q) const = delete;
+
+  template <class Q,
+            std::enable_if_t<std::conjunction_v<std::is_base_of<dimension_tag<typename Symbols::basis, typename Symbols::exp>, typename std::decay_t<Q>::dimension_type>...>,
+                bool> = false>
+  decltype(auto) operator|=(Q &&q) const {
+    return std::forward<Q>(q);
+  }
+
+  template <class Q,
+            std::enable_if_t<!std::conjunction_v<std::is_base_of<dimension_tag<typename Symbols::basis, typename Symbols::exp>, typename std::decay_t<Q>::dimension_type>...>,
+                bool> = false>
+  decltype(auto) operator|=(Q &&q) const = delete;
+};
+
+template <template <class...> class Requires, class... Symbols>
+struct partial_refinement_type<
+    std::enable_if_t<(sym::is_refinement_symbol_v<Symbols> && ...)>,
+    Requires<Symbols...>> {
+  template <class Q,
+            std::enable_if_t<std::conjunction_v<std::is_base_of<dimension_tag<typename Symbols::basis, typename Symbols::exp>, typename std::decay_t<Q>::dimension_type>...>,
+                bool> = false>
+  decltype(auto) operator()(Q &&q) const {
+    return std::forward<Q>(q);
+  }
+
+  template <class Q,
+            std::enable_if_t<!std::conjunction_v<std::is_base_of<dimension_tag<typename Symbols::basis, typename Symbols::exp>, typename std::decay_t<Q>::dimension_type>...>,
+                bool> = false>
+  decltype(auto) operator()(Q &&q) const = delete;
+
+  template <class Q,
+            std::enable_if_t<std::conjunction_v<std::is_base_of<dimension_tag<typename Symbols::basis, typename Symbols::exp>, typename std::decay_t<Q>::dimension_type>...>,
+                bool> = false>
+  decltype(auto) operator|=(Q &&q) const {
+    return std::forward<Q>(q);
+  }
+
+  template <class Q,
+            std::enable_if_t<!std::conjunction_v<std::is_base_of<dimension_tag<typename Symbols::basis, typename Symbols::exp>, typename std::decay_t<Q>::dimension_type>...>,
+                bool> = false>
+  decltype(auto) operator|=(Q &&q) const = delete;
+};
+
+template <class... Requires>
+inline constexpr partial_refinement_type<void, Requires...> partial_refined{};
 } // namespace mitama
 
 namespace mitama {
