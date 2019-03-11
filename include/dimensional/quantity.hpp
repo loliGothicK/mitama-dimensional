@@ -230,6 +230,16 @@ public:
     return this->value_ >= mitamagic::converted_value<quantity_t>(o);
   }
 };
+template <class, class=void>
+class delta;
+
+template < class T >
+class delta<T, std::enable_if_t<is_dimensional_v<T>> {
+  T value_;
+public:
+  delta() = delete;
+  constexpr delta(T const& val): value_(val) {}
+};
 
 namespace mitamagic {
 template <class Dim> struct into_dimensional {
