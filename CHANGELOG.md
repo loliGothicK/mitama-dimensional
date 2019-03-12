@@ -49,8 +49,168 @@ int main(){
 
 ## v0.2.0
 
-作業予定
+### **破壊的変更**
 
-- 三角関数、逆三角関数
-- サンプルコードとして、ハリーポッターの通貨を実装する
-- 絶対零度以下の温度や、マイナスのカンデラなどをチェックできるように
+- dimensionalディレクトリ下にファイルを移動
+
+- バグ修正に伴って`<dimensional/comparison.hpp>`が削除、`quantity_t`のメンバ関数になった
+### **新機能**
+
+- `quantity<radian_t, T>`を引数に取る三角関数、`quantity<radian_t, T>`を返す逆三角関数の追加
+
+```cpp
+#include <diemnsional/quantity.hpp>
+#include <dimensional/math/trigonometric.hpp>
+
+int main() {
+    using mitama::quantity;
+
+    quantity<mitama::radian_t> rad = 3;
+    // 戻り値は単位なし
+    double res1 = sin(rad); // ADL
+    double res2 = cos(rad); // ADL
+    double res3 = tan(rad); // ADL
+
+    // 戻り値は単位付き
+    quantity<mitama::radian_t> rad1 = mitama::asin(rad); // ADL不可能
+    quantity<mitama::radian_t> rad2 = mitama::acos(rad); // ADL不可能
+    quantity<mitama::radian_t> rad3 = mitama::atan(rad); // ADL不可能
+
+}
+```
+
+- `quantity_t`に`validate()`メンバ関数を実装
+
+```cpp
+#include <diemnsional/quantity.hpp>
+#include <dimensional/si/all.hpp>
+
+int main(){
+    using mitama::quantity;
+
+    auto validator = [](auto v) -> std::optional<decltype(v)> {
+        if (v.get() < 0)
+            return std::nullopt;
+        else
+            return std::optional(v);
+    };
+
+    quantity<mitama::meter_t> length = -1; // おっと、負の長さ！
+
+    if (auto opt = length.validate(validator); opt)
+    { // OK
+        opt.value(); // 値を使う
+    }
+    else
+    { // NG
+        throw std::runtime_error("error: negative length");
+    }
+}
+```
+
+### **ドキュメント・サンプルコード**
+
+- サンプルコードとして、ハリーポッターの通貨を実装
+
+基本次元クラスを独自に定義する方法がわかるサンプルを作りました。
+
+[`src/wizarding-currency/wizarding_currency.hpp`](src/wizarding-currency/wizarding_currency.hpp)
+
+### **バグ修正**
+
+- 絶対温度とセルシウス温度の比較に対応するように比較演算子を修正（quantityのメンバ関数になったため、`<dimensional/comparison.hpp>`は削除）
+
+- 単位のフォーマット形式を`value [ units ]`から`value [units]`に修正（`[]`の中のスペースを消した）
+
+- `make_unit_t`のスケールの処理が掛け算されていなかったのを修正
+
+- 式木とquantityの四則演算のオーバーロードの曖昧性を修正
+
+
+## v3.0.0
+### **新機能**
+
+- metre(meter), litre(liter)などイギリス（フランス？）綴りの追加
+
+- 定義済みSI誘導単位の追加（120個ほど）
+
+`<dimensional/derived_units/named_units.hpp>`を参照してくれ。
+
+- `refinement` 型
+
+`quantity`型の単位を推論しつつ、目的にそった次元を持つことをコンパイル時に保証させることができる機能。
+
+次は`(2|meters) * (7|meters)`という量が面積（L^2）の次元を**完全に**持っていなければコンパイルエラーになる。
+`m^2`は`L^2`の次元であるので、このコードはrefinement（篩）を通過しコンパイルできる。
+
+```cpp
+quantity_t a1 = refined<area_r> |= (2|meters) * (7|meters);
+```
+
+単位まで指定する場合はつぎのように書くべきである。
+単位が違った場合には自動的な単位変換が行われる点で異なる。
+
+```cpp
+quantity<meter_t, int> a1 = (2|meters) * (7|meters);
+```
+
+`refined`は次元のみを検査し、単位までは検査しない。
+
+
+
+つぎの例は、コンパイルが通らない。
+`m`は`L`の次元であり、`L^2`ではないからである。
+
+```cpp
+quantity_t a3 = refined<area_r> |= (2|millimeters); // error!
+```
+
+次は`(2|meters) * (2|meters) * (2|kilograms) / (2|second<2>)`という量が質量（M）の次元を**部分的に**持っていなければコンパイルエラーになる。
+
+```cpp
+quantity_t a3 = partial_refined<sym::M<>> |= (2|meters) * (2|meters) * (2|kilograms) / (2|second<2>);
+```
+
+- `delta<T>` 型（partial suport）
+
+温度の足し算には変換が必要である。
+しかし、絶対温度にセルシウス温度の温度差を足す場合には変換は必要がない。
+型上で**差**を表す必要があるような雰囲気である。
+
+入れ物だけ用意した、細かい実装は次のリリースで。
+
+```cpp
+// 温度差を表す
+delta d = (22|kelvins) * (2|kelvins);
+```
+
+- 度数法のサポート
+
+`<dimensional/derived_units/nonsi_units/nonsi_dgree_angle.hpp>`
+
+```cpp
+#include <dimensional/quantity.hpp>
+#include <dimensional/nonsi_units/nonsi_dgree_angle.hpp>
+#include <dimensional/derived_units/named_units.hpp>
+
+int main() {
+    // 相互変換可能
+    mitama::quantity<dgree_angle_t> c = 180;
+    mitama::quantity<radian_t> r = c; // pi [rad]
+}
+```
+
+### バグ修正
+
+- critical: 次元演算のコア部分のメタプログラミングのバグを修正
+
+### コントリビューター
+
+- [yo-kanyukari](https://github.com/yo-kanyukari): 度数法のサポート
+
+## v0.4.0
+
+リリース予定
+
+- フォーマットの向上をはかるため`opaque alias`を導入
+- SI単位の定義値、CODATA推奨値定数のサポート
