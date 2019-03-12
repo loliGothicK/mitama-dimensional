@@ -175,7 +175,7 @@ TEST_CASE("electric charge format test",
 TEST_CASE("electric potential format test",
             "[quantity][abbreviation]")
 {
-    REQUIRE( fmt(1|volt) == "1 [V]" );
+    REQUIRE( fmt(1|volt<1>) == "1 [V]" );
 }
 
 TEST_CASE("capacitance potential format test",
