@@ -13,6 +13,8 @@ template <class T> inline constexpr bool is_complete_type_v = is_complete_type<T
 }
 // Type List Modules
 namespace mitama::mitamagic {
+template <class T> struct guardian_t { using type = T; };
+
 template < class... > inline constexpr bool always_false_v = false;
 
 template <class> struct is_rational : std::false_type {};
@@ -28,7 +30,10 @@ using ratio_max = std::conditional_t<std::ratio_greater_v<R1, R2>, R1, R2>;
 template <class R1, class R2>
 using ratio_min = std::conditional_t<std::ratio_less_v<R1, R2>, R1, R2>;
 
-template <class...> struct type_list {}; // Type List
+template <class... Elems> struct type_list: private Elems... {}; // Type List
+
+template < class T, class TypeList >
+inline constexpr bool tlist_containts_v = std::is_base_of_v<T, TypeList>;
 
 template <class...> struct tlist_cat; // List concatenate: primary
 
@@ -76,8 +81,8 @@ template <template <class> class Pred, template <class...> class tPack,
 struct tlist_filter_impl<Pred, tPack<Head, Tail...>, tPack<Result...>>
     : std::conditional_t<
           Pred<Head>::value,
-          tlist_filter_impl<Pred, tPack<Tail...>, tPack<Result...>>,
-          tlist_filter_impl<Pred, tPack<Tail...>, tPack<Result..., Head>>> {};
+          tlist_filter_impl<Pred, tPack<Tail...>, tPack<Result..., Head>>,
+          tlist_filter_impl<Pred, tPack<Tail...>, tPack<Result...>>> {};
 
 template <template <class> class Pred, template <class...> class Pack,
           class... Result>
@@ -122,5 +127,53 @@ struct repack<Pack, _<Elems...>> {
 
 template <template <class...> class P, class P_>
 using repack_t = typename repack<P, P_>::type;
+
+template <template <class> class, class, class> struct tlist_remove_if_impl;
+
+template <template <class> class Pred, template <class...> class tPack,
+          class... Result, class Head, class... Tail>
+struct tlist_remove_if_impl<Pred, tPack<Head, Tail...>, tPack<Result...>>
+    : std::conditional_t<
+          Pred<Head>::value,
+          tlist_remove_if_impl<Pred, tPack<Tail...>, tPack<Result...>>,
+          tlist_remove_if_impl<Pred, tPack<Tail...>, tPack<Result..., Head>>> {};
+
+template <template <class> class Pred, template <class...> class Pack,
+          class... Result>
+struct tlist_remove_if_impl<Pred, Pack<>, Pack<Result...>>
+    : guardian_t<Pack<Result...>> {};
+
+template <template <class> class, class> struct tlist_remove_if;
+
+template <template <class> class Pred, template <class...> class Pack,
+          class... Types>
+struct tlist_remove_if<Pred, Pack<Types...>>
+    : guardian_t<typename tlist_remove_if_impl<
+          Pred, Pack<Types...>, Pack<>>::type> {};
+
+template <template <class> class Pred, class Pack>
+using tlist_remove_if_t = typename tlist_remove_if<Pred, Pack>::type;
+
+struct npos_t{};
+
+template < template <class> class, class >
+struct tlist_find_if;
+
+template < template <class> class Pred, template <class...> class Pack, class Head, class... Tail >
+struct tlist_find_if<Pred, Pack<Head, Tail...>>
+    : std::conditional_t<
+      Pred<Head>::value,
+      guardian_t<Head>,
+      tlist_find_if<Pred, Pack<Tail...>>
+    >
+{};
+
+template < template <class> class Pred, template <class...> class Pack >
+struct tlist_find_if<Pred, Pack<>>
+    : guardian_t<npos_t>
+{};
+
+template < template <class> class Pred, class Pack >
+using tlist_find_if_t = typename tlist_find_if<Pred, Pack>::type;
 
 } // namespace mitama::mitamagic
