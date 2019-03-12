@@ -31,37 +31,6 @@ using day_t = scaled_unit_t<hour_t, std::ratio<24>>;
 inline constexpr day_t days{};
 }
 
-// Kinematic SI derived units
-namespace mitama {
-using velocity_t = decltype(meters / seconds);
-inline constexpr velocity_t velocity{};
-
-using speed_t = decltype(kilometers / hours);
-inline constexpr speed_t speed{};
-
-using accelaration_t = decltype(meters * second<-2>);
-inline constexpr accelaration_t accelaration{};
-
-using jerk_t = decltype(meters * second<-3>);
-inline constexpr jerk_t jerk{};
-
-using snap_t = decltype(meters * second<-4>);
-inline constexpr snap_t snap{};
-
-using crackle_t = decltype(meters * second<-5>);
-inline constexpr crackle_t crackle{};
-
-using pop_t = decltype(meters * second<-6>);
-inline constexpr pop_t pop{};
-
-using frequency_drift_t = decltype(frequency_t{} / second<>);
-inline constexpr frequency_drift_t frequency_drift{};
-
-using volumetric_flow_t = decltype(meter<3> / second<>);
-inline constexpr volumetric_flow_t volumetric_flow{};
-}
-
-
 // Named units derived from SI base units
 namespace mitama {
 struct angle { using is_base_dimension = void; };
@@ -109,7 +78,8 @@ inline constexpr electric_charge_t coulomb{};
 template <> struct abbreviation<electric_charge_t> { static constexpr char str[] = "C"; };
 
 using electric_potential_t = decltype(kilogram<> * meter<2> * second<-3> * ampere<-1>);
-inline constexpr electric_potential_t volt{}; 
+template < std::intmax_t N >
+inline constexpr powered_t<electric_potential_t, N> volt{}; 
 template <> struct abbreviation<electric_potential_t> { static constexpr char str[] = "V"; };
 
 using capacitance_t = decltype(kilogram<-1> * meter<-2> * second<4> * ampere<2>);
@@ -153,6 +123,37 @@ inline constexpr catalytic_activity_t katal{};
 template <> struct abbreviation<catalytic_activity_t> { static constexpr char str[] = "kat"; };
 }
 
+// Kinematic SI derived units
+namespace mitama {
+using velocity_t = decltype(meters / seconds);
+inline constexpr velocity_t velocity{};
+
+using speed_t = decltype(kilometers / hours);
+inline constexpr speed_t speed{};
+
+using accelaration_t = decltype(meters * second<-2>);
+inline constexpr accelaration_t accelaration{};
+
+using jerk_t = decltype(meters * second<-3>);
+inline constexpr jerk_t jerk{};
+
+using snap_t = decltype(meters * second<-4>);
+inline constexpr snap_t snap{};
+
+using crackle_t = decltype(meters * second<-5>);
+inline constexpr crackle_t crackle{};
+
+using pop_t = decltype(meters * second<-6>);
+inline constexpr pop_t pop{};
+
+using frequency_drift_t = decltype(frequency_t{} / second<>);
+inline constexpr frequency_drift_t frequency_drift{};
+
+using volumetric_flow_t = decltype(meter<3> / second<>);
+inline constexpr volumetric_flow_t volumetric_flow{};
+}
+
+
 // Mechanical SI derived units
 namespace mitama {
 using area_t = powered_t<meter_t, 2>;
@@ -176,7 +177,7 @@ inline constexpr wavenumber_t wavenumber{};
 using optical_power_t = reciprocal_t<meter_t>;
 inline constexpr optical_power_t optical_power{};
 
-using curvature_t reciprocal_t<meter_t>;
+using curvature_t = reciprocal_t<meter_t>;
 inline constexpr curvature_t curvature{};
 
 using spatial_t = reciprocal_t<meter_t>;
@@ -196,11 +197,13 @@ inline constexpr action_t action{};
 
 using specific_energy_t = decltype(joule / kilogram<>);
 inline constexpr specific_energy_t specific_energy{};
-template <> struct abbreviation<specific_energy_t> { static constexpr char str[] = "J/kg"; };
+// duplicates with absobed dose [Gy, m^2/s^2] 
+// template <> struct abbreviation<specific_energy_t> { static constexpr char str[] = "J/kg"; };
 
 using energy_density_t = decltype(joule / meter<3>);
 inline constexpr energy_density_t energy_density{};
-template <> struct abbreviation<energy_density_t> { static constexpr char str[] = "J/m^3"; };
+// duplicates with pressure [Pa] 
+// template <> struct abbreviation<energy_density_t> { static constexpr char str[] = "J/m^3"; };
 
 using surf_tension_t = decltype(newton / meter<>);
 inline constexpr surf_tension_t surf_tension{};
@@ -228,11 +231,11 @@ inline constexpr linear_mass_density_t linear_mass_density{};
 using mass_flow_rate_t = decltype(kilogram<> / second<>);
 inline constexpr mass_flow_rate_t mass_flow_rate{};
 
-using radiance_t = decltype( watt / (steradian * meter<2>) );
+using radiance_t = decltype( watt / steradian * meter<-2> );
 inline constexpr radiance_t radiance{};
 template <> struct abbreviation<radiance_t> { static constexpr char str[] = "W/(sr⋅m^2)"; };
 
-using spectral_radiance_t = decltype( watt / (steradian * meter<3>) );
+using spectral_radiance_t = decltype( watt / steradian * meter<-3> );
 inline constexpr spectral_radiance_t spectral_radiance{};
 template <> struct abbreviation<spectral_radiance_t> { static constexpr char str[] = "W/(sr⋅m^3)"; };
 
@@ -253,7 +256,7 @@ using power_density_t = decltype(watt / meter<3>);
 inline constexpr power_density_t power_density{};
 template <> struct abbreviation<power_density_t> { static constexpr char str[] = "W/m^3"; };
 
-using energy_flux_density_t = decltype( joule / (meter<2> * second<>) );
+using energy_flux_density_t = decltype( joule * meter<-2> * second<-1> );
 inline constexpr energy_flux_density_t energy_flux_density{};
 template <> struct abbreviation<energy_flux_density_t> { static constexpr char str[] = "J/(m^2⋅s)"; };
 
@@ -263,20 +266,22 @@ template <> struct abbreviation<compressibility_t> { static constexpr char str[]
 
 using radiant_exposure_t = decltype(joule / meter<2>);
 inline constexpr radiant_exposure_t radiant_exposure{};
-template <> struct abbreviation<radiant_exposure_t> { static constexpr char str[] = "J/m^2"; };
+// duplicates with surface tension [N/m, kg/s^2] 
+// template <> struct abbreviation<radiant_exposure_t> { static constexpr char str[] = "J/m^2"; };
 
 using moment_of_inertia_t = decltype(kilogram<> * meter<2>);
 inline constexpr moment_of_inertia_t moment_of_inertia{};
 
 using specific_angular_momentum_t = decltype(meter<2> * second<-1>);
 inline constexpr specific_angular_momentum_t specific_angular_momentum{};
+template <> struct abbreviation<specific_angular_momentum_t> { static constexpr char str[] = "N⋅m⋅s/kg"; };
 
-using specific_angular_momentum_t = decltype(watt / steradian);
-inline constexpr specific_angular_momentum_t specific_angular_momentum{};
-template <> struct abbreviation<specific_angular_momentum_t> { static constexpr char str[] = "W/sr"; };
+using radiant_intensity_t = decltype(watt / steradian);
+inline constexpr radiant_intensity_t radiant_intensity{};
+template <> struct abbreviation<radiant_intensity_t> { static constexpr char str[] = "W/sr"; };
 
-using spectral_intensity_t = decltype( watt / (steradian * meter<>) );
-inline constexpr spectral_intensity_t specific_angular_momentum{};
+using spectral_intensity_t = decltype( watt / steradian * meter<-1> );
+inline constexpr spectral_intensity_t spectral_intensity{};
 template <> struct abbreviation<spectral_intensity_t> { static constexpr char str[] = "W/(sr⋅m)"; };
 
 
@@ -312,7 +317,7 @@ template <> struct abbreviation<molar_entropy_t> { static constexpr char str[] =
 
 using molar_energy_t = decltype(joule / mol<>);
 inline constexpr molar_energy_t molar_energy{};
-template <> struct abbreviation<angular_accelaration_t> { static constexpr char str[] = "J/mol"; };
+template <> struct abbreviation<molar_energy_t> { static constexpr char str[] = "J/mol"; };
 
 using molar_conductivity_t = decltype(siemens * meter<2> / mol<>);
 inline constexpr molar_conductivity_t molar_conductivity{};
@@ -345,7 +350,7 @@ template <> struct abbreviation<electric_charge_density_t> { static constexpr ch
 using charge_density_t = decltype(coulomb / meter<3>);
 inline constexpr electric_charge_density_t charge_density{};
 
-using electric_current_density_t = decltype(ampere / meter<2>);
+using electric_current_density_t = decltype(ampere<> / meter<2>);
 inline constexpr electric_current_density_t electric_current_density{};
 
 using electrical_conductivity_t = decltype(siemens / meter<>);
@@ -360,7 +365,7 @@ using permeability_t = decltype(henry / meter<>);
 inline constexpr permeability_t permeability{};
 template <> struct abbreviation<permeability_t> { static constexpr char str[] = "H/m"; };
 
-using electric_field_strength_t = decltype(volt / meters);
+using electric_field_strength_t = decltype(volt<1> / meters);
 inline constexpr electric_field_strength_t electric_field_strength{};
 template <> struct abbreviation<electric_field_strength_t> { static constexpr char str[] = "V/m"; };
 
@@ -384,13 +389,13 @@ template <> struct abbreviation<linear_charge_density_t> { static constexpr char
 
 using magnetic_dipole_moment_t = decltype(joule / tesla);
 inline constexpr magnetic_dipole_moment_t magnetic_dipole_moment{};
-template <> struct abbreviation<magnetic_dipole_moment_t> { static constexpr char str[] = "J/T"; };
+// template <> struct abbreviation<magnetic_dipole_moment_t> { static constexpr char str[] = "J/T"; };
 
-using electron_mobility_t = decltype( meter<2> / (volt * second<>) );
-inline constexpr electron_mobility_t electron_mobility{};
-template <> struct abbreviation<electron_mobility_t> { static constexpr char str[] = "m^2/(V⋅s)"; };
+// using electron_mobility_t = decltype( meter<2> * volt<-1> * second<-1> );
+// inline constexpr electron_mobility_t electron_mobility{};
+// template <> struct abbreviation<electron_mobility_t> { static constexpr char str[] = "m^2/(V⋅s)"; };
 
-using magnetic_reluctance_t = reciprocal_t<henry_t>;
+using magnetic_reluctance_t = reciprocal_t<inductance_t>;
 inline constexpr magnetic_reluctance_t magnetic_reluctance{};
 template <> struct abbreviation<magnetic_reluctance_t> { static constexpr char str[] = "H^-1"; };
 
@@ -424,7 +429,7 @@ using luminous_exposure_t = decltype(lux * second<>);
 inline constexpr luminous_exposure_t luminous_exposure{};
 template <> struct abbreviation<luminous_exposure_t> { static constexpr char str[] = "lx⋅s"; };
 
-using luminance_t = decltype(candela / meter<2>);
+using luminance_t = decltype(candela<> * meter<-2>);
 inline constexpr luminance_t luminance{};
 template <> struct abbreviation<luminance_t> { static constexpr char str[] = "lx⋅s"; };
 
@@ -441,23 +446,23 @@ using entropy_t = decltype(joule / kelvins);
 inline constexpr entropy_t entropy{};
 template <> struct abbreviation<entropy_t> { static constexpr char str[] = "J/K"; };
 
-using specific_heat_capacity_t = decltype( joule / (kilograms * kelvins) );
+using specific_heat_capacity_t = decltype( joule * kilogram<-1> * kelvin<-1> );
 inline constexpr specific_heat_capacity_t specific_heat_capacity{};
 using specific_entropy_t = decltype( joule / (kilograms * kelvins) );
 inline constexpr specific_entropy_t specific_entropy{};
 template <> struct abbreviation<specific_heat_capacity_t> { static constexpr char str[] = "J/(kg·K)"; };
 
-using thermal_conductivity_t = decltype( watt / (meters * kelvins) );
+using thermal_conductivity_t = decltype( watt * meter<-1> * kelvin<-1> );
 inline constexpr thermal_conductivity_t thermal_conductivity{};
 template <> struct abbreviation<thermal_conductivity_t> { static constexpr char str[] = "W/(m·K)"; };
 
-using heat_flux_t = decltype(watt * meter<-2>);
-inline constexpr heat_flux_t heat_flux{};
-template <> struct abbreviation<heat_flux_t> { static constexpr char str[] = "W/m^2"; };
+// using heat_flux_t = decltype(watt * meter<-2>);
+// inline constexpr heat_flux_t heat_flux{};
+// template <> struct abbreviation<heat_flux_t> { static constexpr char str[] = "W/m^2"; };
 
-using thermal_resistance_t = decltype(kelvin<> / watt);
-inline constexpr thermal_resistance_t thermal_resistance{};
-template <> struct abbreviation<heat_flux_t> { static constexpr char str[] = "K/W"; };
+// using thermal_resistance_t = decltype(kelvin<> / watt);
+// inline constexpr thermal_resistance_t thermal_resistance{};
+// template <> struct abbreviation<thermal_resistance_t> { static constexpr char str[] = "K/W"; };
 
 using thermal_expansion_coefficient_t = reciprocal_t<kelvin_t>;
 inline constexpr thermal_expansion_coefficient_t thermal_expansion_coefficient{};
