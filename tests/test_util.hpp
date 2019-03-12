@@ -22,6 +22,12 @@ namespace test_util {
   class RandomGenerator {
     ValueType lower, upper;
     mutable std::size_t limit;
+
+    template < class Pred, class Dist, class Engine, std::size_t... Indices >
+    static auto invoke(Pred&& pred, Dist& dist, Engine& engine, std::index_sequence<Indices...>) -> bool {
+      return std::forward<Pred>(pred)((void(Indices), dist(engine))...);
+    }
+
   public:
     RandomGenerator(ValueType a, ValueType b): lower(a), upper(b) {}
 
@@ -40,39 +46,17 @@ namespace test_util {
       std::mt19937_64 mt(std::random_device{}());
       if constexpr (std::is_integral_v<ValueType>){
         std::uniform_int_distribution<ValueType> dist(lower, upper);
-        if constexpr (N==1) {
-          while (bool(limit--) && res) {
-            res = pred(dist(mt));
-          }
-          return res;
+        while (bool(limit--) && res) {
+          res = invoke(std::forward<Pred>(pred), dist, mt, std::make_index_sequence<N>{});
         }
-        else if constexpr (N==2) {
-          while (bool(limit--) && res) {
-            res = pred(dist(mt), dist(mt));
-          }
-          return res;
-        }
-        else {
-          return false;
-        }
+        return res;
       }
       else if constexpr (std::is_floating_point_v<ValueType>){
         std::uniform_real_distribution<ValueType> dist(lower, upper);
-        if constexpr (N==1) {
-          while (bool(limit--) && res) {
-            res = pred(dist(mt));
-          }
-          return res;
+        while (bool(limit--) && res) {
+          res = invoke(std::forward<Pred>(pred), dist, mt, std::make_index_sequence<N>{});
         }
-        else if constexpr (N==2) {
-          while (bool(limit--) && res) {
-            res = pred(dist(mt), dist(mt));
-          }
-          return res;
-        }
-        else {
-          return false;
-        }
+        return res;
       }
       else {
         return false;

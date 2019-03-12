@@ -155,14 +155,14 @@ struct inverse<dimensional_t<Units...>> { // invoke to mitamagic::inversed
 // alias template for inverse
 template <class T> using inverse_t = typename inverse<T>::type;
 
-// meta-operator for product with two same dimensions
+// meta-operator for reduce with two same dimensions
 // parimary template
-template <class, class> struct product { using type = void; };
+template <class, class> struct reduce { using type = void; };
 
-// meta-operator for product with two same dimensions
+// meta-operator for reduce with two same dimensions
 // partial template specialization for phantom_t
 template <class D, class Exp1, class Exp2, class S1, class S2>
-struct product<units_t<D, Exp1, S1>, units_t<D, Exp2, S2>> {
+struct reduce<units_t<D, Exp1, S1>, units_t<D, Exp2, S2>> {
   using type = std::conditional_t<
       std::ratio_equal_v<std::ratio_add<Exp1, Exp2>, std::ratio<0>>,
       dimensionless<dimension_tag<D, ratio_max<Exp1, Exp2>>>,
@@ -178,7 +178,7 @@ struct quotient_<SP, type_list<Head, Tail...>,
                                         typename Head::dimension_type>,
                          quotient_<SP, type_list<>,
                                   type_list<Remainders..., Tail...>,
-                                  typename product<SP, Head>::type>,
+                                  typename reduce<SP, Head>::type>,
                          quotient_<SP, type_list<Tail...>,
                                   type_list<Remainders..., Head>>> {};
 
@@ -186,7 +186,7 @@ template <class SP, class Inter, class... Tail, class... Remainders>
 struct quotient_<SP, type_list<Tail...>, type_list<Remainders...>,
                 Inter> {
   using result = type_list<Inter>;
-  using remainder = type_list<Tail...>;
+  using remainder = type_list<Tail..., Remainders...>;
 };
 
 template <class SP, class... Remainders>
@@ -198,15 +198,14 @@ struct quotient_<SP, type_list<>, type_list<Remainders...>> {
 template <class, class, class> struct quotient_impl;
 
 template <class Head, class... Tail, class... R, class... Results>
-struct quotient_impl<type_list<Head, Tail...>, type_list<R...>,type_list<Results...>>
+struct quotient_impl<type_list<Head, Tail...>, type_list<R...>, type_list<Results...>>
     : quotient_impl<type_list<Tail...>,
-                   typename quotient_<Head, type_list<R...>,
-                                     type_list<>>::remainder,
-                   mitamagic::tlist_cat_t<
-                       type_list<Results...>,
-                       typename quotient_<Head, type_list<R...>,
-                                         type_list<>>::result>> {};
-
+                    typename quotient_<Head, type_list<R...>,
+                                       type_list<>>::remainder,
+                    mitamagic::tlist_cat_t<
+                        type_list<Results...>,
+                        typename quotient_<Head, type_list<R...>,
+                                           type_list<>>::result>> {};
 
 template <class... R, class... Results>
 struct quotient_impl<type_list<>, type_list<R...>, type_list<Results...>> {
@@ -222,11 +221,14 @@ template <class... LeftPhantomTypes,
           class... RightPhantomTypes>
 struct quotient<dimensional_t<LeftPhantomTypes...>,
                 dimensional_t<RightPhantomTypes...>> {
-  using type = typename mitamagic::quotient_impl<
-      mitamagic::type_list<LeftPhantomTypes...>,
-      mitamagic::type_list<RightPhantomTypes...>,
-      mitamagic::type_list<>
-    >::result_type;
+  using type = 
+    mitamagic::tlist_remove_if_t<
+      is_dimensionless_type,
+      typename mitamagic::quotient_impl<
+        mitamagic::type_list<LeftPhantomTypes...>,
+        mitamagic::type_list<RightPhantomTypes...>,
+        mitamagic::type_list<>
+      >::result_type>;
 };
 
 template <class, class> struct powered_dimensional;
@@ -245,10 +247,16 @@ template <class L, class R> using quotient_t = typename quotient<L, R>::type;
 } // namespace mitama::mitamagic
 
 namespace mitama {
+
 template <class U, std::intmax_t N>
 using powered_t =
     typename mitamagic::powered_dimensional<U, std::ratio<N>>::type;
+
+template < class U >
+using reciprocal_t = powered_t<U, -1>;
+
 }
+
 
 namespace mitama::mitamagic {
 template <class> struct is_dimensionless : std::false_type {};

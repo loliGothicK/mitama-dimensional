@@ -81,8 +81,6 @@ int main(){
         {
             auto w = 36 | kilogram<> * meter<2> * second<-2> * ampere<-1>;
             std::cout << boost::typeindex::type_id<decltype(w)>().pretty_name() << std::endl;
-            // auto refined_ = refined<sym::L<>,sym::T<-1>>(w).get();
-            // std::cout << refined_ << std::endl;
         }
         using newton_t = decltype(kilogram<> * meter<> * second<-2>);
         quantity<newton_t> N = (1.0|kilograms) * V / (2|seconds);
@@ -151,4 +149,22 @@ int main(){
         REPL(hoge);
     }
 
+    {
+        quantity_t a1 = refined<area_r> |= (2|meters) * (7|meters);
+        REPL(a1);
+
+        quantity_t a2 = refined<area_r> |= (2|millimeters) * (7|millimeters);
+        REPL(a2);
+
+        // error!
+        // quantity_t a3 = refined<area_r> |= (2|millimeters);
+
+        quantity_t a3 = partial_refined<sym::M<>> |= (2|meters) * (2|meters) * (2|kilograms) / (2|second<2>);
+        REPL(a3);
+    }
+
+    {
+        delta d = (2|meters) - (1|meters);
+        REPL(d + (1|meters));
+    }
 }

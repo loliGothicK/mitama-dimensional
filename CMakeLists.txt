@@ -23,6 +23,8 @@ set(sources
   tests/arithmetic-tests.cpp
   tests/derived-unit-tests.cpp
   tests/math-tests.cpp
+  tests/delta-tests.cpp
+  tests/symbol-io-tests.cpp
 )
 add_executable(${target} ${sources})
 message(STATUS "Building library ${target}...")

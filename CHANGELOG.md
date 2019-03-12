@@ -127,10 +127,90 @@ int main(){
 - 式木とquantityの四則演算のオーバーロードの曖昧性を修正
 
 
-## v0.3.0
+## v3.0.0
+### **新機能**
+
+- metre(meter), litre(liter)などイギリス（フランス？）綴りの追加
+
+- 定義済みSI誘導単位の追加（120個ほど）
+
+`<dimensional/derived_units/named_units.hpp>`を参照してくれ。
+
+- `refinement` 型
+
+`quantity`型の単位を推論しつつ、目的にそった次元を持つことをコンパイル時に保証させることができる機能。
+
+次は`(2|meters) * (7|meters)`という量が面積（L^2）の次元を**完全に**持っていなければコンパイルエラーになる。
+`m^2`は`L^2`の次元であるので、このコードはrefinement（篩）を通過しコンパイルできる。
+
+```cpp
+quantity_t a1 = refined<area_r> |= (2|meters) * (7|meters);
+```
+
+単位まで指定する場合はつぎのように書くべきである。
+単位が違った場合には自動的な単位変換が行われる点で異なる。
+
+```cpp
+quantity<meter_t, int> a1 = (2|meters) * (7|meters);
+```
+
+`refined`は次元のみを検査し、単位までは検査しない。
+
+
+
+つぎの例は、コンパイルが通らない。
+`m`は`L`の次元であり、`L^2`ではないからである。
+
+```cpp
+quantity_t a3 = refined<area_r> |= (2|millimeters); // error!
+```
+
+次は`(2|meters) * (2|meters) * (2|kilograms) / (2|second<2>)`という量が質量（M）の次元を**部分的に**持っていなければコンパイルエラーになる。
+
+```cpp
+quantity_t a3 = partial_refined<sym::M<>> |= (2|meters) * (2|meters) * (2|kilograms) / (2|second<2>);
+```
+
+- `delta<T>` 型（partial suport）
+
+温度の足し算には変換が必要である。
+しかし、絶対温度にセルシウス温度の温度差を足す場合には変換は必要がない。
+型上で**差**を表す必要があるような雰囲気である。
+
+入れ物だけ用意した、細かい実装は次のリリースで。
+
+```cpp
+// 温度差を表す
+delta d = (22|kelvins) * (2|kelvins);
+```
+
+- 度数法のサポート
+
+`<dimensional/derived_units/nonsi_units/nonsi_dgree_angle.hpp>`
+
+```cpp
+#include <dimensional/quantity.hpp>
+#include <dimensional/nonsi_units/nonsi_dgree_angle.hpp>
+#include <dimensional/derived_units/named_units.hpp>
+
+int main() {
+    // 相互変換可能
+    mitama::quantity<dgree_angle_t> c = 180;
+    mitama::quantity<radian_t> r = c; // pi [rad]
+}
+```
+
+### バグ修正
+
+- critical: 次元演算のコア部分のメタプログラミングのバグを修正
+
+### コントリビューター
+
+- [yo-kanyukari](https://github.com/yo-kanyukari): 度数法のサポート
+
+## v0.4.0
 
 リリース予定
 
-- 温度差などを型上で表せるdelta型
-- SI単位系のよく使う単位の整備
-- 度数法のサポート
+- フォーマットの向上をはかるため`opaque alias`を導入
+- SI単位の定義値、CODATA推奨値定数のサポート

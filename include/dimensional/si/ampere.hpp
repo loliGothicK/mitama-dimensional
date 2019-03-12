@@ -15,6 +15,7 @@ using nanoampere_t = scaled_unit_t<ampere_t, std::nano>;
 
 using kiloampere_t = scaled_unit_t<ampere_t, std::kilo>;
 using megaampere_t = scaled_unit_t<ampere_t, std::mega>;
+using teraampere_t = scaled_unit_t<ampere_t, std::tera>;
 
 inline constexpr ampere_t amperes{};
 

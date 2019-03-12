@@ -4,7 +4,6 @@
 #include <type_traits>
 
 namespace mitama::mitamagic {
-template <class T> struct guardian_t { using type = T; };
 template <class T, class... Types>
 inline constexpr std::size_t dimension_count_v =
     (static_cast<std::size_t>(std::is_same_v<typename T::dimension_type,
