@@ -7,6 +7,7 @@
 #include "test_util.hpp"
 
 using namespace mitama;
+using namespace mitama::si;
 
 TEMPLATE_TEST_CASE("arithmetic for same dimension",
                    "[quantity][arithmetic]",
@@ -186,7 +187,7 @@ TEMPLATE_TEST_CASE("second_t multiply",
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a*b)>,
         quantity_t<dimensional_t<
-            units_t<mitama::time, std::ratio<1>, std::ratio<1>>,
+            units_t<mitama::si::time, std::ratio<1>, std::ratio<1>>,
             units_t<typename basis_<TestType>::template type<0>, std::ratio<1>, std::ratio<1>>
         >, int>>);
 }
@@ -298,7 +299,7 @@ TEMPLATE_TEST_CASE("second_t division",
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a/b)>,
         quantity_t<dimensional_t<
-            units_t<mitama::time, std::ratio<1>, std::ratio<1>>,
+            units_t<mitama::si::time, std::ratio<1>, std::ratio<1>>,
             units_t<typename basis_<TestType>::template type<0>, std::ratio<-1>, std::ratio<1>>
         >, double>>);
 }
