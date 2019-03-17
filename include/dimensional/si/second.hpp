@@ -2,7 +2,7 @@
 #include "../units.hpp"
 #include "../quotient.hpp"
 
-namespace mitama {
+namespace mitama::si {
 
 struct time {
     using is_base_dimension = void;

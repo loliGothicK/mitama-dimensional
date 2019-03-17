@@ -2,7 +2,7 @@
 #include "../units.hpp"
 #include "../quotient.hpp"
 
-namespace mitama {
+namespace mitama::si {
 // base dimesnion
 struct amount_of_substance {
     using is_base_dimension = void;
