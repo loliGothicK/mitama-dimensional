@@ -12,6 +12,8 @@
 
 using namespace mitama;
 using Catch::Detail::Approx;
+using namespace mitama::si;
+using namespace mitama::nonsi;
 
 TEMPLATE_TEST_CASE("abs tests",
                    "[quantity][abs][math]",

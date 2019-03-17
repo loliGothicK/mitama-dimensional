@@ -10,6 +10,9 @@
 #include <dimensional/si/all.hpp>
 
 using namespace mitama;
+using namespace mitama::si;
+using namespace mitama::nonsi;
+
 inline auto fmt = [](auto const &a) {
   return (boost::format("%1%") % a).str();
 };
@@ -51,13 +54,13 @@ TEST_CASE("prefix format tests", "[prefix]") {
 }
 
 TEST_CASE("symbol format tests", "[symbol]") {
-  REQUIRE(symbol_<::mitama::length>::str == "m"s);
+  REQUIRE(symbol_<::mitama::si::length>::str == "m"s);
   REQUIRE(symbol_<electric_current>::str == "A"s);
   REQUIRE(symbol_<luminous_intensity>::str == "cd"s);
   REQUIRE(symbol_<thermodynamic_temperature>::str == "K"s);
-  REQUIRE(symbol_<::mitama::mass>::str == "g"s);
+  REQUIRE(symbol_<::mitama::si::mass>::str == "g"s);
   REQUIRE(symbol_<amount_of_substance>::str == "mol"s);
-  REQUIRE(symbol_<::mitama::time>::str == "s"s);
+  REQUIRE(symbol_<::mitama::si::time>::str == "s"s);
 }
 
 TEMPLATE_TEST_CASE("meter_t format tests", "[quantity][symbol][prefix]",
@@ -141,7 +144,7 @@ TEST_CASE("minutes format test", "[quantity][abbreviation]") {
 }
 
 TEST_CASE("hours format test", "[quantity][abbreviation]") {
-  REQUIRE(fmt(1 | hours) == "1 [h]");
+  REQUIRE(fmt(1 | mitama::nonsi::hours) == "1 [h]");
 }
 
 TEST_CASE("days format test", "[quantity][abbreviation]") {

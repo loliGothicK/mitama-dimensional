@@ -9,6 +9,7 @@
 #include "test_util.hpp"
 
 using namespace mitama;
+using namespace mitama::si;
 
 TEMPLATE_TEST_CASE("constructor from values",
                    "[quantity][constructor]",
@@ -143,7 +144,7 @@ TEMPLATE_TEST_CASE("refinement L^1 positive",
 
 TEMPLATE_TEST_CASE("refinement L^1 positive",
                    "[quantity][refinement]",
-                   second_t, millisecond_t, microsecond_t, nanosecond_t, minute_t, hour_t, day_t)
+                   second_t, millisecond_t, microsecond_t, nanosecond_t, nonsi::minute_t, nonsi::hour_t, nonsi::day_t)
 {
     REQUIRE( !IS_INVALID_EXPR( refined<sym::T<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
 }

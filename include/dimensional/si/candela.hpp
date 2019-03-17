@@ -1,7 +1,7 @@
 #pragma once
 #include "../units.hpp"
 #include "../quotient.hpp"
-namespace mitama {
+namespace mitama::si {
 struct luminous_intensity {
     using is_base_dimension = void;
 };
