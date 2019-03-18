@@ -15,6 +15,15 @@ template < class T > inline constexpr bool is_temperature_quantity_v = is_temper
 template <class,class=void>
 class delta;
 
+template < class >
+struct is_delta: std::false_type {};
+
+template < class T >
+struct is_delta<delta<T, void>>: std::true_type {};
+
+template < class T >
+inline constexpr bool is_delta_v = is_delta<T>::value;
+
 template < class T >
 class delta<T, std::enable_if_t<is_quantity_v<T>>> {
   T value_;
@@ -91,7 +100,7 @@ template < class T, class Quantity,
           std::enable_if_t<!is_temperature_quantity_v<T> || !is_temperature_quantity_v<std::decay_t<Quantity>>, bool> = false,
           std::enable_if_t<is_quantity_v<std::decay_t<decltype(std::declval<T>() - std::declval<Quantity>())>>, bool> = false>
 Quantity operator-(delta<T> d, Quantity const& q){
-  return q - Quantity(d.get());
+  return Quantity(d.get()) - q;
 }
 template < class T, class Quantity,
           std::enable_if_t<!is_temperature_quantity_v<T> || !is_temperature_quantity_v<std::decay_t<Quantity>>, bool> = false,
@@ -106,13 +115,13 @@ auto operator-(delta<T> d1, delta<U> d2){
 }
 template < class T, class Quantity,
           std::enable_if_t<is_quantity_v<std::decay_t<decltype(std::declval<T>() * std::declval<Quantity>())>>, bool> = false>
-Quantity operator*(delta<T> d, Quantity const& q){
-  return q * Quantity(d.get());
+auto operator*(delta<T> d, Quantity const& q){
+  return q * d.get();
 }
 template < class T, class Quantity,
           std::enable_if_t<is_quantity_v<std::decay_t<decltype(std::declval<T>() * std::declval<Quantity>())>>, bool> = false>
-Quantity operator*(Quantity const& q, delta<T> d){
-  return q * Quantity(d.get());
+auto operator*(Quantity const& q, delta<T> d){
+  return q * d.get();
 }
 template < class T, class U,
           std::enable_if_t<is_quantity_v<std::decay_t<decltype(std::declval<T>() * std::declval<U>())>>, bool> = false>
@@ -121,13 +130,13 @@ auto operator*(delta<T> d1, delta<U> d2){
 }
 template < class T, class Quantity,
           std::enable_if_t<is_quantity_v<std::decay_t<decltype(std::declval<T>() / std::declval<Quantity>())>>, bool> = false>
-Quantity operator/(delta<T> d, Quantity const& q){
-  return q / Quantity(d.get());
+auto operator/(delta<T> d, Quantity const& q){
+  return d.get() / q;
 }
 template < class T, class Quantity,
           std::enable_if_t<is_quantity_v<std::decay_t<decltype(std::declval<T>() / std::declval<Quantity>())>>, bool> = false>
-Quantity operator/(Quantity const& q, delta<T> d){
-  return q / Quantity(d.get());
+auto operator/(Quantity const& q, delta<T> d){
+  return q / d.get();
 }
 template < class T, class U,
           std::enable_if_t<is_quantity_v<std::decay_t<decltype(std::declval<T>() / std::declval<U>())>>, bool> = false>
