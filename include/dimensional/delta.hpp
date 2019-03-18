@@ -47,6 +47,28 @@ public:
 
 template <class T> delta(T&&) -> delta<std::decay_t<T>>;
 
+// specialization for temperature
+template < class T, class Quantity,
+          std::enable_if_t<is_temperature_quantity_v<T> && is_temperature_quantity_v<std::decay_t<Quantity>>, bool> = false>
+Quantity operator+(delta<T> const& d, Quantity const& q){
+  return q + Quantity(d.get().get());
+}
+template < class T, class Quantity,
+          std::enable_if_t<is_temperature_quantity_v<T> && is_temperature_quantity_v<std::decay_t<Quantity>>, bool> = false>
+Quantity operator+(Quantity const& q, delta<T> const& d){
+  return q + Quantity(d.get().get());
+}
+
+template < class T, class Quantity,
+          std::enable_if_t<is_temperature_quantity_v<T> && is_temperature_quantity_v<std::decay_t<Quantity>>, bool> = false>
+Quantity operator-(delta<T> const& d, Quantity const& q){
+  return Quantity(d.get().get()) - q;
+}
+template < class T, class Quantity,
+          std::enable_if_t<is_temperature_quantity_v<T> && is_temperature_quantity_v<std::decay_t<Quantity>>, bool> = false>
+Quantity operator-(Quantity const& q, delta<T> const& d){
+  return q - Quantity(d.get().get());
+}
 
 template < class T, class Quantity,
           std::enable_if_t<!is_temperature_quantity_v<T> || !is_temperature_quantity_v<std::decay_t<Quantity>>, bool> = false,
