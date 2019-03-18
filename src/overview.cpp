@@ -9,6 +9,7 @@
 #include "../include/dimensional/currency/jpy.hpp"
 #include "../include/dimensional/derived_units/dgree_celsius.hpp"
 #include "../include/dimensional/expr.hpp"
+#include "../include/dimensional/delta.hpp"
 #include <boost/type_index.hpp>
 #include <iostream>
 
@@ -137,13 +138,13 @@ int main(){
 
     { // User defined dimension examples
         // currency units
-        REPL(100|dgree_celsius);
+        REPL(100|nonsi::dgree_celsius);
         quantity<si::kelvin_t> s( 100.|nonsi::dgree_celsius );
         REPL(s);
     }
 
     {
-        quantity<kelvin_t> hoge = as_expr(1|kelvins) + (2|dgree_celsius);
+        quantity<si::kelvin_t> hoge = as_expr(1|si::kelvins) + (2|nonsi::dgree_celsius);
         REPL(hoge);
     }
 
@@ -157,12 +158,12 @@ int main(){
         // error!
         // quantity_t a3 = refined<area_r> |= (2|si::millimeters);
 
-        quantity_t a3 = partial_refined<sym::M<>> |= (2|si::meters) * (2|si::meters) * (2|kilograms) / (2|second<2>);
+        quantity_t a3 = partial_refined_for<sym::M<>> |= (2|si::meters) * (2|si::meters) * (2|si::kilograms) / (2|si::second<2>);
         REPL(a3);
     }
 
     {
-        delta d = (2|si::meters) - (1|si::meters);
-        REPL(d + (1|si::meters));
+        delta d = (2|si::kelvins) - (1|si::kelvins);
+        REPL((1|nonsi::dgree_celsius) + d);
     }
 }

@@ -43,10 +43,11 @@ inline constexpr bool is_refinement_symbol_v = is_refinement_symbol<T>::value;
 
 } // namespace sym
 
-template <class = void, class...> struct refinement_type;
+template <class, class> struct refinement_type;
+template <class, class...> struct refinement_type_for;
 
 template <class... Symbols>
-struct refinement_type<
+struct refinement_type_for<
     std::enable_if_t<(sym::is_refinement_symbol_v<Symbols> && ...)>,
     Symbols...> {
   template <class Q,
@@ -136,13 +137,17 @@ struct refinement_type<
 };
 
 template <class... Requires>
-inline constexpr refinement_type<void, Requires...> refined{};
+inline constexpr refinement_type_for<void, Requires...> refined_for{};
+
+template <class Requires>
+inline constexpr refinement_type<void, Requires> refined{};
 
 
-template <class = void, class...> struct partial_refinement_type;
+template <class, class...> struct partial_refinement_type_for;
+template <class, class> struct partial_refinement_type;
 
 template <class... Symbols>
-struct partial_refinement_type<
+struct partial_refinement_type_for<
     std::enable_if_t<(sym::is_refinement_symbol_v<Symbols> && ...)>,
     Symbols...> {
   template <class Q,
@@ -200,7 +205,10 @@ struct partial_refinement_type<
 };
 
 template <class... Requires>
-inline constexpr partial_refinement_type<void, Requires...> partial_refined{};
+inline constexpr partial_refinement_type_for<void, Requires...> partial_refined_for{};
+
+template <class Requires>
+inline constexpr partial_refinement_type<void, Requires> partial_refined{};
 } // namespace mitama
 
 namespace mitama {
