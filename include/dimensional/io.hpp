@@ -76,11 +76,12 @@ to_string(quantity_t<dimensional_t<Head, Tail...>, T> const &quantity) {
          (("·"s + si_formatter<Tail>::format()) + ... + "]");
 }
 
-template <class D>
-struct abbreviation<D,
-                    std::enable_if_t<mitamagic::is_dimensionless<D>::value>> {
-  static constexpr char str[] = "dimensionless";
-};
+template <class T>
+std::string
+to_string(quantity_t<dimensional_t<>, T> const &quantity) {
+  using std::to_string;
+  return to_string(quantity.get()) + " [dimensionless]";
+}
 
 template <class T, class... Units>
 //,std::enable_if_t<std::conjunction_v<is_complete_type<abbreviation<typename
