@@ -59,7 +59,7 @@ operator*(L &&lhs, R &&rhs)
 
 template <class L, class R,
           std::enable_if_t<
-            std::disjunction_v<is_quantity<std::decay_t<L>>, is_quantity<std::decay_t<R>>> &&
+            is_quantity_v<std::decay_t<L>> &&
             !is_expr_v<std::decay_t<L>> && !is_expr_v<std::decay_t<R>> &&
             !is_delta_v<std::decay_t<L>> && !is_delta_v<std::decay_t<R>>
             , bool> = false>
