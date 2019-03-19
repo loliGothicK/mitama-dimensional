@@ -210,7 +210,37 @@ int main() {
 
 ## v0.4.0
 
-リリース予定
+### **新機能**
 
-- フォーマットの向上をはかるため`opaque alias`を導入
-- SI単位の定義値、CODATA推奨値定数のサポート
+- `delta<T>` (full support)
+
+差であることを型で明示的に表すことができる。
+これにより、温度差をうまく扱えるようになった。
+
+delta型はquantity_t型との四則演算が行える。
+
+```cpp
+#include <dimensional/quantity.hpp>
+#include <dimensional/si/kelvin.hpp>
+#include <dimensional/derived_units/dgree_delsius.hpp>
+#include <dimensional/delta.hpp>
+
+int main() {
+    using namespace mitama;
+    quantity<si::dgree_delsius> c = 100;
+    // 温度差なので単位変換なしで計算される
+    quantity<si::dgree_delsius> res = c + delta( (20|si::kelvins) -  (10|si::kelvins) ); // 100 + 10 = 110
+}
+```
+
+
+### バグ修正
+
+- `value / quantity_t`と`quantity_t / value`が両方許可されていたが、前者を許可しない実装になった。
+- 無次元量のフォーマットがバグっていてコンパイルエラーになる問題を修正
+
+
+### ドキュメント
+
+- [environment](https://loligothick.github.io/mitama-dimensional/)として公開（執筆途中）
+
