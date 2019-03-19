@@ -8,31 +8,31 @@ namespace sym {
 class refinement_symbol_tag {};
 
 template <std::intmax_t N = 1> struct L : private refinement_symbol_tag {
-  using basis = ::mitama::length;
+  using basis = ::mitama::si::length;
   using exp = std::ratio<N>;
 };
 template <std::intmax_t N = 1> struct M : private refinement_symbol_tag {
-  using basis = ::mitama::mass;
+  using basis = ::mitama::si::mass;
   using exp = std::ratio<N>;
 };
 template <std::intmax_t N = 1> struct T : private refinement_symbol_tag {
-  using basis = ::mitama::time;
+  using basis = ::mitama::si::time;
   using exp = std::ratio<N>;
 };
 template <std::intmax_t N = 1> struct I : private refinement_symbol_tag {
-  using basis = ::mitama::electric_current;
+  using basis = ::mitama::si::electric_current;
   using exp = std::ratio<N>;
 };
 template <std::intmax_t N = 1> struct S : private refinement_symbol_tag {
-  using basis = ::mitama::thermodynamic_temperature;
+  using basis = ::mitama::si::thermodynamic_temperature;
   using exp = std::ratio<N>;
 };
 template <std::intmax_t E = 1> struct N : private refinement_symbol_tag {
-  using basis = ::mitama::amount_of_substance;
+  using basis = ::mitama::si::amount_of_substance;
   using exp = std::ratio<E>;
 };
 template <std::intmax_t N = 1> struct J : private refinement_symbol_tag {
-  using basis = ::mitama::luminous_intensity;
+  using basis = ::mitama::si::luminous_intensity;
   using exp = std::ratio<N>;
 };
 
@@ -43,10 +43,11 @@ inline constexpr bool is_refinement_symbol_v = is_refinement_symbol<T>::value;
 
 } // namespace sym
 
-template <class = void, class...> struct refinement_type;
+template <class, class> struct refinement_type;
+template <class, class...> struct refinement_type_for;
 
 template <class... Symbols>
-struct refinement_type<
+struct refinement_type_for<
     std::enable_if_t<(sym::is_refinement_symbol_v<Symbols> && ...)>,
     Symbols...> {
   template <class Q,
@@ -136,13 +137,17 @@ struct refinement_type<
 };
 
 template <class... Requires>
-inline constexpr refinement_type<void, Requires...> refined{};
+inline constexpr refinement_type_for<void, Requires...> refined_for{};
+
+template <class Requires>
+inline constexpr refinement_type<void, Requires> refined{};
 
 
-template <class = void, class...> struct partial_refinement_type;
+template <class, class...> struct partial_refinement_type_for;
+template <class, class> struct partial_refinement_type;
 
 template <class... Symbols>
-struct partial_refinement_type<
+struct partial_refinement_type_for<
     std::enable_if_t<(sym::is_refinement_symbol_v<Symbols> && ...)>,
     Symbols...> {
   template <class Q,
@@ -200,7 +205,10 @@ struct partial_refinement_type<
 };
 
 template <class... Requires>
-inline constexpr partial_refinement_type<void, Requires...> partial_refined{};
+inline constexpr partial_refinement_type_for<void, Requires...> partial_refined_for{};
+
+template <class Requires>
+inline constexpr partial_refinement_type<void, Requires> partial_refined{};
 } // namespace mitama
 
 namespace mitama {

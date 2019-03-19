@@ -10,6 +10,8 @@
 #include <dimensional/arithmetic.hpp>
 
 using namespace mitama;
+using namespace mitama::si;
+using namespace mitama::nonsi;
 
 TEST_CASE("dgree celsius and kelvin",
           "[quantity][derived-units][temperature]")

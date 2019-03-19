@@ -13,25 +13,25 @@ template <class, class = void> struct abbreviation;
 template <class, class = void> struct symbol_;
 template <class, class = void> struct prefix_;
 
-template <> struct symbol_<::mitama::length> {
+template <> struct symbol_<::mitama::si::length> {
   static constexpr char str[] = "m";
 };
-template <> struct symbol_<::mitama::electric_current> {
+template <> struct symbol_<::mitama::si::electric_current> {
   static constexpr char str[] = "A";
 };
-template <> struct symbol_<::mitama::luminous_intensity> {
+template <> struct symbol_<::mitama::si::luminous_intensity> {
   static constexpr char str[] = "cd";
 };
-template <> struct symbol_<::mitama::thermodynamic_temperature> {
+template <> struct symbol_<::mitama::si::thermodynamic_temperature> {
   static constexpr char str[] = "K";
 };
-template <> struct symbol_<::mitama::mass> {
+template <> struct symbol_<::mitama::si::mass> {
   static constexpr char str[] = "g";
 };
-template <> struct symbol_<::mitama::amount_of_substance> {
+template <> struct symbol_<::mitama::si::amount_of_substance> {
   static constexpr char str[] = "mol";
 };
-template <> struct symbol_<::mitama::time> {
+template <> struct symbol_<::mitama::si::time> {
   static constexpr char str[] = "s";
 };
 template <> struct prefix_<std::ratio<1>> { static constexpr char str[] = ""; };
@@ -58,7 +58,7 @@ struct si_formatter<
                                         is_complete_type<symbol_<D>>>>> {
   static std::string format() {
     using namespace std::literals;
-    using scale = std::conditional_t<std::is_same_v<D, ::mitama::mass>,
+    using scale = std::conditional_t<std::is_same_v<D, ::mitama::si::mass>,
                                      std::ratio_multiply<S, std::kilo>, S>;
     return std::string(prefix_<scale>::str) + std::string(symbol_<D>::str) +
            (E::den == 1
@@ -76,11 +76,12 @@ to_string(quantity_t<dimensional_t<Head, Tail...>, T> const &quantity) {
          (("·"s + si_formatter<Tail>::format()) + ... + "]");
 }
 
-template <class D>
-struct abbreviation<D,
-                    std::enable_if_t<mitamagic::is_dimensionless<D>::value>> {
-  static constexpr char str[] = "dimensionless";
-};
+template <class T>
+std::string
+to_string(quantity_t<dimensional_t<>, T> const &quantity) {
+  using std::to_string;
+  return to_string(quantity.get()) + " [dimensionless]";
+}
 
 template <class T, class... Units>
 //,std::enable_if_t<std::conjunction_v<is_complete_type<abbreviation<typename
