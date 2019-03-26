@@ -374,3 +374,68 @@ TEMPLATE_TEST_CASE("atan with si", "[math],[quantity],[atan]",
     REQUIRE(IS_INVALID_EXPR(mitama::atan(DECLVAL(0)))(quantity<TestType>));
 }
 
+TEMPLATE_TEST_CASE("fmod with dimensionless denominator", "[math],[quantity],[fmod]",
+                   radian_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
+{
+    using namespace Catch::literals;
+    REQUIRE(fmod(quantity<TestType>(5.0), 2.0).get() == 1.0_a);
+    REQUIRE(fmod(quantity<TestType>(6.0), 4.0).get() == 2.0_a);
+    REQUIRE(fmod(quantity<TestType>(6.3), 3.0).get() == 0.3_a);
+    REQUIRE(fmod(quantity<TestType>(6.3), -3.0).get() == 0.3_a);
+    REQUIRE(fmod(quantity<TestType>(-6.3), 3.0).get() == -0.3_a);
+    REQUIRE(fmod(quantity<TestType>(-6.3), -3.0).get() == -0.3_a);
+    REQUIRE(fmod(quantity<TestType>(6.3), 3.15).get() == 0.0_a);
+    REQUIRE(fmod(quantity<TestType>(6.0), 2.0).get() == 0.0_a);
+}
+
+TEMPLATE_TEST_CASE("fmod with dimensional quantity denominator", "[math],[quantity],[fmod]",
+                   radian_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
+{
+    using namespace Catch::literals;
+    REQUIRE(fmod(quantity<TestType>(5.0), quantity<TestType>(2.0)).get() == 1.0_a);
+    REQUIRE(fmod(quantity<TestType>(6.0), quantity<TestType>(4.0)).get() == 2.0_a);
+    REQUIRE(fmod(quantity<TestType>(6.3), quantity<TestType>(3.0)).get() == 0.3_a);
+    REQUIRE(fmod(quantity<TestType>(6.3), quantity<TestType>(-3.0)).get() == 0.3_a);
+    REQUIRE(fmod(quantity<TestType>(-6.3), quantity<TestType>(3.0)).get() == -0.3_a);
+    REQUIRE(fmod(quantity<TestType>(-6.3), quantity<TestType>(-3.0)).get() == -0.3_a);
+    REQUIRE(fmod(quantity<TestType>(6.3), quantity<TestType>(3.15)).get() == 0.0_a);
+    REQUIRE(fmod(quantity<TestType>(6.0), quantity<TestType>(2.0)).get() == 0.0_a);
+}
+
+TEMPLATE_TEST_CASE("remainder with dimensionless denominator", "[math],[quantity],[remainder]",
+                   radian_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
+{
+    using namespace Catch::literals;
+    REQUIRE(remainder(quantity<TestType>(5), 2).get() == 1.0_a);
+    REQUIRE(remainder(quantity<TestType>(6), 4).get() == -2.0_a);
+    REQUIRE(remainder(quantity<TestType>(6.3), 3).get() == 0.3_a);
+    REQUIRE(remainder(quantity<TestType>(6.3), -3).get() == 0.3_a);
+    REQUIRE(remainder(quantity<TestType>(-6.3), 3).get() == -0.3_a);
+    REQUIRE(remainder(quantity<TestType>(-6.3), -3).get() == -0.3_a);
+    REQUIRE(remainder(quantity<TestType>(6.3), 3.15).get() == 0.0_a);
+    REQUIRE(remainder(quantity<TestType>(6), 2).get() == 0.0_a);
+}
+
+TEMPLATE_TEST_CASE("remainder with dimensional quantity denominator", "[math],[quantity],[remainder]",
+                   radian_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
+{
+    using namespace Catch::literals;
+    REQUIRE(remainder(quantity<TestType>(5), quantity<TestType>(2)).get() == 1.0_a);
+    REQUIRE(remainder(quantity<TestType>(6), quantity<TestType>(4)).get() == -2.0_a);
+    REQUIRE(remainder(quantity<TestType>(6.3), quantity<TestType>(3)).get() == 0.3_a);
+    REQUIRE(remainder(quantity<TestType>(6.3), quantity<TestType>(-3)).get() == 0.3_a);
+    REQUIRE(remainder(quantity<TestType>(-6.3), quantity<TestType>(3)).get() == -0.3_a);
+    REQUIRE(remainder(quantity<TestType>(-6.3), quantity<TestType>(-3)).get() == -0.3_a);
+    REQUIRE(remainder(quantity<TestType>(6.3), quantity<TestType>(3.15)).get() == 0.0_a);
+    REQUIRE(remainder(quantity<TestType>(6), quantity<TestType>(2)).get() == 0.0_a);
+}
+
+TEMPLATE_TEST_CASE("dim", "[math],[quantity],[remainder]",
+                   radian_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
+{
+    using namespace Catch::literals;
+    REQUIRE(dim(quantity<TestType>(5), quantity<TestType>(2)).get() == 3.0_a);
+    REQUIRE(dim(quantity<TestType>(6), quantity<TestType>(4)).get() == 2.0_a);
+    REQUIRE(dim(quantity<TestType>(1), quantity<TestType>(3)).get() == +0);
+    REQUIRE(dim(quantity<TestType>(-4), quantity<TestType>(-3)).get() == +0);
+}

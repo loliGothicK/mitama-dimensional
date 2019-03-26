@@ -3,4 +3,4 @@
 	url = https://github.com/catchorg/Catch2.git
 [submodule "result"]
 	path = result
-	url = https://github.com/LoliGothick/mitama-cpp-result
+	url = https://github.com/LoliGothick/mitama-cpp-result.git

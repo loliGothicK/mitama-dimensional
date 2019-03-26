@@ -244,3 +244,26 @@ int main() {
 
 - [environment](https://loligothick.github.io/mitama-dimensional/)として公開（執筆途中）
 
+
+## v0.5.0
+
+### **新機能**
+
+- new math functions
+  - fmod
+  - remainder
+  - dim
+
+### バグ修正
+
+- 以下の数学関数の結果の型がおかしくなるバグを修正
+  - abs
+  - nearest integer系すべて
+  - pow系すべて
+  - root系すべて
+
+
+### ドキュメント
+
+- [environment](https://loligothick.github.io/mitama-dimensional/)として公開中（2/3ほど書き終わった）
+

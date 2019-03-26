@@ -7,5 +7,6 @@
 #include "root.hpp"
 #include "nearest_integer.hpp"
 #include "trigonometric.hpp"
+#include "modular.hpp"
 
 #endif

@@ -1,6 +1,5 @@
 #pragma once
 #include "quotient.hpp"
-#include "../../result/include/Result.hpp"
 namespace mitama {
 
 template <class Dim, class T = double> class quantity_t;
