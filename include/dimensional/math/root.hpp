@@ -3,7 +3,7 @@
 
 #include <cmath>
 #include "../quantity.hpp"
-#include "../si/meter.hpp"
+#include "../si_units/meter.hpp"
 namespace mitama {
 
 template < class T, class... Units >

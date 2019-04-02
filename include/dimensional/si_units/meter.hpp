@@ -1,6 +1,6 @@
-#pragma once
-#include "../units.hpp"
-#include "../quotient.hpp"
+#ifndef MITAMA_DIMENSIONAL_SI_UNITS_METER_HPP
+#define MITAMA_DIMENSIONAL_SI_UNITS_METER_HPP
+#include "../quantity.hpp"
 
 namespace mitama::si {
 // base dimension
@@ -95,3 +95,5 @@ template < std::intmax_t N = 1 > inline constexpr powered_t<terametre_t, N> tera
 
 
 }
+
+#endif

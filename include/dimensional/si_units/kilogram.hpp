@@ -1,6 +1,6 @@
-#pragma once
-#include "../units.hpp"
-#include "../quotient.hpp"
+#ifndef MITAMA_DIMENSIONAL_SI_UNITS_KILOGRAM_HPP
+#define MITAMA_DIMENSIONAL_SI_UNITS_KILOGRAM_HPP
+#include "../quantity.hpp"
 
 namespace mitama::si {
 // base dimension
@@ -20,3 +20,5 @@ template < std::intmax_t N = 1> inline constexpr powered_t<kilogram_t, N> kilogr
 template < std::intmax_t N = 1> inline constexpr powered_t<gram_t, N> gram{};
 
 }
+
+#endif

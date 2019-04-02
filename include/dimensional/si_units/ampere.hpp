@@ -1,6 +1,6 @@
-#pragma once
-#include "../units.hpp"
-#include "../quotient.hpp"
+#ifndef MITAMA_DIMENSIONAL_SI_UNITS_AMPERE_HPP
+#define MITAMA_DIMENSIONAL_SI_UNITS_AMPERE_HPP
+#include "../quantity.hpp"
 
 namespace mitama::si {
 struct electric_current {
@@ -37,3 +37,5 @@ template < std::intmax_t N = 1 > inline constexpr powered_t<kiloampere_t, N> kil
 template < std::intmax_t N = 1 > inline constexpr powered_t<megaampere_t, N> megaampere{};
 
 }
+
+#endif

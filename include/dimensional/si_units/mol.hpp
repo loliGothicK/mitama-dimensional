@@ -1,6 +1,6 @@
-#pragma once
-#include "../units.hpp"
-#include "../quotient.hpp"
+#ifndef MITAMA_DIMENSIONAL_SI_UNITS_MOL_HPP
+#define MITAMA_DIMENSIONAL_SI_UNITS_MOL_HPP
+#include "../quantity.hpp"
 
 namespace mitama::si {
 // base dimesnion
@@ -24,3 +24,5 @@ template < std::intmax_t N = 1 > inline constexpr powered_t<micromol_t, N> micro
 template < std::intmax_t N = 1 > inline constexpr powered_t<kilomol_t, N> kilomol{};
 
 }
+
+#endif

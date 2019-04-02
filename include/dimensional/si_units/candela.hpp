@@ -1,6 +1,7 @@
-#pragma once
-#include "../units.hpp"
-#include "../quotient.hpp"
+#ifndef MITAMA_DIMENSIONAL_SI_UNITS_CANDELA_HPP
+#define MITAMA_DIMENSIONAL_SI_UNITS_CANDELA_HPP
+#include "../quantity.hpp"
+
 namespace mitama::si {
 struct luminous_intensity {
     using is_base_dimension = void;
@@ -13,3 +14,5 @@ inline constexpr candela_t candelas{};
 template < std::intmax_t N = 1 > inline constexpr powered_t<candela_t, N> candela{};
 
 }
+
+#endif

@@ -1,6 +1,6 @@
-#pragma once
-#include "../units.hpp"
-#include "../quotient.hpp"
+#ifndef MITAMA_DIMENSIONAL_SI_UNITS_SECOND_HPP
+#define MITAMA_DIMENSIONAL_SI_UNITS_SECOND_HPP
+#include "../quantity.hpp"
 
 namespace mitama::si {
 
@@ -25,3 +25,5 @@ template < std::intmax_t N = 1 > inline constexpr powered_t<nanosecond_t, N> nan
 
 
 }
+
+#endif

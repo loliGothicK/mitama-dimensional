@@ -1,6 +1,6 @@
-#pragma once
-#include "../units.hpp"
-#include "../quotient.hpp"
+#ifndef MITAMA_DIMENSIONAL_SI_UNITS_KELVIN_HPP
+#define MITAMA_DIMENSIONAL_SI_UNITS_KELVIN_HPP
+#include "../quantity.hpp"
 
 namespace mitama::si {
 // base dimension
@@ -19,3 +19,5 @@ inline constexpr kelvin_t kelvins{};
 template < std::intmax_t N = 1 > inline constexpr powered_t<kelvin_t, N> kelvin{};
 
 }
+
+#endif
