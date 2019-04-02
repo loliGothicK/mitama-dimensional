@@ -1,0 +1,10 @@
+velocity m/s meters/seconds
+acceleration m/s^2 meters/second<2>
+jerk m/s^3 meters/second<3>
+snap m/s^4 meters/second<4>
+crackle m/m^5 meters/second<5>
+pop m/m^6 meters/second<6>
+angular_velocity rad/s radian*second<-1>
+angular_acceleration rad/s^2 radian*second<-2>
+frequency_drift Hz/s second<-2>
+volumetric_flow m^3/s meter<3>*second<-1>
