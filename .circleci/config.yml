@@ -51,10 +51,8 @@ jobs:
 workflows:
   build:
     jobs:
-      # - wandbox-test:
-      #     compiler: clang-head
-      # - wandbox-test:
-      #     compiler: gcc-head
+      - full-test:
+          compiler: clang-8.0.0
       - full-test:
           compiler: clang-7.0.1
       - full-test:
