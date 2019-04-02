@@ -267,3 +267,25 @@ int main() {
 
 - [environment](https://loligothick.github.io/mitama-dimensional/)として公開中（2/3ほど書き終わった）
 
+## v0.6.0
+
+### **新機能**
+
+なし
+
+### バグ修正
+
+- SI derived unitsのファイルを細分化
+
+
+### Testing
+
+
+- フォーマット系テストのカバレッジをほぼ100%に
+- テストも細分化
+
+
+### ドキュメント
+
+- [environment](https://loligothick.github.io/mitama-dimensional/)として公開中（Basic Conceptsを書き足した）
+
