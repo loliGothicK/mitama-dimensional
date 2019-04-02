@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MITAMA_DIMENSIONAL_QUANTITY_HPP
+#define MITAMA_DIMENSIONAL_QUANTITY_HPP
 #include "quotient.hpp"
 namespace mitama {
 
@@ -317,3 +318,4 @@ template <class Q1, class Q2> struct common_type<Q1, Q2> {
 };
 
 } // namespace mitama
+#endif
