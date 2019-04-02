@@ -1,0 +1,4 @@
+luminous_energy lm⋅s seconds*candelas*steradian
+luminous_exposure lx⋅s meter<-2>*seconds*candelas*steradian
+luminance cd/m2 meter<-2>*candelas
+luminous_efficacy lm/W meter<-2>*kilogram<-1>*second<3>*candelas*steradian

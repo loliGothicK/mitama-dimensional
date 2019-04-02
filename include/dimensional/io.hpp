@@ -1,7 +1,7 @@
 #ifndef MITAMA_DIMENSIONAL_IO_HPP
 #define MITAMA_DIMENSIONAL_IO_HPP
 #include "quantity.hpp"
-#include "si/all.hpp"
+#include "si_units/all.hpp"
 #include "mitamagic/utility.hpp"
 #include <iostream>
 #include <type_traits>

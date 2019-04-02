@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MITAMA_DIMENSIONAL_UNITS_HPP
+#define MITAMA_DIMENSIONAL_UNITS_HPP
 #include "dimensional_phantom.hpp"
 #include "quotient.hpp"
 #include <ratio>
@@ -38,3 +39,5 @@ struct scaled_unit<dimensional_t<Base>, Scale> {
 template <class Base, class R>
 using scaled_unit_t = typename scaled_unit<Base, R>::type;
 } // namespace mitama
+
+#endif

@@ -46,17 +46,16 @@ jobs:
       - checkout
       - run: apt upgrade -y && apt update -y && apt install -y git
       - run: git submodule update --init --recursive
-      - run: mkdir build && cd build && cmake .. &&  make && ./tests
+      - run: chmod +x ./mitama_build.sh
+      - run: ./mitama_build.sh
 
 workflows:
   build:
     jobs:
-      # - wandbox-test:
-      #     compiler: clang-head
-      # - wandbox-test:
-      #     compiler: gcc-head
       - full-test:
-          compiler: clang-7.0.1
+          compiler: clang-8.0.0
+      # - full-test:
+      #     compiler: clang-7.0.1
       - full-test:
           compiler: clang-7.0.0
       - full-test:
@@ -67,9 +66,3 @@ workflows:
           compiler: gcc-8.2
       - full-test:
           compiler: gcc-8.1
-      - full-test:
-          compiler: gcc-7.3
-      - full-test:
-          compiler: gcc-7.2
-      - full-test:
-          compiler: gcc-7.1 

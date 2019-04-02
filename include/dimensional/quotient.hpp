@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MITAMA_DIMENSIONAL_QUOTIENT_HPP
+#define MITAMA_DIMENSIONAL_QUOTIENT_HPP
 #include "dimensional_phantom.hpp"
 #include "mitamagic/utility.hpp"
 #include "units.hpp"
@@ -264,3 +265,4 @@ template <class... Tags>
 struct is_dimensionless<dimensional_t<dimensionless<Tags...>>>
     : std::true_type {};
 } // namespace mitama::mitamagic
+#endif
