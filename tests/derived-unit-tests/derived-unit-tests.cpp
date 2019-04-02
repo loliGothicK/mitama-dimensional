@@ -35,7 +35,7 @@ TEST_CASE("dgree celsius and kelvin generate tests",
             .required([](auto value){
                 quantity<dgree_celsius_t> c = value;
                 quantity<kelvin_t> s = c;
-                return std::pair{s.get() - c.get(), 273.15_a};
+                return s.get() - c.get() == 273.15_a;
             }));
     REQUIRE(
         test_util::RandomGenerator<int>::uniform(-273, 10000)
@@ -43,7 +43,7 @@ TEST_CASE("dgree celsius and kelvin generate tests",
             .required([](auto value){
                 quantity<kelvin_t> s = value;
                 quantity<dgree_celsius_t> c = s;
-                return std::pair{s.get() - c.get(), 273.15_a};
+                return s.get() - c.get() == 273.15_a;
             }));
 }
 

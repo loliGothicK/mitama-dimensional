@@ -26,7 +26,7 @@ TEMPLATE_TEST_CASE("abs tests",
             .take(1000)
             .required([](auto value){
                 quantity<TestType, int> v = value;
-                return std::pair{abs(v).get(), std::abs(value)};
+                return abs(v).get() == std::abs(value);
             }));
 }
 
@@ -42,7 +42,7 @@ TEMPLATE_TEST_CASE("min tests",
             .template required<2>([](auto v1, auto v2){
                 quantity<TestType, int> q1 = v1;
                 quantity<TestType, int> q2 = v2;
-                return std::pair{min(q1, q2).get(), std::min({v1, v2})};
+                return min(q1, q2).get() == std::min({v1, v2});
             }));
 }
 
@@ -58,7 +58,7 @@ TEMPLATE_TEST_CASE("max tests",
             .template required<2>([](auto v1, auto v2){
                 quantity<TestType, int> q1 = v1;
                 quantity<TestType, int> q2 = v2;
-                return std::pair{max(q1, q2).get(), std::max({v1, v2})};
+                return max(q1, q2).get() == std::max({v1, v2});
             }));
 }
 
@@ -73,21 +73,21 @@ TEMPLATE_TEST_CASE("pow tests",
             .take(1000)
             .required([](auto value){
                 quantity<TestType, int> v = value;
-                return std::pair{mitama::pow<2>(v), v * v};
+                return mitama::pow<2>(v) == v * v;
             }));
     REQUIRE(
         test_util::RandomGenerator<int>::uniform(-10000, 10000)
             .take(1000)
             .required([](auto value){
                 quantity<TestType> v = value;
-                return std::pair{mitama::pow<-1>(v).get(), Approx(std::pow(value, -1))};
+                return mitama::pow<-1>(v).get() == Approx(std::pow(value, -1));
             }));
     REQUIRE(
         test_util::RandomGenerator<int>::uniform(0, 10000)
             .take(1000)
             .required([](auto value){
                 quantity<TestType> v = value;
-                return std::pair{mitama::pow<std::ratio<3, 2>>(v).get(), Approx(std::pow(value, 3.l/2.l))};
+                return mitama::pow<std::ratio<3, 2>>(v).get() == Approx(std::pow(value, 3.l/2.l));
             }));
 }
 
@@ -102,7 +102,7 @@ TEMPLATE_TEST_CASE("square tests",
             .take(1000)
             .required([](auto value){
                 quantity<TestType, int> v = value;
-                return std::pair{square(v), v * v};
+                return square(v) == v * v;
             }));
 }
 
@@ -117,7 +117,7 @@ TEMPLATE_TEST_CASE("cubic tests",
             .take(1000)
             .required([](auto value){
                 quantity<TestType, int> v = value;
-                return std::pair{cubic(v), v * v * v};
+                return cubic(v) == v * v * v;
             }));
 }
 
@@ -132,7 +132,7 @@ TEMPLATE_TEST_CASE("sqrt tests",
             .take(1000)
             .required([](auto value){
                 quantity<TestType> v = value;
-                return std::pair{sqrt(v).get(), Approx(std::sqrt(value))};
+                return sqrt(v).get() == Approx(std::sqrt(value));
             }));
 }
 
@@ -147,7 +147,7 @@ TEMPLATE_TEST_CASE("cbrt tests",
             .take(1000)
             .required([](auto value){
                 quantity<TestType> v = value;
-                return std::pair{cbrt(v).get(), Approx(std::cbrt(value))};
+                return cbrt(v).get() == Approx(std::cbrt(value));
             }));
 }
 
@@ -162,7 +162,7 @@ TEMPLATE_TEST_CASE("ceil tests",
             .take(100000)
             .required([](auto value){
                 quantity<TestType> v = value;
-                return std::pair{ceil(v), quantity<TestType>(std::ceil(value))};
+                return ceil(v) == quantity<TestType>(std::ceil(value));
             }));
 }
 
@@ -177,7 +177,7 @@ TEMPLATE_TEST_CASE("floor tests",
             .take(100000)
             .required([](auto value){
                 quantity<TestType> v = value;
-                return std::pair{floor(v), quantity<TestType>(std::floor(value))};
+                return floor(v) == quantity<TestType>(std::floor(value));
             }));
 }
 
@@ -192,7 +192,7 @@ TEMPLATE_TEST_CASE("trunc tests",
             .take(100000)
             .required([](auto value){
                 quantity<TestType> v = value;
-                return std::pair{trunc(v), quantity<TestType>(std::trunc(value))};
+                return trunc(v) == quantity<TestType>(std::trunc(value));
             }));
 }
 
@@ -207,7 +207,7 @@ TEMPLATE_TEST_CASE("round tests",
             .take(100000)
             .required([](auto value){
                 quantity<TestType> v = value;
-                return std::pair{round(v), quantity<TestType>(std::round(value))};
+                return round(v) == quantity<TestType>(std::round(value));
             }));
 }
 
@@ -222,7 +222,7 @@ TEMPLATE_TEST_CASE("lround tests",
             .take(100000)
             .required([](auto value){
                 quantity<TestType> v = value;
-                return std::pair{lround(v), quantity<TestType, long>(std::lround(value))};
+                return lround(v) == quantity<TestType, long>(std::lround(value));
             }));
 }
 
@@ -237,7 +237,7 @@ TEMPLATE_TEST_CASE("llround tests",
             .take(100000)
             .required([](auto value){
                 quantity<TestType> v = value;
-                return std::pair{llround(v), quantity<TestType, long long>(std::llround(value))};
+                return llround(v) == quantity<TestType, long long>(std::llround(value));
             }));
 }
 
@@ -252,7 +252,7 @@ TEMPLATE_TEST_CASE("nearbyint tests",
             .take(100000)
             .required([](auto value){
                 quantity<TestType> v = value;
-                return std::pair{nearbyint(v), quantity<TestType>(std::nearbyint(value))};
+                return nearbyint(v) == quantity<TestType>(std::nearbyint(value));
             }));
 }
 
@@ -267,7 +267,7 @@ TEMPLATE_TEST_CASE("rint tests",
             .take(100000)
             .required([](auto value){
                 quantity<TestType> v = value;
-                return std::pair{rint(v), quantity<TestType>(std::rint(value))};
+                return rint(v) == quantity<TestType>(std::rint(value));
             }));
 }
 
@@ -282,7 +282,7 @@ TEMPLATE_TEST_CASE("lrint tests",
             .take(100000)
             .required([](auto value){
                 quantity<TestType> v = value;
-                return std::pair{lrint(v), quantity<TestType, long>(std::lrint(value))};
+                return lrint(v) == quantity<TestType, long>(std::lrint(value));
             }));
 }
 
@@ -297,7 +297,7 @@ TEMPLATE_TEST_CASE("llrint tests",
             .take(100000)
             .required([](auto value){
                 quantity<TestType> v = value;
-                return std::pair{llrint(v), quantity<TestType, long long>(std::llrint(value))};
+                return llrint(v) == quantity<TestType, long long>(std::llrint(value));
             }));
 }
 

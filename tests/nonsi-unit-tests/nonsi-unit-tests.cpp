@@ -34,7 +34,7 @@ TEST_CASE("dgree amgle and radian generate tests",
             .required([](auto value){
                 quantity<nsi::dgree_angle> c = value;
                 quantity<si::angle> s = c;
-                return std::pair{c.get() / s.get(), 57.295779_a};
+                return c.get() / s.get() == 57.295779_a;
             }));
     REQUIRE(
         test_util::RandomGenerator<double>::uniform( -6.283185, 6.283185)
@@ -42,6 +42,6 @@ TEST_CASE("dgree amgle and radian generate tests",
             .required([](auto value){
                 quantity<si::angle> s = value;
                 quantity<nsi::dgree_angle> c = s;
-                return std::pair{c.get() / s.get(), 57.295779_a};
+                return c.get() / s.get() == 57.295779_a;
             }));
 }

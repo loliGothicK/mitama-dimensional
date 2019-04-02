@@ -8,7 +8,7 @@ TEMPLATE_TEST_CASE("meter_t addition negative tests",
         test_util::RandomGenerator<int>::uniform(-std::numeric_limits<int>::max()/3, std::numeric_limits<int>::max()/3)
             .take(1'000'000)
             .template required<2>([&](auto a, auto b){
-                return std::pair{((a|q) + (b|q)).get(), a + b};
+                return ((a|q) + (b|q)).get() == a + b;
             }));
 }
 

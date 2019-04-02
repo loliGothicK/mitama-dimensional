@@ -24,7 +24,7 @@ namespace test_util {
     mutable std::size_t limit;
 
     template < class Pred, class Dist, class Engine, std::size_t... Indices >
-    static auto invoke(Pred&& pred, Dist& dist, Engine& engine, std::index_sequence<Indices...>) {
+    static auto invoke(Pred&& pred, Dist& dist, Engine& engine, std::index_sequence<Indices...>) -> bool {
       return std::forward<Pred>(pred)((void(Indices), dist(engine))...);
     }
 
@@ -41,33 +41,25 @@ namespace test_util {
     }
 
     template < int N = 1, class Pred >
-    auto required(Pred&& pred) const -> mitama::Result<std::string, std::string> {
-      auto err_msg_fmt = boost::format("actual: %1% <=> expected: %1%");      
+    auto required(Pred&& pred) const -> bool {
+      bool res = true;
       std::mt19937_64 mt(std::random_device{}());
       if constexpr (std::is_integral_v<ValueType>){
         std::uniform_int_distribution<ValueType> dist(lower, upper);
-        while (bool(limit--)) {
-          if (auto [actual, expected] = invoke(std::forward<Pred>(pred), dist, mt, std::make_index_sequence<N>{});
-              actual != expected)
-          {
-            return mitama::Err((err_msg_fmt % actual % expected).str());
-          }
+        while (bool(limit--) && res) {
+          res = invoke(std::forward<Pred>(pred), dist, mt, std::make_index_sequence<N>{});
         }
-        return mitama::Ok("passed");
+        return res;
       }
       else if constexpr (std::is_floating_point_v<ValueType>){
         std::uniform_real_distribution<ValueType> dist(lower, upper);
-        while (bool(limit--)) {
-          if (auto [actual, expected] = invoke(std::forward<Pred>(pred), dist, mt, std::make_index_sequence<N>{});
-              actual != expected)
-          {
-            return mitama::Err((err_msg_fmt % actual % expected).str());
-          }
+        while (bool(limit--) && res) {
+          res = invoke(std::forward<Pred>(pred), dist, mt, std::make_index_sequence<N>{});
         }
-        return mitama::Ok("passed");
+        return res;
       }
       else {
-        return mitama::Err("unknown error");
+        return false;
       }
     }
 
