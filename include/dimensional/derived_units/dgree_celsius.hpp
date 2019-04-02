@@ -1,7 +1,7 @@
 #ifndef MITAMA_DIMENSIONAL_SI_DERIVED_DGREE_CELSIUS_HPP
 #define MITAMA_DIMENSIONAL_SI_DERIVED_DGREE_CELSIUS_HPP
 
-#include "../si/kelvin.hpp"
+#include "../si_units/kelvin.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
 
