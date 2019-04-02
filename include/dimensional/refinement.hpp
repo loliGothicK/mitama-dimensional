@@ -1,7 +1,7 @@
 #ifndef MITAMA_DIMENSIONAL_REFINEMENT_HPP
 #define MITAMA_DIMENSIONAL_REFINEMENT_HPP
 #include "quantity.hpp"
-#include "si/all.hpp"
+#include "si_units/all.hpp"
 namespace mitama {
 
 namespace sym {

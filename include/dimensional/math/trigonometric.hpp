@@ -1,7 +1,7 @@
 #ifndef MITAMA_DIMENSIONAL_MATH_TRIGONOMETRIC_HPP
 #define MITAMA_DIMENSIONAL_MATH_TRIGONOMETRIC_HPP
 
-#include "../derived_units/named_units.hpp"
+#include "../derived_units/angle.hpp"
 #include <cmath>
 
 namespace mitama {

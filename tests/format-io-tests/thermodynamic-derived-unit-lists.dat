@@ -1,0 +1,8 @@
+heat_capacity J/K meter<2>*kilograms*second<-2>*kelvin<-1>
+entropy J/K meter<2>*kilograms*second<-2>*kelvin<-1>
+specific_entropy J/(K⋅kg) meter<2>*second<-2>*kelvin<-1>
+specific_heat_capacity J/(K⋅kg) meter<2>*second<-2>*kelvin<-1>
+thermal_conductivity W/(m⋅K) meter<>*kilograms*second<-3>*kelvin<-1>
+thermal_resistance K/W meter<-2>*kilogram<-1>*second<3>*kelvins
+thermal_expansion_coefficient K−1 kelvin<-1>
+temperature_gradient K/m meter<-1>*kelvins

@@ -2,7 +2,7 @@
 #define MITAMA_DIMENSIONAL_DELTA_HPP
 #include "quantity.hpp"
 #include "derived_units/dgree_celsius.hpp"
-#include "si/kelvin.hpp"
+#include "si_units/kelvin.hpp"
 
 namespace mitama {
 
