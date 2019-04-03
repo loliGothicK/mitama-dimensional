@@ -6,6 +6,7 @@
 #include <iostream>
 #include <type_traits>
 #include <string>
+#include <sstream>
 
 namespace mitama {
 template <class...> inline constexpr bool abbreviation_error_v = false;
@@ -71,17 +72,19 @@ struct si_formatter<
 template <class T, class Head, class... Tail>
 std::string
 to_string(quantity_t<dimensional_t<Head, Tail...>, T> const &quantity) {
-  using std::to_string;
   using namespace std::literals;
-  return to_string(quantity.get()) + " [" + si_formatter<Head>::format() +
+  std::ostringstream ss;
+  ss << quantity.get();
+  return ss.str() + " [" + si_formatter<Head>::format() +
          (("·"s + si_formatter<Tail>::format()) + ... + "]");
 }
 
 template <class T>
 std::string
 to_string(quantity_t<dimensional_t<>, T> const &quantity) {
-  using std::to_string;
-  return to_string(quantity.get()) + " [dimensionless]";
+  std::ostringstream ss;
+  ss << quantity.get();
+  return ss.str() + " [dimensionless]";
 }
 
 template <class T, class... Units>
