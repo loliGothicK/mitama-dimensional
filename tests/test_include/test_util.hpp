@@ -5,7 +5,6 @@
 #include <utility>
 #include <tuple>
 #include <random>
-#include <catch2/catch.hpp>
 #include <Result.hpp>
 
 #define IS_INVALID_EXPR(...)                                     \
