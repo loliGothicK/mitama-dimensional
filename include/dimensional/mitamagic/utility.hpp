@@ -1,6 +1,7 @@
 #pragma once
 #include <ratio>
 #include <type_traits>
+#include <cstdint>
 
 namespace mitama {
 template <class T, class = void> struct is_complete_type : std::false_type {};

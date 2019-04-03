@@ -5,6 +5,7 @@
 #include "mitamagic/utility.hpp"
 #include <iostream>
 #include <type_traits>
+#include <string>
 
 namespace mitama {
 template <class...> inline constexpr bool abbreviation_error_v = false;
