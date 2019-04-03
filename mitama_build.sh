@@ -15,8 +15,8 @@ project(mitama-dimensional)
 include_directories(
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/tests
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
-  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/result/include
-  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Catch2/single_include
+  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/mitama-cpp-result/include
+  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/catch2/single_include
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/tests/test_include
   )
 enable_testing()

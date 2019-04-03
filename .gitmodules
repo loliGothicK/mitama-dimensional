@@ -4,3 +4,6 @@
 [submodule "mitama-cpp-result"]
 	path = mitama-cpp-result
 	url = https://github.com/LoliGothick/mitama-cpp-result
+[submodule "catch2"]
+	path = catch2
+	url = https://github.com/catchorg/Catch2.git
