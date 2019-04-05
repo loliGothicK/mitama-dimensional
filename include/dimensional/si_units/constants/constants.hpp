@@ -9,17 +9,24 @@
 
 namespace mitama::si::constants{
 
-    inline constexpr quantity<action_t, long double> h = static_cast<long double>(6.62607015e-34l);
+    template < class T = long double >
+    inline constexpr quantity<action_t, T> h = static_cast<T>(6.62607015e-34l);
 
-    inline constexpr quantity<electric_charge_t, long double> e = static_cast<long double>(1.602176634e-19l);
+    template < class T = long double >
+    inline constexpr quantity<electric_charge_t, T> e = static_cast<T>(1.602176634e-19l);
 
-    inline constexpr quantity<heat_capacity_t, long double> k  = static_cast<long double>(1.380649e-23l);
+    template < class T = long double >
+    inline constexpr quantity<heat_capacity_t, T> k  = static_cast<T>(1.380649e-23l);
 
-    inline constexpr quantity<reciprocal_t<micromol_t>,long long> NA = static_cast<long long>(602214076000000000ll);
+    template < class T = long long >
+    inline constexpr quantity<reciprocal_t<micromol_t>, T> NA = static_cast<T>(602214076000000000ll);
 
-    inline constexpr quantity<frequency_t,long long> delta_nu_133Cs = static_cast<long long>(9192631770ll);
+    template < class T = long long >
+    inline constexpr quantity<frequency_t, T> delta_nu_133Cs = static_cast<T>(9192631770ll);
 
-    inline constexpr quantity<velocity_t,long long> c = static_cast<long long>(299792458ll);
+    template < class T = long long >
+    inline constexpr quantity<velocity_t, T> c = static_cast<T>(299792458ll);
 
-    inline constexpr quantity<luminous_efficacy_t,long long> Kcd = static_cast<long long>(683);
+    template < class T = long long >
+    inline constexpr quantity<luminous_efficacy_t, T> Kcd = static_cast<T>(683ll);
 } 
