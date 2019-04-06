@@ -69,9 +69,9 @@ struct si_formatter<
   }
 };
 
-template <class T, class Head, class... Tail>
+template <template <class> class Repr, class T, class Head, class... Tail>
 std::string
-to_string(quantity_t<dimensional_t<Head, Tail...>, T> const &quantity) {
+to_string(quantity_t<Repr<dimensional_t<Head, Tail...>>, T> const &quantity) {
   using namespace std::literals;
   std::ostringstream ss;
   ss << quantity.get();
@@ -79,29 +79,27 @@ to_string(quantity_t<dimensional_t<Head, Tail...>, T> const &quantity) {
          (("·"s + si_formatter<Tail>::format()) + ... + "]");
 }
 
-template <class T>
+template <template <class> class Repr, class T>
 std::string
-to_string(quantity_t<dimensional_t<>, T> const &quantity) {
+to_string(quantity_t<Repr<dimensional_t<>>, T> const &quantity) {
   std::ostringstream ss;
   ss << quantity.get();
   return ss.str() + " [dimensionless]";
 }
 
-template <class T, class... Units>
-//,std::enable_if_t<std::conjunction_v<is_complete_type<abbreviation<typename
-// Units::basic_type>>...>, bool> = false >
+template <template <class> class Repr, class T, class... Units>
 std::ostream &
 operator<<(std::ostream &os,
-           quantity_t<dimensional_t<Units...>, T> const &quantity) {
+           quantity_t<Repr<dimensional_t<Units...>>, T> const &quantity) {
   if constexpr (is_complete_type<
-                           abbreviation<dimensional_t<Units...>>>::value) {
+                           abbreviation<Repr<dimensional_t<Units...>>>>::value) {
     return os << quantity.get() << " ["
-              << abbreviation<dimensional_t<Units...>>::str << "]";
+              << abbreviation<Repr<dimensional_t<Units...>>>::str << "]";
   } else if constexpr (std::conjunction_v<
                     is_complete_type<prefix_<typename Units::scale>>...>) {
     return os << ::mitama::to_string(quantity);
   } else {
-    static_assert(abbreviation_error_v<dimensional_t<Units...>>,
+    static_assert(abbreviation_error_v<Repr<dimensional_t<Units...>>>,
                   "error: abbreviation is not available");
   }
 }
