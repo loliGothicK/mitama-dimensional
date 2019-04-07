@@ -1,6 +1,6 @@
 message(STATUS "Building multiply test")
 
-set(target multiply-value-check-tests-tests)
+set(target multiply-tests)
 message(STATUS "Building library ${target}")
 
 set(sources multiply-tests.cpp)

@@ -32,5 +32,5 @@ ls -1 tests | sed -E 's/(.*)-tests/add_subdirectory(tests\/\1-tests)/g' \
 mkdir -p build \
     && cd build \
     && cmake .. \
-    && make -j10 \
+    && make -j5 \
     && ctest 2>&1 | tee ./ctset.log
