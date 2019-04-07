@@ -17,26 +17,3 @@ inline auto fmt = [](auto const &a) {
 };
 using namespace std::literals;
 
-template <class, class, class = std::void_t<>> struct test_c;
-
-template <class Prefix, template<class> class Repr, class Unit>
-struct test_c<Prefix, Repr<dimensional_t<Unit>>> {
-  inline static constexpr auto value = 1 | Prefix{} * Repr<dimensional_t<Unit>>{};
-  static std::string expexted() {
-    return std::to_string(1) + " [" + std::string(prefix_<Prefix>::str) +
-           std::string(symbol_<typename basis_<dimensional_t<Unit>>::template type<0>>::str) +
-           "]";
-  }
-};
-template <class Prefix, template<class> class Repr, class Unit>
-struct test_c<Prefix, Repr<dimensional_t<Unit>>,
-              std::enable_if_t<std::is_same_v<
-                  typename basis_<dimensional_t<Unit>>::template type<0>, mass>>> {
-  inline static constexpr auto value = 1 | Prefix{} * Repr<dimensional_t<Unit>>{};
-  static std::string expexted() {
-    return std::to_string(1) + " [" +
-           std::string(prefix_<std::ratio_multiply<Prefix, std::kilo>>::str) +
-           std::string(symbol_<typename basis_<dimensional_t<Unit>>::template type<0>>::str) +
-           "]";
-  }
-};
