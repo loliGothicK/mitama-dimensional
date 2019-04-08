@@ -6,7 +6,8 @@
 #include "pressure.hpp"
 
 namespace mitama::si {
-using dynamic_viscosity_t = decltype(pascal * seconds);
+template<class> struct dynamic_viscosity_repr{};
+using dynamic_viscosity_t = make_synonym_t<dynamic_viscosity_repr, decltype(pascal * seconds)>;
 
 inline constexpr dynamic_viscosity_t dynamic_viscosity{};
 }

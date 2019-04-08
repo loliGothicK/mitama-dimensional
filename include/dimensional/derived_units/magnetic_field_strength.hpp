@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using magnetic_field_strength_t = decltype(ampere<> / meter<>);
+template<class> struct magnetic_field_strength_repr{};
+using magnetic_field_strength_t = make_synonym_t<magnetic_field_strength_repr, decltype(ampere<> / meter<>)>;
 
 inline constexpr magnetic_field_strength_t magnetic_field_strength{};
 }

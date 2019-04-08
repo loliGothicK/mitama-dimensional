@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using pop_t = decltype(meters * second<-6>);
+template<class> struct pop_repr{};
+using pop_t = make_synonym_t<pop_repr, decltype(meters * second<-6>)>;
 
 inline constexpr pop_t pop{};
 }

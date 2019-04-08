@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using energy_t = decltype(kilogram<> * meter<2> * second<-2>);
+template<class> struct energy_repr{};
+using energy_t = make_synonym_t<energy_repr, decltype(kilogram<> * meter<2> * second<-2>)>;
 
 #if !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_HEAT_HPP) && !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_WORK_HPP)
 inline constexpr energy_t joule{}; 

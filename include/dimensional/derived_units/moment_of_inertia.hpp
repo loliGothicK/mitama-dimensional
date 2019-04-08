@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using moment_of_inertia_t = decltype(kilogram<> * meter<2>);
+template<class> struct moment_of_inertia_repr{};
+using moment_of_inertia_t = make_synonym_t<moment_of_inertia_repr, decltype(kilogram<> * meter<2>)>;
 
 inline constexpr moment_of_inertia_t moment_of_inertia{};
 }

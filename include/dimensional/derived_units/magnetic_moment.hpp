@@ -6,7 +6,8 @@
 #include "magnetic_flux.hpp"
 
 namespace mitama::si {
-using magnetic_moment_t = decltype(weber * meter<>);
+template<class> struct magnetic_moment_repr{};
+using magnetic_moment_t = make_synonym_t<magnetic_moment_repr, decltype(weber * meter<>)>;
 
 inline constexpr magnetic_moment_t magnetic_moment{};
 }

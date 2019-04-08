@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using jerk_t = decltype(meters * second<-3>);
+template<class> struct jerk_repr{};
+using jerk_t = make_synonym_t<jerk_repr, decltype(meters * second<-3>)>;
 
 inline constexpr jerk_t jerk{};
 }

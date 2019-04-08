@@ -6,7 +6,8 @@
 #include "power.hpp"
 
 namespace mitama::si {
-using power_density_t = decltype(watt / meter<3>);
+template<class> struct power_density_repr{};
+using power_density_t = make_synonym_t<power_density_repr, decltype(watt / meter<3>)>;
 
 inline constexpr power_density_t power_density{};
 }

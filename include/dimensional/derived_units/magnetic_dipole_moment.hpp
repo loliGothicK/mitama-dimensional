@@ -7,7 +7,8 @@
 #include "magnetic_flux_density.hpp"
 
 namespace mitama::si {
-using magnetic_dipole_moment_t = decltype(joule / tesla);
+template<class> struct magnetic_dipole_moment_repr{};
+using magnetic_dipole_moment_t = make_synonym_t<magnetic_dipole_moment_repr, decltype(joule / tesla)>;
 
 inline constexpr magnetic_dipole_moment_t magnetic_dipole_moment{};
 }

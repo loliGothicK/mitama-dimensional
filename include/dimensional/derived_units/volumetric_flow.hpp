@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using volumetric_flow_t = decltype(meter<3> / second<>);
+template<class> struct volumetric_flow_repr{};
+using volumetric_flow_t = make_synonym_t<volumetric_flow_repr, decltype(meter<3> / second<>)>;
 
 inline constexpr volumetric_flow_t volumetric_flow{};
 }

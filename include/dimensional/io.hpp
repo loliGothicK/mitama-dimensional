@@ -12,6 +12,22 @@ namespace mitama {
 template <class...> inline constexpr bool abbreviation_error_v = false;
 
 template <class, class = void> struct abbreviation;
+
+template <template <class> class, class> struct make_synonym{};
+
+template <template <class> class Synonym, template<class> class Repr, class... Units>
+struct make_synonym<Synonym, Repr<dimensional_t<Units...>>>{
+  using type = Synonym<dimensional_t<Units...>>;
+};
+
+template <template <class> class Synonym, class... Units>
+struct make_synonym<Synonym, dimensional_t<Units...>>{
+  using type = Synonym<dimensional_t<Units...>>;
+};
+
+template <template<class> class Synonym, class Dim>
+using make_synonym_t = typename make_synonym<Synonym, std::decay_t<Dim>>::type;
+
 template <class, class = void> struct symbol_;
 template <class, class = void> struct prefix_;
 

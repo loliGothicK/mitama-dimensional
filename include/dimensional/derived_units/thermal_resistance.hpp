@@ -7,7 +7,8 @@
 
 
 namespace mitama::si {
-using thermal_resistance_t = decltype(kelvin<> / watt);
+template<class> struct thermal_resistance_repr{};
+using thermal_resistance_t = make_synonym_t<thermal_resistance_repr, decltype(kelvin<> / watt)>;
 
 inline constexpr thermal_resistance_t thermal_resistance{};
 }

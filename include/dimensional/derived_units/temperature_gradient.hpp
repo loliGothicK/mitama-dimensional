@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using temperature_gradient_t = decltype(kelvin<> / meter<>);
+template<class> struct temperature_gradient_repr{};
+using temperature_gradient_t = make_synonym_t<temperature_gradient_repr, decltype(kelvin<> / meter<>)>;
 
 inline constexpr temperature_gradient_t temperature_gradient{};
 }

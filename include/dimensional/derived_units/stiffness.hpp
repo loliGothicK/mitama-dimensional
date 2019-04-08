@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using stiffness_t = decltype(newton / meter<>);
+template<class> struct stiffness_repr{};
+using stiffness_t = make_synonym_t<stiffness_repr, decltype(newton / meter<>)>;
 
 inline constexpr stiffness_t stiffness{};
 }

@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using density_t = decltype(meter<-3> * kilogram<>);
+template<class> struct density_repr{};
+using density_t = make_synonym_t<density_repr, decltype(meter<-3> * kilogram<>)>;
 
 inline constexpr density_t density{};
 }

@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using area_density_t = decltype(meter<-2> * kilogram<>);
+template<class> struct area_density_repr{};
+using area_density_t = make_synonym_t<area_density_repr, decltype(meter<-2> * kilogram<>)>;
 
 inline constexpr area_density_t area_density{};
 }

@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using electric_charge_t = decltype(second<> * ampere<>);
+template<class> struct electric_charge_repr{};
+using electric_charge_t = make_synonym_t<electric_charge_repr, decltype(second<> * ampere<>)>;
 
 inline constexpr electric_charge_t coulomb{}; 
 }

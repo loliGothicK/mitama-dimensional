@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using magnetic_flux_density_t = decltype(kilogram<> * second<-2> * ampere<-1>);
+template<class> struct magnetic_flux_density_repr{};
+using magnetic_flux_density_t = make_synonym_t<magnetic_flux_density_repr, decltype(kilogram<> * second<-2> * ampere<-1>)>;
 
 inline constexpr magnetic_flux_density_t tesla{}; 
 }

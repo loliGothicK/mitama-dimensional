@@ -6,7 +6,8 @@
 #include "power.hpp"
 
 namespace mitama::si {
-using spectral_power_t = decltype(watt / meter<>);
+template<class> struct spectral_power_repr{};
+using spectral_power_t = make_synonym_t<spectral_power_repr, decltype(watt / meter<>)>;
 
 inline constexpr spectral_power_t spectral_power{};
 }

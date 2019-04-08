@@ -7,7 +7,8 @@
 #include "solid_angle.hpp"
 
 namespace mitama::si {
-using spectral_radiance_t = decltype( watt / (steradian * meter<3>) );
+template<class> struct spectral_radiance_repr{};
+using spectral_radiance_t = make_synonym_t<spectral_radiance_repr, decltype( watt / (steradian * meter<3>) )>;
 
 inline constexpr spectral_radiance_t spectral_radiance{};
 }

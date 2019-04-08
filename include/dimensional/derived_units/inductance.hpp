@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using inductance_t = decltype(kilogram<> * meter<2> * second<-2> * ampere<-2>);
+template<class> struct inductance_repr{};
+using inductance_t = make_synonym_t<inductance_repr, decltype(kilogram<> * meter<2> * second<-2> * ampere<-2>)>;
 
 inline constexpr inductance_t henry{}; 
 }

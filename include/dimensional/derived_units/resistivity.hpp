@@ -6,7 +6,8 @@
 #include "resistance.hpp"
 
 namespace mitama::si {
-using resistivity_t = decltype(ohm * meter<>);
+template<class> struct resistivity_repr{};
+using resistivity_t = make_synonym_t<resistivity_repr, decltype(ohm * meter<>)>;
 
 inline constexpr resistivity_t resistivity{};
 }

@@ -6,7 +6,8 @@
 #include "magnetic_flux.hpp"
 
 namespace mitama::si {
-using magnetic_vector_potential_t = decltype(weber / meter<>);
+template<class> struct magnetic_vector_potential_repr{};
+using magnetic_vector_potential_t = make_synonym_t<magnetic_vector_potential_repr, decltype(weber / meter<>)>;
 
 inline constexpr magnetic_vector_potential_t magnetic_vector_potential{};
 }

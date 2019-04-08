@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using reactance_t = decltype(kilogram<> * meter<2> * second<-3> * ampere<-2>);
+template<class> struct reactance_repr{};
+using reactance_t = make_synonym_t<reactance_repr, decltype(kilogram<> * meter<2> * second<-3> * ampere<-2>)>;
 
 #if !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_RESISTANCE_HPP) && !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_IMPEDANCE_HPP)
 inline constexpr reactance_t ohm{}; 

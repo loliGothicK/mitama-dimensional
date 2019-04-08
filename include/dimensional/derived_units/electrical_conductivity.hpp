@@ -6,7 +6,8 @@
 #include "conductance.hpp"
 
 namespace mitama::si {
-using electrical_conductivity_t = decltype(siemens / meter<>);
+template<class> struct electrical_conductivity_repr{};
+using electrical_conductivity_t = make_synonym_t<electrical_conductivity_repr, decltype(siemens / meter<>)>;
 
 inline constexpr electrical_conductivity_t electrical_conductivity{};
 }
