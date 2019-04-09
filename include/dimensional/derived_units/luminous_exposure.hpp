@@ -6,7 +6,8 @@
 #include "solid_angle.hpp"
 
 namespace mitama::si {
-using luminous_exposure_t = decltype(meter<-2>*seconds*candelas*steradian);
+template<class> struct luminous_exposure_repr{};
+using luminous_exposure_t = make_synonym_t<luminous_exposure_repr, decltype(meter<-2>*seconds*candelas*steradian)>;
 
 inline constexpr luminous_exposure_t luminous_exposure{};
 }

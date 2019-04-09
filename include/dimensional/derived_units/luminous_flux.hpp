@@ -6,7 +6,8 @@
 #include "solid_angle.hpp"
 
 namespace mitama::si {
-using luminous_flux_t = decltype(candela<> * steradian);
+template<class> struct luminous_flux_repr{};
+using luminous_flux_t = make_synonym_t<luminous_flux_repr, decltype(candela<> * steradian)>;
 
 inline constexpr luminous_flux_t lumen{}; 
 }

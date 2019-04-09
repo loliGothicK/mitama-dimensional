@@ -289,3 +289,19 @@ int main() {
 
 - [environment](https://loligothick.github.io/mitama-dimensional/)として公開中（Basic Conceptsを書き足した）
 
+## v0.6.0
+
+### **新機能**
+
+- `dimless_t`の追加
+- 対数系の関数のサポート
+
+### バグ修正
+
+- fuel_efficiencyのフォーマットの修正
+- 内部の幽霊型のシステム変更による大規模な修正（ユーザーコードの変更なし）
+
+### ドキュメント
+
+- [environment](https://loligothick.github.io/mitama-dimensional/)として公開中（delta typeとContribution Giudeを書き足した）
+

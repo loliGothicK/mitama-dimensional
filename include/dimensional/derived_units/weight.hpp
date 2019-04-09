@@ -5,7 +5,8 @@
 #include "../io.hpp"
 
 namespace mitama::si {
-using weight_t = decltype(kilogram<> * meter<> * second<-2>);
+template<class> struct weight_repr{};
+using weight_t = make_synonym_t<weight_repr, decltype(kilogram<> * meter<> * second<-2>)>;
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_FORCE_HPP
 inline constexpr weight_t newton{};
 #endif

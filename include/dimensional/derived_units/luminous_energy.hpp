@@ -6,7 +6,8 @@
 #include "luminous_flux.hpp"
 
 namespace mitama::si {
-using luminous_energy_t = decltype(lumen * second<>);
+template<class> struct luminous_energy_repr{};
+using luminous_energy_t = make_synonym_t<luminous_energy_repr, decltype(lumen * second<>)>;
 
 inline constexpr luminous_energy_t luminous_energy{};
 }

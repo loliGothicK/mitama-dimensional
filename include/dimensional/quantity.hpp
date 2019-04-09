@@ -11,10 +11,13 @@ template <class, class> struct is_same_dimensional : std::false_type {};
 
 // meta-operator for dimension equivalence
 // template partial specialization for dimensional_t
-template <class T, class U, class... Units1,
-          class... Units2>
-struct is_same_dimensional<quantity_t<dimensional_t<Units1...>, T>,
-                           quantity_t<dimensional_t<Units2...>, U>>
+template <class T, class U,
+          class... Units1,
+          class... Units2,
+          template <class> class Repr1,
+          template <class> class Repr2>
+struct is_same_dimensional<quantity_t<Repr1<dimensional_t<Units1...>>, T>,
+                           quantity_t<Repr2<dimensional_t<Units2...>>, U>>
     : std::conjunction<
           std::bool_constant<sizeof...(Units1) == sizeof...(Units2)>,
           std::is_base_of<typename Units1::tag,
@@ -51,16 +54,18 @@ dimensional_convert(From const& from) {
 
 namespace mitama {
 
-template <class Dim, class T> class quantity_t {
+template <class T, template <class> class Repr, class...Units>
+class quantity_t<Repr<dimensional_t<Units...>>, T> {
   T value_;
 
 public:
   using value_type = T;
-  using dimension_type = Dim;
+  using dimension_type = dimensional_t<Units...>;
 
   constexpr quantity_t(): value_{} {}
   
-  template <class U, std::enable_if_t<std::is_constructible_v<T, U> &&
+  template <class U, 
+  std::enable_if_t<std::is_constructible_v<T, U> &&
                                           std::is_convertible_v<U, T>,
                                       bool> = false>
   constexpr quantity_t(U &&u) : value_(std::forward<U>(u)) {}
@@ -241,15 +246,19 @@ template <class T> inline constexpr bool is_quantity_v = is_quantity<T>::value;
 
 namespace mitamagic {
 template <class Dim> struct into_dimensional {
-  using type = dimensional_t<units_t<Dim>>;
+  using type = si_base_units_repr<dimensional_t<units_t<Dim>>>;
 };
 
 template <class Dim> struct into_dimensional<units_t<Dim>> {
-  using type = dimensional_t<units_t<Dim>>;
+  using type = si_base_units_repr<dimensional_t<units_t<Dim>>>;
 };
 
 template <class... Units> struct into_dimensional<dimensional_t<Units...>> {
-  using type = dimensional_t<Units...>;
+  using type = si_base_units_repr<dimensional_t<Units...>>;
+};
+
+template <template<class>class Repr, class... Units> struct into_dimensional<Repr<dimensional_t<Units...>>> {
+  using type = Repr<dimensional_t<Units...>>;
 };
 
 template <class Unit>
@@ -262,8 +271,13 @@ using quantity = quantity_t<mitamagic::into_dimensional_t<Dim>, T>;
 } // namespace mitama
 
 namespace mitama {
+
+template < class > struct is_dimensional_quantifier: std::false_type {};
+template < template<class>class Repr, class... Units >
+struct is_dimensional_quantifier<Repr<dimensional_t<Units...>>>: std::true_type {};
+
 template <class U1, class U2,
-          std::enable_if_t<is_dimensional_v<U1> && is_dimensional_v<U2>, bool> =
+          std::enable_if_t<std::conjunction_v<is_dimensional_quantifier<U1>, is_dimensional_quantifier<U2>>, bool> =
               false>
 constexpr mitamagic::quotient_t<mitamagic::into_dimensional_t<U1>,
                                 mitamagic::into_dimensional_t<U2>>
@@ -272,7 +286,7 @@ operator*(U1, U2) {
 }
 
 template <class U1, class U2,
-          std::enable_if_t<is_dimensional_v<U1> && is_dimensional_v<U2>, bool> =
+          std::enable_if_t<std::conjunction_v<is_dimensional_quantifier<U1>, is_dimensional_quantifier<U2>>, bool> =
               false>
 constexpr mitamagic::quotient_t<
     mitamagic::into_dimensional_t<U1>,
@@ -281,14 +295,8 @@ operator/(U1, U2) {
   return {};
 }
 
-template <std::intmax_t N, class U,
-          std::enable_if_t<is_dimensional_v<U>, bool> = false>
-constexpr powered_t<U, N> pow(U) {
-  return {};
-}
-
 template <class Dim, class T>
-constexpr std::enable_if_t<is_dimensional_v<Dim>, quantity_t<Dim, T>>
+constexpr std::enable_if_t<is_dimensional_quantifier<Dim>::value, quantity_t<Dim, T>>
 operator|(T &&t, Dim) {
   return {std::forward<T>(t)};
 }
@@ -317,5 +325,6 @@ template <class Q1, class Q2> struct common_type<Q1, Q2> {
       std::common_type_t<typename Q1::value_type, typename Q2::value_type>>;
 };
 
+using dimless_t = si_base_units_repr<dimensional_t<>>;
 } // namespace mitama
 #endif

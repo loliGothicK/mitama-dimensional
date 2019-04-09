@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using diffusion_coefficient_t = decltype(meter<2> / second<1>);
+template<class> struct diffusion_coefficient_repr{};
+using diffusion_coefficient_t = make_synonym_t<diffusion_coefficient_repr, decltype(meter<2> / second<1>)>;
 
 #if !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_THERMAL_DIFFUSIVITY_HPP) && !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_KINEMATIC_VISCOSITY_HPP)
 inline constexpr diffusion_coefficient_t diffusion_coefficient{};

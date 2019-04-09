@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using magnetization_t = decltype(ampere<> / meter<>);
+template<class> struct magnetization_repr{};
+using magnetization_t = make_synonym_t<magnetization_repr, decltype(ampere<> / meter<>)>;
 
 inline constexpr magnetization_t magnetization{};
 }

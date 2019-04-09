@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using molality_t = decltype(mol<> / kilogram<>);
+template<class> struct molality_repr{};
+using molality_t = make_synonym_t<molality_repr, decltype(mol<> / kilogram<>)>;
 
 inline constexpr molality_t molality{};
 }

@@ -1,4 +1,4 @@
-message(STATUS "Building addition-value-check-tests test")
+message(STATUS "Building addition-value-check test")
 
 set(target addition-value-check-tests)
 message(STATUS "Building library ${target}")

@@ -112,24 +112,47 @@ constexpr auto converted_value(From &&quantity) {
              template cast_coefficient<typename To::value_type>();
 }
 
-template <class, class, class> struct scaled_demension;
+template <class, class, class> struct scaled_demension_helper;
+template <class, class> struct scaled_demension;
 
 template <class... L, class... R,
           std::size_t... I>
-struct scaled_demension<dimensional_t<L...>,
-                        dimensional_t<R...>,
-                        std::index_sequence<I...>> {
-  using type = dimensional_t<
+struct scaled_demension_helper<dimensional_t<L...>,
+                               dimensional_t<R...>,
+                               std::index_sequence<I...>> {
+  using type = si_base_units_repr<dimensional_t<
       units_t<
           typename tlist_element_t<I, type_list<L...>>::dimension_type,
           typename tlist_element_t<I, type_list<L...>>::exponent,
           ratio_min<typename tlist_element_t<I, type_list<L...>>::scale,
-                    typename tlist_element_t<I, type_list<R...>>::scale>>...>;
+                    typename tlist_element_t<I, type_list<R...>>::scale>>...>>;
+};
+
+template <template <class> class ReprL,
+          template <class> class ReprR,
+          class... L, class... R>
+struct scaled_demension<ReprL<dimensional_t<L...>>,
+                        ReprR<dimensional_t<R...>>> {
+  using type = typename scaled_demension_helper<
+      dimensional_t<L...>,
+      dimensional_t<L...>,
+      std::make_index_sequence<sizeof...(L)>
+  >::type;
+};
+
+template <class... L, class... R>
+struct scaled_demension<dimensional_t<L...>,
+                        dimensional_t<R...>> {
+  using type = typename scaled_demension_helper<
+      dimensional_t<L...>,
+      dimensional_t<L...>,
+      std::make_index_sequence<sizeof...(L)>
+  >::type;
 };
 
 template <class L, class R>
 using scaled_demension_t =
-    typename scaled_demension<L, R, std::make_index_sequence<L::value>>::type;
+    typename scaled_demension<L, R>::type;
 } // namespace mitama::mitamagic
 
 namespace mitama::mitamagic {
@@ -151,6 +174,11 @@ template <class> struct inverse;
 template <class... Units>
 struct inverse<dimensional_t<Units...>> { // invoke to mitamagic::inversed
   using type = dimensional_t<typename mitamagic::inversed<Units>::type...>;
+};
+
+template < template<class>class Repr, class... Units >
+struct inverse<Repr<dimensional_t<Units...>>> { // invoke to mitamagic::inversed
+  using type = Repr<dimensional_t<typename mitamagic::inversed<Units>::type...>>;
 };
 
 // alias template for inverse
@@ -222,15 +250,32 @@ template <class... LeftPhantomTypes,
           class... RightPhantomTypes>
 struct quotient<dimensional_t<LeftPhantomTypes...>,
                 dimensional_t<RightPhantomTypes...>> {
-  using type = 
+  using type = si_base_units_repr<
     mitamagic::tlist_remove_if_t<
       is_dimensionless_type,
       typename mitamagic::quotient_impl<
         mitamagic::type_list<LeftPhantomTypes...>,
         mitamagic::type_list<RightPhantomTypes...>,
         mitamagic::type_list<>
-      >::result_type>;
+      >::result_type>>;
 };
+
+template <template<class>class ReprL,
+          template<class>class ReprR,
+          class... LeftPhantomTypes,
+          class... RightPhantomTypes>
+struct quotient<ReprL<dimensional_t<LeftPhantomTypes...>>,
+                ReprR<dimensional_t<RightPhantomTypes...>>> {
+  using type = si_base_units_repr<
+    mitamagic::tlist_remove_if_t<
+      is_dimensionless_type,
+      typename mitamagic::quotient_impl<
+        mitamagic::type_list<LeftPhantomTypes...>,
+        mitamagic::type_list<RightPhantomTypes...>,
+        mitamagic::type_list<>
+      >::result_type>>;
+};
+
 
 template <class, class> struct powered_dimensional;
 
@@ -243,6 +288,16 @@ struct powered_dimensional<dimensional_t<PhantomTypes...>,
                                                 std::ratio<N, D>>,
                             typename PhantomTypes::scale>...>;
 };
+template <template<class>class Repr, std::intmax_t N, std::intmax_t D, class... PhantomTypes>
+struct powered_dimensional<Repr<dimensional_t<PhantomTypes...>>,
+                           std::ratio<N, D>> {
+  using type =
+      Repr<dimensional_t<units_t<typename PhantomTypes::dimension_type,
+                            std::ratio_multiply<typename PhantomTypes::exponent,
+                                                std::ratio<N, D>>,
+                            typename PhantomTypes::scale>...>>;
+};
+
 
 template <class L, class R> using quotient_t = typename quotient<L, R>::type;
 } // namespace mitama::mitamagic

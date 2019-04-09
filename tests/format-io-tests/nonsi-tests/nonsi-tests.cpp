@@ -8,6 +8,7 @@
 #include <dimensional/nonsi_units/liter.hpp>
 #include <dimensional/nonsi_units/minute.hpp>
 #include <dimensional/nonsi_units/tonne.hpp>
+#include <dimensional/nonsi_units/dgree_celsius.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("hectare format test", "[quantity][abbreviation]") {
@@ -40,5 +41,9 @@ TEST_CASE("hours format test", "[quantity][abbreviation]") {
 
 TEST_CASE("days format test", "[quantity][abbreviation]") {
   REQUIRE(fmt(1 | days) == "1 [d]");
+}
+
+TEST_CASE("dgree_celcius format test", "[quantity][abbreviation]") {
+  REQUIRE(fmt(1 | dgree_celsius) == "1 [°C]");
 }
 

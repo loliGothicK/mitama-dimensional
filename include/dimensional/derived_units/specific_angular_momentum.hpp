@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using specific_angular_momentum_t = decltype(meter<2> * second<-1>);
+template<class> struct specific_angular_momentum_repr{};
+using specific_angular_momentum_t = make_synonym_t<specific_angular_momentum_repr, decltype(meter<2> * second<-1>)>;
 
 inline constexpr specific_angular_momentum_t specific_angular_momentum{};
 }

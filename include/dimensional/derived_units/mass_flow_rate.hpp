@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using mass_flow_rate_t = decltype(kilogram<> / second<>);
+template<class> struct mass_flow_rate_repr{};
+using mass_flow_rate_t = make_synonym_t<mass_flow_rate_repr, decltype(kilogram<> / second<>)>;
 
 inline constexpr mass_flow_rate_t mass_flow_rate{};
 }

@@ -5,7 +5,8 @@
 #include "../io.hpp"
 
 namespace mitama::si {
-using magnetic_flux_t = decltype(kilogram<> * meter<2> * second<-2> * ampere<-1>);
+template<class> struct magnetic_flux_repr{};
+using magnetic_flux_t = make_synonym_t<magnetic_flux_repr, decltype(kilogram<> * meter<2> * second<-2> * ampere<-1>)>;
 
 inline constexpr magnetic_flux_t weber{}; 
 }

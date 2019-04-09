@@ -6,7 +6,8 @@
 #include "energy.hpp"
 
 namespace mitama::si {
-using molar_entropy_t = decltype( joule / (kelvin<> * mol<>) );
+template<class> struct molar_entropy_repr{};
+using molar_entropy_t = make_synonym_t<molar_entropy_repr, decltype( joule / (kelvin<> * mol<>) )>;
 
 inline constexpr molar_entropy_t molar_entropy{};
 }

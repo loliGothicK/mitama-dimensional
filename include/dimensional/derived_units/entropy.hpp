@@ -6,7 +6,8 @@
 #include "energy.hpp"
 
 namespace mitama::si {
-using entropy_t = decltype(joule / kelvins);
+template<class> struct entropy_repr{};
+using entropy_t = make_synonym_t<entropy_repr, decltype(joule / kelvins)>;
 
 inline constexpr entropy_t entropy{};
 }

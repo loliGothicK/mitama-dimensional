@@ -6,7 +6,8 @@
 #include "angle.hpp"
 
 namespace mitama::si {
-using angular_acceleration_t = decltype(radian / second<2>);
+template<class> struct angular_acceleration_repr{};
+using angular_acceleration_t = make_synonym_t<angular_acceleration_repr, decltype(radian / second<2>)>;
 
 inline constexpr angular_acceleration_t angular_acceleration{};
 }

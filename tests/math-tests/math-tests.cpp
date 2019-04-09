@@ -439,3 +439,55 @@ TEMPLATE_TEST_CASE("dim", "[math],[quantity],[remainder]",
     REQUIRE(dim(quantity<TestType>(1), quantity<TestType>(3)).get() == +0);
     REQUIRE(dim(quantity<TestType>(-4), quantity<TestType>(-3)).get() == +0);
 }
+
+TEMPLATE_TEST_CASE("log", "[math],[quantity],[log]",
+                   radian_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
+{
+    using namespace Catch::literals;
+    REQUIRE(
+        test_util::RandomGenerator<double>::uniform(1, 10E10)
+            .take(100000)
+            .required([](auto value){
+                quantity<TestType> v = value;
+                return log(v) == quantity<dimless_t>(std::log(value));
+            }));
+}
+
+TEMPLATE_TEST_CASE("log2", "[math],[quantity],[log]",
+                   radian_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
+{
+    using namespace Catch::literals;
+    REQUIRE(
+        test_util::RandomGenerator<double>::uniform(1, 10E10)
+            .take(100000)
+            .required([](auto value){
+                quantity<TestType> v = value;
+                return log2(v) == quantity<dimless_t>(std::log2(value));
+            }));
+}
+
+TEMPLATE_TEST_CASE("log10", "[math],[quantity],[log]",
+                   radian_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
+{
+    using namespace Catch::literals;
+    REQUIRE(
+        test_util::RandomGenerator<double>::uniform(1, 10E10)
+            .take(100000)
+            .required([](auto value){
+                quantity<TestType> v = value;
+                return log10(v) == quantity<dimless_t>(std::log10(value));
+            }));
+}
+
+TEMPLATE_TEST_CASE("log1p", "[math],[quantity],[log]",
+                   radian_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
+{
+    using namespace Catch::literals;
+    REQUIRE(
+        test_util::RandomGenerator<double>::uniform(1, 10E10)
+            .take(100000)
+            .required([](auto value){
+                quantity<TestType> v = value;
+                return log1p(v) == quantity<dimless_t>(std::log1p(value));
+            }));
+}

@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using momentum_t = decltype(meter<> * kilogram<> * second<-1>);
+template<class> struct momentum_repr{};
+using momentum_t = make_synonym_t<momentum_repr, decltype(meter<> * kilogram<> * second<-1>)>;
 
 inline constexpr momentum_t momentum{};
 }

@@ -7,7 +7,8 @@
 #include "luminous_flux.hpp"
 
 namespace mitama::si {
-using luminous_efficacy_t = decltype(lumen / watt);
+template<class> struct luminous_efficacy_repr{};
+using luminous_efficacy_t = make_synonym_t<luminous_efficacy_repr, decltype(lumen / watt)>;
 
 inline constexpr luminous_efficacy_t luminous_efficacy{};
 }

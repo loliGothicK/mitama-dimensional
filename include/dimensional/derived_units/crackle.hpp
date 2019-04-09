@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using crackle_t = decltype(meters * second<-5>);
+template<class> struct crackle_repr{};
+using crackle_t = make_synonym_t<crackle_repr, decltype(meters * second<-5>)>;
 
 inline constexpr crackle_t crackle{};
 }

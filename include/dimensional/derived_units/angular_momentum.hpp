@@ -5,7 +5,8 @@
 #include "../io.hpp"
 
 namespace mitama::si {
-using angular_momentum_t = decltype(meter<2> * kilogram<> * second<-1>);
+template<class> struct angular_momentum_repr{};
+using angular_momentum_t = make_synonym_t<angular_momentum_repr, decltype(meter<2> * kilogram<> * second<-1>)>;
 
 inline constexpr angular_momentum_t angular_momentum{};
 }

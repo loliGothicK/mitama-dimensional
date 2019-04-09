@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using electric_current_density_t = decltype(ampere<> / meter<2>);
+template<class> struct electric_current_density_repr{};
+using electric_current_density_t = make_synonym_t<electric_current_density_repr, decltype(ampere<> / meter<2>)>;
 
 inline constexpr electric_current_density_t electric_current_density{};
 }

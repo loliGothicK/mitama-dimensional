@@ -7,7 +7,8 @@
 #include "solid_angle.hpp"
 
 namespace mitama::si {
-using radiance_t = decltype( watt / steradian * meter<-2> );
+template<class> struct radiance_repr{};
+using radiance_t = make_synonym_t<radiance_repr, decltype( watt / steradian * meter<-2> )>;
 
 inline constexpr radiance_t radiance{};
 }

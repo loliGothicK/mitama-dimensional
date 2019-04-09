@@ -6,7 +6,8 @@
 #include "energy.hpp"
 
 namespace mitama::si {
-using molar_energy_t = decltype(joule / mol<>);
+template<class> struct molar_energy_repr{};
+using molar_energy_t = make_synonym_t<molar_energy_repr, decltype(joule / mol<>)>;
 
 inline constexpr molar_energy_t molar_energy{};
 }

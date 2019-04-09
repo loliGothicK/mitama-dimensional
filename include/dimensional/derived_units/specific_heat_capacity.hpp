@@ -7,7 +7,8 @@
 
 
 namespace mitama::si {
-using specific_heat_capacity_t = decltype( joule * kilogram<-1> * kelvin<-1> );
+template<class> struct specific_heat_capacity_repr{};
+using specific_heat_capacity_t = make_synonym_t<specific_heat_capacity_repr, decltype( joule * kilogram<-1> * kelvin<-1> )>;
 
 inline constexpr specific_heat_capacity_t specific_heat_capacity{};
 }

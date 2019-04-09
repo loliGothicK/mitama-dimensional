@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using velocity_t = decltype(meters / seconds);
+template<class> struct velocity_repr{};
+using velocity_t = make_synonym_t<velocity_repr, decltype(meters / seconds)>;
 
 inline constexpr velocity_t velocity{};
 }

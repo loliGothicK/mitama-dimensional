@@ -93,7 +93,7 @@ struct refinement_type_for<
 
 template <template <class...> class Requires, class... Symbols>
 struct refinement_type<
-    std::enable_if_t<(sym::is_refinement_symbol_v<Symbols> && ...)>,
+    std::enable_if_t<std::conjunction_v<sym::is_refinement_symbol<Symbols>...>>,
     Requires<Symbols...>> {
   template <class Q,
             std::enable_if_t<
@@ -148,8 +148,8 @@ template <class, class> struct partial_refinement_type;
 
 template <class... Symbols>
 struct partial_refinement_type_for<
-    std::enable_if_t<(sym::is_refinement_symbol_v<Symbols> && ...)>,
-    Symbols...> {
+	std::enable_if_t<std::conjunction_v<sym::is_refinement_symbol<Symbols>...>>,
+	Symbols...> {
   template <class Q,
             std::enable_if_t<std::conjunction_v<std::is_base_of<dimension_tag<typename Symbols::basis, typename Symbols::exp>, typename std::decay_t<Q>::dimension_type>...>,
                 bool> = false>
@@ -177,8 +177,8 @@ struct partial_refinement_type_for<
 
 template <template <class...> class Requires, class... Symbols>
 struct partial_refinement_type<
-    std::enable_if_t<(sym::is_refinement_symbol_v<Symbols> && ...)>,
-    Requires<Symbols...>> {
+	std::enable_if_t<std::conjunction_v<sym::is_refinement_symbol<Symbols>...>>,
+	Requires<Symbols...>> {
   template <class Q,
             std::enable_if_t<std::conjunction_v<std::is_base_of<dimension_tag<typename Symbols::basis, typename Symbols::exp>, typename std::decay_t<Q>::dimension_type>...>,
                 bool> = false>

@@ -6,7 +6,8 @@
 
 
 namespace mitama::si {
-using luminance_t = decltype(candela<> * meter<-2>);
+template<class> struct luminance_repr{};
+using luminance_t = make_synonym_t<luminance_repr, decltype(candela<> * meter<-2>)>;
 
 inline constexpr luminance_t luminance{};
 }
