@@ -8,5 +8,6 @@
 #include "nearest_integer.hpp"
 #include "trigonometric.hpp"
 #include "modular.hpp"
+#include "logarithm.hpp"
 
 #endif
