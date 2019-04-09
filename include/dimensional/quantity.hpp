@@ -325,5 +325,6 @@ template <class Q1, class Q2> struct common_type<Q1, Q2> {
       std::common_type_t<typename Q1::value_type, typename Q2::value_type>>;
 };
 
+using dimless_t = si_base_units_repr<dimensional_t<>>;
 } // namespace mitama
 #endif
