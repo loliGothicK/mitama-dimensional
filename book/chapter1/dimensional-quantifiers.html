@@ -1,0 +1,456 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>dimensional quantifiers · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-etoc/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../chapter2/" />
+    
+    
+    <link rel="prev" href="mitama_quantity_t.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Chapter I
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="dimensional-quantity-101.html">
+            
+                <a href="dimensional-quantity-101.html">
+            
+                    
+                    Dimensional quantity 101
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="basic-concepts.html">
+            
+                <a href="basic-concepts.html">
+            
+                    
+                    Basic Concepts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="mitama_quantity_t.html">
+            
+                <a href="mitama_quantity_t.html">
+            
+                    
+                    mitama::quantity_t
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.4" data-path="dimensional-quantifiers.html">
+            
+                <a href="dimensional-quantifiers.html">
+            
+                    
+                    dimensional quantifiers
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../chapter2/">
+            
+                <a href="../chapter2/">
+            
+                    
+                    Chapter II
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../chapter2/metric-prefixes.html">
+            
+                <a href="../chapter2/metric-prefixes.html">
+            
+                    
+                    Metric prefixes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../chapter2/si-derived-units.html">
+            
+                <a href="../chapter2/si-derived-units.html">
+            
+                    
+                    Library defined SI derived units and format
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../chapter2/dimensional-refinement.html">
+            
+                <a href="../chapter2/dimensional-refinement.html">
+            
+                    
+                    Dimensional refinement
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../chapter2/delta-type.html">
+            
+                <a href="../chapter2/delta-type.html">
+            
+                    
+                    Delta type
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../CONTRIBUTION.html">
+            
+                <a href="../../CONTRIBUTION.html">
+            
+                    
+                    Contribution Guide
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >dimensional quantifiers</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="dimensional-quantifiers">Dimensional quantifiers</h1>
+<hr>
+<p>Dimensional quantifiers are defined as constexpr variables (templates) of dimensional_t (see <a href="">3.2 dimensional_t</a> in detail).</p>
+<p>For example,</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">meter_t</span> meters;
+
+<span class="hljs-keyword">template</span> &lt; <span class="hljs-built_in">std</span>::<span class="hljs-keyword">intmax_t</span> N = <span class="hljs-number">1</span> &gt;
+<span class="hljs-keyword">inline</span> <span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">powered_t</span>&lt;<span class="hljs-keyword">meter_t</span>, N&gt; meter;
+</code></pre>
+<p>If you do not specify the exponent (=1), use the plural dimension quantifiers, and if you specify it, use the singular dimension quantifiers with non-type template parameter.</p>
+<h2 id="pipe-operator-overload">pipe operator overload</h2>
+<hr>
+<p>Pipe operators are provided to attach units to values.</p>
+<p>It is allowed to convert values into quantities by piping values to dimensional quantifiers.</p>
+<p><strong>example</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// begin example</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;dimensional/quantity.hpp&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;dimensional/si_units/all.hpp&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">namespace</span> si = mitama::si;
+    <span class="hljs-keyword">using</span> mitama::<span class="hljs-keyword">quantity_t</span>;
+
+    <span class="hljs-comment">// Template argument deduction for class templates</span>
+    <span class="hljs-keyword">quantity_t</span> mass = <span class="hljs-number">3</span> | si::kilograms; <span class="hljs-comment">// 3 [kg]</span>
+
+    <span class="hljs-keyword">quantity_t</span> time = <span class="hljs-number">1.66</span> | si::seconds; <span class="hljs-comment">// 1.66 [s]</span>
+
+    <span class="hljs-keyword">quantity_t</span> volume = <span class="hljs-number">4</span> | si::meter&lt;<span class="hljs-number">3</span>&gt;; <span class="hljs-comment">// 4 [m^3]</span>
+}
+<span class="hljs-comment">// end example</span>
+</code></pre>
+<h2 id="multiplication-and-division-operators">multiplication and division operators</h2>
+<hr>
+<p>Multiplication and division operators for dimensional quantifiers are provided to make derived units.</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// begin example</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;dimensional/quantity.hpp&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;dimensional/si_units/all.hpp&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">namespace</span> si = mitama::si;
+    <span class="hljs-keyword">using</span> mitama::<span class="hljs-keyword">quantity_t</span>;
+
+    <span class="hljs-comment">// Template argument deduction for class templates</span>
+    <span class="hljs-keyword">quantity_t</span> density = <span class="hljs-number">3</span> | si::kilograms / si::meter&lt;<span class="hljs-number">3</span>&gt;; <span class="hljs-comment">// 3 [kg / m^3]</span>
+
+    <span class="hljs-keyword">quantity_t</span> speed = <span class="hljs-number">1.2</span> | si::meters / si::seconds; <span class="hljs-comment">// 1.2 [m / s]</span>
+
+    <span class="hljs-keyword">quantity_t</span> accel = <span class="hljs-number">4</span> | si::meters * si::second&lt;<span class="hljs-number">-2</span>&gt;; <span class="hljs-comment">// 4 [s / m^2]</span>
+}
+<span class="hljs-comment">// end example</span>
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="mitama_quantity_t.html" class="navigation navigation-prev " aria-label="Previous page: mitama::quantity_t">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../chapter2/" class="navigation navigation-next " aria-label="Next page: Chapter II">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"dimensional quantifiers","level":"1.2.4","depth":2,"next":{"title":"Chapter II","level":"1.3","depth":1,"path":"book/chapter2/README.md","ref":"book/chapter2/README.md","articles":[{"title":"Metric prefixes","level":"1.3.1","depth":2,"path":"book/chapter2/metric-prefixes.md","ref":"book/chapter2/metric-prefixes.md","articles":[]},{"title":"Library defined SI derived units and format","level":"1.3.2","depth":2,"path":"book/chapter2/si-derived-units.md","ref":"book/chapter2/si-derived-units.md","articles":[]},{"title":"Dimensional refinement","level":"1.3.3","depth":2,"path":"book/chapter2/dimensional-refinement.md","ref":"book/chapter2/dimensional-refinement.md","articles":[]},{"title":"Delta type","level":"1.3.4","depth":2,"path":"book/chapter2/delta-type.md","ref":"book/chapter2/delta-type.md","articles":[]}]},"previous":{"title":"mitama::quantity_t","level":"1.2.3","depth":2,"path":"book/chapter1/mitama_quantity_t.md","ref":"book/chapter1/mitama_quantity_t.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["katex","hints","hide-published-with","etoc"],"pluginsConfig":{"etoc":{"h2lb":3,"header":1,"maxdepth":4,"mindepth":3,"notoc":false},"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"book/chapter1/dimensional-quantifiers.md","mtime":"2019-04-09T10:03:26.622Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-09T10:04:08.274Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-etoc/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
