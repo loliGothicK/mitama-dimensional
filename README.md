@@ -1,5 +1,3 @@
-# mitama-dimensional
-
 ![logo](https://github.com/LoliGothick/mitama-dimensional/blob/master/mitama-dimensional-logo.png)
 
 [![CircleCI](https://circleci.com/gh/LoliGothick/mitama-dimensional.svg?style=svg)](https://circleci.com/gh/LoliGothick/mitama-dimensional)
@@ -8,7 +6,7 @@
 ## What is mitama-dimensional?
 
 Header-only C++17 library provides dimensional analysis based on variadic Phantom-Type.
-
+Please refer to the [document](https://loligothick.github.io/mitama-dimensional/) for more details.
 
 ## Features
 
@@ -77,7 +75,7 @@ int main() {
 }
 ```
 
-- [unit conversions]()
+- [unit conversions](https://loligothick.github.io/mitama-dimensional/book/chapter1/mitama_quantity_t.html#unit-conversions)
   
 ```cpp
 #include <dimensional/quantity.hpp>
