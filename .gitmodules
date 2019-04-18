@@ -1,0 +1,3 @@
+[submodule "mitama-dimensional"]
+	path = mitama-dimensional
+	url = https://github.com/LoliGothick/mitama-dimensional.git

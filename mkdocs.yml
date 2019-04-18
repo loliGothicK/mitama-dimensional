@@ -1,0 +1,60 @@
+site_name: Mitama Dimensional User Manual
+site_dir: '../docs/'
+
+# Project information
+site_name: Mitama.Dimensional | User Manual
+site_description: Mitama.Dimensional C++17 Library
+site_author: mitama
+site_url: https://loligothick.github.io/mitama-dimensional/
+
+# Repository
+repo_name: loligothick/mitama-dimensional
+repo_url: https://github.com/loligothick/mitama-dimensional
+edit_uri: ""
+
+# Theme
+theme:
+  name: 'material'
+  language: 'en'
+  favicon: 'assets/images/favicon.ico'
+  logo:
+    icon: 'donut_small'
+  palette:
+    primary: 'teal'
+    accent: 'teal'
+  feature:
+    tabs: true
+extra:
+  social:
+    - type: 'twitter'
+      link: 'https://twitter.com/mitama_rs'
+markdown_extensions:
+  - admonition
+  - codehilite
+  - fontawesome_markdown
+  - footnotes
+  - meta
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.superfences
+  - mdx_math:
+      enable_dollar_delimiter: true
+extra_javascript: 
+  - https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML
+  - mathjaxhelper.js
+extra_css:
+  - "https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"
+  - cppmap_styles.css
+# Page tree
+nav:
+  - Home: index.md
+  - User Manual:
+    - Dimensional quantity 101: UserManual/dimensional-quantity-101.md
+    - Basic Concepts: UserManual/basic-concepts.md
+    - mitama::quantity_t: UserManual/mitama_quantity_t.md
+    - dimensional quantifiers: UserManual/dimensional-quantifiers.md
+    - Metric prefixes: UserManual/metric-prefixes.md
+    - Library defined SI derived units and format: UserManual/si-derived-units.md
+    - Dimensional refinement: UserManual/dimensional-refinement.md
+    - Delta type: UserManual/delta-type.md
+  - Contribution: CONTRIBUTION.md

@@ -1,0 +1,79 @@
+version: 2.1
+
+orbs: # Inline Orbs for Document Integration
+  mkdocs:
+    jobs:
+      test_book: # Sample Code Integration
+        parameters:
+          compiler:
+            description: compiler-version
+            type: string
+            default: clang-8.0.0
+        executor:
+            name: test_executor
+            compiler: <<parameters.compiler>>
+        steps:
+          - checkout
+          - run: |
+              apt upgrade -y && apt update -y && apt install -y git
+              git submodule update --init --recursive
+              find docs -type f -name \*.md | xargs awk -v i='0' '/\/\/ begin example$/,/\/\/ end example$/ { if($0 !~ "\/\/ .* example$") { print $0 >> FILENAME "-" i ".cpp" } else if ($0 ~ "\/\/ begin example$") { i++ } }'
+              find docs -type f -name \*.cpp | xargs -I{} $CXX -I./mitama-dimensional/include/ {} -std=c++17
+
+      build_book: # Document Build
+        executor: mkdocs
+        steps:
+          - add_ssh_keys:
+              fingerprints:
+                - "dc:68:d6:9a:fc:29:a4:12:35:89:3e:ca:ac:9f:02:d6"
+          - checkout
+          - run: |
+              mkdocs build
+          - store_artifacts:
+              path: /docs
+              destination: "docs-${CIRCLE_BUILD_NUM}"
+
+      deploy_book: # Document Deploy
+        executor: mkdocs
+        steps:
+          - add_ssh_keys:
+              fingerprints:
+                - "dc:68:d6:9a:fc:29:a4:12:35:89:3e:ca:ac:9f:02:d6"
+          - checkout
+          - run: apt upgrade -y && apt update -y && apt install -y git
+          - run: |
+              git config --global user.name LoliGothick
+              git config --global user.email loligothick@gmail.com
+              mkdocs gh-deploy --force --message "published by CI [skip ci]"
+
+    executors: # Inline Executors for Document Integration
+      mkdocs:
+        docker:
+          - image: enumack/mitama-env:mkdocs
+      test_executor:
+        parameters:
+          compiler:
+            type: string
+        docker:
+          - image: enumack/mitama-env:<<parameters.compiler>>
+
+workflows:
+  build-test:
+    jobs:
+      - mkdocs/test_book:
+          name: test/clang-8.0.0
+          compiler: clang-8.0.0
+      - mkdocs/test_book:
+          name: test/gcc-8.2
+          compiler: gcc-8.2
+      - mkdocs/build_book:
+          requires:
+            - test/clang-8.0.0
+            - test/gcc-8.2
+      - hold-for-approval:
+          type: approval
+          requires:
+            - mkdocs/build_book
+      - mkdocs/deploy_book:
+          requires:
+            - hold-for-approval
