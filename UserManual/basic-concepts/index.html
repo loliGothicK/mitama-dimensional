@@ -391,8 +391,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation-of-dimension-inducing" title="Implementation of dimension inducing" class="md-nav__link">
-    Implementation of dimension inducing
+  <a href="#algorithm-of-dimension-inducing" title="Algorithm of dimension inducing" class="md-nav__link">
+    Algorithm of dimension inducing
   </a>
   
 </li>
@@ -567,8 +567,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation-of-dimension-inducing" title="Implementation of dimension inducing" class="md-nav__link">
-    Implementation of dimension inducing
+  <a href="#algorithm-of-dimension-inducing" title="Algorithm of dimension inducing" class="md-nav__link">
+    Algorithm of dimension inducing
   </a>
   
 </li>
@@ -707,7 +707,7 @@ a: D_\Lambda
 (a:A_{\Gamma}) \div (b:B_{\Lambda}) := (a:A_{\Gamma}) \times (b^{-1}:{B_{\Lambda}}^{-1})
 </script>
 </p>
-<h2 id="implementation-of-dimension-inducing">Implementation of dimension inducing</h2>
+<h2 id="algorithm-of-dimension-inducing">Algorithm of dimension inducing</h2>
 <p>Example:</p>
 <p>
 <script type="math/tex; mode=display">
@@ -723,7 +723,7 @@ mul(U_1, U_2) := (e_1 + e_2, min(s_1, s_2))_\lambda
 <p>And consider simple dual loop:</p>
 <ol>
 <li>Pick a <code class="codehilite">unit_t</code> <strong>A</strong> from left.</li>
-<li>If there is a right for <strong>B</strong> with the same dimensions as <strong>A</strong>, push If there is a right for <strong>B</strong> with the same dimensions as <strong>A</strong>, push <script type="math/tex; mode=display">mul(A, B)</script> result and pop <strong>A</strong> and remove <strong>B</strong> from right, else push <strong>A</strong> to result and pop <strong>A</strong>.</li>
+<li>If there is a right for <strong>B</strong> with the same dimensions as <strong>A</strong>, push If there is a right for <strong>B</strong> with the same dimensions as <strong>A</strong>, push <script type="math/tex">mul(A, B)</script> to result and pop <strong>A</strong> and remove <strong>B</strong> from right, else push <strong>A</strong> to result and pop <strong>A</strong>.</li>
 <li>If left does not empty, return to 1, else push the rest of right to result</li>
 </ol>
 <p>start with empty result.</p>
@@ -734,7 +734,8 @@ right = [kg \cdot s^{-1}] \\
 result = [\ ]
 </script>
 </p>
-<p>pick <script type="math/tex">A=m^2</script>, and not found B.
+<p>pick <script type="math/tex">A=m^2</script>, and not found B.</p>
+<p>
 <script type="math/tex; mode=display">
 left = [s^{-1}] \\
 right = [kg \cdot s^{-1}] \\
@@ -742,10 +743,13 @@ result = [m^2]
 </script>
 </p>
 <p>pick <script type="math/tex">A=s^{-1}</script>, found <script type="math/tex">B=s^{-1}</script>.</p>
-<p>left = [\ ] \
-right = [kg] \
+<p>
+<script type="math/tex; mode=display">
+left = [\ ] \\
+right = [kg] \\
 result = [m^2 \cdot s^{-2}]
-$$</p>
+</script>
+</p>
 <p>push the rest of right to result</p>
 <p>
 <script type="math/tex; mode=display">
@@ -753,6 +757,8 @@ left = [\ ] \\
 right = [\ ] \\
 result = [m^2 \cdot s^{-2} \cdot kg]
 </script>
+</p>
+<p>Finally, we get the result <script type="math/tex">[m^2 \cdot s^{-2} \cdot kg]</script>
 </p>
 <p>-- end example</p>
 <h2 id="dive-into-type-level-programing">Dive into type-level programing</h2>
