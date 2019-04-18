@@ -124,7 +124,7 @@ $$
 $$
 
 
-## Implementation of dimension inducing
+## Algorithm of dimension inducing
 
 Example:
 
@@ -142,7 +142,7 @@ And consider simple dual loop:
 
 
 1. Pick a `unit_t` **A** from left.
-2. If there is a right for **B** with the same dimensions as **A**, push If there is a right for **B** with the same dimensions as **A**, push $$mul(A, B)$$ result and pop **A** and remove **B** from right, else push **A** to result and pop **A**.
+2. If there is a right for **B** with the same dimensions as **A**, push If there is a right for **B** with the same dimensions as **A**, push $mul(A, B)$ to result and pop **A** and remove **B** from right, else push **A** to result and pop **A**.
 3. If left does not empty, return to 1, else push the rest of right to result
 
 start with empty result.
@@ -154,6 +154,7 @@ result = [\ ]
 $$
 
 pick $A=m^2$, and not found B.
+
 $$
 left = [s^{-1}] \\
 right = [kg \cdot s^{-1}] \\
@@ -162,6 +163,7 @@ $$
 
 pick $A=s^{-1}$, found $B=s^{-1}$.
 
+$$
 left = [\ ] \\
 right = [kg] \\
 result = [m^2 \cdot s^{-2}]
@@ -174,6 +176,8 @@ left = [\ ] \\
 right = [\ ] \\
 result = [m^2 \cdot s^{-2} \cdot kg]
 $$
+
+Finally, we get the result $[m^2 \cdot s^{-2} \cdot kg]$
 
 -- end example
 

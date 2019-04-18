@@ -21,9 +21,8 @@ namespace mitama {
 ```
 
 
-{% hint style='info' %}
-If the second template argument is omitted, it will be of type `double`.
-{% endhint %}
+!!! Note
+    If the second template argument is omitted, it will be of type `double`.
 
 
 **example**

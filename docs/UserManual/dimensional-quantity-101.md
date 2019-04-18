@@ -97,11 +97,11 @@ Some common physical quantities and their dimensions are listed next.
 |  kinematic viscosity   |          dynamic viscosity/density           |            $m^2/s$             |       [ $L^2T^{-1}$ ]       |
 |    surface tension     |                 energy/area                  |        $J \cdot s^{-2}$        |        [ $MT^{-2}$ ]        |
 
-## Mtric Prefix
+## Metric Prefix
 
 ----------------------------
 
-A **metrix prefix** is a unit prefix that precedes a basic unit of measure to indicate a multiple or fraction of the unit.
+A **metric prefix** is a unit prefix that precedes a basic unit of measure to indicate a multiple or fraction of the unit.
 Each prefix has a unique symbol that is prepended to the unit symbol.
 The prefix **kilo-**, for example, may be added to gram to indicate multiplication by one thousand; one kilogram is equal to one thousand grams.
 The prefix **mili-**, likewise, may be added to metre to indicate division by one thousand; one milimetre is equal to one thousand of a metre.
