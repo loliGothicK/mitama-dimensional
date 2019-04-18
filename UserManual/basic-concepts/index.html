@@ -1,0 +1,1102 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Mitama.Dimensional C++17 Library">
+      
+      
+        <link rel="canonical" href="https://loligothick.github.io/mitama-dimensional/UserManual/basic-concepts/">
+      
+      
+        <meta name="author" content="mitama">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.2">
+    
+    
+      
+        <title>Basic Concepts - Mitama.Dimensional | User Manual</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.3020aac5.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#009688">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.01ccdecf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../../cppmap_styles.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#basic-concepts" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://loligothick.github.io/mitama-dimensional/" title="Mitama.Dimensional | User Manual" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">donut_small</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Mitama.Dimensional | User Manual
+            </span>
+            <span class="md-header-nav__topic">
+              Basic Concepts
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/loligothick/mitama-dimensional" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    loligothick/mitama-dimensional
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." title="Home" class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../dimensional-quantity-101/" title="User Manual" class="md-tabs__link md-tabs__link--active">
+          User Manual
+        </a>
+      
+    </li>
+  
+
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://loligothick.github.io/mitama-dimensional/" title="Mitama.Dimensional | User Manual" class="md-nav__button md-logo">
+      
+        <i class="md-icon">donut_small</i>
+      
+    </a>
+    Mitama.Dimensional | User Manual
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/loligothick/mitama-dimensional" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    loligothick/mitama-dimensional
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      User Manual
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        User Manual
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dimensional-quantity-101/" title="Dimensional quantity 101" class="md-nav__link">
+      Dimensional quantity 101
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Basic Concepts
+      </label>
+    
+    <a href="./" title="Basic Concepts" class="md-nav__link md-nav__link--active">
+      Basic Concepts
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" title="TL;DR" class="md-nav__link">
+    TL;DR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#representation-of-unit" title="Representation of Unit" class="md-nav__link">
+    Representation of Unit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#representation-of-derived-unit" title="Representation of Derived Unit" class="md-nav__link">
+    Representation of Derived Unit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-system-of-quantity" title="Type System of Quantity" class="md-nav__link">
+    Type System of Quantity
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tracking-units-and-conversion-factors-in-types" title="Tracking units and conversion factors in types" class="md-nav__link">
+    Tracking units and conversion factors in types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-of-dimension-inducing" title="Implementation of dimension inducing" class="md-nav__link">
+    Implementation of dimension inducing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dive-into-type-level-programing" title="Dive into type-level programing" class="md-nav__link">
+    Dive into type-level programing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" title="Conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mitama_quantity_t/" title="mitama::quantity_t" class="md-nav__link">
+      mitama::quantity_t
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dimensional-quantifiers/" title="dimensional quantifiers" class="md-nav__link">
+      dimensional quantifiers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metric-prefixes/" title="Metric prefixes" class="md-nav__link">
+      Metric prefixes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../si-derived-units/" title="Library defined SI derived units and format" class="md-nav__link">
+      Library defined SI derived units and format
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dimensional-refinement/" title="Dimensional refinement" class="md-nav__link">
+      Dimensional refinement
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../delta-type/" title="Delta type" class="md-nav__link">
+      Delta type
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../CONTRIBUTION/" title="Contribution" class="md-nav__link">
+      Contribution
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" title="TL;DR" class="md-nav__link">
+    TL;DR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#representation-of-unit" title="Representation of Unit" class="md-nav__link">
+    Representation of Unit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#representation-of-derived-unit" title="Representation of Derived Unit" class="md-nav__link">
+    Representation of Derived Unit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-system-of-quantity" title="Type System of Quantity" class="md-nav__link">
+    Type System of Quantity
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tracking-units-and-conversion-factors-in-types" title="Tracking units and conversion factors in types" class="md-nav__link">
+    Tracking units and conversion factors in types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-of-dimension-inducing" title="Implementation of dimension inducing" class="md-nav__link">
+    Implementation of dimension inducing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dive-into-type-level-programing" title="Dive into type-level programing" class="md-nav__link">
+    Dive into type-level programing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" title="Conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="basic-concepts">Basic Concepts</h1>
+<hr />
+<h2 id="tldr">TL;DR</h2>
+<p><code class="codehilite">mitama::quantity_t</code> is a class template that is represents a dimensional quantity.
+quantity_t has units as a phantom type.
+It can handle rational exponents like <script type="math/tex">m ^ {2/3}</script> as a unit.</p>
+<p>In the following are the explanations of the detailed definitions, their techniques, and metaprogramming, but if you are not interested, please proceed to the next page.</p>
+<h2 id="representation-of-unit">Representation of Unit</h2>
+<hr />
+<p>Basic unit of a dimension <script type="math/tex">\lambda</script> with exponent and scale is represented as a pair of exponent <script type="math/tex">e \in \mathbb{Q}</script> and scale <script type="math/tex">s \in \mathbb{Q}</script>:</p>
+<p>
+<script type="math/tex; mode=display">
+U_\lambda := (e, s)_{\lambda}
+</script>
+</p>
+<p>for example,</p>
+<p>
+<script type="math/tex; mode=display">
+m = (1, 1)_{length} \\
+mm = (1, 1/1000)_{length} \\
+mm^{2/3} = (2/3, 1/1000)_{length}
+</script>
+</p>
+<p>This corresponds to <code class="codehilite">units_t</code> in Mitama.Dimensional.</p>
+<h2 id="representation-of-derived-unit">Representation of Derived Unit</h2>
+<hr />
+<p>Let <script type="math/tex">\Lambda</script> is a set of basic dimensions of Derived Unit, derived units is represented as a sets of Unit over <script type="math/tex">\Lambda</script>:</p>
+<p>
+<script type="math/tex; mode=display">
+D_\Lambda := {\{U_\lambda\}}_{\lambda \in \Lambda}
+</script>
+</p>
+<p>for example,</p>
+<p>
+<script type="math/tex; mode=display">
+N = kg \cdot m^2 \cdot s^{-2} = \{ (1, 1)_{mass}, (2, 1)_{length}, (-2, 1)_{time}  \}
+</script>
+</p>
+<p>This corresponds to <code class="codehilite">dimensional_t</code> in Mitama.Dimensional.</p>
+<h2 id="type-system-of-quantity">Type System of Quantity</h2>
+<hr />
+<p>Dimensional quantity is designed as <code class="codehilite">quantity_t</code>, which is a class that represents a dimensional quantity based on <code class="codehilite">ValueType</code> that is distinguished by a phantom type <code class="codehilite">dimensional_t&lt;Units...&gt;</code>:</p>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">ValueType</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span> <span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">ValueType</span><span class="o">&gt;</span>
+</pre></div>
+
+<p><code class="codehilite">Synonym</code> is a phantom template template for aliasing.</p>
+<p>And each type of <code class="codehilite">Units...</code> is designed as <code class="codehilite">units_t</code>:</p>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">class</span> <span class="nc">BaseDimension</span><span class="p">,</span> <span class="c1">// base dimension tag class</span>
+           <span class="k">class</span> <span class="nc">Exponent</span><span class="p">,</span>      <span class="c1">// std::ratio</span>
+           <span class="k">class</span> <span class="nc">Scale</span>          <span class="c1">// std::ratio</span>
+<span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">units_t</span><span class="o">&lt;</span><span class="n">BaseDimension</span><span class="p">,</span> <span class="n">Exponent</span><span class="p">,</span> <span class="n">Scale</span><span class="o">&gt;</span>
+</pre></div>
+
+<h2 id="tracking-units-and-conversion-factors-in-types">Tracking units and conversion factors in types</h2>
+<hr />
+<p>When value <script type="math/tex">a</script> has derived unit <script type="math/tex">D_\Lambda</script>, let that be denoted as:</p>
+<p>
+<script type="math/tex; mode=display">
+a: D_\Lambda
+</script>
+</p>
+<p>then</p>
+<p><strong><script type="math/tex">(a:A_\Lambda) \pm (b:B_\Lambda)</script></strong></p>
+<p>
+<script type="math/tex; mode=display">
+= a \pm b:{\{ ( e, min(s_a, s_b) )_{\lambda} \ | \ (e_a, s_a)_{\lambda} \in A_\Lambda, (e_b, s_b)_{\lambda} \in B_\Lambda \}}_{\lambda \in \Lambda}
+</script>
+</p>
+<p>
+<script type="math/tex">min (s_a, s_b)</script> means it is automatically converted to a high precision factor.</p>
+<div class="codehilite"><pre><span></span><span class="c1">// `a` = 1 mm</span>
+<span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">millimetre_t</span><span class="o">&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="c1">// `b`  = 1 m</span>
+<span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">metre_t</span><span class="o">&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="c1">// a + b will be millimetre</span>
+<span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span> <span class="c1">// 1001 mm</span>
+</pre></div>
+
+<p><strong><script type="math/tex">(a:A_{\Gamma}) \times (b:B_{\Lambda})</script></strong></p>
+<p>
+<script type="math/tex; mode=display">
+= a \times b: {\{ ( e_a + e_b, min(s_a, s_b) )_{\sigma} \ | \ (e_a, s_a)_{\sigma} \in A_\sigma, (e_b, s_b)_{\sigma} \in B_\sigma \}}_{\sigma \in \Gamma \cap \Lambda  } \\
+\cup {\{ (e_a, s_a)_{\gamma} \ | \ (e_a, s_a)_{\gamma} \in A_\gamma\}}_{\gamma \in \Gamma \backslash \Lambda  } \\
+\cup {\{ (e_b, s_b)_{\lambda} \ | \ (e_b, s_b)_{\lambda} \in B_\lambda\}}_{\lambda \in \Lambda \backslash \Gamma  }
+</script>
+</p>
+<p>It is automatically converted to a high precision factor, too.</p>
+<p><strong><script type="math/tex">(a:A_{\Gamma}) \div (b:B_{\Lambda})</script></strong></p>
+<p>define</p>
+<p>
+<script type="math/tex; mode=display">
+{D_\Lambda}^{-1} := {\{ (-e, s)_{\lambda} \ | \ (e, s)_{\lambda} \in D_\Lambda \}}_{\lambda \in \Lambda}
+</script>
+</p>
+<p>and </p>
+<p>
+<script type="math/tex; mode=display">
+(a:A_{\Gamma}) \div (b:B_{\Lambda}) := (a:A_{\Gamma}) \times (b^{-1}:{B_{\Lambda}}^{-1})
+</script>
+</p>
+<h2 id="implementation-of-dimension-inducing">Implementation of dimension inducing</h2>
+<p>Example:</p>
+<p>
+<script type="math/tex; mode=display">
+[m^2 \cdot s^{-1}] \times [kg \cdot s^{-1}] \leadsto [m^2 \cdot s^{-2} \cdot kg]
+</script>
+</p>
+<p>First, let </p>
+<p>
+<script type="math/tex; mode=display">
+mul(U_1, U_2) := (e_1 + e_2, min(s_1, s_2))_\lambda
+</script>
+</p>
+<p>And consider simple dual loop:</p>
+<ol>
+<li>Pick a <code class="codehilite">unit_t</code> <strong>A</strong> from left.</li>
+<li>If there is a right for <strong>B</strong> with the same dimensions as <strong>A</strong>, push If there is a right for <strong>B</strong> with the same dimensions as <strong>A</strong>, push <script type="math/tex; mode=display">mul(A, B)</script> result and pop <strong>A</strong> and remove <strong>B</strong> from right, else push <strong>A</strong> to result and pop <strong>A</strong>.</li>
+<li>If left does not empty, return to 1, else push the rest of right to result</li>
+</ol>
+<p>start with empty result.</p>
+<p>
+<script type="math/tex; mode=display">
+left = [m^2 \cdot s^{-1}] \\
+right = [kg \cdot s^{-1}] \\
+result = [\ ]
+</script>
+</p>
+<p>pick <script type="math/tex">A=m^2</script>, and not found B.
+<script type="math/tex; mode=display">
+left = [s^{-1}] \\
+right = [kg \cdot s^{-1}] \\
+result = [m^2]
+</script>
+</p>
+<p>pick <script type="math/tex">A=s^{-1}</script>, found <script type="math/tex">B=s^{-1}</script>.</p>
+<p>left = [\ ] \
+right = [kg] \
+result = [m^2 \cdot s^{-2}]
+$$</p>
+<p>push the rest of right to result</p>
+<p>
+<script type="math/tex; mode=display">
+left = [\ ] \\
+right = [\ ] \\
+result = [m^2 \cdot s^{-2} \cdot kg]
+</script>
+</p>
+<p>-- end example</p>
+<h2 id="dive-into-type-level-programing">Dive into type-level programing</h2>
+<p><strong>1st step: Implementing in runtime</strong></p>
+<p>When you do type-level programming, do you suddenly declare classes?
+It's a good idea to start by identifying what you need for type-level programming through runtime programming.
+Well, I usually declare classes suddenly.</p>
+<p>Here is the runtime code that derives the result of the unit multiplication described in the example above:</p>
+<p><a href="https://wandbox.org/permlink/wdY9WjsyEwYf6fwx">Wandbox</a></p>
+<div class="codehilite"><pre><span></span><span class="c1">// This file is a &quot;Hello, world!&quot; in C++ language by Clang for wandbox.</span>
+<span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;boost/rational.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;boost/format.hpp&gt;</span><span class="cp"></span>
+<span class="k">enum</span> <span class="k">class</span> <span class="nc">Dim</span> <span class="p">{</span>
+    <span class="n">mass</span><span class="p">,</span>
+    <span class="n">time</span><span class="p">,</span>
+    <span class="n">length</span><span class="p">,</span>
+    <span class="c1">//...</span>
+<span class="p">};</span>
+
+<span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="n">Dim</span> <span class="n">a</span><span class="p">,</span> <span class="n">Dim</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">underlying_type_t</span><span class="o">&lt;</span><span class="n">Dim</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="o">==</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">underlying_type_t</span><span class="o">&lt;</span><span class="n">Dim</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="n">Dim</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="n">Dim</span><span class="o">::</span><span class="nl">time</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;time&quot;</span><span class="p">;</span>
+        <span class="k">case</span> <span class="n">Dim</span><span class="o">::</span><span class="nl">mass</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;mass&quot;</span><span class="p">;</span>
+        <span class="k">case</span> <span class="n">Dim</span><span class="o">::</span><span class="nl">length</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;length&quot;</span><span class="p">;</span>
+        <span class="k">default</span><span class="o">:</span>
+            <span class="k">return</span> <span class="n">os</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">using</span> <span class="n">rational</span> <span class="o">=</span> <span class="n">boost</span><span class="o">::</span><span class="n">rational</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">intmax_t</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">using</span> <span class="n">U</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">Dim</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">rational</span><span class="p">,</span> <span class="n">rational</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">derived_unit</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">Dim</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">rational</span><span class="p">,</span> <span class="n">rational</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">auto</span> <span class="n">reduce</span> <span class="o">=</span> <span class="p">[](</span><span class="n">Dim</span> <span class="n">d</span><span class="p">,</span>
+                  <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">rational</span><span class="p">,</span> <span class="n">rational</span><span class="o">&gt;</span> <span class="n">left</span><span class="p">,</span>
+                  <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">rational</span><span class="p">,</span><span class="n">rational</span><span class="o">&gt;</span> <span class="n">right</span><span class="p">){</span>
+        <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">U</span><span class="p">{</span> <span class="n">d</span><span class="p">,</span> <span class="p">{</span><span class="n">left</span><span class="p">.</span><span class="n">first</span> <span class="o">+</span> <span class="n">right</span><span class="p">.</span><span class="n">first</span><span class="p">,</span>
+                      <span class="n">min</span><span class="p">(</span><span class="n">left</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">right</span><span class="p">.</span><span class="n">second</span><span class="p">)}};</span>
+    <span class="p">};</span>
+
+    <span class="k">auto</span> <span class="n">implies</span> <span class="o">=</span> <span class="p">[</span><span class="o">=</span><span class="p">](</span><span class="n">derived_unit</span> <span class="n">left</span><span class="p">,</span> <span class="n">derived_unit</span> <span class="n">right</span><span class="p">){</span>
+        <span class="n">derived_unit</span> <span class="n">result</span><span class="p">{};</span>
+        <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="k">const</span><span class="o">&amp;</span> <span class="nl">A</span> <span class="p">:</span> <span class="n">left</span><span class="p">)</span> <span class="p">{</span>
+            <span class="p">[</span><span class="o">&amp;</span><span class="p">]{</span>
+                <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="k">const</span><span class="o">&amp;</span> <span class="nl">B</span> <span class="p">:</span> <span class="n">right</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">first</span> <span class="o">==</span> <span class="n">B</span><span class="p">.</span><span class="n">first</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="n">result</span><span class="p">.</span><span class="n">emplace_hint</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span>
+                                            <span class="n">reduce</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> 
+                                                   <span class="n">A</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> 
+                                                   <span class="n">B</span><span class="p">.</span><span class="n">second</span><span class="p">));</span>
+                        <span class="n">right</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">B</span><span class="p">.</span><span class="n">first</span><span class="p">);</span>
+                        <span class="k">return</span><span class="p">;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+                <span class="n">result</span><span class="p">.</span><span class="n">emplace_hint</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">A</span><span class="p">);</span>
+            <span class="p">}();</span>   
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="k">const</span><span class="o">&amp;</span> <span class="nl">e</span><span class="p">:</span> <span class="n">right</span><span class="p">)</span> <span class="n">result</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="p">;</span>
+
+    <span class="n">derived_unit</span> <span class="n">left</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="p">{</span> <span class="n">Dim</span><span class="o">::</span><span class="n">length</span><span class="p">,</span> <span class="p">{</span> <span class="n">rational</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">rational</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">}</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="n">Dim</span><span class="o">::</span><span class="n">time</span><span class="p">,</span> <span class="p">{</span> <span class="n">rational</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">rational</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">}</span> <span class="p">},</span>
+    <span class="p">};</span>
+    <span class="n">derived_unit</span> <span class="n">right</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="p">{</span> <span class="n">Dim</span><span class="o">::</span><span class="n">mass</span><span class="p">,</span> <span class="p">{</span> <span class="n">rational</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">rational</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">}</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="n">Dim</span><span class="o">::</span><span class="n">time</span><span class="p">,</span> <span class="p">{</span> <span class="n">rational</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">rational</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">}</span> <span class="p">},</span>
+    <span class="p">};</span>
+
+    <span class="k">auto</span> <span class="n">res</span> <span class="o">=</span> <span class="n">implies</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="k">const</span><span class="o">&amp;</span> <span class="nl">e</span><span class="p">:</span> <span class="n">res</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span>
+            <span class="o">&lt;&lt;</span> <span class="n">boost</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;(%1%, %2%)_%3% &quot;</span><span class="p">)</span>
+                <span class="o">%</span> <span class="n">e</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">first</span>
+                <span class="o">%</span> <span class="n">e</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">second</span>
+                <span class="o">%</span> <span class="n">e</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><strong>2nd step: Identifying the components required for type-level programming</strong></p>
+<p><strong>Component list for type-level programming</strong></p>
+<ul>
+<li><strong>set of basic dimensions</strong></li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="k">enum</span> <span class="k">class</span> <span class="nc">Dim</span> <span class="p">{</span>
+    <span class="n">mass</span><span class="p">,</span>
+    <span class="n">time</span><span class="p">,</span>
+    <span class="n">length</span><span class="p">,</span>
+    <span class="c1">//...</span>
+<span class="p">};</span>
+</pre></div>
+
+<p>The type itself is already a set.</p>
+<p><strong>=&gt; define class and tag type member</strong></p>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Length</span> <span class="p">{</span>
+    <span class="k">using</span> <span class="n">is_dimension</span> <span class="o">=</span> <span class="kt">void</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+
+<hr />
+<ul>
+<li><strong><code class="codehilite">operator==</code> for basic dimensions</strong></li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="n">Dim</span> <span class="n">a</span><span class="p">,</span> <span class="n">Dim</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">underlying_type_t</span><span class="o">&lt;</span><span class="n">Dim</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">underlying_type_t</span><span class="o">&lt;</span><span class="n">Dim</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><strong>=&gt; a meta-function std::is_same</strong></p>
+<hr />
+<ul>
+<li><strong>type-level rational</strong></li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">rational</span> <span class="o">=</span> <span class="n">boost</span><span class="o">::</span><span class="n">rational</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">intmax_t</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+
+<p><strong>=&gt; std::ratio</strong></p>
+<hr />
+<ul>
+<li><strong>A type that can be expressed in one dimension of derived units</strong></li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">U</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">Dim</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">rational</span><span class="p">,</span> <span class="n">rational</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+</pre></div>
+
+<p><strong>=&gt; define class units_t</strong></p>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">class</span> <span class="nc">BaseDimension</span><span class="p">,</span> <span class="c1">// base dimension tag class</span>
+           <span class="k">class</span> <span class="nc">Exponent</span><span class="p">,</span>      <span class="c1">// std::ratio</span>
+           <span class="k">class</span> <span class="nc">Scale</span>          <span class="c1">// std::ratio</span>
+<span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">units_t</span><span class="o">&lt;</span><span class="n">BaseDimension</span><span class="p">,</span> <span class="n">Exponent</span><span class="p">,</span> <span class="n">Scale</span><span class="o">&gt;</span>
+</pre></div>
+
+<hr />
+<ul>
+<li><strong>derived units representable type</strong></li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">derived_unit</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">Dim</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">rational</span><span class="p">,</span> <span class="n">rational</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+</pre></div>
+
+<p><code class="codehilite">unordered_map&lt;Key, Value&gt;</code> is a sequence of <code class="codehilite">std::pair&lt;const Key, Value&gt;</code>.
+So we need a sequence of units_t.
+We can use variadic templates.</p>
+<p><strong>=&gt; a class templates</strong></p>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="p">...</span> <span class="n">UnitsT</span><span class="o">&gt;</span>
+<span class="k">struct</span> <span class="n">dimensional_t</span>
+<span class="p">{</span>
+<span class="p">};</span>
+</pre></div>
+
+<hr />
+<ul>
+<li><strong>helper function <code class="codehilite">reduce</code></strong></li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="k">auto</span> <span class="n">reduce</span> <span class="o">=</span> <span class="p">[](</span><span class="n">Dim</span> <span class="n">d</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">rational</span><span class="p">,</span> <span class="n">rational</span><span class="o">&gt;</span> <span class="n">left</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">rational</span><span class="p">,</span><span class="n">rational</span><span class="o">&gt;</span> <span class="n">right</span><span class="p">){</span>
+    <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">U</span><span class="p">{</span> <span class="n">d</span><span class="p">,</span> <span class="p">{</span><span class="n">left</span><span class="p">.</span><span class="n">first</span> <span class="o">+</span> <span class="n">right</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">min</span><span class="p">(</span><span class="n">left</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">right</span><span class="p">.</span><span class="n">second</span><span class="p">)}</span> <span class="p">};</span>
+<span class="p">};</span>
+</pre></div>
+
+<p><strong>=&gt; meta-function</strong></p>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">D</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Exp1</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Exp2</span><span class="p">,</span> <span class="k">class</span> <span class="nc">S1</span><span class="p">,</span> <span class="k">class</span> <span class="nc">S2</span><span class="o">&gt;</span>
+<span class="k">struct</span> <span class="n">reduce</span><span class="o">&lt;</span><span class="n">units_t</span><span class="o">&lt;</span><span class="n">D</span><span class="p">,</span> <span class="n">Exp1</span><span class="p">,</span> <span class="n">S1</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">units_t</span><span class="o">&lt;</span><span class="n">D</span><span class="p">,</span> <span class="n">Exp2</span><span class="p">,</span> <span class="n">S2</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+  <span class="k">using</span> <span class="n">type</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">conditional_t</span><span class="o">&lt;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">ratio_equal_v</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">ratio_add</span><span class="o">&lt;</span><span class="n">Exp1</span><span class="p">,</span> <span class="n">Exp2</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">ratio</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;&gt;</span><span class="p">,</span>
+      <span class="n">dimensionless</span><span class="o">&lt;</span><span class="n">dimension_tag</span><span class="o">&lt;</span><span class="n">D</span><span class="p">,</span> <span class="n">ratio_max</span><span class="o">&lt;</span><span class="n">Exp1</span><span class="p">,</span> <span class="n">Exp2</span><span class="o">&gt;&gt;&gt;</span><span class="p">,</span>
+      <span class="n">units_t</span><span class="o">&lt;</span><span class="n">D</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">ratio_add</span><span class="o">&lt;</span><span class="n">Exp1</span><span class="p">,</span> <span class="n">Exp2</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">ratio_min</span><span class="o">&lt;</span><span class="n">S1</span><span class="p">,</span> <span class="n">S2</span><span class="o">&gt;&gt;&gt;</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+
+<hr />
+<ul>
+<li><strong>main loop</strong></li>
+</ul>
+<p>Put spirit into recursive class template instantiation.</p>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="p">...</span><span class="o">&gt;</span> <span class="k">struct</span> <span class="n">type_list</span> <span class="p">{};</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="p">,</span> <span class="n">class</span><span class="p">,</span> <span class="n">class</span><span class="p">,</span> <span class="k">class</span> <span class="err">= </span><span class="nc">void</span><span class="o">&gt;</span> <span class="k">struct</span> <span class="n">quotient_</span><span class="p">;</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">SP</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Head</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Tail</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Remainders</span><span class="o">&gt;</span>
+<span class="k">struct</span> <span class="n">quotient_</span><span class="o">&lt;</span><span class="n">SP</span><span class="p">,</span> <span class="n">type_list</span><span class="o">&lt;</span><span class="n">Head</span><span class="p">,</span> <span class="n">Tail</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
+                <span class="n">type_list</span><span class="o">&lt;</span><span class="n">Remainders</span><span class="p">...</span><span class="o">&gt;&gt;</span>
+    <span class="o">:</span> <span class="n">std</span><span class="o">::</span><span class="n">conditional_t</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">SP</span><span class="o">::</span><span class="n">dimension_type</span><span class="p">,</span>
+                                        <span class="k">typename</span> <span class="n">Head</span><span class="o">::</span><span class="n">dimension_type</span><span class="o">&gt;</span><span class="p">,</span>
+                         <span class="n">quotient_</span><span class="o">&lt;</span><span class="n">SP</span><span class="p">,</span> <span class="n">type_list</span><span class="o">&lt;&gt;</span><span class="p">,</span>
+                                  <span class="n">type_list</span><span class="o">&lt;</span><span class="n">Remainders</span><span class="p">...,</span> <span class="n">Tail</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
+                                  <span class="k">typename</span> <span class="n">reduce</span><span class="o">&lt;</span><span class="n">SP</span><span class="p">,</span> <span class="n">Head</span><span class="o">&gt;::</span><span class="n">type</span><span class="o">&gt;</span><span class="p">,</span>
+                         <span class="n">quotient_</span><span class="o">&lt;</span><span class="n">SP</span><span class="p">,</span> <span class="n">type_list</span><span class="o">&lt;</span><span class="n">Tail</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
+                                  <span class="n">type_list</span><span class="o">&lt;</span><span class="n">Remainders</span><span class="p">...,</span> <span class="n">Head</span><span class="o">&gt;&gt;&gt;</span> <span class="p">{};</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">SP</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Inter</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Tail</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Remainders</span><span class="o">&gt;</span>
+<span class="k">struct</span> <span class="n">quotient_</span><span class="o">&lt;</span><span class="n">SP</span><span class="p">,</span> <span class="n">type_list</span><span class="o">&lt;</span><span class="n">Tail</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">type_list</span><span class="o">&lt;</span><span class="n">Remainders</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
+                <span class="n">Inter</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="k">using</span> <span class="n">result</span> <span class="o">=</span> <span class="n">type_list</span><span class="o">&lt;</span><span class="n">Inter</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="k">using</span> <span class="n">remainder</span> <span class="o">=</span> <span class="n">type_list</span><span class="o">&lt;</span><span class="n">Tail</span><span class="p">...,</span> <span class="n">Remainders</span><span class="p">...</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">SP</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Remainders</span><span class="o">&gt;</span>
+<span class="k">struct</span> <span class="n">quotient_</span><span class="o">&lt;</span><span class="n">SP</span><span class="p">,</span> <span class="n">type_list</span><span class="o">&lt;&gt;</span><span class="p">,</span> <span class="n">type_list</span><span class="o">&lt;</span><span class="n">Remainders</span><span class="p">...</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+  <span class="k">using</span> <span class="n">result</span> <span class="o">=</span> <span class="n">type_list</span><span class="o">&lt;</span><span class="n">SP</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="k">using</span> <span class="n">remainder</span> <span class="o">=</span> <span class="n">type_list</span><span class="o">&lt;</span><span class="n">Remainders</span><span class="p">...</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="p">,</span> <span class="n">class</span><span class="p">,</span> <span class="n">class</span><span class="o">&gt;</span> <span class="k">struct</span> <span class="n">quotient_impl</span><span class="p">;</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">Head</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Tail</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">R</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Results</span><span class="o">&gt;</span>
+<span class="k">struct</span> <span class="n">quotient_impl</span><span class="o">&lt;</span><span class="n">type_list</span><span class="o">&lt;</span><span class="n">Head</span><span class="p">,</span> <span class="n">Tail</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">type_list</span><span class="o">&lt;</span><span class="n">R</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">type_list</span><span class="o">&lt;</span><span class="n">Results</span><span class="p">...</span><span class="o">&gt;&gt;</span>
+    <span class="o">:</span> <span class="n">quotient_impl</span><span class="o">&lt;</span><span class="n">type_list</span><span class="o">&lt;</span><span class="n">Tail</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
+                    <span class="k">typename</span> <span class="n">quotient_</span><span class="o">&lt;</span><span class="n">Head</span><span class="p">,</span> <span class="n">type_list</span><span class="o">&lt;</span><span class="n">R</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
+                                       <span class="n">type_list</span><span class="o">&lt;&gt;&gt;::</span><span class="n">remainder</span><span class="p">,</span>
+                    <span class="n">mitamagic</span><span class="o">::</span><span class="n">tlist_cat_t</span><span class="o">&lt;</span>
+                        <span class="n">type_list</span><span class="o">&lt;</span><span class="n">Results</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
+                        <span class="k">typename</span> <span class="n">quotient_</span><span class="o">&lt;</span><span class="n">Head</span><span class="p">,</span> <span class="n">type_list</span><span class="o">&lt;</span><span class="n">R</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
+                                           <span class="n">type_list</span><span class="o">&lt;&gt;&gt;::</span><span class="n">result</span><span class="o">&gt;&gt;</span> <span class="p">{};</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="p">...</span> <span class="n">R</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Results</span><span class="o">&gt;</span>
+<span class="k">struct</span> <span class="n">quotient_impl</span><span class="o">&lt;</span><span class="n">type_list</span><span class="o">&lt;&gt;</span><span class="p">,</span> <span class="n">type_list</span><span class="o">&lt;</span><span class="n">R</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">type_list</span><span class="o">&lt;</span><span class="n">Results</span><span class="p">...</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+  <span class="k">using</span> <span class="n">result_type</span> <span class="o">=</span> <span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Results</span><span class="p">...,</span> <span class="n">R</span><span class="p">...</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// quotient facade</span>
+<span class="c1">// Quotient = Dim -&gt; Dim -&gt; Dim</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="p">,</span> <span class="n">class</span><span class="o">&gt;</span> <span class="k">struct</span> <span class="n">quotient</span><span class="p">;</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="p">...</span> <span class="n">LeftPhantomTypes</span><span class="p">,</span>
+          <span class="n">class</span><span class="p">...</span> <span class="n">RightPhantomTypes</span><span class="o">&gt;</span>
+<span class="k">struct</span> <span class="n">quotient</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">LeftPhantomTypes</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
+                <span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">RightPhantomTypes</span><span class="p">...</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+  <span class="k">using</span> <span class="n">type</span> <span class="o">=</span> 
+    <span class="n">mitamagic</span><span class="o">::</span><span class="n">tlist_remove_if_t</span><span class="o">&lt;</span>
+      <span class="n">is_dimensionless_type</span><span class="p">,</span>
+      <span class="k">typename</span> <span class="n">mitamagic</span><span class="o">::</span><span class="n">quotient_impl</span><span class="o">&lt;</span>
+        <span class="n">mitamagic</span><span class="o">::</span><span class="n">type_list</span><span class="o">&lt;</span><span class="n">LeftPhantomTypes</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="n">mitamagic</span><span class="o">::</span><span class="n">type_list</span><span class="o">&lt;</span><span class="n">RightPhantomTypes</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="n">mitamagic</span><span class="o">::</span><span class="n">type_list</span><span class="o">&lt;&gt;</span>
+      <span class="o">&gt;::</span><span class="n">result_type</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<ul>
+<li>It's a good idea to start by identifying what you need for type-level programming through runtime programming.</li>
+<li>By using phantom-type idiom, we can distinguish one type in various ways.</li>
+<li>C++ doesn't have a convenient language extension like Haskell, so we try hard at doing linear searches by relying on types.</li>
+<li>By using variadic templates, we can handle any dimension <strong>as long as the template recursion allows</strong>.</li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../dimensional-quantity-101/" title="Dimensional quantity 101" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Dimensional quantity 101
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../mitama_quantity_t/" title="mitama::quantity_t" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                mitama::quantity_t
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://twitter.com/mitama_rs" class="md-footer-social__link fa fa-twitter"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.267712eb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

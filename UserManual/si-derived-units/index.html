@@ -1,0 +1,1605 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Mitama.Dimensional C++17 Library">
+      
+      
+        <link rel="canonical" href="https://loligothick.github.io/mitama-dimensional/UserManual/si-derived-units/">
+      
+      
+        <meta name="author" content="mitama">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.2">
+    
+    
+      
+        <title>Library defined SI derived units and format - Mitama.Dimensional | User Manual</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.3020aac5.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#009688">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.01ccdecf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../../cppmap_styles.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#library-defined-units-and-format" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://loligothick.github.io/mitama-dimensional/" title="Mitama.Dimensional | User Manual" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">donut_small</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Mitama.Dimensional | User Manual
+            </span>
+            <span class="md-header-nav__topic">
+              Library defined SI derived units and format
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/loligothick/mitama-dimensional" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    loligothick/mitama-dimensional
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." title="Home" class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../dimensional-quantity-101/" title="User Manual" class="md-tabs__link md-tabs__link--active">
+          User Manual
+        </a>
+      
+    </li>
+  
+
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://loligothick.github.io/mitama-dimensional/" title="Mitama.Dimensional | User Manual" class="md-nav__button md-logo">
+      
+        <i class="md-icon">donut_small</i>
+      
+    </a>
+    Mitama.Dimensional | User Manual
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/loligothick/mitama-dimensional" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    loligothick/mitama-dimensional
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      User Manual
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        User Manual
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dimensional-quantity-101/" title="Dimensional quantity 101" class="md-nav__link">
+      Dimensional quantity 101
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../basic-concepts/" title="Basic Concepts" class="md-nav__link">
+      Basic Concepts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mitama_quantity_t/" title="mitama::quantity_t" class="md-nav__link">
+      mitama::quantity_t
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dimensional-quantifiers/" title="dimensional quantifiers" class="md-nav__link">
+      dimensional quantifiers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metric-prefixes/" title="Metric prefixes" class="md-nav__link">
+      Metric prefixes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Library defined SI derived units and format
+      </label>
+    
+    <a href="./" title="Library defined SI derived units and format" class="md-nav__link md-nav__link--active">
+      Library defined SI derived units and format
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#format-io" title="Format IO" class="md-nav__link">
+    Format IO
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#si-basic-units" title="SI basic units" class="md-nav__link">
+    SI basic units
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-si-units" title="Non SI units" class="md-nav__link">
+    Non SI units
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#named-units-derived-from-si-base-units" title="Named units derived from SI base units" class="md-nav__link">
+    Named units derived from SI base units
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kinematic-si-derived-units" title="Kinematic SI derived units" class="md-nav__link">
+    Kinematic SI derived units
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#molar-si-derived-units" title="Molar SI derived units" class="md-nav__link">
+    Molar SI derived units
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#electromagnetic-si-derived-units" title="Electromagnetic SI derived units" class="md-nav__link">
+    Electromagnetic SI derived units
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#photometric-si-derived-units" title="Photometric SI derived units" class="md-nav__link">
+    Photometric SI derived units
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thermodynamic-si-derived-units" title="Thermodynamic SI derived units" class="md-nav__link">
+    Thermodynamic SI derived units
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dimensional-refinement/" title="Dimensional refinement" class="md-nav__link">
+      Dimensional refinement
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../delta-type/" title="Delta type" class="md-nav__link">
+      Delta type
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../CONTRIBUTION/" title="Contribution" class="md-nav__link">
+      Contribution
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#format-io" title="Format IO" class="md-nav__link">
+    Format IO
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#si-basic-units" title="SI basic units" class="md-nav__link">
+    SI basic units
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-si-units" title="Non SI units" class="md-nav__link">
+    Non SI units
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#named-units-derived-from-si-base-units" title="Named units derived from SI base units" class="md-nav__link">
+    Named units derived from SI base units
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kinematic-si-derived-units" title="Kinematic SI derived units" class="md-nav__link">
+    Kinematic SI derived units
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#molar-si-derived-units" title="Molar SI derived units" class="md-nav__link">
+    Molar SI derived units
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#electromagnetic-si-derived-units" title="Electromagnetic SI derived units" class="md-nav__link">
+    Electromagnetic SI derived units
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#photometric-si-derived-units" title="Photometric SI derived units" class="md-nav__link">
+    Photometric SI derived units
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thermodynamic-si-derived-units" title="Thermodynamic SI derived units" class="md-nav__link">
+    Thermodynamic SI derived units
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="library-defined-units-and-format">Library defined units and format</h1>
+<hr />
+<h2 id="format-io">Format IO</h2>
+<p><code class="codehilite">std::ostream</code> adaptor <code class="codehilite">operator &lt;&lt;</code> is defined in header <a href=""><code class="codehilite">&lt;dimensional/io.hpp&gt;</code></a>.</p>
+<p><strong>example</strong></p>
+<div class="codehilite"><pre><span></span><span class="c1">// begin example</span>
+<span class="cp">#include</span> <span class="cpf">&lt;dimensional/quantity.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;dimensional/si_units/all.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;dimensional/io.hpp&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">using</span> <span class="n">mitama</span><span class="o">::</span><span class="n">quantity_t</span><span class="p">;</span>
+    <span class="k">namespace</span> <span class="n">si</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
+
+    <span class="n">quantity_t</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">|</span> <span class="n">si</span><span class="o">::</span><span class="n">meters</span><span class="p">;</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span> <span class="c1">// 1 [m]</span>
+<span class="p">}</span>
+<span class="c1">// end example</span>
+</pre></div>
+
+<h2 id="si-basic-units">SI basic units</h2>
+<table>
+<thead>
+<tr>
+<th align="center">type name <br> quantifier name</th>
+<th align="center">Unit symbol</th>
+<th align="center">Quantity measured</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">metre_t/meter_t<br>metre/meter</td>
+<td align="center">m</td>
+<td align="center">length</td>
+</tr>
+<tr>
+<td align="center">kilogram_t<br>kilogram</td>
+<td align="center">kg</td>
+<td align="center">mass</td>
+</tr>
+<tr>
+<td align="center">second_t<br>second</td>
+<td align="center">s</td>
+<td align="center">time</td>
+</tr>
+<tr>
+<td align="center">ampere_t<br>ampere</td>
+<td align="center">A</td>
+<td align="center">electric current</td>
+</tr>
+<tr>
+<td align="center">kelvin_t<br>kelvin</td>
+<td align="center">K</td>
+<td align="center">temperature</td>
+</tr>
+<tr>
+<td align="center">mole_t<br>mole</td>
+<td align="center">mol</td>
+<td align="center">amount of substance</td>
+</tr>
+<tr>
+<td align="center">candela_t<br>candela</td>
+<td align="center">cd</td>
+<td align="center">luminous intensity</td>
+</tr>
+</tbody>
+</table>
+<h2 id="non-si-units">Non SI units</h2>
+<table>
+<thead>
+<tr>
+<th align="center">type name <br> quantifier name</th>
+<th align="center">Unit symbol</th>
+<th align="center">Equivalents in termsof SI units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">hectare_t<br>hectare</td>
+<td align="center">ha</td>
+<td align="center">
+<script type="math/tex; mode=display">1\ ha = 10^4\ m^2</script>
+</td>
+</tr>
+<tr>
+<td align="center">litre_t/liter_t<br>litre/liter</td>
+<td align="center">L</td>
+<td align="center">
+<script type="math/tex; mode=display">1\ L = 10^{-3}\ m^3</script>
+</td>
+</tr>
+<tr>
+<td align="center">tonne_t<br>tonne</td>
+<td align="center">t</td>
+<td align="center">
+<script type="math/tex; mode=display">1\ t = 10^3\ kg</script>
+</td>
+</tr>
+<tr>
+<td align="center">au_t<br>au</td>
+<td align="center">t</td>
+<td align="center">
+<script type="math/tex; mode=display">1\ au = 149,597,870,700\ m</script>
+</td>
+</tr>
+<tr>
+<td align="center">minute_t<br>minutes</td>
+<td align="center">min</td>
+<td align="center">
+<script type="math/tex; mode=display">1 min = 60\ s</script>
+</td>
+</tr>
+<tr>
+<td align="center">hour_t<br>hours</td>
+<td align="center">h</td>
+<td align="center">
+<script type="math/tex; mode=display">1\ h = 60\ min = 3600 s</script>
+</td>
+</tr>
+<tr>
+<td align="center">day_t<br>days</td>
+<td align="center">h</td>
+<td align="center">
+<script type="math/tex; mode=display">1\ d = 24\ h = 86400 s</script>
+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="named-units-derived-from-si-base-units">Named units derived from SI base units</h2>
+<table>
+<thead>
+<tr>
+<th align="center">type name <br> quantifier Name</th>
+<th align="center">Symbol</th>
+<th align="center">Quantity</th>
+<th align="center">Equivalents</th>
+<th align="center">SI base unit Equivalents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">hertz_t<br>hertz</td>
+<td align="center">Hz</td>
+<td align="center">frequency</td>
+<td align="center">
+<script type="math/tex; mode=display">1/s</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">s^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">radian_t<br>radian</td>
+<td align="center">rad</td>
+<td align="center">angle</td>
+<td align="center">
+<script type="math/tex; mode=display">m/m</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">1</script>
+</td>
+</tr>
+<tr>
+<td align="center">steradian_t<br>steradian</td>
+<td align="center">sr</td>
+<td align="center">solid angle</td>
+<td align="center">
+<script type="math/tex; mode=display">m^2/m^2</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">1</script>
+</td>
+</tr>
+<tr>
+<td align="center">newton_t<br>newton</td>
+<td align="center">N</td>
+<td align="center">force <br> weight</td>
+<td align="center">
+<script type="math/tex; mode=display">kg \cdot m/s^2</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">kg \cdot m \cdot s^{-2}</script>
+</td>
+</tr>
+<tr>
+<td align="center">pascal_t<br>pascal</td>
+<td align="center">Pa</td>
+<td align="center">pressure <br> stress</td>
+<td align="center">
+<script type="math/tex; mode=display">N/m^2</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">kg \cdot m^{-1} \cdot s^{-2}</script>
+</td>
+</tr>
+<tr>
+<td align="center">joule_t<br>joule</td>
+<td align="center">J</td>
+<td align="center">energy <br> work <br> heat</td>
+<td align="center">
+<script type="math/tex; mode=display">N \cdot m \\ C \cdot V \\ W \cdot s</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">kg \cdot m^2 \cdot s^{-2}</script>
+</td>
+</tr>
+<tr>
+<td align="center">watt_t<br>watt</td>
+<td align="center">W</td>
+<td align="center">power <br> radiant flux</td>
+<td align="center">
+<script type="math/tex; mode=display">J/s \\ V \cdot A</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">kg \cdot m^2 \cdot s^{-3}</script>
+</td>
+</tr>
+<tr>
+<td align="center">coulomb_t<br>coulomb</td>
+<td align="center">C</td>
+<td align="center">electric charge <br> quantity of electricity</td>
+<td align="center">
+<script type="math/tex; mode=display">s \cdot A \\ F \cdot V</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">s \cdot A</script>
+</td>
+</tr>
+<tr>
+<td align="center">volt_t<br>volt</td>
+<td align="center">V</td>
+<td align="center">voltage <br> electrical potential difference</td>
+<td align="center">
+<script type="math/tex; mode=display">W/A \\ J/C</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">kg \cdot m^2 \cdot s^{-3} \cdot A^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">farad_t<br>farad</td>
+<td align="center">F</td>
+<td align="center">electrical capacitance</td>
+<td align="center">
+<script type="math/tex; mode=display">C/V \\ s/\Omega</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">kg^{-1} \cdot m^{-2} \cdot s^4 \cdot A^2</script>
+</td>
+</tr>
+<tr>
+<td align="center">ohm_t<br>ohm</td>
+<td align="center">
+<script type="math/tex; mode=display">\Omega</script>
+</td>
+<td align="center">electrical resistance <br> impedance, reactance</td>
+<td align="center">
+<script type="math/tex; mode=display">1/S \\ V/A</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">kg \cdot m^2 \cdot s^{-3} \cdot A^{-2}</script>
+</td>
+</tr>
+<tr>
+<td align="center">siemens_t<br>siemens</td>
+<td align="center">S</td>
+<td align="center">electrical conductance</td>
+<td align="center">
+<script type="math/tex; mode=display">1/\Omega \\ A/V</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">kg^{-1} \cdot m^{-2} \cdot s^3 \cdot A^2</script>
+</td>
+</tr>
+<tr>
+<td align="center">weber_t<br>weber</td>
+<td align="center">Wb</td>
+<td align="center">magnetic flux</td>
+<td align="center">
+<script type="math/tex; mode=display">J/A \\ T \cdot m^2</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">kg \cdot m^2 \cdot s^{-2} \cdot A^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">tesla_t<br>tesla</td>
+<td align="center">T</td>
+<td align="center">magnetic induction <br> magnetic flux density</td>
+<td align="center">
+<script type="math/tex; mode=display">V \cdot s/m^2 \\ Wb/m^2 \\ N/(A \cdot m)</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">kg \cdot s^{-2} \cdot A^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">henry_t<br>henry</td>
+<td align="center">H</td>
+<td align="center">electrical inductance</td>
+<td align="center">
+<script type="math/tex; mode=display">V \cdot s/A \\ \Omega \cdot s \\ Wb/A</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">kg \cdot m^2 \cdot s^{-2} \cdot A^{-2}</script>
+</td>
+</tr>
+<tr>
+<td align="center">degree_celsius_t<br>degree_celsius</td>
+<td align="center">°C</td>
+<td align="center">temperature relative to 273.15 K</td>
+<td align="center">
+<script type="math/tex; mode=display">K</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">K</script>
+</td>
+</tr>
+<tr>
+<td align="center">lumen_t<br>lumen</td>
+<td align="center">lm</td>
+<td align="center">luminous flux</td>
+<td align="center">
+<script type="math/tex; mode=display">cd \cdot sr</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">cd</script>
+</td>
+</tr>
+<tr>
+<td align="center">lux_t<br>lux</td>
+<td align="center">lx</td>
+<td align="center">illuminance</td>
+<td align="center">
+<script type="math/tex; mode=display">lm/m^2</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^{-2} \cdot cd</script>
+</td>
+</tr>
+<tr>
+<td align="center">becquerel_t<br>becquerel</td>
+<td align="center">Bq</td>
+<td align="center">radioactivity <br> (decays per unit time)</td>
+<td align="center">
+<script type="math/tex; mode=display">1/s</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">s^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">gray_t<br>gray</td>
+<td align="center">Gy</td>
+<td align="center">absorbed dose <br> (of ionizing radiation)</td>
+<td align="center">
+<script type="math/tex; mode=display">J/kg</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^2 \cdot s^{-2}</script>
+</td>
+</tr>
+<tr>
+<td align="center">sievert_t<br>sievert</td>
+<td align="center">Sv</td>
+<td align="center">equivalent dose <br> (of ionizing radiation)</td>
+<td align="center">
+<script type="math/tex; mode=display">J/kg</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^2 \cdot s^{-2}</script>
+</td>
+</tr>
+<tr>
+<td align="center">katal_t<br>katal</td>
+<td align="center">kat</td>
+<td align="center">catalytic activity</td>
+<td align="center">
+<script type="math/tex; mode=display">mol/s</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">s^{-1} \cdot mol</script>
+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="kinematic-si-derived-units">Kinematic SI derived units</h2>
+<table>
+<thead>
+<tr>
+<th align="center">type name <br> quantifier Name</th>
+<th align="center">Symbol</th>
+<th align="center">Expression in termsof SI base units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">velocity_t<br>velocity</td>
+<td align="center">
+<script type="math/tex; mode=display">m/s</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m \cdot s^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">acceleration_t<br>acceleration</td>
+<td align="center">
+<script type="math/tex; mode=display">m/s^2</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m \cdot s^{-2}</script>
+</td>
+</tr>
+<tr>
+<td align="center">jerk_t<br>jerk</td>
+<td align="center">
+<script type="math/tex; mode=display">m/s^3</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m \cdot s^{-3}</script>
+</td>
+</tr>
+<tr>
+<td align="center">snap_t<br>snap</td>
+<td align="center">
+<script type="math/tex; mode=display">m/s^4</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m \cdot s^{-4}</script>
+</td>
+</tr>
+<tr>
+<td align="center">crackle_t<br>crackle</td>
+<td align="center">
+<script type="math/tex; mode=display">m/s^5</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m \cdot s^{-5}</script>
+</td>
+</tr>
+<tr>
+<td align="center">pop_t<br>pop</td>
+<td align="center">
+<script type="math/tex; mode=display">m/s^6</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m \cdot s^{-6}</script>
+</td>
+</tr>
+<tr>
+<td align="center">angular_velocity_t<br>angular_velocity</td>
+<td align="center">
+<script type="math/tex; mode=display">rad/s</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">s^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">angular_acceleration_t<br>angular_acceleration</td>
+<td align="center">
+<script type="math/tex; mode=display">rad/s^2</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">s^{-2}</script>
+</td>
+</tr>
+<tr>
+<td align="center">frequency_drift_t<br>frequency_drift</td>
+<td align="center">
+<script type="math/tex; mode=display">Hz/s</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">s^{-2}</script>
+</td>
+</tr>
+<tr>
+<td align="center">volumetric_flow_t<br>volumetric_flow</td>
+<td align="center">
+<script type="math/tex; mode=display">m^3/s</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^3 \cdot s^{-1}</script>
+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="molar-si-derived-units">Molar SI derived units</h2>
+<table>
+<thead>
+<tr>
+<th align="center">type name <br> quantifier Name</th>
+<th align="center">Symbol</th>
+<th align="center">Expression in terms of SI base units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">molarity_t<br>molarity</td>
+<td align="center">
+<script type="math/tex; mode=display">mol/m^3</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^{-3} \cdot mol</script>
+</td>
+</tr>
+<tr>
+<td align="center">molar_volume_t<br>molar_volume_t</td>
+<td align="center">
+<script type="math/tex; mode=display">m^3/mol</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^3 \cdot mol^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">molar_entropy_t<br>molar_entropy</td>
+<td align="center">
+<script type="math/tex; mode=display">J/(K \cdot mol)</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^2 \cdot kg \cdot s^{-2} \cdot K^{-1} \cdot mol^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">molar_heat_capacity_t<br>molar_heat_capacity</td>
+<td align="center">
+<script type="math/tex; mode=display">J/(K \cdot mol)</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^2 \cdot kg \cdot s^{-2} \cdot K^{-1} \cdot mol^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">molar_energy_t<br>molar_energy</td>
+<td align="center">
+<script type="math/tex; mode=display">J/mol</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^2 \cdot kg \cdot s^{-2} \cdot mol^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">molar_conductivity_t<br>molar_conductivity</td>
+<td align="center">
+<script type="math/tex; mode=display">S \cdot m^2/mol</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">kg^{-1} \cdot s^3 \cdot A^2 \cdot mol^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">molality_t<br>molality</td>
+<td align="center">
+<script type="math/tex; mode=display">mol/kg</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">kg^{-1} \cdot mol</script>
+</td>
+</tr>
+<tr>
+<td align="center">molar_mass_t<br>molar_mass</td>
+<td align="center">
+<script type="math/tex; mode=display">kg/mol</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">kg \cdot mol^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">catalytic_efficiency_t<br>catalytic_efficiency</td>
+<td align="center">
+<script type="math/tex; mode=display">m^3/(mol \cdot s)</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^3 \cdot s^{-1} \cdot mol^{-1}</script>
+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="electromagnetic-si-derived-units">Electromagnetic SI derived units</h2>
+<table>
+<thead>
+<tr>
+<th align="center">type name <br> quantifier Name</th>
+<th align="center">Symbol</th>
+<th align="center">Expression in terms of SI base units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">electric_displacement_field_t<br>electric_displacement_field</td>
+<td align="center">
+<script type="math/tex; mode=display">C/m^2</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^{-2} \cdot s \cdot A</script>
+</td>
+</tr>
+<tr>
+<td align="center">polarization_density_t<br>polarization_density</td>
+<td align="center">---</td>
+<td align="center">
+<script type="math/tex; mode=display">m^{-2} \cdot s \cdot A</script>
+</td>
+</tr>
+<tr>
+<td align="center">electric_charge_density_t<br>electric_charge_density</td>
+<td align="center">
+<script type="math/tex; mode=display">C/m^3</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^{-3} \cdot s \cdot A</script>
+</td>
+</tr>
+<tr>
+<td align="center">electric_current_density_t<br>electric_current_density</td>
+<td align="center">
+<script type="math/tex; mode=display">A/m^2</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^{-2} \cdot A</script>
+</td>
+</tr>
+<tr>
+<td align="center">electrical_conductivity_t<br>electrical_conductivity</td>
+<td align="center">
+<script type="math/tex; mode=display">S/m</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^{-3} \cdot kg^{-1} \cdot s^3 \cdot A^2</script>
+</td>
+</tr>
+<tr>
+<td align="center">permittivity_t<br>permittivity</td>
+<td align="center">
+<script type="math/tex; mode=display">F/m</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^{-3} \cdot kg^{-1} \cdot s^4 \cdot A^2</script>
+</td>
+</tr>
+<tr>
+<td align="center">permeability_t<br>permeability</td>
+<td align="center">
+<script type="math/tex; mode=display">H/m</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m \cdot kg \cdot s^{-2} \cdot A^{-2}</script>
+</td>
+</tr>
+<tr>
+<td align="center">electric_field_strength_t<br>electric_field_strength</td>
+<td align="center">
+<script type="math/tex; mode=display">V/m</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m \cdot kg \cdot s^{-3} \cdot A^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">magnetization_t<br>magnetization</td>
+<td align="center">
+<script type="math/tex; mode=display">A/m</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^{-1} \cdot A</script>
+</td>
+</tr>
+<tr>
+<td align="center">exposure_t<br>exposure</td>
+<td align="center">
+<script type="math/tex; mode=display">C/kg</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">kg^{-1} \cdot s \cdot A</script>
+</td>
+</tr>
+<tr>
+<td align="center">resistivity_t<br>resistivity</td>
+<td align="center">
+<script type="math/tex; mode=display">\Omega \cdot m</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^3 \cdot kg \cdot s^{-3} \cdot A^{-2}</script>
+</td>
+</tr>
+<tr>
+<td align="center">linear_charge_density_t<br>linear_charge_density</td>
+<td align="center">
+<script type="math/tex; mode=display">C/m</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^{-1} \cdot s \cdot A</script>
+</td>
+</tr>
+<tr>
+<td align="center">magnetic_dipole_moment_t<br>magnetic_dipole_moment</td>
+<td align="center">---</td>
+<td align="center">
+<script type="math/tex; mode=display">m^2 \cdot A</script>
+</td>
+</tr>
+<tr>
+<td align="center">electron_mobility_t<br>electron_mobility</td>
+<td align="center">
+<script type="math/tex; mode=display">m^2/(V \cdot s)</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">kg^{-1} \cdot s^2 \cdot A</script>
+</td>
+</tr>
+<tr>
+<td align="center">magnetic_reluctance_t<br>magnetic_reluctance</td>
+<td align="center">
+<script type="math/tex; mode=display">H^{-1}</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^{-2} \cdot kg^{-1} \cdot s^2 \cdot A^2</script>
+</td>
+</tr>
+<tr>
+<td align="center">magnetic_vector_potential_t<br>magnetic_vector_potential</td>
+<td align="center">
+<script type="math/tex; mode=display">Wb/m</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m \cdot kg \cdot s^{-2} \cdot A^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">magnetic_moment_t<br>magnetic_moment</td>
+<td align="center">
+<script type="math/tex; mode=display">Wb \cdot m</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^3 \cdot kg \cdot s^{-2} \cdot A^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">magnetic_rigidity_t<br>magnetic_rigidity</td>
+<td align="center">
+<script type="math/tex; mode=display">T \cdot m</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m \cdot kg \cdot s^{-2} \cdot A^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">magnetomotive_force_t<br>magnetomotive_force</td>
+<td align="center">---</td>
+<td align="center">
+<script type="math/tex; mode=display">A</script>
+</td>
+</tr>
+<tr>
+<td align="center">magnetic_susceptibility_t<br>magnetic_susceptibility</td>
+<td align="center">
+<script type="math/tex; mode=display">m/H</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^{-1} \cdot kg^{-1} \cdot s^2 \cdot A^2</script>
+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="photometric-si-derived-units">Photometric SI derived units</h2>
+<table>
+<thead>
+<tr>
+<th align="center">type name <br> quantifier Name</th>
+<th align="center">Symbol</th>
+<th align="center">Expression in terms of SI base units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">luminous_energy_t<br>luminous_energy</td>
+<td align="center">
+<script type="math/tex; mode=display">lm \cdot s</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">s \cdot cd \cdot sr</script>
+</td>
+</tr>
+<tr>
+<td align="center">luminous_exposure_t<br>luminous_energy</td>
+<td align="center">
+<script type="math/tex; mode=display">lx \cdot s</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^{-2} \cdot s \cdot cd \cdot sr</script>
+</td>
+</tr>
+<tr>
+<td align="center">luminance_t<br>luminous_energy</td>
+<td align="center">
+<script type="math/tex; mode=display">cd/m^2</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^{-2} \cdot cd</script>
+</td>
+</tr>
+<tr>
+<td align="center">luminous_efficacy_t<br>luminous_energy</td>
+<td align="center">
+<script type="math/tex; mode=display">lm/W</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^{-2} \cdot kg^{-1} \cdot s^3 \cdot cd \cdot sr</script>
+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="thermodynamic-si-derived-units">Thermodynamic SI derived units</h2>
+<table>
+<thead>
+<tr>
+<th align="center">type name <br> quantifier Name</th>
+<th align="center">Symbol</th>
+<th align="center">Expression in terms of SI base units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">heat_capacity_t<br>specific_entropy</td>
+<td align="center">
+<script type="math/tex; mode=display">J/K</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^2 \cdot kg \cdot s^{-2} \cdot K^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">entropy_t<br>entropy</td>
+<td align="center">
+<script type="math/tex; mode=display">J/K</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^2 \cdot kg \cdot s^{-2} \cdot K^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">specific_heat_capacity_t<br>specific_heat_capacity</td>
+<td align="center">
+<script type="math/tex; mode=display">J/(K \cdot kg)</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^2 \cdot s^{-2} \cdot K^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">specific_entropy_t<br>specific_entropy</td>
+<td align="center">
+<script type="math/tex; mode=display">J/(K \cdot kg)</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^2 \cdot s^{-2} \cdot K^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">thermal_conductivity_t<br>thermal_conductivity</td>
+<td align="center">
+<script type="math/tex; mode=display">W/(m \cdot K)</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m \cdot kg \cdot s^{-3} \cdot K^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">thermal_resistance_t<br>thermal_resistance</td>
+<td align="center">
+<script type="math/tex; mode=display">K/W</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^{-2} \cdot kg^{-1} \cdot s^3 \cdot K</script>
+</td>
+</tr>
+<tr>
+<td align="center">thermal_expansion_coefficient_t<br>thermal_expansion_coefficient</td>
+<td align="center">
+<script type="math/tex; mode=display">K^{-1}</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">K^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">temperature_gradient_t<br>temperature_gradient</td>
+<td align="center">
+<script type="math/tex; mode=display">K/m</script>
+</td>
+<td align="center">
+<script type="math/tex; mode=display">m^{-1} \cdot K</script>
+</td>
+</tr>
+</tbody>
+</table>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../metric-prefixes/" title="Metric prefixes" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Metric prefixes
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../dimensional-refinement/" title="Dimensional refinement" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Dimensional refinement
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://twitter.com/mitama_rs" class="md-footer-social__link fa fa-twitter"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.267712eb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

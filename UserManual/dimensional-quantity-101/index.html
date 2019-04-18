@@ -1,0 +1,1128 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Mitama.Dimensional C++17 Library">
+      
+      
+        <link rel="canonical" href="https://loligothick.github.io/mitama-dimensional/UserManual/dimensional-quantity-101/">
+      
+      
+        <meta name="author" content="mitama">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.2">
+    
+    
+      
+        <title>Dimensional quantity 101 - Mitama.Dimensional | User Manual</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.3020aac5.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#009688">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.01ccdecf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../../cppmap_styles.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#dimensional-quantity-101" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://loligothick.github.io/mitama-dimensional/" title="Mitama.Dimensional | User Manual" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">donut_small</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Mitama.Dimensional | User Manual
+            </span>
+            <span class="md-header-nav__topic">
+              Dimensional quantity 101
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/loligothick/mitama-dimensional" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    loligothick/mitama-dimensional
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." title="Home" class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="./" title="User Manual" class="md-tabs__link md-tabs__link--active">
+          User Manual
+        </a>
+      
+    </li>
+  
+
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://loligothick.github.io/mitama-dimensional/" title="Mitama.Dimensional | User Manual" class="md-nav__button md-logo">
+      
+        <i class="md-icon">donut_small</i>
+      
+    </a>
+    Mitama.Dimensional | User Manual
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/loligothick/mitama-dimensional" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    loligothick/mitama-dimensional
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      User Manual
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        User Manual
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Dimensional quantity 101
+      </label>
+    
+    <a href="./" title="Dimensional quantity 101" class="md-nav__link md-nav__link--active">
+      Dimensional quantity 101
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unit-systems" title="Unit systems" class="md-nav__link">
+    Unit systems
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#base-units-and-dimensions" title="Base units and dimensions" class="md-nav__link">
+    Base units and dimensions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mathematical-notation" title="Mathematical Notation" class="md-nav__link">
+    Mathematical Notation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dimensions-of-common-physical-quantities" title="Dimensions of common physical quantities" class="md-nav__link">
+    Dimensions of common physical quantities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtric-prefix" title="Mtric Prefix" class="md-nav__link">
+    Mtric Prefix
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../basic-concepts/" title="Basic Concepts" class="md-nav__link">
+      Basic Concepts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mitama_quantity_t/" title="mitama::quantity_t" class="md-nav__link">
+      mitama::quantity_t
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dimensional-quantifiers/" title="dimensional quantifiers" class="md-nav__link">
+      dimensional quantifiers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../metric-prefixes/" title="Metric prefixes" class="md-nav__link">
+      Metric prefixes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../si-derived-units/" title="Library defined SI derived units and format" class="md-nav__link">
+      Library defined SI derived units and format
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dimensional-refinement/" title="Dimensional refinement" class="md-nav__link">
+      Dimensional refinement
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../delta-type/" title="Delta type" class="md-nav__link">
+      Delta type
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../CONTRIBUTION/" title="Contribution" class="md-nav__link">
+      Contribution
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unit-systems" title="Unit systems" class="md-nav__link">
+    Unit systems
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#base-units-and-dimensions" title="Base units and dimensions" class="md-nav__link">
+    Base units and dimensions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mathematical-notation" title="Mathematical Notation" class="md-nav__link">
+    Mathematical Notation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dimensions-of-common-physical-quantities" title="Dimensions of common physical quantities" class="md-nav__link">
+    Dimensions of common physical quantities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtric-prefix" title="Mtric Prefix" class="md-nav__link">
+    Mtric Prefix
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="dimensional-quantity-101">Dimensional quantity 101</h1>
+<hr />
+<h2 id="unit-systems">Unit systems</h2>
+<hr />
+<p>There are three basic unit systems in use today:</p>
+<ul>
+<li>the International System of Units (SI units, from Système international d'unités, more commonly simply called metric units)</li>
+<li>the English Engineering System of Units (commonly called English units)</li>
+<li>the British Gravitational System of Units (BG)</li>
+</ul>
+<p>This library only supports SI units by library default.</p>
+<h2 id="base-units-and-dimensions">Base units and dimensions</h2>
+<hr />
+<p>Base units have the important property that all other units derive from them.
+In the SI system, there are seven such base units and corresponding physical quantities:</p>
+<ul>
+<li>meter (m) for length,</li>
+<li>kilogram (kg) for mass,</li>
+<li>second (s) for time,</li>
+<li>kelvin (K) for temperature,</li>
+<li>ampere (A) for electric current,</li>
+<li>candela (cd) for luminous intensity, and</li>
+<li>mole (mol) for the amount of substance.</li>
+</ul>
+<h2 id="mathematical-notation">Mathematical Notation</h2>
+<hr />
+<p>We need some suitable mathematical notation to calculate with dimensions like length, mass, time, and so forth.
+The dimension of length is written as [ <script type="math/tex">L</script> ], the dimension of mass as [ <script type="math/tex">M</script> ]  and the dimension of time as [ <script type="math/tex">T</script> ].
+The dimension of a derived unit like velocity, which is distance (length) divided by time, then becomes [ <script type="math/tex">LT^{-1}</script> ] in this notation. The dimension of force, another derived unit, is the same as the dimension of mass times acceleration, and hence the dimension of force is [ <script type="math/tex">MLT^{-2}</script> ].</p>
+<p>Now let's think about multiplication and division of dimensional quantities.
+For example,</p>
+<p>
+<script type="math/tex; mode=display">
+a [m] \times b [s] = c [m \cdot s]
+</script>
+</p>
+<p>
+<script type="math/tex">m \cdot s</script> is a new unit different both of metre and second.
+And can give a clear meaning that <script type="math/tex">m \cdot s</script> is proportional to both of metre and second.</p>
+<p>And <script type="math/tex">m / s</script> is proportional to metre and inversely proportinoal to second.
+Also, <script type="math/tex">m /s \times s</script> derives <script type="math/tex">m</script>.</p>
+<h2 id="dimensions-of-common-physical-quantities">Dimensions of common physical quantities</h2>
+<hr />
+<p>Many derived quantities are measured in derived units that have their own name. Force is one example: Newton (N) is a derived unit for force, equal to <script type="math/tex">kg \cdot m \cdot s^{-2}</script>.
+Another derived unit is Pascal (Pa) for pressure, i.e., force per area.
+The unit of Pa then equals <script type="math/tex">N/m^2</script> or <script type="math/tex">kg \cdot m^{-1} \cdot s^{-2}</script>.</p>
+<p>Below are more names for derived quantities, listed with their units.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Symbol</th>
+<th align="center">Physical quantity</th>
+<th align="center">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">radian</td>
+<td align="center">rad</td>
+<td align="center">angle</td>
+<td align="center">
+<script type="math/tex">1</script>
+</td>
+</tr>
+<tr>
+<td align="center">hertz</td>
+<td align="center">Hz</td>
+<td align="center">frequency</td>
+<td align="center">
+<script type="math/tex">s^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">newton</td>
+<td align="center">N</td>
+<td align="center">force, weight</td>
+<td align="center">
+<script type="math/tex">kg \cdot m \cdot s^{-2}</script>
+</td>
+</tr>
+<tr>
+<td align="center">pascal</td>
+<td align="center">Pa</td>
+<td align="center">pressure, stress</td>
+<td align="center">
+<script type="math/tex">N/m^2</script>
+</td>
+</tr>
+<tr>
+<td align="center">joule</td>
+<td align="center">J</td>
+<td align="center">energy, work, heat</td>
+<td align="center">
+<script type="math/tex">N \times m</script>
+</td>
+</tr>
+<tr>
+<td align="center">watt</td>
+<td align="center">W</td>
+<td align="center">power</td>
+<td align="center">
+<script type="math/tex">J/s</script>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Some common physical quantities and their dimensions are listed next.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Quantity</th>
+<th align="center">Relation</th>
+<th align="center">Unit</th>
+<th align="center">Dimension</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">pressure</td>
+<td align="center">force/area</td>
+<td align="center">
+<script type="math/tex">N \cdot m^{-2}=Pa</script>
+</td>
+<td align="center">[ <script type="math/tex">MT^{-2}L^{-1}</script> ]</td>
+</tr>
+<tr>
+<td align="center">density</td>
+<td align="center">mass/volume</td>
+<td align="center">
+<script type="math/tex">kg \cdot m^{-3}</script>
+</td>
+<td align="center">[ <script type="math/tex">ML^{-3}</script> ]</td>
+</tr>
+<tr>
+<td align="center">strain</td>
+<td align="center">displacement/length</td>
+<td align="center">
+<script type="math/tex">1</script>
+</td>
+<td align="center">[ <script type="math/tex">1</script> ]</td>
+</tr>
+<tr>
+<td align="center">Young's modulus</td>
+<td align="center">stress/strain</td>
+<td align="center">
+<script type="math/tex">N \cdot m^{-2}=Pa</script>
+</td>
+<td align="center">[ <script type="math/tex">MT^{-2}L^{-1}</script> ]</td>
+</tr>
+<tr>
+<td align="center">Poisson's ratio</td>
+<td align="center">transverse strain/axial strain</td>
+<td align="center">
+<script type="math/tex">1</script>
+</td>
+<td align="center">[ <script type="math/tex">1</script> ]</td>
+</tr>
+<tr>
+<td align="center">moment (of force)</td>
+<td align="center">distance <script type="math/tex">\times</script> force</td>
+<td align="center">
+<script type="math/tex">N \cdot m</script>
+</td>
+<td align="center">[ <script type="math/tex">ML^2T^{-2}</script> ]</td>
+</tr>
+<tr>
+<td align="center">impulse</td>
+<td align="center">force <script type="math/tex">\times</script> time</td>
+<td align="center">
+<script type="math/tex">N \cdot s</script>
+</td>
+<td align="center">[ <script type="math/tex">MLT^{-1}</script> ]</td>
+</tr>
+<tr>
+<td align="center">linear momentum</td>
+<td align="center">mass <script type="math/tex">\times</script> velocity</td>
+<td align="center">
+<script type="math/tex">kg m \cdot s^{-1}</script>
+</td>
+<td align="center">[ <script type="math/tex">MLT^{-1}</script> ]</td>
+</tr>
+<tr>
+<td align="center">angular momentum</td>
+<td align="center">distance <script type="math/tex">\times</script> mass <script type="math/tex">\times</script> velocity</td>
+<td align="center">
+<script type="math/tex">kg \cdot m^2 \cdot s^{-1}</script>
+</td>
+<td align="center">[ <script type="math/tex">ML^2T^{-1}</script> ]</td>
+</tr>
+<tr>
+<td align="center">work</td>
+<td align="center">force <script type="math/tex">\times</script> distance</td>
+<td align="center">
+<script type="math/tex">N \cdot m=J</script>
+</td>
+<td align="center">[ <script type="math/tex">ML^2T^{-2}</script> ]</td>
+</tr>
+<tr>
+<td align="center">energy</td>
+<td align="center">work</td>
+<td align="center">
+<script type="math/tex">N \cdot m=J</script>
+</td>
+<td align="center">[ <script type="math/tex">ML^2T^{-2}</script> ]</td>
+</tr>
+<tr>
+<td align="center">power</td>
+<td align="center">work/time</td>
+<td align="center">
+<script type="math/tex">N \cdot m \cdot s^{-1}=W</script>
+</td>
+<td align="center">[ <script type="math/tex">ML^2T^{-3}</script> ]</td>
+</tr>
+<tr>
+<td align="center">heat</td>
+<td align="center">work</td>
+<td align="center">
+<script type="math/tex">J</script>
+</td>
+<td align="center">[ <script type="math/tex">ML^2T^{-2}</script> ]</td>
+</tr>
+<tr>
+<td align="center">heat flux</td>
+<td align="center">heat rate/area</td>
+<td align="center">
+<script type="math/tex">W \cdot m^{-2}</script>
+</td>
+<td align="center">[ <script type="math/tex">MT^{-3}</script> ]</td>
+</tr>
+<tr>
+<td align="center">temperature</td>
+<td align="center">base unit</td>
+<td align="center">
+<script type="math/tex">K</script>
+</td>
+<td align="center">[ <script type="math/tex"> \Theta </script> ]</td>
+</tr>
+<tr>
+<td align="center">heat capacity</td>
+<td align="center">heat change</td>
+<td align="center">
+<script type="math/tex">J/K</script>
+</td>
+<td align="center">[ <script type="math/tex">ML^2T^{-2}\Theta^{-1}</script> ]</td>
+</tr>
+<tr>
+<td align="center">specific heat capacity</td>
+<td align="center">heat capacity/unit mass</td>
+<td align="center">
+<script type="math/tex">J \cdot K^{-1} \cdot kg^{-1}</script>
+</td>
+<td align="center">[ <script type="math/tex">L^2T^{-2}\Theta^{-1}</script> ]</td>
+</tr>
+<tr>
+<td align="center">thermal conductivity</td>
+<td align="center">heat flux/temperature gradient</td>
+<td align="center">
+<script type="math/tex">W \cdot m^{-1} \cdot K^{-1}</script>
+</td>
+<td align="center">[ <script type="math/tex">MLT^{-3}\Theta^{-1}</script> ]</td>
+</tr>
+<tr>
+<td align="center">dynamic viscosity</td>
+<td align="center">shear stress/velocity gradient</td>
+<td align="center">
+<script type="math/tex">kg \cdot m^{-1} \cdot s^{-1}</script>
+</td>
+<td align="center">[ <script type="math/tex">ML^{-1}T^{-1}</script> ]</td>
+</tr>
+<tr>
+<td align="center">kinematic viscosity</td>
+<td align="center">dynamic viscosity/density</td>
+<td align="center">
+<script type="math/tex">m^2/s</script>
+</td>
+<td align="center">[ <script type="math/tex">L^2T^{-1}</script> ]</td>
+</tr>
+<tr>
+<td align="center">surface tension</td>
+<td align="center">energy/area</td>
+<td align="center">
+<script type="math/tex">J \cdot s^{-2}</script>
+</td>
+<td align="center">[ <script type="math/tex">MT^{-2}</script> ]</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mtric-prefix">Mtric Prefix</h2>
+<hr />
+<p>A <strong>metrix prefix</strong> is a unit prefix that precedes a basic unit of measure to indicate a multiple or fraction of the unit.
+Each prefix has a unique symbol that is prepended to the unit symbol.
+The prefix <strong>kilo-</strong>, for example, may be added to gram to indicate multiplication by one thousand; one kilogram is equal to one thousand grams.
+The prefix <strong>mili-</strong>, likewise, may be added to metre to indicate division by one thousand; one milimetre is equal to one thousand of a metre.</p>
+<p>The SI prefixes are standardized for use in the International System of Units (SI units). </p>
+<table>
+<thead>
+<tr>
+<th align="center">Text</th>
+<th align="center">Symbol</th>
+<th align="right">Factor</th>
+<th align="center">Power</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">yotta</td>
+<td align="center">Y</td>
+<td align="right">1000000000000000000000000</td>
+<td align="center">
+<script type="math/tex">10^{24}</script>
+</td>
+</tr>
+<tr>
+<td align="center">zetta</td>
+<td align="center">Z</td>
+<td align="right">1000000000000000000000</td>
+<td align="center">
+<script type="math/tex">10^{21}</script>
+</td>
+</tr>
+<tr>
+<td align="center">exa</td>
+<td align="center">E</td>
+<td align="right">1000000000000000000</td>
+<td align="center">
+<script type="math/tex">10^{18}</script>
+</td>
+</tr>
+<tr>
+<td align="center">peta</td>
+<td align="center">P</td>
+<td align="right">1000000000000000</td>
+<td align="center">
+<script type="math/tex">10^{15}</script>
+</td>
+</tr>
+<tr>
+<td align="center">tera</td>
+<td align="center">T</td>
+<td align="right">1000000000000</td>
+<td align="center">
+<script type="math/tex">10^{12}</script>
+</td>
+</tr>
+<tr>
+<td align="center">giga</td>
+<td align="center">G</td>
+<td align="right">1000000000</td>
+<td align="center">
+<script type="math/tex">10^9</script>
+</td>
+</tr>
+<tr>
+<td align="center">mega</td>
+<td align="center">M</td>
+<td align="right">1000000</td>
+<td align="center">
+<script type="math/tex">10^6</script>
+</td>
+</tr>
+<tr>
+<td align="center">kilo</td>
+<td align="center">k</td>
+<td align="right">1000</td>
+<td align="center">
+<script type="math/tex">10^3</script>
+</td>
+</tr>
+<tr>
+<td align="center">hecto</td>
+<td align="center">h</td>
+<td align="right">100</td>
+<td align="center">
+<script type="math/tex">10^2</script>
+</td>
+</tr>
+<tr>
+<td align="center">deca</td>
+<td align="center">da</td>
+<td align="right">10</td>
+<td align="center">
+<script type="math/tex">10^1</script>
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="center">Text</th>
+<th align="center">Symbol</th>
+<th align="left">Factor</th>
+<th align="center">Power</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">deci</td>
+<td align="center">d</td>
+<td align="left">0.1</td>
+<td align="center">
+<script type="math/tex">10^{-1}</script>
+</td>
+</tr>
+<tr>
+<td align="center">centi</td>
+<td align="center">c</td>
+<td align="left">0.01</td>
+<td align="center">
+<script type="math/tex">10^{-2}</script>
+</td>
+</tr>
+<tr>
+<td align="center">milli</td>
+<td align="center">m</td>
+<td align="left">0.001</td>
+<td align="center">
+<script type="math/tex">10^{-3}</script>
+</td>
+</tr>
+<tr>
+<td align="center">micro</td>
+<td align="center">u</td>
+<td align="left">0.000001</td>
+<td align="center">
+<script type="math/tex">10^{-6}</script>
+</td>
+</tr>
+<tr>
+<td align="center">nano</td>
+<td align="center">n</td>
+<td align="left">0.000000001</td>
+<td align="center">
+<script type="math/tex">10^{-9}</script>
+</td>
+</tr>
+<tr>
+<td align="center">pico</td>
+<td align="center">p</td>
+<td align="left">0.000000000001</td>
+<td align="center">
+<script type="math/tex">10^{-12}</script>
+</td>
+</tr>
+<tr>
+<td align="center">femto</td>
+<td align="center">f</td>
+<td align="left">0.000000000000001</td>
+<td align="center">
+<script type="math/tex">10^{-15}</script>
+</td>
+</tr>
+<tr>
+<td align="center">atto</td>
+<td align="center">a</td>
+<td align="left">0.000000000000000001</td>
+<td align="center">
+<script type="math/tex">10^{-18}</script>
+</td>
+</tr>
+<tr>
+<td align="center">zepto</td>
+<td align="center">z</td>
+<td align="left">0.000000000000000000001</td>
+<td align="center">
+<script type="math/tex">10^{-21}</script>
+</td>
+</tr>
+<tr>
+<td align="center">yocto</td>
+<td align="center">y</td>
+<td align="left">0.000000000000000000000001</td>
+<td align="center">
+<script type="math/tex">10^{-24}</script>
+</td>
+</tr>
+</tbody>
+</table>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../.." title="Home" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Home
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../basic-concepts/" title="Basic Concepts" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Basic Concepts
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://twitter.com/mitama_rs" class="md-footer-social__link fa fa-twitter"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.267712eb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>
