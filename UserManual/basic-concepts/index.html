@@ -494,6 +494,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-defined-dimension/" title="User define dimension" class="md-nav__link">
+      User define dimension
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -605,6 +617,9 @@
                 
                 
                 <h1 id="basic-concepts">Basic Concepts</h1>
+<blockquote>
+<p>"It is the undefined-behavior we fear when we look upon death and darkness, nothing more."</p>
+</blockquote>
 <hr />
 <h2 id="tldr">TL;DR</h2>
 <p><code class="codehilite">mitama::quantity_t</code> is a class template that is represents a dimensional quantity.
@@ -612,7 +627,6 @@ quantity_t has units as a phantom type.
 It can handle rational exponents like <script type="math/tex">m ^ {2/3}</script> as a unit.</p>
 <p>In the following are the explanations of the detailed definitions, their techniques, and metaprogramming, but if you are not interested, please proceed to the next page.</p>
 <h2 id="representation-of-unit">Representation of Unit</h2>
-<hr />
 <p>Basic unit of a dimension <script type="math/tex">\lambda</script> with exponent and scale is represented as a pair of exponent <script type="math/tex">e \in \mathbb{Q}</script> and scale <script type="math/tex">s \in \mathbb{Q}</script>:</p>
 <p>
 <script type="math/tex; mode=display">
@@ -629,7 +643,6 @@ mm^{2/3} = (2/3, 1/1000)_{length}
 </p>
 <p>This corresponds to <code class="codehilite">units_t</code> in Mitama.Dimensional.</p>
 <h2 id="representation-of-derived-unit">Representation of Derived Unit</h2>
-<hr />
 <p>Let <script type="math/tex">\Lambda</script> is a set of basic dimensions of Derived Unit, derived units is represented as a sets of Unit over <script type="math/tex">\Lambda</script>:</p>
 <p>
 <script type="math/tex; mode=display">
@@ -644,7 +657,6 @@ N = kg \cdot m^2 \cdot s^{-2} = \{ (1, 1)_{mass}, (2, 1)_{length}, (-2, 1)_{time
 </p>
 <p>This corresponds to <code class="codehilite">dimensional_t</code> in Mitama.Dimensional.</p>
 <h2 id="type-system-of-quantity">Type System of Quantity</h2>
-<hr />
 <p>Dimensional quantity is designed as <code class="codehilite">quantity_t</code>, which is a class that represents a dimensional quantity based on <code class="codehilite">ValueType</code> that is distinguished by a phantom type <code class="codehilite">dimensional_t&lt;Units...&gt;</code>:</p>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">ValueType</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span> <span class="o">&gt;</span>
 <span class="k">class</span> <span class="nc">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">ValueType</span><span class="o">&gt;</span>
@@ -660,7 +672,6 @@ N = kg \cdot m^2 \cdot s^{-2} = \{ (1, 1)_{mass}, (2, 1)_{length}, (-2, 1)_{time
 </pre></div>
 
 <h2 id="tracking-units-and-conversion-factors-in-types">Tracking units and conversion factors in types</h2>
-<hr />
 <p>When value <script type="math/tex">a</script> has derived unit <script type="math/tex">D_\Lambda</script>, let that be denoted as:</p>
 <p>
 <script type="math/tex; mode=display">
@@ -1013,7 +1024,6 @@ We can use variadic templates.</p>
 <span class="p">};</span>
 </pre></div>
 
-<hr />
 <h2 id="conclusion">Conclusion</h2>
 <ul>
 <li>It's a good idea to start by identifying what you need for type-level programming through runtime programming.</li>

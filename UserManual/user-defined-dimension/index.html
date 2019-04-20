@@ -13,7 +13,7 @@
         <meta name="description" content="Mitama.Dimensional C++17 Library">
       
       
-        <link rel="canonical" href="https://loligothick.github.io/mitama-dimensional/UserManual/delta-type/">
+        <link rel="canonical" href="https://loligothick.github.io/mitama-dimensional/UserManual/user-defined-dimension/">
       
       
         <meta name="author" content="mitama">
@@ -42,7 +42,7 @@
     
     
       
-        <title>Delta type - Mitama.Dimensional | User Manual</title>
+        <title>User define dimension - Mitama.Dimensional | User Manual</title>
       
     
     
@@ -112,7 +112,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#delta-type" tabindex="1" class="md-skip">
+      <a href="#how-to-define-dimension-class" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -137,7 +137,7 @@
               Mitama.Dimensional | User Manual
             </span>
             <span class="md-header-nav__topic">
-              Delta type
+              User define dimension
             </span>
           
         </div>
@@ -399,6 +399,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../delta-type/" title="Delta type" class="md-nav__link">
+      Delta type
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -409,22 +421,67 @@
       
     
     
-    <a href="./" title="Delta type" class="md-nav__link md-nav__link--active">
-      Delta type
-    </a>
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        User define dimension
+      </label>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../user-defined-dimension/" title="User define dimension" class="md-nav__link">
+    <a href="./" title="User define dimension" class="md-nav__link md-nav__link--active">
       User define dimension
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dimension-type" title="dimension type" class="md-nav__link">
+    dimension type
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#base-unit-type" title="Base unit type" class="md-nav__link">
+    Base unit type
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scaled-unit-type" title="Scaled unit type" class="md-nav__link">
+    Scaled unit type
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dimensional-qunatifier-option" title="Dimensional qunatifier [option]" class="md-nav__link">
+    Dimensional qunatifier [option]
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#format-option" title="Format [option]" class="md-nav__link">
+    Format [option]
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -462,6 +519,50 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dimension-type" title="dimension type" class="md-nav__link">
+    dimension type
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#base-unit-type" title="Base unit type" class="md-nav__link">
+    Base unit type
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scaled-unit-type" title="Scaled unit type" class="md-nav__link">
+    Scaled unit type
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dimensional-qunatifier-option" title="Dimensional qunatifier [option]" class="md-nav__link">
+    Dimensional qunatifier [option]
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#format-option" title="Format [option]" class="md-nav__link">
+    Format [option]
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -473,27 +574,47 @@
               
                 
                 
-                <h1 id="delta-type">Delta type</h1>
-<p>Delta type is a type to represent the difference of dimensional quantity.</p>
-<p>Typical use case is temperature difference.</p>
-<p>Assigning <code class="codehilite">quantity&lt;kelvin_t&gt;</code> to <code class="codehilite">quantity &lt;dgree_celsius_t&gt;</code> will convert that value.
-However, <code class="codehilite">delta&lt;quantity&lt;kelvin_t &gt;&gt;</code> is a type representing temperature difference, so it is assigned without conversion.</p>
-<div class="codehilite"><pre><span></span><span class="c1">// begin example</span>
-<span class="cp">#include</span> <span class="cpf">&lt;dimensional/quantity.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;dimensional/si_units/kelvin.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;dimensional/derived_units/dgree_celsius.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;dimensional/delta.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;dimensional/arithmetic.hpp&gt;</span><span class="cp"></span>
+                <h1 id="how-to-define-dimension-class">How to define dimension class</h1>
+<hr />
+<blockquote>
+<p>"Fear of a C++ only increases fear of the thing itself."</p>
+</blockquote>
+<h2 id="dimension-type">dimension type</h2>
+<p>All that is required to behave as a dimension type is to define a void type alias named <code class="codehilite">is_base_dimension</code> as a type member.</p>
+<div class="codehilite"><pre><span></span><span class="k">struct</span> <span class="n">wizarding_currency</span> <span class="p">{</span>
+    <span class="k">using</span> <span class="n">is_base_dimension</span> <span class="o">=</span> <span class="kt">void</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
 
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">using</span> <span class="k">namespace</span> <span class="n">mitama</span><span class="p">;</span>
-    <span class="n">quantity</span><span class="o">&lt;</span><span class="n">nonsi</span><span class="o">::</span><span class="n">dgree_celsius_t</span><span class="o">&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
-    <span class="c1">// Calculated without unit conversion</span>
-    <span class="c1">// because it is a temperature difference.</span>
-    <span class="c1">// 20 - 10 = 10 delta kelvin &lt;=&gt; 10 delta dgree celcius</span>
-    <span class="n">quantity</span><span class="o">&lt;</span><span class="n">nonsi</span><span class="o">::</span><span class="n">dgree_celsius_t</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">delta</span><span class="p">(</span> <span class="p">(</span><span class="mi">20</span><span class="o">|</span><span class="n">si</span><span class="o">::</span><span class="n">kelvins</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">10</span><span class="o">|</span><span class="n">si</span><span class="o">::</span><span class="n">kelvins</span><span class="p">)</span> <span class="p">);</span> 
+<h2 id="base-unit-type">Base unit type</h2>
+<p>Use <code class="codehilite">mitama::make_unit_t</code> to get base unit types from dimension types.</p>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">knut_t</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">make_unit_t</span><span class="o">&lt;</span><span class="n">wizarding_currency</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+
+<h2 id="scaled-unit-type">Scaled unit type</h2>
+<p>Use <code class="codehilite">mtiama::make_unit_t</code> to get scaled unit types from base unit types. </p>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">sickle_t</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">scaled_unit_t</span><span class="o">&lt;</span><span class="n">knut_t</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">ratio</span><span class="o">&lt;</span><span class="mi">29</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">galleon_t</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">scaled_unit_t</span><span class="o">&lt;</span><span class="n">sickle_t</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">ratio</span><span class="o">&lt;</span><span class="mi">17</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+</pre></div>
+
+<h2 id="dimensional-qunatifier-option">Dimensional qunatifier [option]</h2>
+<div class="codehilite"><pre><span></span><span class="kr">inline</span> <span class="k">constexpr</span> <span class="n">knut_t</span> <span class="n">knuts</span><span class="p">{};</span>
+<span class="kr">inline</span> <span class="k">constexpr</span> <span class="n">knut_t</span> <span class="n">knut</span><span class="p">{};</span>
+
+<span class="kr">inline</span> <span class="k">constexpr</span> <span class="n">sickle_t</span> <span class="n">sickles</span><span class="p">{};</span>
+<span class="kr">inline</span> <span class="k">constexpr</span> <span class="n">sickle_t</span> <span class="n">sickle</span><span class="p">{};</span>
+
+<span class="kr">inline</span> <span class="k">constexpr</span> <span class="n">galleon_t</span> <span class="n">galleons</span><span class="p">{};</span>
+<span class="kr">inline</span> <span class="k">constexpr</span> <span class="n">galleon_t</span> <span class="n">galleon</span><span class="p">{};</span>
+</pre></div>
+
+<h2 id="format-option">Format [option]</h2>
+<p>Define specialization of <code class="codehilite">abbreviation</code> to enable format ouput.</p>
+<div class="codehilite"><pre><span></span><span class="k">namespace</span> <span class="n">mitama</span> <span class="p">{</span>
+    <span class="k">template</span> <span class="o">&lt;&gt;</span> <span class="k">struct</span> <span class="n">abbreviation</span><span class="o">&lt;</span><span class="n">wizarding</span><span class="o">::</span><span class="n">knut_t</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">static</span> <span class="k">constexpr</span> <span class="kt">char</span> <span class="n">str</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;knuts&quot;</span><span class="p">;</span> <span class="p">};</span>
+    <span class="k">template</span> <span class="o">&lt;&gt;</span> <span class="k">struct</span> <span class="n">abbreviation</span><span class="o">&lt;</span><span class="n">wizarding</span><span class="o">::</span><span class="n">sickle_t</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">static</span> <span class="k">constexpr</span> <span class="kt">char</span> <span class="n">str</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;sickles&quot;</span><span class="p">;</span> <span class="p">};</span>
+    <span class="k">template</span> <span class="o">&lt;&gt;</span> <span class="k">struct</span> <span class="n">abbreviation</span><span class="o">&lt;</span><span class="n">wizarding</span><span class="o">::</span><span class="n">galleon_t</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">static</span> <span class="k">constexpr</span> <span class="kt">char</span> <span class="n">str</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;galleons&quot;</span><span class="p">;</span> <span class="p">};</span>
 <span class="p">}</span>
-<span class="c1">// end example</span>
 </pre></div>
                 
                   
@@ -515,7 +636,7 @@ However, <code class="codehilite">delta&lt;quantity&lt;kelvin_t &gt;&gt;</code> 
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../dimensional-refinement/" title="Dimensional refinement" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../delta-type/" title="Delta type" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -524,19 +645,19 @@ However, <code class="codehilite">delta&lt;quantity&lt;kelvin_t &gt;&gt;</code> 
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Dimensional refinement
+                Delta type
               </span>
             </div>
           </a>
         
         
-          <a href="../user-defined-dimension/" title="User define dimension" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../CONTRIBUTION/" title="Contribution" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                User define dimension
+                Contribution
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
