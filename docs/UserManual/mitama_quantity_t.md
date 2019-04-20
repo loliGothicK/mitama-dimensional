@@ -70,8 +70,9 @@ int main() {
 Defined in header [`<dimensional/arithmetic.hpp>`]()
 
 Let
+
 - `q1` is a value with type of `quantity_t<D1, T1>`,
-- `q2` is a value iwth type of `quantity_t<D2, T2>`, and
+- `q2` is a value with type of `quantity_t<D2, T2>` and
 - `v` is a value with type of `T3`.
 
 And arithmetic operators listed bellow are defined:

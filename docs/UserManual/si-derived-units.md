@@ -39,15 +39,15 @@ int main() {
 
 ## Non SI units
 
-| type name <br> quantifier name | Unit symbol | Equivalents in termsof SI units |
+| type name <br> quantifier name | Unit symbol | Equivalents in terms of SI units |
 | :----------------------------: | :---------: | :-----------------------------: |
 |      hectare_t<br>hectare      |     ha      |       $$1\ ha = 10^4\ m^2$$       |
 | litre_t/liter_t<br>litre/liter |      L      |      $$1\ L = 10^{-3}\ m^3$$      |
 |        tonne_t<br>tonne        |      t      |        $$1\ t = 10^3\ kg$$        |
-|           au_t<br>au           |      t      |  $$1\ au = 149,597,870,700\ m$$   |
-|      minute_t<br>minutes       |     min     |        $$1 min = 60\ s$$         |
-|        hour_t<br>hours         |      h      |    $$1\ h = 60\ min = 3600 s$$    |
-|         day_t<br>days          |      h      |    $$1\ d = 24\ h = 86400 s$$     |
+|           au_t<br>au           |     au      |  $$1\ au = 149,597,870,700\ m$$   |
+|      minute_t<br>minutes       |     min     |        $$1\ min = 60\ s$$         |
+|        hour_t<br>hours         |      h      |    $$1\ h = 60\ min = 3600\ s$$    |
+|         day_t<br>days          |      d      |    $$1\ d = 24\ h = 86400\ s$$     |
 
 
 ## Named units derived from SI base units
