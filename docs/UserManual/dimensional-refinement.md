@@ -27,9 +27,7 @@ If you want to specify the unit should be written as follows. The difference is 
 quantity<meter_t, int> a1 = (2|meters) * (7|meters);
 ```
 
-
-
-The following example does not pass compilation. This is because m is the dimension of $ L$  and not $ L^2$ .
+The following example does not compile. This is because $m$ is the dimension of $L$  and not $L^2$ .
 
 ```cpp
 quantity_t a3 = refined<area_r> |= (2|millimeters); // error!

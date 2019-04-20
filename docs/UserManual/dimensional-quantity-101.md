@@ -44,8 +44,7 @@ $$
 a [m] \times b [s] = c [m \cdot s]
 $$
 
-$m \cdot s$ is a new unit different both of metre and second.
-And can give a clear meaning that $m \cdot s$ is proportional to both of metre and second.
+$m \cdot s$ is a new unit different from both of metre and second, and can give a clear meaning that $m \cdot s$ is proportional to both of metre and second.
 
 And $m / s$ is proportional to metre and inversely proportional to second.
 Also, $m /s \times s$ derives $m$.

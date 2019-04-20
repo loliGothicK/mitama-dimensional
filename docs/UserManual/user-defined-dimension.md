@@ -30,7 +30,7 @@ using sickle_t = mitama::scaled_unit_t<knut_t, std::ratio<29>>;
 using galleon_t = mitama::scaled_unit_t<sickle_t, std::ratio<17>>;
 ```
 
-## Dimensional qunatifier [option]
+## Dimensional quantifiers [option]
 
 
 ```cpp
@@ -46,12 +46,15 @@ inline constexpr galleon_t galleon{};
 
 ## Format [option]
 
-Define specialization of `abbreviation` to enable format ouput.
+Define specializations to enable formatted output.
 
 ```cpp
 namespace mitama {
-    template <> struct abbreviation<wizarding::knut_t> { static constexpr char str[] = "knuts"; };
-    template <> struct abbreviation<wizarding::sickle_t> { static constexpr char str[] = "sickles"; };
-    template <> struct abbreviation<wizarding::galleon_t> { static constexpr char str[] = "galleons"; };
+    template <> struct abbreviation<wizarding::knut_t>
+        { static constexpr char str[] = "knuts"; };
+    template <> struct abbreviation<wizarding::sickle_t>
+        { static constexpr char str[] = "sickles"; };
+    template <> struct abbreviation<wizarding::galleon_t>
+        { static constexpr char str[] = "galleons"; };
 }
 ```
