@@ -1,5 +1,8 @@
 
 # Dimensional quantifiers
+
+> "There is a contrast in C++. The important thing is to choose what we write. That's the real of C++."
+
 -----------------------
 
 Dimensional quantifiers are defined as constexpr variables (templates) of dimensional_t.

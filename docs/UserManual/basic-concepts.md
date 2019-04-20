@@ -1,5 +1,9 @@
 # Basic Concepts
+
+>"It is the undefined-behavior we fear when we look upon death and darkness, nothing more."
+
 -------------
+
 
 ## TL;DR
 
@@ -10,7 +14,6 @@ It can handle rational exponents like $m ^ {2/3}$ as a unit.
 In the following are the explanations of the detailed definitions, their techniques, and metaprogramming, but if you are not interested, please proceed to the next page.
 
 ## Representation of Unit
-----------------------------
 
 Basic unit of a dimension $\lambda$ with exponent and scale is represented as a pair of exponent $e \in \mathbb{Q}$ and scale $s \in \mathbb{Q}$:
 
@@ -29,7 +32,6 @@ $$
 This corresponds to `units_t` in Mitama.Dimensional.
 
 ## Representation of Derived Unit
-----------------------------
 
 Let $\Lambda$ is a set of basic dimensions of Derived Unit, derived units is represented as a sets of Unit over $\Lambda$:
 
@@ -47,7 +49,6 @@ This corresponds to `dimensional_t` in Mitama.Dimensional.
 
 
 ## Type System of Quantity
-----------------------------
 
 Dimensional quantity is designed as `quantity_t`, which is a class that represents a dimensional quantity based on `ValueType` that is distinguished by a phantom type `dimensional_t<Units...>`:
 
@@ -69,7 +70,6 @@ class units_t<BaseDimension, Exponent, Scale>
 ```
 
 ## Tracking units and conversion factors in types
-----------------------------
 
 When value $a$ has derived unit $D_\Lambda$, let that be denoted as:
 
@@ -461,7 +461,6 @@ struct quotient<dimensional_t<LeftPhantomTypes...>,
 };
 ```
 
----------------
 
 Conclusion
 ------------

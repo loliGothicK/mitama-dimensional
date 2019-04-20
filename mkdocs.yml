@@ -57,4 +57,5 @@ nav:
     - Library defined SI derived units and format: UserManual/si-derived-units.md
     - Dimensional refinement: UserManual/dimensional-refinement.md
     - Delta type: UserManual/delta-type.md
+    - User define dimension: UserManual/user-defined-dimension.md
   - Contribution: CONTRIBUTION.md
