@@ -16,8 +16,8 @@ Please refer to the [document](https://loligothick.github.io/mitama-dimensional/
 - math functions for quantity
 - pre defined SI derived units
 - **USER DEFINED DIMENSION**
-- pretty format output
-- dimensnional refinement
+- formatted output
+- dimensional refinement
 
 ## Examples
 
@@ -29,7 +29,7 @@ Please refer to the [document](https://loligothick.github.io/mitama-dimensional/
 #include <dimensional/derived_units/area.hpp>
 
 int main() {
-    namespace si = mtiama::si;
+    namespace si = mitama::si;
     // width = 2 m
     mitama::quantity_t<si::meter_t, int> width = 2;
     // height = 3 m
@@ -47,13 +47,14 @@ Here is a dimensional sanity check example:
 #include <dimensional/derived_units/area.hpp>
 
 int main() {
-    namespace si = mtiama::si;
+    namespace si = mitama::si;
     // width = 2 m
     mitama::quantity_t<si::meter_t, int> width = 2;
     // height = 3 m
     mitama::quantity_t<si::meter_t, int> height = 3;
-    // area = 6 m^2
+    // ERROR!
     mitama::quantity_t<si::area_t, int> area = width + height;
+    //                                               ^ oops!!
 }
 ```
 
@@ -65,7 +66,7 @@ int main() {
 #include <dimensional/derived_units/area.hpp>
 
 int main() {
-    namespace si = mtiama::si;
+    namespace si = mitama::si;
     // width = 2 m
     mitama::quantity_t width = 2 | si::meter;
     // height = 3 m
@@ -83,7 +84,7 @@ int main() {
 #include <dimensional/derived_units/area.hpp>
 
 int main() {
-    namespace si = mtiama::si;
+    namespace si = mitama::si;
     // width = 2 m
     mitama::quantity_t<si::meter_t, int> width = 2;
     // height = 3 mm
@@ -102,7 +103,7 @@ int main() {
 #include <dimensional/refinement.hpp>
 
 int main() {
-    namespace si = mtiama::si;
+    namespace si = mitama::si;
     using mitama::refined, mitama::sym::L;
 
     // width = 2 m
@@ -110,7 +111,7 @@ int main() {
     // height = 3 mm
     mitama::quantity_t<si::millimeter_t, int> height = 3;
     // area = 6000 mm^2
-    mitama::quantity_t area = refined<L<2>> =| width * height;
+    mitama::quantity_t area = refined<L<2>> |= width * height;
     //                        ^~~~~~~~~~~~~~~~
     //                        refine for L^2
 }
