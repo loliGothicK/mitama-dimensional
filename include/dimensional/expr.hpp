@@ -3,7 +3,7 @@
 #include <type_traits>
 #include <utility>
 #include "quantity.hpp"
-#include "derived_units/dgree_celsius.hpp"
+#include "nonsi_units/degree_celsius.hpp"
 #include "mitamagic/utility.hpp"
 
 namespace mitama

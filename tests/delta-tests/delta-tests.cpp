@@ -5,7 +5,7 @@
 #include <dimensional/prefix.hpp>
 #include <dimensional/arithmetic.hpp>
 #include <dimensional/delta.hpp>
-#include <dimensional/derived_units/dgree_celsius.hpp>
+#include <dimensional/nonsi_units/degree_celsius.hpp>
 #include <test_util.hpp>
 
 using mitama::delta, mitama::si::meter_t, mitama::si::ampere_t, mitama::si::candela_t, mitama::si::kelvin_t, mitama::si::kilogram_t, mitama::si::mol_t, mitama::si::second_t;
@@ -61,14 +61,14 @@ TEMPLATE_TEST_CASE("delta division",
 TEST_CASE("delta temperature",
                    "[delta][constructor]")
 {
-    using mitama::si::kelvins, mitama::delta, mitama::nonsi::dgree_celsius;
+    using mitama::si::kelvins, mitama::delta, mitama::nonsi::degree_celsius;
     {
-        delta d = (2|dgree_celsius) - (1|dgree_celsius);
+        delta d = (2|degree_celsius) - (1|degree_celsius);
         REQUIRE((1|kelvins) + d == (2|kelvins));
     }
     {
         delta d = (2|kelvins) - (1|kelvins);
-        REQUIRE((1|dgree_celsius) + d == (2|dgree_celsius));
+        REQUIRE((1|degree_celsius) + d == (2|degree_celsius));
     }
 }
 
