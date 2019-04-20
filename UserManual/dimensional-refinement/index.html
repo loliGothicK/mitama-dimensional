@@ -550,7 +550,7 @@ This code can be compiled through refinement, since <script type="math/tex">m^2<
 <div class="codehilite"><pre><span></span><span class="n">quantity</span><span class="o">&lt;</span><span class="n">meter_t</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">a1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">|</span><span class="n">meters</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">7</span><span class="o">|</span><span class="n">meters</span><span class="p">);</span>
 </pre></div>
 
-<p>The following example does not pass compilation. This is because m is the dimension of <script type="math/tex"> L</script>  and not <script type="math/tex"> L^2</script> .</p>
+<p>The following example does not compile. This is because <script type="math/tex">m</script> is the dimension of <script type="math/tex">L</script>  and not <script type="math/tex">L^2</script> .</p>
 <div class="codehilite"><pre><span></span><span class="n">quantity_t</span> <span class="n">a3</span> <span class="o">=</span> <span class="n">refined</span><span class="o">&lt;</span><span class="n">area_r</span><span class="o">&gt;</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">2</span><span class="o">|</span><span class="n">millimeters</span><span class="p">);</span> <span class="c1">// error!</span>
 </pre></div>
 

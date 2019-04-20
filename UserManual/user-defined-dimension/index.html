@@ -461,8 +461,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dimensional-qunatifier-option" title="Dimensional qunatifier [option]" class="md-nav__link">
-    Dimensional qunatifier [option]
+  <a href="#dimensional-quantifiers-option" title="Dimensional quantifiers [option]" class="md-nav__link">
+    Dimensional quantifiers [option]
   </a>
   
 </li>
@@ -544,8 +544,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dimensional-qunatifier-option" title="Dimensional qunatifier [option]" class="md-nav__link">
-    Dimensional qunatifier [option]
+  <a href="#dimensional-quantifiers-option" title="Dimensional quantifiers [option]" class="md-nav__link">
+    Dimensional quantifiers [option]
   </a>
   
 </li>
@@ -597,7 +597,7 @@
 <span class="k">using</span> <span class="n">galleon_t</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">scaled_unit_t</span><span class="o">&lt;</span><span class="n">sickle_t</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">ratio</span><span class="o">&lt;</span><span class="mi">17</span><span class="o">&gt;&gt;</span><span class="p">;</span>
 </pre></div>
 
-<h2 id="dimensional-qunatifier-option">Dimensional qunatifier [option]</h2>
+<h2 id="dimensional-quantifiers-option">Dimensional quantifiers [option]</h2>
 <div class="codehilite"><pre><span></span><span class="kr">inline</span> <span class="k">constexpr</span> <span class="n">knut_t</span> <span class="n">knuts</span><span class="p">{};</span>
 <span class="kr">inline</span> <span class="k">constexpr</span> <span class="n">knut_t</span> <span class="n">knut</span><span class="p">{};</span>
 
@@ -609,11 +609,14 @@
 </pre></div>
 
 <h2 id="format-option">Format [option]</h2>
-<p>Define specialization of <code class="codehilite">abbreviation</code> to enable format ouput.</p>
+<p>Define specializations to enable formatted output.</p>
 <div class="codehilite"><pre><span></span><span class="k">namespace</span> <span class="n">mitama</span> <span class="p">{</span>
-    <span class="k">template</span> <span class="o">&lt;&gt;</span> <span class="k">struct</span> <span class="n">abbreviation</span><span class="o">&lt;</span><span class="n">wizarding</span><span class="o">::</span><span class="n">knut_t</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">static</span> <span class="k">constexpr</span> <span class="kt">char</span> <span class="n">str</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;knuts&quot;</span><span class="p">;</span> <span class="p">};</span>
-    <span class="k">template</span> <span class="o">&lt;&gt;</span> <span class="k">struct</span> <span class="n">abbreviation</span><span class="o">&lt;</span><span class="n">wizarding</span><span class="o">::</span><span class="n">sickle_t</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">static</span> <span class="k">constexpr</span> <span class="kt">char</span> <span class="n">str</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;sickles&quot;</span><span class="p">;</span> <span class="p">};</span>
-    <span class="k">template</span> <span class="o">&lt;&gt;</span> <span class="k">struct</span> <span class="n">abbreviation</span><span class="o">&lt;</span><span class="n">wizarding</span><span class="o">::</span><span class="n">galleon_t</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">static</span> <span class="k">constexpr</span> <span class="kt">char</span> <span class="n">str</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;galleons&quot;</span><span class="p">;</span> <span class="p">};</span>
+    <span class="k">template</span> <span class="o">&lt;&gt;</span> <span class="k">struct</span> <span class="n">abbreviation</span><span class="o">&lt;</span><span class="n">wizarding</span><span class="o">::</span><span class="n">knut_t</span><span class="o">&gt;</span>
+        <span class="p">{</span> <span class="k">static</span> <span class="k">constexpr</span> <span class="kt">char</span> <span class="n">str</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;knuts&quot;</span><span class="p">;</span> <span class="p">};</span>
+    <span class="k">template</span> <span class="o">&lt;&gt;</span> <span class="k">struct</span> <span class="n">abbreviation</span><span class="o">&lt;</span><span class="n">wizarding</span><span class="o">::</span><span class="n">sickle_t</span><span class="o">&gt;</span>
+        <span class="p">{</span> <span class="k">static</span> <span class="k">constexpr</span> <span class="kt">char</span> <span class="n">str</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;sickles&quot;</span><span class="p">;</span> <span class="p">};</span>
+    <span class="k">template</span> <span class="o">&lt;&gt;</span> <span class="k">struct</span> <span class="n">abbreviation</span><span class="o">&lt;</span><span class="n">wizarding</span><span class="o">::</span><span class="n">galleon_t</span><span class="o">&gt;</span>
+        <span class="p">{</span> <span class="k">static</span> <span class="k">constexpr</span> <span class="kt">char</span> <span class="n">str</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;galleons&quot;</span><span class="p">;</span> <span class="p">};</span>
 <span class="p">}</span>
 </pre></div>
                 
