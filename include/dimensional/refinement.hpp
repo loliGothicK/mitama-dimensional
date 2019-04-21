@@ -219,9 +219,6 @@ using current_r = mitamagic::type_list<sym::I<1>>;
 using thermo_r = mitamagic::type_list<sym::S<1>>;
 using amount_r = mitamagic::type_list<sym::N<1>>;
 using luminous_r = mitamagic::type_list<sym::J<1>>;
-
-using area_r = mitamagic::type_list<sym::L<2>>;
-using volume_r = mitamagic::type_list<sym::L<3>>;
 } // namespace mitama
 
 #endif
