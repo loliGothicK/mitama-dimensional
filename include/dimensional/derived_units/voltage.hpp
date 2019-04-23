@@ -3,6 +3,7 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 
 namespace mitama::si {
@@ -11,6 +12,7 @@ using voltage_t = make_synonym_t<voltage_repr, decltype(kilogram<> * meter<2> * 
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_ELECTRIC_POTENTIAL_HPP
 inline constexpr voltage_t volts{};
+using voltage_r = make_refiment_symbol_t<voltage_t>;
 template < std::intmax_t N >
 inline constexpr powered_t<voltage_t, N> volt{};
 #endif

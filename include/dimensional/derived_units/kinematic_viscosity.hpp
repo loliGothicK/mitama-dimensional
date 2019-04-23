@@ -3,6 +3,7 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 
 namespace mitama::si {
@@ -11,6 +12,7 @@ using kinematic_viscosity_t = make_synonym_t<kinematic_viscosity_repr, decltype(
 
 #if !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_THERMAL_DIFFUSIVITY_HPP) && !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_DIFFUSION_COEFFICIENT_HPP)
 inline constexpr kinematic_viscosity_t kinematic_viscosity{};
+using kinematic_viscosity_r = make_refiment_symbol_t<kinematic_viscosity_t>;
 #endif
 }
 

@@ -3,6 +3,7 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 #include "power.hpp"
 
 namespace mitama::si {
@@ -10,6 +11,7 @@ template<class> struct spectral_power_repr{};
 using spectral_power_t = make_synonym_t<spectral_power_repr, decltype(watt / meter<>)>;
 
 inline constexpr spectral_power_t spectral_power{};
+using spectral_power_r = make_refiment_symbol_t<spectral_power_t>;
 }
 
 namespace mitama {

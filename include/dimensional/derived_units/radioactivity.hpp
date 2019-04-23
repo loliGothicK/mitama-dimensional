@@ -3,11 +3,13 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 namespace mitama::si {
 struct radioactivity { using is_base_dimension = void; };
 using radioactivity_t = make_unit_t<radioactivity>;
 inline constexpr radioactivity_t becquerel{};
+using radioactivity_r = make_refiment_symbol_t<radioactivity_t>;
 }
 
 namespace mitama {

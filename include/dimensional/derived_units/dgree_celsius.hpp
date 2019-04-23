@@ -4,6 +4,7 @@
 #include "../si_units/kelvin.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 namespace mitama::nonsi {
 struct celsius_temperature { using is_base_dimension = void; };
@@ -19,6 +20,7 @@ namespace mitama::nonsi {
 using degree_celsius_t = make_unit_t<nonsi::celsius_temperature>;
 
 inline constexpr degree_celsius_t degree_celsius{};
+using degree_celsius_r = make_refiment_symbol_t<degree_celsius_t>;
 }
 
 namespace mitama {

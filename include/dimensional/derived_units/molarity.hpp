@@ -3,6 +3,7 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 
 namespace mitama::si {
@@ -10,6 +11,7 @@ template<class> struct molarity_repr{};
 using molarity_t = make_synonym_t<molarity_repr, decltype(mol<> / meter<3>)>;
 
 inline constexpr molarity_t molarity{};
+using molarity_r = make_refiment_symbol_t<molarity_t>;
 }
 
 namespace mitama {
