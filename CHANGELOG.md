@@ -289,3 +289,25 @@ int main() {
 
 - [environment](https://loligothick.github.io/mitama-dimensional/)として公開中（Basic Conceptsを書き足した）
 
+
+## v0.8.0
+
+### **新機能**
+
+- refinement symbolsの追加
+
+### バグ修正
+
+- SI derived unitsのいくつかの足りてないインクルードパスの追加
+
+
+### Testing
+
+
+- refinement testsの追加
+
+
+### ドキュメント
+
+- [environment](https://loligothick.github.io/mitama-dimensional/)として公開中（user define dimensionを書き足した）
+
