@@ -3,6 +3,7 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 #include "absorbed_dose.hpp"
 
 namespace mitama::si {
@@ -11,6 +12,7 @@ template < class > struct absorbed_dose_rate_repr{};
 using absorbed_dose_rate_t = make_synonym_t<absorbed_dose_rate_repr, decltype(gray / second<>)>;
 
 inline constexpr absorbed_dose_rate_t absorbed_dose_rate{};
+using absorbed_dose_rate_r = make_refiment_symbol_t<absorbed_dose_rate_t>;
 }
 
 namespace mitama {

@@ -3,12 +3,14 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 
 namespace mitama::si {
 using thermal_expansion_coefficient_t = reciprocal_t<kelvin_t>;
 
 inline constexpr thermal_expansion_coefficient_t thermal_expansion_coefficient{};
+using thermal_expansion_coefficient_r = make_refiment_symbol_t<thermal_expansion_coefficient_t>;
 }
 
 #endif

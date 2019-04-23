@@ -3,13 +3,15 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 #include "solid_angle.hpp"
 
 namespace mitama::si {
 template<class> struct luminous_flux_repr{};
 using luminous_flux_t = make_synonym_t<luminous_flux_repr, decltype(candela<> * steradian)>;
 
-inline constexpr luminous_flux_t lumen{}; 
+inline constexpr luminous_flux_t lumen{};
+using luminous_flux_r = make_refiment_symbol_t<luminous_flux_t>;
 }
 
 namespace mitama {

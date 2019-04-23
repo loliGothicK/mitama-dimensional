@@ -4,7 +4,7 @@
 #include "../format_io_common.hpp"
 
 TEST_CASE("area format test", "[quantity][abbreviation]") {
-  REQUIRE(fmt(1 | si::area_t{}) == "1 [m^2]");
+  REQUIRE(fmt(refined<area_r> |= 1 | si::area_t{}) == "1 [m^2]");
 }
 TEST_CASE("area quantifier format test", "[quantity][abbreviation]") {
   REQUIRE(fmt(1 | si::area) == "1 [m^2]");

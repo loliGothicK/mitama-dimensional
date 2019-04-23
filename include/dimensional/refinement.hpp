@@ -219,9 +219,32 @@ using current_r = mitamagic::type_list<sym::I<1>>;
 using thermo_r = mitamagic::type_list<sym::S<1>>;
 using amount_r = mitamagic::type_list<sym::N<1>>;
 using luminous_r = mitamagic::type_list<sym::J<1>>;
-
-using area_r = mitamagic::type_list<sym::L<2>>;
-using volume_r = mitamagic::type_list<sym::L<3>>;
 } // namespace mitama
+
+namespace mitama {
+namespace mitamagic {
+
+template < class Unit >
+struct atomic_refinement_symbol
+  : ::mitama::sym::refinement_symbol_tag
+{
+  using basis = typename Unit::dimension_type;
+  using exp   = typename Unit::exponent;
+};
+} // ! namespace mitamagic
+
+
+template < class > struct make_refiment_symbol;
+
+template < template <class> class Repr, class... Units >
+struct make_refiment_symbol<Repr<dimensional_t<Units...>>>
+{
+  using type = mitamagic::type_list<mitamagic::atomic_refinement_symbol<Units>...>;
+};
+
+template < class T >
+using make_refiment_symbol_t = typename make_refiment_symbol<std::decay_t<T>>::type;
+
+} // ! namespace mitama
 
 #endif

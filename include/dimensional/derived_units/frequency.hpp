@@ -3,10 +3,12 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 namespace mitama::si {
 using frequency_t = reciprocal_t<second_t>;
-inline constexpr frequency_t hertz{}; 
+inline constexpr frequency_t hertz{};
+using frequency_r = make_refiment_symbol_t<frequency_t>;
 }
 
 namespace mitama {

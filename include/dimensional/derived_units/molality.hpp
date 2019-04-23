@@ -3,6 +3,7 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 
 namespace mitama::si {
@@ -10,6 +11,7 @@ template<class> struct molality_repr{};
 using molality_t = make_synonym_t<molality_repr, decltype(mol<> / kilogram<>)>;
 
 inline constexpr molality_t molality{};
+using molality_r = make_refiment_symbol_t<molality_t>;
 }
 
 namespace mitama {
