@@ -3,6 +3,7 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 
 namespace mitama::si {
@@ -11,6 +12,7 @@ using work_t = make_synonym_t<work_repr, decltype(kilogram<> * meter<2> * second
 
 #if !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_ENERGY_HPP) && !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_HEAT_HPP)
 inline constexpr work_t joule{};
+using work_r = make_refiment_symbol_t<work_t>;
 #endif
 }
 

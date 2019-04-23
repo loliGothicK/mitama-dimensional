@@ -3,13 +3,15 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 
 namespace mitama::si {
 template<class> struct capacitance_repr{};
 using capacitance_t = make_synonym_t<capacitance_repr, decltype(kilogram<-1> * meter<-2> * second<4> * ampere<2>)>;
 
-inline constexpr capacitance_t farad{}; 
+inline constexpr capacitance_t farad{};
+using capacitance_r = make_refiment_symbol_t<capacitance_t>;
 }
 
 namespace mitama {

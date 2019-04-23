@@ -3,6 +3,7 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 
 namespace mitama::si {
@@ -10,6 +11,7 @@ template<class> struct action_repr{};
 using action_t = make_synonym_t<action_repr, decltype(meter<2> * kilogram<> * second<-1>)>;
 
 inline constexpr action_t action{};
+using action_r = make_refiment_symbol_t<action_t>;
 }
 
 namespace mitama {

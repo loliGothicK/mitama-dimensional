@@ -3,6 +3,7 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 
 namespace mitama::si {
@@ -11,6 +12,7 @@ using impedance_t = make_synonym_t<impedance_repr, decltype(kilogram<> * meter<2
 
 #if !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_RESISTANCE_HPP) && !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_REACTANCE_HPP)
 inline constexpr impedance_t ohm{};
+using impedance_r = make_refiment_symbol_t<impedance_t>;
 #endif
 }
 

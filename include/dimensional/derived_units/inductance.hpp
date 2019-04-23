@@ -3,13 +3,15 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 
 namespace mitama::si {
 template<class> struct inductance_repr{};
 using inductance_t = make_synonym_t<inductance_repr, decltype(kilogram<> * meter<2> * second<-2> * ampere<-2>)>;
 
-inline constexpr inductance_t henry{}; 
+inline constexpr inductance_t henry{};
+using inductance_r = make_refiment_symbol_t<inductance_t>;
 }
 
 namespace mitama {

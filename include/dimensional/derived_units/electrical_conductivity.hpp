@@ -3,6 +3,7 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 #include "conductance.hpp"
 
 namespace mitama::si {
@@ -10,6 +11,7 @@ template<class> struct electrical_conductivity_repr{};
 using electrical_conductivity_t = make_synonym_t<electrical_conductivity_repr, decltype(siemens / meter<>)>;
 
 inline constexpr electrical_conductivity_t electrical_conductivity{};
+using electrical_conductivity_r = make_refiment_symbol_t<electrical_conductivity_t>;
 }
 
 namespace mitama {

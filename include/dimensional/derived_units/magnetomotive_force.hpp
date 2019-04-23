@@ -3,6 +3,7 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 #include "angle.hpp"
 
 namespace mitama::si {
@@ -10,6 +11,7 @@ template<class> struct magnetomotive_force_repr{};
 using magnetomotive_force_t = make_synonym_t<magnetomotive_force_repr, decltype(ampere<> * radian)>;
 
 inline constexpr magnetomotive_force_t magnetomotive_force{};
+using magnetomotive_force_r = make_refiment_symbol_t<magnetomotive_force_t>;
 }
 
 namespace mitama {

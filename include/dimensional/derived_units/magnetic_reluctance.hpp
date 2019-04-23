@@ -3,12 +3,14 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 
 namespace mitama::si {
 using magnetic_reluctance_t = reciprocal_t<decltype(kilogram<> * meter<2> * second<-2> * ampere<-2>)>;
 
 inline constexpr magnetic_reluctance_t magnetic_reluctance{};
+using magnetic_reluctance_r = make_refiment_symbol_t<magnetic_reluctance_t>;
 }
 
 namespace mitama {
