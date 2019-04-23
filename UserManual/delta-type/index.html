@@ -476,22 +476,22 @@
                 <h1 id="delta-type">Delta type</h1>
 <p>Delta type is a type to represent the difference of dimensional quantity.</p>
 <p>Typical use case is temperature difference.</p>
-<p>Assigning <code class="codehilite">quantity&lt;kelvin_t&gt;</code> to <code class="codehilite">quantity &lt;dgree_celsius_t&gt;</code> will convert that value.
+<p>Assigning <code class="codehilite">quantity&lt;kelvin_t&gt;</code> to <code class="codehilite">quantity &lt;degree_celsius_t&gt;</code> will convert that value.
 However, <code class="codehilite">delta&lt;quantity&lt;kelvin_t &gt;&gt;</code> is a type representing temperature difference, so it is assigned without conversion.</p>
 <div class="codehilite"><pre><span></span><span class="c1">// begin example</span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/quantity.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/si_units/kelvin.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;dimensional/derived_units/dgree_celsius.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;dimensional/nonsi_units/degree_celsius.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/delta.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/arithmetic.hpp&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">using</span> <span class="k">namespace</span> <span class="n">mitama</span><span class="p">;</span>
-    <span class="n">quantity</span><span class="o">&lt;</span><span class="n">nonsi</span><span class="o">::</span><span class="n">dgree_celsius_t</span><span class="o">&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+    <span class="n">quantity</span><span class="o">&lt;</span><span class="n">nonsi</span><span class="o">::</span><span class="n">degree_celsius_t</span><span class="o">&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
     <span class="c1">// Calculated without unit conversion</span>
     <span class="c1">// because it is a temperature difference.</span>
-    <span class="c1">// 20 - 10 = 10 delta kelvin &lt;=&gt; 10 delta dgree celcius</span>
-    <span class="n">quantity</span><span class="o">&lt;</span><span class="n">nonsi</span><span class="o">::</span><span class="n">dgree_celsius_t</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">delta</span><span class="p">(</span> <span class="p">(</span><span class="mi">20</span><span class="o">|</span><span class="n">si</span><span class="o">::</span><span class="n">kelvins</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">10</span><span class="o">|</span><span class="n">si</span><span class="o">::</span><span class="n">kelvins</span><span class="p">)</span> <span class="p">);</span> 
+    <span class="c1">// 20 - 10 = 10 delta kelvin &lt;=&gt; 10 delta degree celcius</span>
+    <span class="n">quantity</span><span class="o">&lt;</span><span class="n">nonsi</span><span class="o">::</span><span class="n">degree_celsius_t</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">delta</span><span class="p">(</span> <span class="p">(</span><span class="mi">20</span><span class="o">|</span><span class="n">si</span><span class="o">::</span><span class="n">kelvins</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">10</span><span class="o">|</span><span class="n">si</span><span class="o">::</span><span class="n">kelvins</span><span class="p">)</span> <span class="p">);</span> 
 <span class="p">}</span>
 <span class="c1">// end example</span>
 </pre></div>
