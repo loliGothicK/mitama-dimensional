@@ -4,7 +4,7 @@
 #include "../quantity.hpp"
 #include "../io.hpp"
 #include "../refinement.hpp"
-
+#include "./force.hpp"
 
 namespace mitama::si {
 template<class> struct stiffness_repr{};

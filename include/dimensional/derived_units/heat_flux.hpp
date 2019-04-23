@@ -4,7 +4,7 @@
 #include "../quantity.hpp"
 #include "../io.hpp"
 #include "../refinement.hpp"
-
+#include "./power.hpp"
 
 namespace mitama::si {
 template<class> struct heat_flux_repr{};
