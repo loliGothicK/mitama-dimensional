@@ -16,7 +16,7 @@ orbs: # Inline Orbs for Document Integration
           - checkout
           - run: |
               apt upgrade -y && apt update -y && apt install -y git
-              git submodule update --init --recursive
+              git clone https://github.com/LoliGothick/mitama-dimensional.git
               find docs -type f -name \*.md | xargs awk -v i='0' '/\/\/ begin example$/,/\/\/ end example$/ { if($0 !~ "\/\/ .* example$") { print $0 >> FILENAME "-" i ".cpp" } else if ($0 ~ "\/\/ begin example$") { i++ } }'
               find docs -type f -name \*.cpp | xargs -I{} $CXX -I./mitama-dimensional/include/ {} -std=c++17
 
