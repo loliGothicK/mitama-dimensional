@@ -6,7 +6,8 @@
 
 namespace mitama {
 
-template <class First, class Second, class... Quantities>
+template <class First, class Second, class... Quantities
+        , std::enable_if_t<std::conjunction_v<is_quantity<First>, is_quantity<Second>, is_quantity<Quantities>...>> = false>
 auto min(First first, Second second, Quantities... quantities)
   -> ::mitama::common_type_t<First, Second, Quantities...>
 {
@@ -20,7 +21,8 @@ auto min(First first, Second second, Quantities... quantities)
   }
 }
 
-template <class First, class Second, class... Quantities>
+template <class First, class Second, class... Quantities
+        , std::enable_if_t<std::conjunction_v<is_quantity<First>, is_quantity<Second>, is_quantity<Quantities>...>> = false>
 auto max(First first, Second second, Quantities... quantities)
   -> ::mitama::common_type_t<First, Second, Quantities...>
 {
