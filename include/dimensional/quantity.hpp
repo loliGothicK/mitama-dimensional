@@ -234,6 +234,9 @@ public:
   constexpr bool operator>=(quantity_t<D, U> const &o) const {
     return this->value_ >= mitamagic::converted_value<quantity_t>(o);
   }
+
+  quantity_t operator-() const { return { -value_ }; }
+  quantity_t operator+() const { using std::abs; return { abs(value_) }; }
 };
 
 template <class T> struct is_quantity : std::false_type {};
