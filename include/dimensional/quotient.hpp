@@ -37,8 +37,11 @@ struct prod<units_t<D, Exp1, S1>, units_t<D, Exp2, S2>> {
 };
 template <class, class> struct scaler;
 
+template <class, class...>
+struct find_if;
+
 template <class U, class Head, class... Tail>
-struct find_if
+struct find_if<U, Head, Tail...>
     : std::conditional_t<std::is_same_v<typename U::dimension_type,
                                         typename Head::dimension_type>,
                          prod<U, Head>, find_if<U, Tail...>> {};
@@ -51,6 +54,9 @@ template <class U, class H> struct find_if<U, H> {
       std::is_same_v<typename U::dimension_type, typename H::dimension_type>,
       typename prod<U, H>::type, not_found>;
 };
+
+template <class _>
+struct find_if<_> { using type = not_found; };
 
 template <class... U1, class... U2>
 struct scaler<dimensional_t<U1...>, dimensional_t<U2...>> {
