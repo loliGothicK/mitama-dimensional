@@ -132,6 +132,7 @@ public:
   }
 
   constexpr T get() const { return value_; }
+  constexpr T value() const { return value_; }
 
   template < class F >
   constexpr auto validate(F&& validator) const & {
