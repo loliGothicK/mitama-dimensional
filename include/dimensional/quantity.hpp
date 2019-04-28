@@ -296,9 +296,9 @@ operator/(U1, U2) {
 }
 
 template <class Dim, class T>
-constexpr std::enable_if_t<is_dimensional_quantifier<Dim>::value, quantity_t<Dim, T>>
+constexpr std::enable_if_t<is_dimensional_quantifier<Dim>::value, quantity_t<Dim, std::decay_t<T>>>
 operator|(T &&t, Dim) {
-  return {std::forward<T>(t)};
+  return { mitama::decay_copy(std::forward<T>(t)) };
 }
 
 template <class Q1, class Q2, class... Quantities>

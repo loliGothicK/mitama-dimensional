@@ -4,6 +4,9 @@
 #include <cstdint>
 
 namespace mitama {
+template < class T > std::decay_t<T> decay_copy(T&& t)
+  { return std::forward<T>(t); }
+
 template <class T, class = void> struct is_complete_type : std::false_type {};
 
 template <class T>
