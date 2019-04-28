@@ -7,7 +7,7 @@
 namespace mitama {
 
 template <class First, class Second, class... Quantities
-        , std::enable_if_t<std::conjunction_v<is_quantity<First>, is_quantity<Second>, is_quantity<Quantities>...>> = false>
+        , std::enable_if_t<std::conjunction_v<is_quantity<std::decay_t<First>>, is_quantity<std::decay_t<Second>>, is_quantity<std::decay_t<Quantities>>...>, bool> = false>
 auto min(First first, Second second, Quantities... quantities)
   -> ::mitama::common_type_t<First, Second, Quantities...>
 {
@@ -22,7 +22,7 @@ auto min(First first, Second second, Quantities... quantities)
 }
 
 template <class First, class Second, class... Quantities
-        , std::enable_if_t<std::conjunction_v<is_quantity<First>, is_quantity<Second>, is_quantity<Quantities>...>> = false>
+        , std::enable_if_t<std::conjunction_v<is_quantity<std::decay_t<First>>, is_quantity<std::decay_t<Second>>, is_quantity<std::decay_t<Quantities>>...>, bool> = false>
 auto max(First first, Second second, Quantities... quantities)
   -> ::mitama::common_type_t<First, Second, Quantities...>
 {

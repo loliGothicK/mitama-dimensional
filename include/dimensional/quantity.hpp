@@ -5,6 +5,14 @@ namespace mitama {
 
 template <class Dim, class T = double> class quantity_t;
 
+template < class >
+struct dimensionless_converter {};
+
+template < template <class> class Repr, class T >
+struct dimensionless_converter<quantity_t<Repr<dimensional_t<>>, T>> {
+  operator T() const { return static_cast<quantity_t<Repr<dimensional_t<>>, T> const*>(this)->value(); }
+};
+
 // meta-operator for dimension equivalence
 // primary template
 template <class, class> struct is_same_dimensional : std::false_type {};
@@ -55,7 +63,12 @@ dimensional_convert(From const& from) {
 namespace mitama {
 
 template <class T, template <class> class Repr, class...Units>
-class quantity_t<Repr<dimensional_t<Units...>>, T> {
+class quantity_t<Repr<dimensional_t<Units...>>, T>
+  : public dimensionless_converter<quantity_t<Repr<dimensional_t<Units...>>, T>>
+{
+  template < class >
+  friend struct dimensionless_converter;
+
   T value_;
 
 public:

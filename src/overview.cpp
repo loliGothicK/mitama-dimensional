@@ -1,7 +1,8 @@
 #include "../include/dimensional/quantity.hpp"
 #include "../include/dimensional/arithmetic.hpp"
-#include "../include/dimensional/si/meter.hpp"
-#include "../include/dimensional/si/second.hpp"
+#include "../include/dimensional/si_units/all.hpp"
+#include "../include/dimensional/nonsi_units/hour.hpp"
+#include "../include/dimensional/derived_units/area.hpp"
 #include "../include/dimensional/io.hpp"
 #include "../include/dimensional/refinement.hpp"
 #include "../include/dimensional/prefix.hpp"
@@ -44,6 +45,7 @@ int main(){
         // a / b := a * b^{-1}
         auto r4 = a / b;
         REPL(r4);
+        REPL(1 + r4);       
         REPL(boost::typeindex::type_id<decltype(r4)>().pretty_name());
 
         quantity<si::millimeter_t, int> d(a);
@@ -109,8 +111,8 @@ int main(){
         REPL(sqrt(v));
         REPL(cbrt(v));
 
-        REPL(min((1|si::meters),(1|si::millimeters),(1|si::centimeters)));
-        REPL(max((1|si::meters),(1|si::millimeters),(1|si::centimeters)));
+        REPL(mitama::min((1|si::meters),(1|si::millimeters),(1|si::centimeters)));
+        REPL(mitama::max((1|si::meters),(1|si::millimeters),(1|si::centimeters)));
         std::cout << "------------------------\n";
 
         REPL(pow<5>(2|si::meters));
@@ -149,10 +151,10 @@ int main(){
     }
 
     {
-        quantity_t a1 = refined<area_r> |= (2|si::meters) * (7|si::meters);
+        quantity_t a1 = refined<si::area_r> |= (2|si::meters) * (7|si::meters);
         REPL(a1);
 
-        quantity_t a2 = refined<area_r> |= (2|si::millimeters) * (7|si::millimeters);
+        quantity_t a2 = refined<si::area_r> |= (2|si::millimeters) * (7|si::millimeters);
         REPL(a2);
 
         // error!
