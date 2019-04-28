@@ -91,5 +91,14 @@ operator/(L &&lhs, typename std::decay_t<L>::value_type const& rhs)
     return std::decay_t<L>(std::forward<L>(lhs).get() / rhs);
 }
 
+template <class R,
+          std::enable_if_t<is_quantity_v<std::decay_t<R>>, bool> = false>
+constexpr auto
+operator/(typename std::decay_t<R>::value_type const& lhs, R&& rhs)
+{
+    return quantity_t<si_base_units_repr<mitamagic::inverse_t<typename std::decay_t<R>::dimension_type>>, typename std::decay_t<R>::value_type>(lhs / std::forward<R>(rhs).get());
+}
+
+
 }
 #endif
