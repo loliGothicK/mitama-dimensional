@@ -64,12 +64,12 @@ workflows:
           name: test/clang-8.0.0
           compiler: clang-8.0.0
       - mkdocs/test_book:
-          name: test/gcc-8.2
-          compiler: gcc-8.2
+          name: test/gcc-9.1
+          compiler: gcc-9.1
       - mkdocs/build_book:
           requires:
             - test/clang-8.0.0
-            - test/gcc-8.2
+            - test/gcc-9.1
       - hold-for-approval:
           type: approval
           requires:
