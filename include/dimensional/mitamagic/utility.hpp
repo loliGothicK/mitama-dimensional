@@ -15,7 +15,46 @@ struct is_complete_type<T, std::void_t<decltype(sizeof(T))>> : std::true_type {
 };
 
 template <class T> inline constexpr bool is_complete_type_v = is_complete_type<T>::value;
+
+template < class, class, class = void >
+struct is_less_comparable: std::false_type {};
+
+template < class T, class U >
+struct is_less_comparable<T, U, std::void_t<decltype(std::declval<T const&>() < std::declval<U const&>())>>: std::true_type {};
+
+template < class, class, class = void >
+struct is_greater_comparable: std::false_type {};
+
+template < class T, class U >
+struct is_greater_comparable<T, U, std::void_t<decltype(std::declval<T const&>() > std::declval<U const&>())>>: std::true_type {};
+
+template < class, class, class = void >
+struct is_less_or_equal_comparable: std::false_type {};
+
+template < class T, class U >
+struct is_less_or_equal_comparable<T, U, std::void_t<decltype(std::declval<T const&>() <= std::declval<U const&>())>>: std::true_type {};
+
+template < class, class, class = void >
+struct is_greater_or_equal_comparable: std::false_type {};
+
+template < class T, class U >
+struct is_greater_or_equal_comparable<T, U, std::void_t<decltype(std::declval<T const&>() >= std::declval<U const&>())>>: std::true_type {};
+
+template < class, class, class = void >
+struct is_equal_comparable: std::false_type {};
+
+template < class T, class U >
+struct is_equal_comparable<T, U, std::void_t<decltype(std::declval<T const&>() == std::declval<U const&>())>>: std::true_type {};
+
+template < class, class, class = void >
+struct is_notequal_comparable: std::false_type {};
+
+template < class T, class U >
+struct is_notequal_comparable<T, U, std::void_t<decltype(std::declval<T const&>() != std::declval<U const&>())>>: std::true_type {};
+
 }
+
+
 // Type List Modules
 namespace mitama::mitamagic {
 template <class T> struct guardian_t { using type = T; };
