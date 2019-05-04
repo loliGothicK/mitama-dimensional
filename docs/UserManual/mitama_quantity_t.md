@@ -86,6 +86,7 @@ And arithmetic operators listed bellow are defined:
 |  `q1 * v`  |                   `std::declval<T1>() * std::declval<T3>()` is valid expression                    |
 |  `v * q1`  |                   `std::declval<T3>() * std::declval<T1>()` is valid expression                    |
 |  `q1 / v`  |                   `std::declval<T1>() / std::declval<T3>()` is valid expression                    |
+|  `v / q1`  |                   `std::declval<T3>() / std::declval<T1>()` is valid expression                    |
 
 Otherwise, arithmetic operators do not participate in overload resolution.
 
@@ -109,6 +110,7 @@ int main() {
     2 * b; // 8 [m]
     b * 2; // 8 [m]
     b / 2; // 1 [m]
+    2 / b; // 1 [m^-1]
 }
 // end example
 ```

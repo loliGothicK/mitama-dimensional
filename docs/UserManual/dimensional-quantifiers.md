@@ -1,7 +1,7 @@
 
 # Dimensional quantifiers
 
-> "There is a contrast in C++. The important thing is to choose what we write. That's the real of C++."
+> "There is both of light and dark inside C++. The important thing is to choose what we write. That's the real of C++."
 
 -----------------------
 
@@ -19,11 +19,10 @@ inline constexpr powered_t<meter_t, N> meter;
 If you do not specify the exponent (=1), use the plural dimension quantifiers, and if you specify it, use the singular dimension quantifiers with non-type template parameter.
 
 ## pipe operator overload
-----------------------------
 
 Pipe operators are provided to attach units to values.
 
-It is allowed to convert values into quantities by piping values to dimensional quantifiers.
+It is allowed to convert values into quantities by piping a value to dimensional quantifiers.
 
 **example**
 
