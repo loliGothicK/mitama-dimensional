@@ -51,11 +51,14 @@ nav:
   - User Manual:
     - Dimensional quantity 101: UserManual/dimensional-quantity-101.md
     - Basic Concepts: UserManual/basic-concepts.md
-    - mitama::quantity_t: UserManual/mitama_quantity_t.md
-    - dimensional quantifiers: UserManual/dimensional-quantifiers.md
+    - Quantity: UserManual/mitama_quantity_t.md
+    - Dimensional quantifiers: UserManual/dimensional-quantifiers.md
     - Metric prefixes: UserManual/metric-prefixes.md
     - Library defined SI derived units and format: UserManual/si-derived-units.md
     - Dimensional refinement: UserManual/dimensional-refinement.md
     - Delta type: UserManual/delta-type.md
     - User define dimension: UserManual/user-defined-dimension.md
+  - Reference:
+    - class quantity_t: Reference/quantity.md
+    - arithmetic: Reference/arithmetic.md
   - Contribution: CONTRIBUTION.md
