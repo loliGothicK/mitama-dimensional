@@ -20,12 +20,12 @@
 		}
 #define VALID_CONSTRUCT_TEST_BODY(type, prefix) \
 	quantity<type, double> a(1.0); \
-	Assert::AreEqual(1.0, a.get(), 1.0E-6); \
+	Assert::AreEqual(1.0, a.value(), 1.0E-6); \
 	quantity<scaled_unit_t<type, std::prefix>, double> b = a; \
 	if constexpr (std::prefix::den == 1) \
-		Assert::AreEqual( 1.0 / static_cast<double>(std::prefix::num), b.get(), 1.0E-6); \
+		Assert::AreEqual( 1.0 / static_cast<double>(std::prefix::num), b.value(), 1.0E-6); \
 	else \
-		Assert::AreEqual( static_cast<double>(std::prefix::den), b.get(), 1.0E-6);
+		Assert::AreEqual( static_cast<double>(std::prefix::den), b.value(), 1.0E-6);
 
 #include <test_util.hpp>
 
