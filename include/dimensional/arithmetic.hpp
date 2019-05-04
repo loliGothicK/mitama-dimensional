@@ -10,7 +10,11 @@ namespace mitama {
 //--------------------------//
 
 template <class L, class R,
-          std::enable_if_t<is_same_dimensional_v<std::decay_t<L>, std::decay_t<R>>, bool> = false>
+          std::enable_if_t<
+            std::conjunction_v<
+                is_same_dimensional<std::decay_t<L>, std::decay_t<R>>,
+                is_addable_with<typename std::decay_t<L>::value_type, typename std::decay_t<R>::value_type>>
+        , bool> = false>
 constexpr auto
 operator+(L &&lhs, R &&rhs)
 {
@@ -22,7 +26,11 @@ operator+(L &&lhs, R &&rhs)
 }
 
 template <class L, class R,
-          std::enable_if_t<is_same_dimensional_v<std::decay_t<L>, std::decay_t<R>>, bool> = false>
+          std::enable_if_t<
+            std::conjunction_v<
+                is_same_dimensional<std::decay_t<L>, std::decay_t<R>>,
+                is_subtractible_with<typename std::decay_t<L>::value_type, typename std::decay_t<R>::value_type>>
+        , bool> = false>
 constexpr auto
 operator-(L &&lhs, R &&rhs)
 {
@@ -35,8 +43,8 @@ operator-(L &&lhs, R &&rhs)
 
 template <class L, class R,
           std::enable_if_t<
-            std::conjunction_v<is_quantity<std::decay_t<L>>, is_quantity<std::decay_t<R>>>
-            , bool> = false>
+            is_multipliable_with_v<typename std::decay_t<L>::value_type, typename std::decay_t<R>::value_type>
+        , bool> = false>
 constexpr auto
 operator*(L &&lhs, R &&rhs)
 {
@@ -52,7 +60,11 @@ operator*(L &&lhs, R &&rhs)
 }
 
 template <class L,
-          std::enable_if_t<is_quantity_v<std::decay_t<L>>, bool> = false>
+          std::enable_if_t<
+            std::conjunction_v<
+                is_quantity<std::decay_t<L>>,
+                is_multipliable<typename std::decay_t<L>::value_type::value_type>>
+        , bool> = false>
 constexpr auto
 operator*(L &&lhs, typename std::decay_t<L>::value_type const& rhs)
 {
@@ -60,7 +72,11 @@ operator*(L &&lhs, typename std::decay_t<L>::value_type const& rhs)
 }
 
 template <class R,
-          std::enable_if_t<is_quantity_v<std::decay_t<R>>, bool> = false>
+          std::enable_if_t<
+            std::conjunction_v<
+                is_quantity<std::decay_t<R>>,
+                is_multipliable<typename std::decay_t<R>::value_type::value_type>>
+        , bool> = false>
 constexpr auto
 operator*(typename std::decay_t<R>::value_type const& lhs, R&& rhs)
 {
@@ -69,8 +85,8 @@ operator*(typename std::decay_t<R>::value_type const& lhs, R&& rhs)
 
 template <class L, class R,
           std::enable_if_t<
-            std::conjunction_v<is_quantity<std::decay_t<L>>, is_quantity<std::decay_t<R>>>
-            , bool> = false>
+            is_dividable_with_v<typename std::decay_t<L>::value_type, typename std::decay_t<R>::value_type>
+        , bool> = false>
 constexpr auto
 operator/(L &&lhs, R &&rhs)
 {
@@ -83,7 +99,11 @@ operator/(L &&lhs, R &&rhs)
 }
 
 template <class L,
-          std::enable_if_t<is_quantity_v<std::decay_t<L>>, bool> = false>
+          std::enable_if_t<
+            std::conjunction_v<
+                is_quantity<std::decay_t<L>>,
+                is_dividable<typename std::decay_t<L>::value_type::value_type>>
+        , bool> = false>
 constexpr auto
 operator/(L &&lhs, typename std::decay_t<L>::value_type const& rhs)
 {
@@ -91,7 +111,11 @@ operator/(L &&lhs, typename std::decay_t<L>::value_type const& rhs)
 }
 
 template <class R,
-          std::enable_if_t<is_quantity_v<std::decay_t<R>>, bool> = false>
+          std::enable_if_t<
+            std::conjunction_v<
+                is_quantity<std::decay_t<R>>,
+                is_dividable<typename std::decay_t<R>::value_type::value_type>>
+        , bool> = false>
 constexpr auto
 operator/(typename std::decay_t<R>::value_type const& lhs, R&& rhs)
 {

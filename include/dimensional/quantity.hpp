@@ -207,7 +207,7 @@ public:
       std::enable_if_t<
         std::conjunction_v<
           is_complete_type<::mitama::converter<quantity_t<D, U>, quantity_t>>,
-          is_equal_comparable<T, U>>
+          is_equal_comparable_with<T, U>>
         , bool> = false>
   constexpr bool operator==(quantity_t<D, U> const &o) const {
     return this->value_ == ::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o);
@@ -218,7 +218,7 @@ public:
       std::enable_if_t<
         std::conjunction_v<
           is_same_dimensional<quantity_t, quantity_t<D, U>>,
-          is_equal_comparable<T, U>>
+          is_equal_comparable_with<T, U>>
         , bool> = false>
   constexpr bool operator==(quantity_t<D, U> const &o) const {
     return this->value_ == mitamagic::converted_value<quantity_t>(o);
@@ -229,7 +229,7 @@ public:
       std::enable_if_t<
         std::conjunction_v<
           is_complete_type<::mitama::converter<quantity_t<D, U>, quantity_t>>,
-          is_notequal_comparable<T, U>>
+          is_notequal_comparable_with<T, U>>
         , bool> = false>
   constexpr bool operator!=(quantity_t<D, U> const &o) const {
     return this->value_ != ::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o);
@@ -240,7 +240,7 @@ public:
       std::enable_if_t<
         std::conjunction_v<
           is_same_dimensional<quantity_t, quantity_t<D, U>>,
-          is_notequal_comparable<T, U>>
+          is_notequal_comparable_with<T, U>>
         , bool> = false>
   constexpr bool operator!=(quantity_t<D, U> const &o) const {
     return this->value_ != mitamagic::converted_value<quantity_t>(o);
@@ -251,7 +251,7 @@ public:
       std::enable_if_t<
         std::conjunction_v<
           is_complete_type<::mitama::converter<quantity_t<D, U>, quantity_t>>,
-          is_less_comparable<T, U>>
+          is_less_comparable_with<T, U>>
         , bool> = false>
   constexpr bool operator<(quantity_t<D, U> const &o) const {
     return this->value_ < ::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o);
@@ -262,7 +262,7 @@ public:
       std::enable_if_t<
         std::conjunction_v<
           is_same_dimensional<quantity_t, quantity_t<D, U>>,
-          is_less_comparable<T, U>>
+          is_less_comparable_with<T, U>>
         , bool> = false>
   constexpr bool operator<(quantity_t<D, U> const &o) const {
     return this->value_ < mitamagic::converted_value<quantity_t>(o);
@@ -273,7 +273,7 @@ public:
       std::enable_if_t<
         std::conjunction_v<
           is_complete_type<::mitama::converter<quantity_t<D, U>, quantity_t>>,
-          is_less_or_equal_comparable<T, U>>
+          is_less_or_equal_comparable_with<T, U>>
         , bool> = false>
   constexpr bool operator<=(quantity_t<D, U> const &o) const {
     return this->value_ <= ::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o);
@@ -284,7 +284,7 @@ public:
       std::enable_if_t<
         std::conjunction_v<
           is_same_dimensional<quantity_t, quantity_t<D, U>>,
-          is_less_or_equal_comparable<T, U>>
+          is_less_or_equal_comparable_with<T, U>>
         , bool> = false>
   constexpr bool operator<=(quantity_t<D, U> const &o) const {
     return this->value_ <= mitamagic::converted_value<quantity_t>(o);
@@ -295,7 +295,7 @@ public:
       std::enable_if_t<
         std::conjunction_v<
           is_complete_type<::mitama::converter<quantity_t<D, U>, quantity_t>>,
-          is_greater_comparable<T, U>>
+          is_greater_comparable_with<T, U>>
         , bool> = false>
   constexpr bool operator>(quantity_t<D, U> const &o) const {
     return this->value_ > ::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o);
@@ -306,7 +306,7 @@ public:
       std::enable_if_t<
         std::conjunction_v<
           is_same_dimensional<quantity_t, quantity_t<D, U>>,
-          is_greater_comparable<T, U>>
+          is_greater_comparable_with<T, U>>
         , bool> = false>
   constexpr bool operator>(quantity_t<D, U> const &o) const {
     return this->value_ > mitamagic::converted_value<quantity_t>(o);
@@ -317,7 +317,7 @@ public:
       std::enable_if_t<
         std::conjunction_v<
           is_complete_type<::mitama::converter<quantity_t<D, U>, quantity_t>>,
-          is_greater_or_equal_comparable<T, U>>
+          is_greater_or_equal_comparable_with<T, U>>
         , bool> = false>
   constexpr bool operator>=(quantity_t<D, U> const &o) const {
     return this->value_ >= ::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o);
@@ -328,7 +328,7 @@ public:
       std::enable_if_t<
         std::conjunction_v<
           is_same_dimensional<quantity_t, quantity_t<D, U>>,
-          is_greater_or_equal_comparable<T, U>>
+          is_greater_or_equal_comparable_with<T, U>>
         , bool> = false>
   constexpr bool operator>=(quantity_t<D, U> const &o) const {
     return this->value_ >= mitamagic::converted_value<quantity_t>(o);
@@ -383,8 +383,9 @@ template < template<class>class Repr, class... Units >
 struct is_dimensional_quantifier<Repr<dimensional_t<Units...>>>: std::true_type {};
 
 template <class U1, class U2,
-          std::enable_if_t<std::conjunction_v<is_dimensional_quantifier<U1>, is_dimensional_quantifier<U2>>, bool> =
-              false>
+          std::enable_if_t<
+            std::conjunction_v<is_dimensional_quantifier<U1>, is_dimensional_quantifier<U2>>
+        , bool> = false>
 constexpr mitamagic::quotient_t<mitamagic::into_dimensional_t<U1>,
                                 mitamagic::into_dimensional_t<U2>>
 operator*(U1, U2) {
