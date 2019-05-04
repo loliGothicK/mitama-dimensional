@@ -3,13 +3,16 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 
 namespace mitama::si {
-using electric_potential_t = decltype(kilogram<> * meter<2> * second<-3> * ampere<-1>);
+template<class> struct electric_potential_repr{};
+using electric_potential_t = make_synonym_t<electric_potential_repr, decltype(kilogram<> * meter<2> * second<-3> * ampere<-1>)>;
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_VOLTAGE_HPP
 inline constexpr electric_potential_t volts{};
+using electric_potential_r = make_refiment_symbol_t<electric_potential_t>;
 template < std::intmax_t N > 
 inline constexpr powered_t<electric_potential_t, N> volt{}; 
 #endif

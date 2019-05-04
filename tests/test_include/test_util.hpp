@@ -114,5 +114,9 @@ template < class... Units, template < class... > class D >
 struct basis_<D<Units...>>
 { template < int N > using type = typename std::tuple_element_t<N,std::tuple<Units...>>::dimension_type; };
 
+template < class... Units, template < class... > class D, template < class > class R >
+struct basis_<R<D<Units...>>>
+{ template < int N > using type = typename std::tuple_element_t<N,std::tuple<Units...>>::dimension_type; };
+
 }
 #endif

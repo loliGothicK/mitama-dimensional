@@ -3,13 +3,16 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 
 namespace mitama::si {
-using radiant_flux_t = decltype(kilogram<> * meter<2> * second<-3>);
+template<class> struct radiant_flux_repr{};
+using radiant_flux_t = make_synonym_t<radiant_flux_repr, decltype(kilogram<> * meter<2> * second<-3>)>;
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_POWER_HPP
 inline constexpr radiant_flux_t watt{};
+using radiant_flux_r = make_refiment_symbol_t<radiant_flux_t>;
 #endif
 }
 

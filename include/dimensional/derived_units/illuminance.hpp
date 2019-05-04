@@ -3,12 +3,15 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 
 namespace mitama::si {
-using illuminance_t = decltype(meter<-2> * candela<>);
+template<class> struct illuminance_repr{};
+using illuminance_t = make_synonym_t<illuminance_repr, decltype(meter<-2> * candela<>)>;
 
-inline constexpr illuminance_t lux{}; 
+inline constexpr illuminance_t lux{};
+using illuminance_r = make_refiment_symbol_t<illuminance_t>;
 }
 
 namespace mitama {

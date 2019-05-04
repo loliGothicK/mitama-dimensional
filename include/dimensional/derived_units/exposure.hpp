@@ -3,12 +3,15 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 #include "electric_charge.hpp"
 
 namespace mitama::si {
-using exposure_t = decltype(coulomb / kilogram<>);
+template<class> struct exposure_repr{};
+using exposure_t = make_synonym_t<exposure_repr, decltype(coulomb / kilogram<>)>;
 
 inline constexpr exposure_t exposure{};
+using exposure_r = make_refiment_symbol_t<exposure_t>;
 }
 
 namespace mitama {

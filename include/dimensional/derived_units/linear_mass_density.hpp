@@ -3,12 +3,15 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 
 namespace mitama::si {
-using linear_mass_density_t = decltype(meter<-1> * kilogram<>);
+template<class> struct linear_mass_density_repr{};
+using linear_mass_density_t = make_synonym_t<linear_mass_density_repr, decltype(meter<-1> * kilogram<>)>;
 
 inline constexpr linear_mass_density_t linear_mass_density{};
+using linear_mass_density_r = make_refiment_symbol_t<linear_mass_density_t>;
 }
 
 namespace mitama {

@@ -3,12 +3,15 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 #include "power.hpp"
 
 namespace mitama::si {
-using heat_flux_density_t = decltype(watt / meter<2>);
+template<class> struct heat_flux_density_repr{};
+using heat_flux_density_t = make_synonym_t<heat_flux_density_repr, decltype(watt / meter<2>)>;
 
 inline constexpr heat_flux_density_t heat_flux_density{};
+using heat_flux_density_r = make_refiment_symbol_t<heat_flux_density_t>;
 }
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_IRRADIANCE_HPP

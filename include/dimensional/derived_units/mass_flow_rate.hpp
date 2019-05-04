@@ -3,12 +3,15 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 
 namespace mitama::si {
-using mass_flow_rate_t = decltype(kilogram<> / second<>);
+template<class> struct mass_flow_rate_repr{};
+using mass_flow_rate_t = make_synonym_t<mass_flow_rate_repr, decltype(kilogram<> / second<>)>;
 
 inline constexpr mass_flow_rate_t mass_flow_rate{};
+using mass_flow_rate_r = make_refiment_symbol_t<mass_flow_rate_t>;
 }
 
 namespace mitama {

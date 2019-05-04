@@ -3,12 +3,15 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 
 namespace mitama::si {
-using specific_volume_t = decltype(meter<3> / kilogram<>);
+template<class> struct specific_volume_repr{};
+using specific_volume_t = make_synonym_t<specific_volume_repr, decltype(meter<3> / kilogram<>)>;
 
 inline constexpr specific_volume_t specific_volume{};
+using specific_volume_r = make_refiment_symbol_t<specific_volume_t>;
 }
 
 namespace mitama {

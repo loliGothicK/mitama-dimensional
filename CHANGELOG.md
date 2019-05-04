@@ -11,13 +11,13 @@
 
 ```cpp
 #include <quantity.hpp>
-#include <derived_units/dgree_celsius.hpp>
+#include <nonsi_units/degree_celsius.hpp>
 
 int main(){
     using namespace mitama;
-    quantity<dgree_celsius_t, double> c1 = 10; // 10 [°C]
+    quantity<degree_celsius_t, double> c1 = 10; // 10 [°C]
 
-    // kelvin and dgree celsius are convertible to each other.
+    // kelvin and degree celsius are convertible to each other.
     quantity<kelvin_t, double> s = c1; // 283.15 [K]
     quantity<kelvin_t, double> c2 = s; // 10 [°C]
 }
@@ -29,19 +29,19 @@ int main(){
 
 ```cpp
 #include <quantity.hpp>
-#include <derived_units/dgree_celsius.hpp>
+#include <nonsi_units/degree_celsius.hpp>
 #include <expr.hpp>
 
 int main(){
     using namespace Catch::literals;
     quantity<decltype(kelvin<>/second<>)>
         x = as_expr(1|kelvins) / (2|seconds) +
-            as_expr(2|dgree_celsius) / (2|seconds);
+            as_expr(2|degree_celsius) / (2|seconds);
     // x = 137.575 [K/s]
 
     quantity<decltype(kelvin<>/second<>)>
         y = (as_expr(11|kelvins) - as_expr(1|kelvins)) / (2|seconds) + 
-            (as_expr(21|dgree_celsius) - as_expr(1|dgree_celsius)) / (2|seconds);
+            (as_expr(21|degree_celsius) - as_expr(1|degree_celsius)) / (2|seconds);
     // x = 15 [K/s]
 
 }
@@ -186,16 +186,16 @@ delta d = (22|kelvins) * (2|kelvins);
 
 - 度数法のサポート
 
-`<dimensional/derived_units/nonsi_units/nonsi_dgree_angle.hpp>`
+`<dimensional/derived_units/nonsi_units/nonsi_degree_angle.hpp>`
 
 ```cpp
 #include <dimensional/quantity.hpp>
-#include <dimensional/nonsi_units/nonsi_dgree_angle.hpp>
+#include <dimensional/nonsi_units/nonsi_degree_angle.hpp>
 #include <dimensional/derived_units/named_units.hpp>
 
 int main() {
     // 相互変換可能
-    mitama::quantity<dgree_angle_t> c = 180;
+    mitama::quantity<degree_angle_t> c = 180;
     mitama::quantity<radian_t> r = c; // pi [rad]
 }
 ```
@@ -222,14 +222,14 @@ delta型はquantity_t型との四則演算が行える。
 ```cpp
 #include <dimensional/quantity.hpp>
 #include <dimensional/si/kelvin.hpp>
-#include <dimensional/derived_units/dgree_delsius.hpp>
+#include <dimensional/nonsi_units/degree_delsius.hpp>
 #include <dimensional/delta.hpp>
 
 int main() {
     using namespace mitama;
-    quantity<si::dgree_delsius> c = 100;
+    quantity<si::degree_delsius> c = 100;
     // 温度差なので単位変換なしで計算される
-    quantity<si::dgree_delsius> res = c + delta( (20|si::kelvins) -  (10|si::kelvins) ); // 100 + 10 = 110
+    quantity<si::degree_delsius> res = c + delta( (20|si::kelvins) -  (10|si::kelvins) ); // 100 + 10 = 110
 }
 ```
 
@@ -288,4 +288,13 @@ int main() {
 ### ドキュメント
 
 - [environment](https://loligothick.github.io/mitama-dimensional/)として公開中（Basic Conceptsを書き足した）
+
+## v0.9.0
+
+### **新機能**
+
+- 単項 +/- 演算子サポート
+- 無次元の次元量のみ特別に暗黙のUnderlying Typeへの変換を許可
+- `get()` と同じ用途の関数 `value()` を追加
+- Into Traitと`qantity_t::into()`メソッドを追加
 

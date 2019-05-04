@@ -3,13 +3,16 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 #include "power.hpp"
 #include "solid_angle.hpp"
 
 namespace mitama::si {
-using radiance_t = decltype( watt / steradian * meter<-2> );
+template<class> struct radiance_repr{};
+using radiance_t = make_synonym_t<radiance_repr, decltype( watt / steradian * meter<-2> )>;
 
 inline constexpr radiance_t radiance{};
+using radiance_r = make_refiment_symbol_t<radiance_t>;
 }
 
 namespace mitama {

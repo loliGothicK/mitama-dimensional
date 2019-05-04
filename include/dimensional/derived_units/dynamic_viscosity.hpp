@@ -3,12 +3,15 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 #include "pressure.hpp"
 
 namespace mitama::si {
-using dynamic_viscosity_t = decltype(pascal * seconds);
+template<class> struct dynamic_viscosity_repr{};
+using dynamic_viscosity_t = make_synonym_t<dynamic_viscosity_repr, decltype(pascal * seconds)>;
 
 inline constexpr dynamic_viscosity_t dynamic_viscosity{};
+using dynamic_viscosity_r = make_refiment_symbol_t<dynamic_viscosity_t>;
 }
 
 namespace mitama {

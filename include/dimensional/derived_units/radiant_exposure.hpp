@@ -3,12 +3,15 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 #include "energy.hpp"
 
 namespace mitama::si {
-using radiant_exposure_t = decltype(joule / meter<2>);
+template<class> struct radiant_exposure_repr{};
+using radiant_exposure_t = make_synonym_t<radiant_exposure_repr, decltype(joule / meter<2>)>;
 
 inline constexpr radiant_exposure_t radiant_exposure{};
+using radiant_exposure_r = make_refiment_symbol_t<radiant_exposure_t>;
 }
 
 namespace mitama {

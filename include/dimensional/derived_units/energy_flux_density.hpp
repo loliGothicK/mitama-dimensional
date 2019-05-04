@@ -3,12 +3,15 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 #include "energy.hpp"
 
 namespace mitama::si {
-using energy_flux_density_t = decltype( joule * meter<-2> * second<-1> );
+template<class> struct energy_flux_density_repr{};
+using energy_flux_density_t = make_synonym_t<energy_flux_density_repr, decltype( joule * meter<-2> * second<-1> )>;
 
 inline constexpr energy_flux_density_t energy_flux_density{};
+using energy_flux_density_r = make_refiment_symbol_t<energy_flux_density_t>;
 }
 
 namespace mitama {

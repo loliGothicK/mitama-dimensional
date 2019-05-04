@@ -18,10 +18,10 @@ TEMPLATE_TEST_CASE("constructor from values",
                    meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
 {
     quantity<TestType, int> a(1);
-    REQUIRE( a.get() == 1 );
+    REQUIRE( a.value() == 1 );
 
     quantity<scaled_unit_t<TestType, std::milli>, double> b = a;
-    REQUIRE( b.get() == 1000 );
+    REQUIRE( b.value() == 1000 );
 }
 
 TEMPLATE_TEST_CASE("meter_t from other quantities",
@@ -78,8 +78,8 @@ TEMPLATE_TEST_CASE("validates",
                    second_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t)
 {
     auto validator = [](auto v) -> mitama::Result<quantity<TestType, int>, int> {
-        if (v.get() < 0)
-            return mitama::Err(v.get());
+        if (v.value() < 0)
+            return mitama::Err(v.value());
         else
             return mitama::Ok(v);
     };

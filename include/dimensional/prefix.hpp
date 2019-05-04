@@ -1,15 +1,21 @@
 #ifndef MITAMA_DIMENSIONAL_PREFIX_HPP
 #define MITAMA_DIMENSIONAL_PREFIX_HPP
-#include "mitamagic/utility.hpp"
 #include "dimensional_phantom.hpp"
 #include "units.hpp"
+#include "mitamagic/utility_ext.hpp"
+#include "mitamagic/ratio_ext.hpp"
+
+#include <ratio>
+#include <type_traits>
+
 namespace mitama {
 template <
+    template<class> class Repr,
     class Rational, class Unit,
     std::enable_if_t<mitamagic::is_rational_v<Rational> && is_units_v<Unit>,
                      bool> = false>
-constexpr auto operator*(Rational, dimensional_t<Unit>) {
-  return scaled_unit_t<dimensional_t<Unit>, Rational>{};
+constexpr auto operator*(Rational, Repr<dimensional_t<Unit>>) {
+  return scaled_unit_t<Repr<dimensional_t<Unit>>, Rational>{};
 }
 
 inline constexpr auto pico = std::pico{};

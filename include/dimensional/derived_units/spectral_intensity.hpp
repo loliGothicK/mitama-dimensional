@@ -3,13 +3,16 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 #include "power.hpp"
 #include "solid_angle.hpp"
 
 namespace mitama::si {
-using spectral_intensity_t = decltype( watt / steradian * meter<-1> );
+template<class> struct spectral_intensity_repr{};
+using spectral_intensity_t = make_synonym_t<spectral_intensity_repr, decltype( watt / steradian * meter<-1> )>;
 
 inline constexpr spectral_intensity_t spectral_intensity{};
+using spectral_intensity_r = make_refiment_symbol_t<spectral_intensity_t>;
 }
 
 namespace mitama {

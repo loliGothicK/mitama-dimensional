@@ -3,12 +3,15 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 
 namespace mitama::si {
-using crackle_t = decltype(meters * second<-5>);
+template<class> struct crackle_repr{};
+using crackle_t = make_synonym_t<crackle_repr, decltype(meters * second<-5>)>;
 
 inline constexpr crackle_t crackle{};
+using crackle_r = make_refiment_symbol_t<crackle_t>;
 }
 
 namespace mitama {

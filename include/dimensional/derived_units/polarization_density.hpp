@@ -3,12 +3,15 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 #include "electric_charge.hpp"
 
 namespace mitama::si {
-using polarization_density_t = decltype(coulomb / meter<2>);
+template<class> struct polarization_density_repr{};
+using polarization_density_t = make_synonym_t<polarization_density_repr, decltype(coulomb / meter<2>)>;
 
 inline constexpr polarization_density_t polarization_density{};
+using polarization_density_r = make_refiment_symbol_t<polarization_density_t>;
 }
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_ELECTRIC_DISPLACEMENT_FIELD_HPP

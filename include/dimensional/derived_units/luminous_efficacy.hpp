@@ -3,13 +3,16 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 #include "power.hpp"
 #include "luminous_flux.hpp"
 
 namespace mitama::si {
-using luminous_efficacy_t = decltype(lumen / watt);
+template<class> struct luminous_efficacy_repr{};
+using luminous_efficacy_t = make_synonym_t<luminous_efficacy_repr, decltype(lumen / watt)>;
 
 inline constexpr luminous_efficacy_t luminous_efficacy{};
+using luminous_efficacy_r = make_refiment_symbol_t<luminous_efficacy_t>;
 }
 
 namespace mitama {

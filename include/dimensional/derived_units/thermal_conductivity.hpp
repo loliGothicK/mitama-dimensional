@@ -3,13 +3,16 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 #include "power.hpp"
 
 
 namespace mitama::si {
-using thermal_conductivity_t = decltype( watt * meter<-1> * kelvin<-1> );
+template<class> struct thermal_conductivity_repr{};
+using thermal_conductivity_t = make_synonym_t<thermal_conductivity_repr, decltype( watt * meter<-1> * kelvin<-1> )>;
 
 inline constexpr thermal_conductivity_t thermal_conductivity{};
+using thermal_conductivity_r = make_refiment_symbol_t<thermal_conductivity_t>;
 }
 
 namespace mitama {

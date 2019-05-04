@@ -3,12 +3,15 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 
 namespace mitama::si {
-using area_density_t = decltype(meter<-2> * kilogram<>);
+template<class> struct area_density_repr{};
+using area_density_t = make_synonym_t<area_density_repr, decltype(meter<-2> * kilogram<>)>;
 
 inline constexpr area_density_t area_density{};
+using area_density_r = make_refiment_symbol_t<area_density_t>;
 }
 
 namespace mitama {

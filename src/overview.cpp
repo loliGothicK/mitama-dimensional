@@ -1,13 +1,15 @@
 #include "../include/dimensional/quantity.hpp"
 #include "../include/dimensional/arithmetic.hpp"
-#include "../include/dimensional/si/meter.hpp"
-#include "../include/dimensional/si/second.hpp"
+#include "../include/dimensional/si_units/all.hpp"
+#include "../include/dimensional/nonsi_units/hour.hpp"
+#include "../include/dimensional/derived_units/area.hpp"
+#include "../include/dimensional/derived_units/angle.hpp"
 #include "../include/dimensional/io.hpp"
 #include "../include/dimensional/refinement.hpp"
 #include "../include/dimensional/prefix.hpp"
 #include "../include/dimensional/math/all.hpp"
 #include "../include/dimensional/currency/jpy.hpp"
-#include "../include/dimensional/derived_units/dgree_celsius.hpp"
+#include "../include/dimensional/nonsi_units/degree_celsius.hpp"
 #include "../include/dimensional/expr.hpp"
 #include "../include/dimensional/delta.hpp"
 #include <boost/type_index.hpp>
@@ -44,6 +46,7 @@ int main(){
         // a / b := a * b^{-1}
         auto r4 = a / b;
         REPL(r4);
+        REPL(1 + r4);       
         REPL(boost::typeindex::type_id<decltype(r4)>().pretty_name());
 
         quantity<si::millimeter_t, int> d(a);
@@ -109,8 +112,8 @@ int main(){
         REPL(sqrt(v));
         REPL(cbrt(v));
 
-        REPL(min((1|si::meters),(1|si::millimeters),(1|si::centimeters)));
-        REPL(max((1|si::meters),(1|si::millimeters),(1|si::centimeters)));
+        REPL(mitama::min((1|si::meters),(1|si::millimeters),(1|si::centimeters)));
+        REPL(mitama::max((1|si::meters),(1|si::millimeters),(1|si::centimeters)));
         std::cout << "------------------------\n";
 
         REPL(pow<5>(2|si::meters));
@@ -138,21 +141,21 @@ int main(){
 
     { // User defined dimension examples
         // currency units
-        REPL(100|nonsi::dgree_celsius);
-        quantity<si::kelvin_t> s( 100.|nonsi::dgree_celsius );
+        REPL(100|nonsi::degree_celsius);
+        quantity<si::kelvin_t> s( 100.|nonsi::degree_celsius );
         REPL(s);
     }
 
     {
-        quantity<si::kelvin_t> hoge = as_expr(1|si::kelvins) + (2|nonsi::dgree_celsius);
+        quantity<si::kelvin_t> hoge = as_expr(1|si::kelvins) + (2|nonsi::degree_celsius);
         REPL(hoge);
     }
 
     {
-        quantity_t a1 = refined<area_r> |= (2|si::meters) * (7|si::meters);
+        quantity_t a1 = refined<si::area_r> |= (2|si::meters) * (7|si::meters);
         REPL(a1);
 
-        quantity_t a2 = refined<area_r> |= (2|si::millimeters) * (7|si::millimeters);
+        quantity_t a2 = refined<si::area_r> |= (2|si::millimeters) * (7|si::millimeters);
         REPL(a2);
 
         // error!
@@ -164,6 +167,12 @@ int main(){
 
     {
         delta d = (2|si::kelvins) - (1|si::kelvins);
-        REPL((1|nonsi::dgree_celsius) + d);
+        REPL((1|nonsi::degree_celsius) + d);
+    }
+
+    {
+        quantity_t m = 1.0 | si::meters * si::radian;
+        quantity_t<si::meter_t> x = m.into();
+        REPL(x);
     }
 }

@@ -3,13 +3,16 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 #include "angle.hpp"
 
 
 namespace mitama::si {
-using angular_velocity_t = decltype(radian / seconds);
+template<class> struct angular_velocity_repr{};
+using angular_velocity_t = make_synonym_t<angular_velocity_repr, decltype(radian / seconds)>;
 
 inline constexpr angular_velocity_t angular_velocity{};
+using angular_velocity_r = make_refiment_symbol_t<angular_velocity_t>;
 }
 
 namespace mitama {

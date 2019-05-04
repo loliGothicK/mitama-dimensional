@@ -3,12 +3,15 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 #include "force.hpp"
 
 namespace mitama::si {
-using torque_t = decltype(newton * meters);
+template<class> struct torque_repr{};
+using torque_t = make_synonym_t<torque_repr, decltype(newton * meters)>;
 
 inline constexpr torque_t torque{};
+using torque_r = make_refiment_symbol_t<torque_t>;
 }
 
 namespace mitama {

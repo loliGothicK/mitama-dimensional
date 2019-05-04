@@ -3,12 +3,15 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 #include "energy.hpp"
 
 namespace mitama::si {
-using specific_energy_t = decltype(joule / kilogram<>);
+template<class> struct specific_energy_repr{};
+using specific_energy_t = make_synonym_t<specific_energy_repr, decltype(joule / kilogram<>)>;
 
 inline constexpr specific_energy_t specific_energy{};
+using specific_energy_r = make_refiment_symbol_t<specific_energy_t>;
 }
 
 namespace mitama {

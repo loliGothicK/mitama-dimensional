@@ -3,12 +3,15 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 #include "voltage.hpp"
 
 namespace mitama::si {
-using electron_mobility_t = decltype( meter<2> * volt<-1> * second<-1> );
+template<class> struct electron_mobility_repr{};
+using electron_mobility_t = make_synonym_t<electron_mobility_repr, decltype( meter<2> * volt<-1> * second<-1> )>;
 
 inline constexpr electron_mobility_t electron_mobility{};
+using electron_mobility_r = make_refiment_symbol_t<electron_mobility_t>;
 }
 
 namespace mitama {

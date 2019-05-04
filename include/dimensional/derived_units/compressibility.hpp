@@ -3,12 +3,15 @@
 #include "../si_units/all.hpp"
 #include "../quantity.hpp"
 #include "../io.hpp"
+#include "../refinement.hpp"
 
 
 namespace mitama::si {
-using compressibility_t = decltype(meter<> * kilogram<-1> * second<2>);
+template<class> struct compressibility_repr{};
+using compressibility_t = make_synonym_t<compressibility_repr, decltype(meter<> * kilogram<-1> * second<2>)>;
 
 inline constexpr compressibility_t compressibility{};
+using compressibility_r = make_refiment_symbol_t<compressibility_t>;
 }
 
 namespace mitama {

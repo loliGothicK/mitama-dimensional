@@ -6,35 +6,35 @@
 
 namespace mitama {
 
-template < class Exp, class T, class... Units >
-auto pow(quantity_t<dimensional_t<Units...>, T> const& quantity) {
-    return quantity_t<typename mitamagic::powered_dimensional<dimensional_t<Units...>, Exp>::type, T>
+template < class Exp, template <class> class Repr, class T, class... Units >
+auto pow(quantity_t<Repr<dimensional_t<Units...>>, T> const& quantity) {
+    return quantity_t<Repr<typename mitamagic::powered_dimensional<dimensional_t<Units...>, Exp>::type>, T>
         {
-            static_cast<T>(std::pow(quantity.get(), static_cast<long double>(Exp::num) / Exp::den))
+            static_cast<T>(std::pow(quantity.value(), static_cast<long double>(Exp::num) / Exp::den))
         };
 }
 
-template < std::intmax_t Exp, class T, class... Units >
-auto pow(quantity_t<dimensional_t<Units...>, T> const& quantity) {
-    return quantity_t<typename mitamagic::powered_dimensional<dimensional_t<Units...>, std::ratio<Exp>>::type, T>
+template < std::intmax_t Exp, template <class> class Repr, class T, class... Units >
+auto pow(quantity_t<Repr<dimensional_t<Units...>>, T> const& quantity) {
+    return quantity_t<Repr<typename mitamagic::powered_dimensional<dimensional_t<Units...>, std::ratio<Exp>>::type>, T>
         {
-            static_cast<T>(std::pow(quantity.get(), static_cast<long double>(Exp)))
+            static_cast<T>(std::pow(quantity.value(), static_cast<long double>(Exp)))
         };
 }
 
-template < class T, class... Units >
-auto square(quantity_t<dimensional_t<Units...>, T> const& quantity) {
-    return quantity_t<typename mitamagic::powered_dimensional<dimensional_t<Units...>, std::ratio<2>>::type, T>
+template < template <class> class Repr, class T, class... Units >
+auto square(quantity_t<Repr<dimensional_t<Units...>>, T> const& quantity) {
+    return quantity_t<Repr<typename mitamagic::powered_dimensional<dimensional_t<Units...>, std::ratio<2>>::type>, T>
         {
-            static_cast<T>(quantity.get() * quantity.get())
+            static_cast<T>(quantity.value() * quantity.value())
         };
 }
 
-template < class T, class... Units >
-auto cubic(quantity_t<dimensional_t<Units...>, T> const& quantity) {
-    return quantity_t<typename mitamagic::powered_dimensional<dimensional_t<Units...>, std::ratio<3>>::type, T>
+template < template <class> class Repr, class T, class... Units >
+auto cubic(quantity_t<Repr<dimensional_t<Units...>>, T> const& quantity) {
+    return quantity_t<Repr<typename mitamagic::powered_dimensional<dimensional_t<Units...>, std::ratio<3>>::type>, T>
         {
-            static_cast<T>(quantity.get() * quantity.get() * quantity.get())
+            static_cast<T>(quantity.value() * quantity.value() * quantity.value())
         };
 }
 }
