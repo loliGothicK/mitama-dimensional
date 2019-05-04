@@ -79,7 +79,7 @@ int main(){
         quantity<speed_t> V = L/T;
         std::cout << boost::typeindex::type_id<decltype(L*T)>().pretty_name() << std::endl;
 
-        std::cout << V.get() << "[ km/h ]" << std::endl;
+        std::cout << V.value() << "[ km/h ]" << std::endl;
         {
             auto w = 36 | si::kilogram<> * si::meter<2> * si::second<-2> * si::ampere<-1>;
             std::cout << boost::typeindex::type_id<decltype(w)>().pretty_name() << std::endl;
