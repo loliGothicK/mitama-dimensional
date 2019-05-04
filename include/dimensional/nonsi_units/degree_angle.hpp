@@ -6,7 +6,10 @@
 namespace mitama {
 
 namespace nonsi {
-struct degree_angle { using is_base_dimension = void;};
+struct degree_angle {
+  using is_base_dimension = void;
+  using is_dimensionless = void;
+};
 }
 
 template <> struct symbol_<::mitama::nonsi::degree_angle> {
