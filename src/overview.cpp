@@ -3,6 +3,7 @@
 #include "../include/dimensional/si_units/all.hpp"
 #include "../include/dimensional/nonsi_units/hour.hpp"
 #include "../include/dimensional/derived_units/area.hpp"
+#include "../include/dimensional/derived_units/angle.hpp"
 #include "../include/dimensional/io.hpp"
 #include "../include/dimensional/refinement.hpp"
 #include "../include/dimensional/prefix.hpp"
@@ -167,5 +168,11 @@ int main(){
     {
         delta d = (2|si::kelvins) - (1|si::kelvins);
         REPL((1|nonsi::degree_celsius) + d);
+    }
+
+    {
+        quantity_t m = 1.0 | si::meters * si::radian;
+        quantity_t<si::meter_t> x = m.into();
+        REPL(x);
     }
 }
