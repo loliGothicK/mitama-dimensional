@@ -25,14 +25,14 @@ struct converter<quantity_t<si::radian_t, From>,
                  quantity_t<degree_angle_t, To>>
 {
     static constexpr To convert(quantity_t<si::radian_t, From> const& c)
-        { return static_cast<To>(c.get() * 57.2957795130823208767l ); }
+        { return static_cast<To>(c.value() * 57.2957795130823208767l ); }
 };
 template <class From, class To>
 struct converter<quantity_t<degree_angle_t, From>,
                  quantity_t<si::radian_t, To>>
 {
     static constexpr To convert(quantity_t<degree_angle_t, From> const& s)
-        { return static_cast<To>(s.get() / 57.2957795130823208767l ); }
+        { return static_cast<To>(s.value() / 57.2957795130823208767l ); }
 };
 
 

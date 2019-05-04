@@ -39,7 +39,7 @@ auto max(First first, Second second, Quantities... quantities)
 template < class Q1, class Q2 >
 auto dim(Q1&& q1, Q2&& q2) -> ::mitama::common_type_t<Q1, Q2>
 {
-  return ::mitama::common_type_t<Q1, Q2>( std::fdim(std::forward<Q1>(q1).get(), std::forward<Q2>(q2).get()) );
+  return ::mitama::common_type_t<Q1, Q2>( std::fdim(std::forward<Q1>(q1).value(), std::forward<Q2>(q2).value()) );
 }
 
 } // namespace mitama

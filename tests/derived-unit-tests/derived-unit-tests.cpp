@@ -19,9 +19,9 @@ TEST_CASE("degree celsius and kelvin",
     using namespace Catch::literals;
     quantity<degree_celsius_t> s1 = 100;
     quantity<kelvin_t> c = s1;
-    REQUIRE(c.get() == 373.15_a);
+    REQUIRE(c.value() == 373.15_a);
     quantity<degree_celsius_t> s2 = c;
-    REQUIRE(s2.get() == 100._a);
+    REQUIRE(s2.value() == 100._a);
 }
 
 TEST_CASE("degree celsius and kelvin generate tests",
@@ -35,7 +35,7 @@ TEST_CASE("degree celsius and kelvin generate tests",
             .required([](auto value){
                 quantity<degree_celsius_t> c = value;
                 quantity<kelvin_t> s = c;
-                return s.get() - c.get() == 273.15_a;
+                return s.value() - c.value() == 273.15_a;
             }));
     REQUIRE(
         test_util::RandomGenerator<int>::uniform(-273, 10000)
@@ -43,7 +43,7 @@ TEST_CASE("degree celsius and kelvin generate tests",
             .required([](auto value){
                 quantity<kelvin_t> s = value;
                 quantity<degree_celsius_t> c = s;
-                return s.get() - c.get() == 273.15_a;
+                return s.value() - c.value() == 273.15_a;
             }));
 }
 
@@ -53,11 +53,11 @@ TEST_CASE("degree celsius and kelvin lexical tests",
     using namespace Catch::literals;
     {
         quantity<decltype(kelvin<>/mol<>)> _ = as_expr(1|kelvins) / (2|mols) + as_expr(2|degree_celsius) / (2|mols);
-        REQUIRE(_.get() == 137.575_a);
+        REQUIRE(_.value() == 137.575_a);
     }
     {
         quantity<decltype(kelvin<>/mol<>)> _ = (as_expr(11|kelvins) - as_expr(1|kelvins)) / (2|mols) + (as_expr(21|degree_celsius) - as_expr(1|degree_celsius)) / (2|mols);
-        REQUIRE(_.get() == 15._a);
+        REQUIRE(_.value() == 15._a);
     }
 }
 

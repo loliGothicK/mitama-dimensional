@@ -1,8 +1,9 @@
-#ifndef MITAMA_DIMENSIONAL_QUOTIENT_HPP
-#define MITAMA_DIMENSIONAL_QUOTIENT_HPP
-#include "dimensional_phantom.hpp"
-#include "mitamagic/utility.hpp"
-#include "units.hpp"
+#ifndef MITAMA_DIMENSIONAL_MITAMAGIC_QUOTIENT_HPP
+#define MITAMA_DIMENSIONAL_MITAMAGIC_QUOTIENT_HPP
+#include "../dimensional_phantom.hpp"
+#include "../units.hpp"
+#include "type_list.hpp"
+#include "../dimensional_traits.hpp"
 #include <cmath>
 #include <iostream>
 #include <ratio>
@@ -10,7 +11,7 @@
 #include <type_traits>
 #include <utility>
 
-namespace mitama {
+namespace mitama::mitamagic {
 
 template <class... Tags> struct dimensionless {
   using dimension_type = dimensionless<>;
@@ -26,9 +27,7 @@ template <class D, class E> struct dimensionless<D, E> {
 template <class> struct is_dimensionless_type : std::false_type {};
 template <class... Tags>
 struct is_dimensionless_type<dimensionless<Tags...>> : std::true_type {};
-} // namespace mitama
 
-namespace mitama::mitamagic {
 template <class, class> struct prod { using type = void; };
 
 template <class D, class Exp1, class Exp2, class S1, class S2>
@@ -106,13 +105,13 @@ constexpr auto scaled_value(Q1 &&q1, Q2 &&q2, F &&f) {
   auto [l, r] =
       scaler<typename lhs_t::dimension_type,
              typename rhs_t::dimension_type>::template value<common_t>();
-  return std::forward<F>(f)(std::forward<Q1>(q1).get() * l,
-                            std::forward<Q2>(q2).get() * r);
+  return std::forward<F>(f)(std::forward<Q1>(q1).value() * l,
+                            std::forward<Q2>(q2).value() * r);
 }
 
 template <class To, class From>
 constexpr auto converted_value(From &&quantity) {
-  return std::forward<From>(quantity).get() *
+  return std::forward<From>(quantity).value() *
          scaler<typename To::dimension_type,
                 typename std::decay_t<From>::dimension_type>::
              template cast_coefficient<typename To::value_type>();
@@ -308,22 +307,4 @@ struct powered_dimensional<Repr<dimensional_t<PhantomTypes...>>,
 template <class L, class R> using quotient_t = typename quotient<L, R>::type;
 } // namespace mitama::mitamagic
 
-namespace mitama {
-
-template <class U, std::intmax_t N>
-using powered_t =
-    typename mitamagic::powered_dimensional<U, std::ratio<N>>::type;
-
-template < class U >
-using reciprocal_t = powered_t<U, -1>;
-
-}
-
-
-namespace mitama::mitamagic {
-template <class> struct is_dimensionless : std::false_type {};
-template <class... Tags>
-struct is_dimensionless<dimensional_t<dimensionless<Tags...>>>
-    : std::true_type {};
-} // namespace mitama::mitamagic
 #endif

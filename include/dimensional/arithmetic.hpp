@@ -68,7 +68,7 @@ template <class L,
 constexpr auto
 operator*(L &&lhs, typename std::decay_t<L>::value_type const& rhs)
 {
-    return std::decay_t<L>(std::forward<L>(lhs).get() * rhs);
+    return std::decay_t<L>(std::forward<L>(lhs).value() * rhs);
 }
 
 template <class R,
@@ -80,7 +80,7 @@ template <class R,
 constexpr auto
 operator*(typename std::decay_t<R>::value_type const& lhs, R&& rhs)
 {
-    return std::decay_t<R>(std::forward<R>(rhs).get() * lhs);
+    return std::decay_t<R>(std::forward<R>(rhs).value() * lhs);
 }
 
 template <class L, class R,
@@ -107,7 +107,7 @@ template <class L,
 constexpr auto
 operator/(L &&lhs, typename std::decay_t<L>::value_type const& rhs)
 {
-    return std::decay_t<L>(std::forward<L>(lhs).get() / rhs);
+    return std::decay_t<L>(std::forward<L>(lhs).value() / rhs);
 }
 
 template <class R,
@@ -119,7 +119,7 @@ template <class R,
 constexpr auto
 operator/(typename std::decay_t<R>::value_type const& lhs, R&& rhs)
 {
-    return quantity_t<si_base_units_repr<mitamagic::inverse_t<typename std::decay_t<R>::dimension_type>>, typename std::decay_t<R>::value_type>(lhs / std::forward<R>(rhs).get());
+    return quantity_t<si_base_units_repr<mitamagic::inverse_t<typename std::decay_t<R>::dimension_type>>, typename std::decay_t<R>::value_type>(lhs / std::forward<R>(rhs).value());
 }
 
 

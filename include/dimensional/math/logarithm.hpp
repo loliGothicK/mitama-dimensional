@@ -10,7 +10,7 @@ template <template <class> class Repr,
 auto log(quantity_t<Repr<dimensional_t<Units...>>, T> const& q)
     -> quantity_t<si_base_units_repr<dimensional_t<>>, T>
 {
-    return {std::log(q.get())};
+    return {std::log(q.value())};
 }
 
 template <template <class> class Repr,
@@ -18,7 +18,7 @@ template <template <class> class Repr,
 auto log2(quantity_t<Repr<dimensional_t<Units...>>, T> const& q)
     -> quantity_t<si_base_units_repr<dimensional_t<>>, T>
 {
-    return {std::log2(q.get())};
+    return {std::log2(q.value())};
 }
 
 template <template <class> class Repr,
@@ -26,7 +26,7 @@ template <template <class> class Repr,
 auto log10(quantity_t<Repr<dimensional_t<Units...>>, T> const& q)
     -> quantity_t<si_base_units_repr<dimensional_t<>>, T>
 {
-    return {std::log10(q.get())};
+    return {std::log10(q.value())};
 }
 
 template <template <class> class Repr,
@@ -34,7 +34,7 @@ template <template <class> class Repr,
 auto log1p(quantity_t<Repr<dimensional_t<Units...>>, T> const& q)
     -> quantity_t<si_base_units_repr<dimensional_t<>>, T>
 {
-    return {std::log1p(q.get())};
+    return {std::log1p(q.value())};
 }
 
 }

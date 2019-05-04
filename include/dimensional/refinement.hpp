@@ -2,6 +2,8 @@
 #define MITAMA_DIMENSIONAL_REFINEMENT_HPP
 #include "quantity.hpp"
 #include "si_units/all.hpp"
+#include "mitamagic/type_list.hpp"
+
 namespace mitama {
 
 namespace sym {
