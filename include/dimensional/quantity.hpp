@@ -35,6 +35,52 @@ struct is_same_dimensional<quantity_t<Repr1<dimensional_t<Units1...>>, T>,
 template <class L, class R>
 inline constexpr bool is_same_dimensional_v = is_same_dimensional<L, R>::value;
 
+template < class, class = void >
+struct has_dimensionless_tag_impl: std::false_type {};
+
+template < class Dim >
+struct has_dimensionless_tag_impl<Dim, typename Dim::dimension_type::is_dimensionless>: std::true_type {};
+
+template < class Dim >
+struct has_dimensionless_tag: has_dimensionless_tag_impl<Dim> {};
+
+template < template <class> class, class >
+struct remove_dim_if;
+
+template < template <class> class Pred, template <class> class Repr, class T, class... Units >
+struct remove_dim_if<Pred, quantity_t<Repr<dimensional_t<Units...>>, T>> {
+  using type = quantity_t<Repr<mitamagic::tlist_remove_if_t<Pred, dimensional_t<Units...>>>, T>;
+};
+
+template < template <class> class Pred, class Q >
+using remove_dim_if_t = typename remove_dim_if<Pred, Q>::type;
+
+// Into Trait
+template < class Quantity >
+class Into;
+
+template < template <class> class Repr, class T, class... Units >
+class Into<quantity_t<Repr<dimensional_t<Units...>>, T>> {
+  quantity_t<Repr<dimensional_t<Units...>>, T> const& quantity_;
+public:
+  constexpr explicit Into(quantity_t<Repr<dimensional_t<Units...>>, T> const& q): quantity_(q) {}
+  // explicitly deleted
+  Into() = delete;
+  Into(Into const&) = delete;
+  Into(Into&&) = delete;
+  Into& operator=(Into const&) = delete;
+  Into& operator=(Into&&) = delete;
+
+  template < class To,
+            std::enable_if_t<is_same_dimensional_v<
+              remove_dim_if_t<has_dimensionless_tag, To>,
+              remove_dim_if_t<has_dimensionless_tag, quantity_t<Repr<dimensional_t<Units...>>, T>>>
+    , bool> = false >
+  constexpr operator To() const {
+    return To(quantity_.value());
+  }
+};
+
 template <class From, class To> struct converter;
 
 template <class From, class To>
@@ -251,6 +297,10 @@ public:
 
   quantity_t operator-() const { return { -value_ }; }
   quantity_t operator+() const { using std::abs; return { abs(value_) }; }
+
+  Into<quantity_t> into() const& {
+    return Into<quantity_t>(*this);
+  }
 };
 
 template <class T> struct is_quantity : std::false_type {};
