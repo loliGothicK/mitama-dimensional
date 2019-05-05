@@ -63,14 +63,7 @@ struct refinement_type_for<
     return std::forward<Q>(q);
   }
 
-  template <class Q,
-            std::enable_if_t<
-                !Pred<is_same_dimensional<
-                    std::decay_t<Q>,
-                    quantity<make_dimensional_t<units_t<
-                        typename Symbols::basis, typename Symbols::exp>...>>>>::value,
-                bool> = false>
-  decltype(auto) operator()(Q &&q) const = delete;
+  decltype(auto) operator()(...) const = delete;
 
   template <class Q,
             std::enable_if_t<
@@ -83,14 +76,8 @@ struct refinement_type_for<
     return std::forward<Q>(q);
   }
 
-  template <class Q,
-            std::enable_if_t<
-                !Pred<is_same_dimensional<
-                    std::decay_t<Q>,
-                    quantity<make_dimensional_t<units_t<
-                        typename Symbols::basis, typename Symbols::exp>...>>>>::value,
-                bool> = false>
-  decltype(auto) operator|=(Q &&q) const = delete;
+  template < class... Args >
+  decltype(auto) operator|=(Args&&...) const = delete;
 };
 
 template <template <class> class Pred, template <class...> class Requires, class... Symbols>
@@ -108,14 +95,7 @@ struct refinement_type<
     return std::forward<Q>(q);
   }
 
-  template <class Q,
-            std::enable_if_t<
-                !Pred<is_same_dimensional<
-                    std::decay_t<Q>,
-                    quantity<make_dimensional_t<units_t<
-                        typename Symbols::basis, typename Symbols::exp>...>>>>::value,
-                bool> = false>
-  decltype(auto) operator()(Q &&q) const = delete;
+  decltype(auto) operator()(...) const = delete;
 
   template <class Q,
             std::enable_if_t<
@@ -128,21 +108,15 @@ struct refinement_type<
     return std::forward<Q>(q);
   }
 
-  template <class Q,
-            std::enable_if_t<
-                !Pred<is_same_dimensional<
-                    std::decay_t<Q>,
-                    quantity<make_dimensional_t<units_t<
-                        typename Symbols::basis, typename Symbols::exp>...>>>>::value,
-                bool> = false>
-  decltype(auto) operator|=(Q &&q) const = delete;
+  template < class... Args >
+  decltype(auto) operator|=(Args&&...) const = delete;
 };
 
 template <class... Requires>
-inline constexpr refinement_type_for<void, identity_t, Requires...> exact_for{};
+inline constexpr refinement_type_for<void, identity, Requires...> exact_for{};
 
 template <class Requires>
-inline constexpr refinement_type<void, identity_t, Requires> exact{};
+inline constexpr refinement_type<void, identity, Requires> exact{};
 
 template <class... Requires>
 inline constexpr refinement_type_for<void, std::negation, Requires...> reject_for{};
