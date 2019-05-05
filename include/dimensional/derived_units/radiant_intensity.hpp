@@ -12,7 +12,7 @@ template<class> struct radiant_intensity_repr{};
 using radiant_intensity_t = make_synonym_t<radiant_intensity_repr, decltype(watt / steradian)>;
 
 inline constexpr radiant_intensity_t radiant_intensity{};
-using radiant_intensity_r = make_refiment_symbol_t<radiant_intensity_t>;
+using radiant_intensity_r = make_refinement_symbol_t<radiant_intensity_t>;
 }
 
 namespace mitama {

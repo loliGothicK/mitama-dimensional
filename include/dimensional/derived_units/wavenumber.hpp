@@ -10,7 +10,7 @@ namespace mitama::si {
 using wavenumber_t = reciprocal_t<meter_t>;
 
 inline constexpr wavenumber_t wavenumber{};
-using wavenumber_r = make_refiment_symbol_t<wavenumber_t>;
+using wavenumber_r = make_refinement_symbol_t<wavenumber_t>;
 }
 
 #endif

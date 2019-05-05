@@ -11,7 +11,7 @@ template<class> struct molar_volume_repr{};
 using molar_volume_t = make_synonym_t<molar_volume_repr, decltype(meter<3> / mol<>)>;
 
 inline constexpr molar_volume_t molar_volume{};
-using molar_volume_r = make_refiment_symbol_t<molar_volume_t>;
+using molar_volume_r = make_refinement_symbol_t<molar_volume_t>;
 }
 
 namespace mitama {

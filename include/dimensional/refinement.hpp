@@ -236,16 +236,16 @@ struct atomic_refinement_symbol
 } // ! namespace mitamagic
 
 
-template < class > struct make_refiment_symbol;
+template < class > struct make_refinement_symbol;
 
 template < template <class> class Repr, class... Units >
-struct make_refiment_symbol<Repr<dimensional_t<Units...>>>
+struct make_refinement_symbol<Repr<dimensional_t<Units...>>>
 {
   using type = mitamagic::type_list<mitamagic::atomic_refinement_symbol<Units>...>;
 };
 
 template < class T >
-using make_refiment_symbol_t = typename make_refiment_symbol<std::decay_t<T>>::type;
+using make_refinement_symbol_t = typename make_refinement_symbol<std::decay_t<T>>::type;
 
 } // ! namespace mitama
 

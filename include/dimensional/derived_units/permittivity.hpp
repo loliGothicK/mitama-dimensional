@@ -11,7 +11,7 @@ template<class> struct permittivity_repr{};
 using permittivity_t = make_synonym_t<permittivity_repr, decltype(farad / meter<>)>;
 
 inline constexpr permittivity_t permittivity{};
-using permittivity_r = make_refiment_symbol_t<permittivity_t>;
+using permittivity_r = make_refinement_symbol_t<permittivity_t>;
 }
 
 namespace mitama {

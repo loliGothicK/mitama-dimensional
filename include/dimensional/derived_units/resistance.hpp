@@ -12,7 +12,7 @@ using resistance_t = make_synonym_t<resistance_repr, decltype(kilogram<> * meter
 
 #if !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_REACTANCE_HPP) && !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_REACTANCE_HPP)
 inline constexpr resistance_t ohm{};
-using resistance_r = make_refiment_symbol_t<resistance_t>;
+using resistance_r = make_refinement_symbol_t<resistance_t>;
 #endif
 }
 

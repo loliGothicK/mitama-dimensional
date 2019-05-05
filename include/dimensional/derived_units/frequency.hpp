@@ -8,7 +8,7 @@
 namespace mitama::si {
 using frequency_t = reciprocal_t<second_t>;
 inline constexpr frequency_t hertz{};
-using frequency_r = make_refiment_symbol_t<frequency_t>;
+using frequency_r = make_refinement_symbol_t<frequency_t>;
 }
 
 namespace mitama {

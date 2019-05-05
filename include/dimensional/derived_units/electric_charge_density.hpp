@@ -11,9 +11,9 @@ template<class> struct electric_charge_density_repr{};
 using electric_charge_density_t = make_synonym_t<electric_charge_density_repr, decltype(coulomb / meter<3>)>;
 
 inline constexpr electric_charge_density_t electric_charge_density{};
-using electric_charge_density_r = make_refiment_symbol_t<electric_charge_density_t>;
+using electric_charge_density_r = make_refinement_symbol_t<electric_charge_density_t>;
 inline constexpr electric_charge_density_t charge_density{};
-using electric_charge_density_r = make_refiment_symbol_t<electric_charge_density_t>;
+using electric_charge_density_r = make_refinement_symbol_t<electric_charge_density_t>;
 }
 
 namespace mitama {

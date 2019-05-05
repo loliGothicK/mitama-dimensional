@@ -10,7 +10,7 @@ namespace mitama::si {
 using curvature_t = reciprocal_t<meter_t>;
 
 inline constexpr curvature_t curvature{};
-using curvature_r = make_refiment_symbol_t<curvature_t>;
+using curvature_r = make_refinement_symbol_t<curvature_t>;
 }
 
 #endif

@@ -11,7 +11,7 @@ template<class> struct luminous_energy_repr{};
 using luminous_energy_t = make_synonym_t<luminous_energy_repr, decltype(lumen * second<>)>;
 
 inline constexpr luminous_energy_t luminous_energy{};
-using luminous_energy_r = make_refiment_symbol_t<luminous_energy_t>;
+using luminous_energy_r = make_refinement_symbol_t<luminous_energy_t>;
 }
 
 namespace mitama {

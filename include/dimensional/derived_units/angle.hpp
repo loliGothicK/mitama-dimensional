@@ -12,7 +12,7 @@ struct angle {
 };
 using radian_t = make_unit_t<angle>;
 inline constexpr radian_t radian{};
-using radian_r = make_refiment_symbol_t<radian_t>;
+using radian_r = make_refinement_symbol_t<radian_t>;
 }
 
 namespace mitama {

@@ -11,7 +11,7 @@ template<class> struct density_repr{};
 using density_t = make_synonym_t<density_repr, decltype(meter<-3> * kilogram<>)>;
 
 inline constexpr density_t density{};
-using density_r = make_refiment_symbol_t<density_t>;
+using density_r = make_refinement_symbol_t<density_t>;
 }
 
 namespace mitama {

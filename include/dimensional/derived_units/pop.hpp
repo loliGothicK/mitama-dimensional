@@ -11,7 +11,7 @@ template<class> struct pop_repr{};
 using pop_t = make_synonym_t<pop_repr, decltype(meters * second<-6>)>;
 
 inline constexpr pop_t pop{};
-using pop_r = make_refiment_symbol_t<pop_t>;
+using pop_r = make_refinement_symbol_t<pop_t>;
 }
 
 namespace mitama {
