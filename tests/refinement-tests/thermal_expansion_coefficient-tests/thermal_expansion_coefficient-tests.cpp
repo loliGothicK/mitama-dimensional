@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("thermal_expansion_coefficient refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::thermal_expansion_coefficient_r> |= quantity_t<si::thermal_expansion_coefficient_t>{}) == quantity_t<si::thermal_expansion_coefficient_t>{});
+  REQUIRE((mitama::exact<si::thermal_expansion_coefficient_r> |= quantity_t<si::thermal_expansion_coefficient_t>{}) == quantity_t<si::thermal_expansion_coefficient_t>{});
 }
 

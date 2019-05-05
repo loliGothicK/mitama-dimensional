@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("linear_mass_density refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::linear_mass_density_r> |= quantity_t<si::linear_mass_density_t>{}) == quantity_t<si::linear_mass_density_t>{});
+  REQUIRE((mitama::exact<si::linear_mass_density_r> |= quantity_t<si::linear_mass_density_t>{}) == quantity_t<si::linear_mass_density_t>{});
 }
 

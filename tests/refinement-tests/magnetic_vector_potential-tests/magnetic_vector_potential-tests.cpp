@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("magnetic_vector_potential refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::magnetic_vector_potential_r> |= quantity_t<si::magnetic_vector_potential_t>{}) == quantity_t<si::magnetic_vector_potential_t>{});
+  REQUIRE((mitama::exact<si::magnetic_vector_potential_r> |= quantity_t<si::magnetic_vector_potential_t>{}) == quantity_t<si::magnetic_vector_potential_t>{});
 }
 

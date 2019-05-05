@@ -5,6 +5,9 @@
 
 namespace mitama {
 
+template < class T > struct identity { using type = T; };
+template < class T > using identity_t = typename identity<T>::type;
+
 template < class... > inline constexpr bool always_false_v = false;
 
 template <class T, class = void> struct is_complete_type : std::false_type {};

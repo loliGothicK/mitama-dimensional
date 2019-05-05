@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("dynamic_viscosity refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::dynamic_viscosity_r> |= quantity_t<si::dynamic_viscosity_t>{}) == quantity_t<si::dynamic_viscosity_t>{});
+  REQUIRE((mitama::exact<si::dynamic_viscosity_r> |= quantity_t<si::dynamic_viscosity_t>{}) == quantity_t<si::dynamic_viscosity_t>{});
 }
 

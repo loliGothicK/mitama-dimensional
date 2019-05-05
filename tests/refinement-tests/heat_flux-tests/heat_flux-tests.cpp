@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("heat_flux refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::heat_flux_r> |= quantity_t<si::heat_flux_t>{}) == quantity_t<si::heat_flux_t>{});
+  REQUIRE((mitama::exact<si::heat_flux_r> |= quantity_t<si::heat_flux_t>{}) == quantity_t<si::heat_flux_t>{});
 }
 

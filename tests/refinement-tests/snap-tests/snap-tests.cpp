@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("snap refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::snap_r> |= quantity_t<si::snap_t>{}) == quantity_t<si::snap_t>{});
+  REQUIRE((mitama::exact<si::snap_r> |= quantity_t<si::snap_t>{}) == quantity_t<si::snap_t>{});
 }
 

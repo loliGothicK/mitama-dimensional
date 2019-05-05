@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("molar_entropy refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::molar_entropy_r> |= quantity_t<si::molar_entropy_t>{}) == quantity_t<si::molar_entropy_t>{});
+  REQUIRE((mitama::exact<si::molar_entropy_r> |= quantity_t<si::molar_entropy_t>{}) == quantity_t<si::molar_entropy_t>{});
 }
 

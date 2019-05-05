@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("moment_of_inertia refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::moment_of_inertia_r> |= quantity_t<si::moment_of_inertia_t>{}) == quantity_t<si::moment_of_inertia_t>{});
+  REQUIRE((mitama::exact<si::moment_of_inertia_r> |= quantity_t<si::moment_of_inertia_t>{}) == quantity_t<si::moment_of_inertia_t>{});
 }
 

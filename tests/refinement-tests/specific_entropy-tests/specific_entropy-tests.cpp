@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("specific_entropy refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::specific_entropy_r> |= quantity_t<si::specific_entropy_t>{}) == quantity_t<si::specific_entropy_t>{});
+  REQUIRE((mitama::exact<si::specific_entropy_r> |= quantity_t<si::specific_entropy_t>{}) == quantity_t<si::specific_entropy_t>{});
 }
 

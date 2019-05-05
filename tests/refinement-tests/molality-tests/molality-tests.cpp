@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("molality refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::molality_r> |= quantity_t<si::molality_t>{}) == quantity_t<si::molality_t>{});
+  REQUIRE((mitama::exact<si::molality_r> |= quantity_t<si::molality_t>{}) == quantity_t<si::molality_t>{});
 }
 

@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("specific_volume refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::specific_volume_r> |= quantity_t<si::specific_volume_t>{}) == quantity_t<si::specific_volume_t>{});
+  REQUIRE((mitama::exact<si::specific_volume_r> |= quantity_t<si::specific_volume_t>{}) == quantity_t<si::specific_volume_t>{});
 }
 

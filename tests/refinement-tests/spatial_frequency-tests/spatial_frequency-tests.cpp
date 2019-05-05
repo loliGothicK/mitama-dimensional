@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("spatial_frequency refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::spatial_frequency_r> |= quantity_t<si::spatial_frequency_t>{}) == quantity_t<si::spatial_frequency_t>{});
+  REQUIRE((mitama::exact<si::spatial_frequency_r> |= quantity_t<si::spatial_frequency_t>{}) == quantity_t<si::spatial_frequency_t>{});
 }
 

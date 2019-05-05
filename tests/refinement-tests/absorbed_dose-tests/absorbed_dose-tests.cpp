@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("absorbed_dose refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::absorbed_dose_r> |= quantity_t<si::absorbed_dose_t>{}) == quantity_t<si::absorbed_dose_t>{});
+  REQUIRE((mitama::exact<si::absorbed_dose_r> |= quantity_t<si::absorbed_dose_t>{}) == quantity_t<si::absorbed_dose_t>{});
 }
 

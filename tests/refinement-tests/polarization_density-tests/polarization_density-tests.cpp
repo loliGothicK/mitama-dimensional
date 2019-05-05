@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("polarization_density refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::polarization_density_r> |= quantity_t<si::polarization_density_t>{}) == quantity_t<si::polarization_density_t>{});
+  REQUIRE((mitama::exact<si::polarization_density_r> |= quantity_t<si::polarization_density_t>{}) == quantity_t<si::polarization_density_t>{});
 }
 

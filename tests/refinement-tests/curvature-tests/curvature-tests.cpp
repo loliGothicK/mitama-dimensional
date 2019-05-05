@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("curvature refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::curvature_r> |= quantity_t<si::curvature_t>{}) == quantity_t<si::curvature_t>{});
+  REQUIRE((mitama::exact<si::curvature_r> |= quantity_t<si::curvature_t>{}) == quantity_t<si::curvature_t>{});
 }
 

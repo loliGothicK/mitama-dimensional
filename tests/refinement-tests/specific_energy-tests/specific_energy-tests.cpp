@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("specific_energy refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::specific_energy_r> |= quantity_t<si::specific_energy_t>{}) == quantity_t<si::specific_energy_t>{});
+  REQUIRE((mitama::exact<si::specific_energy_r> |= quantity_t<si::specific_energy_t>{}) == quantity_t<si::specific_energy_t>{});
 }
 
