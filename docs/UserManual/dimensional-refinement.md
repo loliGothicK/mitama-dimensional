@@ -15,12 +15,12 @@ The following is a compilation error if the quantity `(2 | meters) * (7 | meters
 This code can be compiled through refinement, since $m^2$  is of dimension $ L^2$ .
 
 ```cpp
-quantity_t a1 = refined<area_r> |= (2|meters) * (7|meters);
+quantity_t a1 = accepts<area_r> |= (2|meters) * (7|meters);
 ```
 
 
 If you want to specify the unit should be written as follows. The difference is that automatic unit conversion is performed when units are different.
-`refined` examines only the dimensions, not the units.
+`accepts` examines only the dimensions, not the units.
 
 
 ```cpp
@@ -30,7 +30,7 @@ quantity<meter_t, int> a1 = (2|meters) * (7|meters);
 The following example does not compile. This is because $m$ is the dimension of $L$  and not $L^2$ .
 
 ```cpp
-quantity_t a3 = refined<area_r> |= (2|millimeters); // error!
+quantity_t a3 = accepts<area_r> |= (2|millimeters); // error!
 ```
 
 ## Partial refinement type
@@ -40,6 +40,6 @@ The compilation passes because it actually has.
 
 ```cpp
 quantity_t a3
-    = partial_refined<sym::M<>>
+    = partial_accepts<sym::M<>>
     |= (2|meters) * (2|meters) * (2|kilograms) / (2|second<2>);
 ```
