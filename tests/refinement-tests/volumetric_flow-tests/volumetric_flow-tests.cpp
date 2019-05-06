@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("volumetric_flow refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::exact<si::volumetric_flow_r> |= quantity_t<si::volumetric_flow_t>{}) == quantity_t<si::volumetric_flow_t>{});
+  REQUIRE((mitama::accepts<si::volumetric_flow_r> |= quantity_t<si::volumetric_flow_t>{}) == quantity_t<si::volumetric_flow_t>{});
 }
 

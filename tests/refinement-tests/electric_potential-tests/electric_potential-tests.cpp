@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("electric_potential refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::exact<si::electric_potential_r> |= quantity_t<si::electric_potential_t>{}) == quantity_t<si::electric_potential_t>{});
+  REQUIRE((mitama::accepts<si::electric_potential_r> |= quantity_t<si::electric_potential_t>{}) == quantity_t<si::electric_potential_t>{});
 }
 

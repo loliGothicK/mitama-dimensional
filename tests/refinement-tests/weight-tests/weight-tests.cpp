@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("weight refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::exact<si::weight_r> |= quantity_t<si::weight_t>{}) == quantity_t<si::weight_t>{});
+  REQUIRE((mitama::accepts<si::weight_r> |= quantity_t<si::weight_t>{}) == quantity_t<si::weight_t>{});
 }
 

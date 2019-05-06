@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("angle refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::exact<si::radian_r> |= quantity_t<si::radian_t>{}) == quantity_t<si::radian_t>{});
+  REQUIRE((mitama::accepts<si::radian_r> |= quantity_t<si::radian_t>{}) == quantity_t<si::radian_t>{});
 }
 

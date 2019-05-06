@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("temperature_gradient refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::exact<si::temperature_gradient_r> |= quantity_t<si::temperature_gradient_t>{}) == quantity_t<si::temperature_gradient_t>{});
+  REQUIRE((mitama::accepts<si::temperature_gradient_r> |= quantity_t<si::temperature_gradient_t>{}) == quantity_t<si::temperature_gradient_t>{});
 }
 

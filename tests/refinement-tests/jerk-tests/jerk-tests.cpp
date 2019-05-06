@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("jerk refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::exact<si::jerk_r> |= quantity_t<si::jerk_t>{}) == quantity_t<si::jerk_t>{});
+  REQUIRE((mitama::accepts<si::jerk_r> |= quantity_t<si::jerk_t>{}) == quantity_t<si::jerk_t>{});
 }
 

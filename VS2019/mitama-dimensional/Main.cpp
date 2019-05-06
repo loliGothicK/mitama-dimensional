@@ -153,10 +153,10 @@ int main(){
     }
 
     {
-        quantity_t a1 = exact<si::area_r> |= (2|si::meters) * (7|si::meters);
+        quantity_t a1 = accepts<si::area_r> |= (2|si::meters) * (7|si::meters);
         REPL(a1);
 
-        quantity_t a2 = exact<si::area_r> |= (2|si::millimeters) * (7|si::millimeters);
+        quantity_t a2 = accepts<si::area_r> |= (2|si::millimeters) * (7|si::millimeters);
         REPL(a2);
 
         // error!

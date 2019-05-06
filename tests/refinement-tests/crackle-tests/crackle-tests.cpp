@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("crackle refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::exact<si::crackle_r> |= quantity_t<si::crackle_t>{}) == quantity_t<si::crackle_t>{});
+  REQUIRE((mitama::accepts<si::crackle_r> |= quantity_t<si::crackle_t>{}) == quantity_t<si::crackle_t>{});
 }
 

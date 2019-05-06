@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("heat refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::exact<si::heat_r> |= quantity_t<si::heat_t>{}) == quantity_t<si::heat_t>{});
+  REQUIRE((mitama::accepts<si::heat_r> |= quantity_t<si::heat_t>{}) == quantity_t<si::heat_t>{});
 }
 

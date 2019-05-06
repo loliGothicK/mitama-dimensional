@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("mass_flow_rate refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::exact<si::mass_flow_rate_r> |= quantity_t<si::mass_flow_rate_t>{}) == quantity_t<si::mass_flow_rate_t>{});
+  REQUIRE((mitama::accepts<si::mass_flow_rate_r> |= quantity_t<si::mass_flow_rate_t>{}) == quantity_t<si::mass_flow_rate_t>{});
 }
 

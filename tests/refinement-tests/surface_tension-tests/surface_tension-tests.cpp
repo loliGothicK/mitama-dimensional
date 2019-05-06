@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("surface_tension refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::exact<si::surface_tension_r> |= quantity_t<si::surface_tension_t>{}) == quantity_t<si::surface_tension_t>{});
+  REQUIRE((mitama::accepts<si::surface_tension_r> |= quantity_t<si::surface_tension_t>{}) == quantity_t<si::surface_tension_t>{});
 }
 

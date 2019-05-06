@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("area refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::exact<si::area_r> |= quantity_t<si::area_t>{}) == quantity_t<si::area_t>{});
+  REQUIRE((mitama::accepts<si::area_r> |= quantity_t<si::area_t>{}) == quantity_t<si::area_t>{});
 }
 

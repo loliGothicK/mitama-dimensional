@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("resistance refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::exact<si::resistance_r> |= quantity_t<si::resistance_t>{}) == quantity_t<si::resistance_t>{});
+  REQUIRE((mitama::accepts<si::resistance_r> |= quantity_t<si::resistance_t>{}) == quantity_t<si::resistance_t>{});
 }
 

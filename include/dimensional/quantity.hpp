@@ -339,12 +339,6 @@ template <class Unit>
 using into_dimensional_t = typename into_dimensional<Unit>::type;
 } // namespace mitamagic
 
-template <class Dim, class T = double>
-using quantity = quantity_t<mitamagic::into_dimensional_t<Dim>, T>;
-
-template <class T, class... Units>
-using quantity_for = quantity_t<si_base_units_repr<dimensional_t<Units...>>, T>;
-
 } // namespace mitama
 
 namespace mitama {
@@ -376,5 +370,12 @@ operator|(T &&t, Dim) {
 }
 
 using dimless_t = si_base_units_repr<dimensional_t<>>;
+
+template <class Dim, class T = double>
+using quantity = quantity_t<mitamagic::into_dimensional_t<Dim>, T>;
+
+template <class T, class Unit, class... Units>
+using quantity_for = std::decay_t<decltype(std::declval<T>() | (std::declval<Unit>() * ... * std::declval<Units>()))>;
+
 } // namespace mitama
 #endif

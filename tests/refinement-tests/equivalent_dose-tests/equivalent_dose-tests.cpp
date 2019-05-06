@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("equivalent_dose refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::exact<si::equivalent_dose_r> |= quantity_t<si::sievert_t>{}) == quantity_t<si::sievert_t>{});
+  REQUIRE((mitama::accepts<si::equivalent_dose_r> |= quantity_t<si::sievert_t>{}) == quantity_t<si::sievert_t>{});
 }
 

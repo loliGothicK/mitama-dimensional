@@ -17,6 +17,24 @@ using kiloampere_t = scaled_unit_t<ampere_t, std::kilo>;
 using megaampere_t = scaled_unit_t<ampere_t, std::mega>;
 using teraampere_t = scaled_unit_t<ampere_t, std::tera>;
 
+template < std::intmax_t N = 1 >
+using ampere_ = powered_t<ampere_t, N>;
+
+template < std::intmax_t N = 1 >
+using milliampere_ = powered_t<milliampere_t, N>;
+template < std::intmax_t N = 1 >
+using microampere_ = powered_t<microampere_t, N>;
+template < std::intmax_t N = 1 >
+using nanoampere_ = powered_t<nanoampere_t, N>;
+
+template < std::intmax_t N = 1 >
+using kiloampere_ = powered_t<kiloampere_t, N>;
+template < std::intmax_t N = 1 >
+using megaampere_ = powered_t<megaampere_t, N>;
+template < std::intmax_t N = 1 >
+using teraampere_ = powered_t<teraampere_t, N>;
+
+
 inline constexpr ampere_t amperes{};
 
 inline constexpr milliampere_t milliamperes{};

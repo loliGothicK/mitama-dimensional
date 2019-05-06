@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("permeability refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::exact<si::permeability_r> |= quantity_t<si::permeability_t>{}) == quantity_t<si::permeability_t>{});
+  REQUIRE((mitama::accepts<si::permeability_r> |= quantity_t<si::permeability_t>{}) == quantity_t<si::permeability_t>{});
 }
 

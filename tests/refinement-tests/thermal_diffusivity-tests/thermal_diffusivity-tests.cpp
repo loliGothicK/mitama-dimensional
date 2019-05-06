@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("thermal_diffusivity refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::exact<si::thermal_diffusivity_r> |= quantity_t<si::thermal_diffusivity_t>{}) == quantity_t<si::thermal_diffusivity_t>{});
+  REQUIRE((mitama::accepts<si::thermal_diffusivity_r> |= quantity_t<si::thermal_diffusivity_t>{}) == quantity_t<si::thermal_diffusivity_t>{});
 }
 

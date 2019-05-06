@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("frequency_drift refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::exact<si::frequency_drift_r> |= quantity_t<si::frequency_drift_t>{}) == quantity_t<si::frequency_drift_t>{});
+  REQUIRE((mitama::accepts<si::frequency_drift_r> |= quantity_t<si::frequency_drift_t>{}) == quantity_t<si::frequency_drift_t>{});
 }
 

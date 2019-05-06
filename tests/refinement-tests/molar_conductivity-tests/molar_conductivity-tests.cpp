@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("molar_conductivity refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::exact<si::molar_conductivity_r> |= quantity_t<si::molar_conductivity_t>{}) == quantity_t<si::molar_conductivity_t>{});
+  REQUIRE((mitama::accepts<si::molar_conductivity_r> |= quantity_t<si::molar_conductivity_t>{}) == quantity_t<si::molar_conductivity_t>{});
 }
 

@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("force refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::exact<si::force_r> |= quantity_t<si::force_t>{}) == quantity_t<si::force_t>{});
+  REQUIRE((mitama::accepts<si::force_r> |= quantity_t<si::force_t>{}) == quantity_t<si::force_t>{});
 }
 

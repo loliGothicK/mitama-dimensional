@@ -152,16 +152,16 @@ int main(){
     }
 
     {
-        quantity_t a1 = exact<si::area_r> |= (2|si::meters) * (7|si::meters);
+        quantity_t a1 = accepts<si::area_r> |= (2|si::meters) * (7|si::meters);
         REPL(a1);
 
-        quantity_t a2 = exact<si::area_r> |= (2|si::millimeters) * (7|si::millimeters);
+        quantity_t a2 = accepts<si::area_r> |= (2|si::millimeters) * (7|si::millimeters);
         REPL(a2);
 
         // error!
-        // quantity_t a3 = exact<area_r> |= (2|si::millimeters);
+        // quantity_t a3 = accepts<area_r> |= (2|si::millimeters);
 
-        quantity_t a3 = partial_refined_for<sym::M<>> |= (2|si::meters) * (2|si::meters) * (2|si::kilograms) / (2|si::second<2>);
+        quantity_t a3 = partial_accepts_for<sym::M<>> |= (2|si::meters) * (2|si::meters) * (2|si::kilograms) / (2|si::second<2>);
         REPL(a3);
     }
 
@@ -172,7 +172,7 @@ int main(){
 
     {
         quantity_t m = 1.0 | si::meters * si::radian;
-        quantity_t<si::meter_t> x = m.into();
+        quantity_for<double, si::meter_<>> x = m.into();
         REPL(x);
     }
 }
