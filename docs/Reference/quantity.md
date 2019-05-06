@@ -5,7 +5,7 @@
 ### default constructor
 
 ```cpp
-  constexpr quantity_t(): value_{} {}
+constexpr quantity_t(): value_{} {}
 ```
 
 ### Constructors for value
@@ -101,7 +101,7 @@ constexpr quantity_t &operator=(quantity_t<D, U> const &o) & {
 }
 ```
 
-## Comparisons
+## Equality and Comparisons
 
 !!! Note
     This operator shall not participate in overload resolution unless `is_{xxx}_comparable<T, U>` is true. `{xxx}` denotes equal (`==`), not_equal (`!=`), less (`<`), less_or_equal (`<=`), greater (`>`) or greater_or_equal (`>=`).
@@ -255,14 +255,38 @@ int main() {
     namespace si = mitama::si;
     using mitama::quantity_t;
 
-    // using template argument deduction for class templates
-
     quantity_t mass = 3 | si::kilograms; // 3 [kg]
-
-    quantity_t time = 1.66 | si::seconds; // 1.66 [s]
+//  ^~~~~~~~~~ template argument deduction for class templates: since C++17
 
     quantity_t volume = 4 | si::meter<3>; // 4 [m^3]
-    //                               ^~~ variable template
+//                          ^~~~~~~~~~~~ variable template: since C++14
+
+    quantity_t time = 1.66 | si::second<>; // 1.66 [s]
+//                           ^~~~~~~~~~|~ default template argument for variable templates: since C++17
+//                                     |
+//                                     default argument is 1 (same as si::second<1>)
+}
+// end example
+```
+
+## Type synonyms
+
+### quantity_for
+
+`quantity_for` is a type alias for variadic templates.
+
+```cpp
+// begin example
+#include <dimensional/quantity.hpp>
+#include <dimensional/si_units/all.hpp>
+
+int main() {
+    namespace si = mitama::si;
+    using mitama::quantity_for;
+
+    quantity_for<int, si::meter_<1>, si::second_<-1>> speed = 2; // 2 [m/s]
+
+    
 }
 // end example
 ```
