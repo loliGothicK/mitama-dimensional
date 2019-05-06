@@ -97,9 +97,8 @@ operator/(L &&lhs, R &&rhs)
     return quantity_t<
             mitamagic::quotient_t<typename std::decay_t<L>::dimension_type, mitamagic::inverse_t<typename std::decay_t<R>::dimension_type>>,
             std::common_type_t<typename std::decay_t<L>::value_type, typename std::decay_t<R>::value_type>
-        >{
-            mitamagic::scaled_value(std::forward<L>(lhs), std::forward<R>(rhs), [](auto a, auto b){ return a / b; })
-        };
+        >
+        { mitamagic::scaled_value(std::forward<L>(lhs), std::forward<R>(rhs), [](auto a, auto b){ return a / b; }) };
 }
 
 template <class L,
@@ -123,7 +122,11 @@ template <class R,
 constexpr auto
 operator/(typename std::decay_t<R>::value_type const& lhs, R&& rhs)
 {
-    return quantity_t<si_base_units_repr<mitamagic::inverse_t<typename std::decay_t<R>::dimension_type>>, typename std::decay_t<R>::value_type>(lhs / std::forward<R>(rhs).value());
+    return quantity_t<
+            si_base_units_repr<mitamagic::inverse_t<typename std::decay_t<R>::dimension_type>>,
+            typename std::decay_t<R>::value_type
+        >
+        { lhs / std::forward<R>(rhs).value() };
 }
 
 
