@@ -13,6 +13,12 @@ using millimol_t = scaled_unit_t<mol_t, std::milli>;
 using micromol_t = scaled_unit_t<mol_t, std::micro>;
 using kilomol_t = scaled_unit_t<mol_t, std::kilo>;
 
+template < std::intmax_t N = 1 > using mol_ = powered_t<mol_t, N>;
+template < std::intmax_t N = 1 > using millimol_ = powered_t<millimol_t, N>;
+template < std::intmax_t N = 1 > using micromol_ = powered_t<micromol_t, N>;
+template < std::intmax_t N = 1 > using kilomol_ = powered_t<kilomol_t, N>;
+
+
 inline constexpr mol_t mols{};
 inline constexpr millimol_t millimols{};
 inline constexpr micromol_t micromols{};

@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("solid_angle refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::steradian_r> |= quantity_t<si::steradian_t>{}) == quantity_t<si::steradian_t>{});
+  REQUIRE((mitama::accepts<si::steradian_r> |= quantity_t<si::steradian_t>{}) == quantity_t<si::steradian_t>{});
 }
 

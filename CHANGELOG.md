@@ -311,3 +311,14 @@ int main() {
 
 - [environment](https://loligothick.github.io/mitama-dimensional/)として公開中（user define dimensionを書き足した）
 
+## v0.9.0
+
+### **新機能**
+
+- 単項 +/- 演算子サポート
+- 無次元の次元量のみ特別に暗黙のUnderlying Typeへの変換を許可
+- `get()` と同じ用途の関数 `value()` を追加
+- Into Traitと`qantity_t::into()`メソッドを追加
+- refinementをacceptsとrejectsに分割して再定義
+
+

@@ -11,7 +11,7 @@ template<class> struct magnetization_repr{};
 using magnetization_t = make_synonym_t<magnetization_repr, decltype(ampere<> / meter<>)>;
 
 inline constexpr magnetization_t magnetization{};
-using magnetization_r = make_refiment_symbol_t<magnetization_t>;
+using magnetization_r = make_refinement_symbol_t<magnetization_t>;
 }
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_MAGNETIC_FIELD_STRENGTH_HPP

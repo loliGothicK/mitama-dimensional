@@ -11,7 +11,7 @@ template<class> struct crackle_repr{};
 using crackle_t = make_synonym_t<crackle_repr, decltype(meters * second<-5>)>;
 
 inline constexpr crackle_t crackle{};
-using crackle_r = make_refiment_symbol_t<crackle_t>;
+using crackle_r = make_refinement_symbol_t<crackle_t>;
 }
 
 namespace mitama {

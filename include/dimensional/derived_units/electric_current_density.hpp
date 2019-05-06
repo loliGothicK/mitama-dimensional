@@ -11,7 +11,7 @@ template<class> struct electric_current_density_repr{};
 using electric_current_density_t = make_synonym_t<electric_current_density_repr, decltype(ampere<> / meter<2>)>;
 
 inline constexpr electric_current_density_t electric_current_density{};
-using electric_current_density_r = make_refiment_symbol_t<electric_current_density_t>;
+using electric_current_density_r = make_refinement_symbol_t<electric_current_density_t>;
 }
 
 namespace mitama {

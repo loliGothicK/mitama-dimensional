@@ -1,6 +1,9 @@
 #ifndef MITAMA_DIMENSIONAL_PHANTOM_HPP
 #define MITAMA_DIMENSIONAL_PHANTOM_HPP
-#include "mitamagic/utility.hpp"
+#include "fwd/dimensional_fwd.hpp"
+#include "mitamagic/utility_ext.hpp"
+#include "mitamagic/type_traits_ext.hpp"
+#include "mitamagic/ratio_ext.hpp"
 #include <type_traits>
 
 namespace mitama::mitamagic {
@@ -30,11 +33,6 @@ struct dimensional_t : private Units::tag... // for Dimensional tags
 template <class... Units>
 using make_dimensional_t = si_base_units_repr<dimensional_t<Units...>>;
 
-template <class> struct is_dimensional : std::false_type {};
-template <template <class> class Repr, class... Units>
-struct is_dimensional<Repr<dimensional_t<Units...>>> : std::true_type {};
-template <class D>
-inline constexpr bool is_dimensional_v = is_dimensional<D>::value;
 
 } // namespace mitama
 #endif

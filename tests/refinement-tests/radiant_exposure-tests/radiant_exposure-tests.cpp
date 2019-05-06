@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("radiant_exposure refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::radiant_exposure_r> |= quantity_t<si::radiant_exposure_t>{}) == quantity_t<si::radiant_exposure_t>{});
+  REQUIRE((mitama::accepts<si::radiant_exposure_r> |= quantity_t<si::radiant_exposure_t>{}) == quantity_t<si::radiant_exposure_t>{});
 }
 

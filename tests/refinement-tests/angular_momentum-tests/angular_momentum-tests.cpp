@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("angular_momentum refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::angular_momentum_r> |= quantity_t<si::angular_momentum_t>{}) == quantity_t<si::angular_momentum_t>{});
+  REQUIRE((mitama::accepts<si::angular_momentum_r> |= quantity_t<si::angular_momentum_t>{}) == quantity_t<si::angular_momentum_t>{});
 }
 

@@ -11,7 +11,7 @@ template<class> struct magnetic_susceptibility_repr{};
 using magnetic_susceptibility_t = make_synonym_t<magnetic_susceptibility_repr, decltype(meter<> / henry)>;
 
 inline constexpr magnetic_susceptibility_t magnetic_susceptibility{};
-using magnetic_susceptibility_r = make_refiment_symbol_t<magnetic_susceptibility_t>;
+using magnetic_susceptibility_r = make_refinement_symbol_t<magnetic_susceptibility_t>;
 }
 
 namespace mitama {

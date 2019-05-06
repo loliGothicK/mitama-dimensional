@@ -40,6 +40,41 @@ using megametre_t = scaled_unit_t<metre_t, std::mega>;
 using gigametre_t = scaled_unit_t<metre_t, std::giga>;
 using terametre_t = scaled_unit_t<metre_t, std::tera>;
 
+
+template < std::intmax_t N = 1 >
+using meter_ = powered_t<meter_t, N>;
+template < std::intmax_t N = 1 >
+using metre_ = powered_t<metre_t, N>;
+
+template < std::intmax_t N = 1 > using picometer_ = powered_t<picometer_t, N>;
+template < std::intmax_t N = 1 > using nanometer_ = powered_t<nanometer_t, N>;
+template < std::intmax_t N = 1 > using micrometer_ = powered_t<micrometer_t, N>;
+template < std::intmax_t N = 1 > using millimeter_ = powered_t<millimeter_t, N>;
+template < std::intmax_t N = 1 > using centimeter_ = powered_t<centimeter_t, N>;
+template < std::intmax_t N = 1 > using decimeter_ = powered_t<decimeter_t, N>;
+
+template < std::intmax_t N = 1 > using decameter_ = powered_t<decameter_t, N>;
+template < std::intmax_t N = 1 > using hectometer_ = powered_t<hectometer_t, N>;
+template < std::intmax_t N = 1 > using kilometer_ = powered_t<kilometer_t, N>;
+template < std::intmax_t N = 1 > using megameter_ = powered_t<megameter_t, N>;
+template < std::intmax_t N = 1 > using gigameter_ = powered_t<gigameter_t, N>;
+template < std::intmax_t N = 1 > using terameter_ = powered_t<terameter_t, N>;
+
+template < std::intmax_t N = 1 > using picometre_ = powered_t<picometre_t, N>;
+template < std::intmax_t N = 1 > using nanometre_ = powered_t<nanometre_t, N>;
+template < std::intmax_t N = 1 > using micrometre_ = powered_t<micrometre_t, N>;
+template < std::intmax_t N = 1 > using millimetre_ = powered_t<millimetre_t, N>;
+template < std::intmax_t N = 1 > using centimetre_ = powered_t<centimetre_t, N>;
+template < std::intmax_t N = 1 > using decimetre_ = powered_t<decimetre_t, N>;
+
+template < std::intmax_t N = 1 > using decametre_ = powered_t<decametre_t, N>;
+template < std::intmax_t N = 1 > using hectometre_ = powered_t<hectometre_t, N>;
+template < std::intmax_t N = 1 > using kilometre_ = powered_t<kilometre_t, N>;
+template < std::intmax_t N = 1 > using megametre_ = powered_t<megametre_t, N>;
+template < std::intmax_t N = 1 > using gigametre_ = powered_t<gigametre_t, N>;
+template < std::intmax_t N = 1 > using terametre_ = powered_t<terametre_t, N>;
+
+
 inline constexpr meter_t meters;
 
 inline constexpr picometer_t picometers;

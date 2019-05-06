@@ -11,7 +11,7 @@ template<class> struct jerk_repr{};
 using jerk_t = make_synonym_t<jerk_repr, decltype(meters * second<-3>)>;
 
 inline constexpr jerk_t jerk{};
-using jerk_r = make_refiment_symbol_t<jerk_t>;
+using jerk_r = make_refinement_symbol_t<jerk_t>;
 }
 
 namespace mitama {

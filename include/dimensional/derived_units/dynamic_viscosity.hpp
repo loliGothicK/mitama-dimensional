@@ -11,7 +11,7 @@ template<class> struct dynamic_viscosity_repr{};
 using dynamic_viscosity_t = make_synonym_t<dynamic_viscosity_repr, decltype(pascal * seconds)>;
 
 inline constexpr dynamic_viscosity_t dynamic_viscosity{};
-using dynamic_viscosity_r = make_refiment_symbol_t<dynamic_viscosity_t>;
+using dynamic_viscosity_r = make_refinement_symbol_t<dynamic_viscosity_t>;
 }
 
 namespace mitama {

@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("thermal_resistance refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::thermal_resistance_r> |= quantity_t<si::thermal_resistance_t>{}) == quantity_t<si::thermal_resistance_t>{});
+  REQUIRE((mitama::accepts<si::thermal_resistance_r> |= quantity_t<si::thermal_resistance_t>{}) == quantity_t<si::thermal_resistance_t>{});
 }
 

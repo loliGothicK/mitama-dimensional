@@ -12,7 +12,7 @@ template<class> struct magnetic_dipole_moment_repr{};
 using magnetic_dipole_moment_t = make_synonym_t<magnetic_dipole_moment_repr, decltype(joule / tesla)>;
 
 inline constexpr magnetic_dipole_moment_t magnetic_dipole_moment{};
-using magnetic_dipole_moment_r = make_refiment_symbol_t<magnetic_dipole_moment_t>;
+using magnetic_dipole_moment_r = make_refinement_symbol_t<magnetic_dipole_moment_t>;
 }
 
 namespace mitama {

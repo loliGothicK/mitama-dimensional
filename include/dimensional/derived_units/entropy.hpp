@@ -11,7 +11,7 @@ template<class> struct entropy_repr{};
 using entropy_t = make_synonym_t<entropy_repr, decltype(joule / kelvins)>;
 
 inline constexpr entropy_t entropy{};
-using entropy_r = make_refiment_symbol_t<entropy_t>;
+using entropy_r = make_refinement_symbol_t<entropy_t>;
 }
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_HEAT_CAPACITY_HPP

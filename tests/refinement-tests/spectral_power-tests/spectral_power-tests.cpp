@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("spectral_power refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::spectral_power_r> |= quantity_t<si::spectral_power_t>{}) == quantity_t<si::spectral_power_t>{});
+  REQUIRE((mitama::accepts<si::spectral_power_r> |= quantity_t<si::spectral_power_t>{}) == quantity_t<si::spectral_power_t>{});
 }
 

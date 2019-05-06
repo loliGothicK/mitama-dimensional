@@ -2,6 +2,8 @@
 #define MITAMA_DIMENSIONAL_REFINEMENT_HPP
 #include "quantity.hpp"
 #include "si_units/all.hpp"
+#include "mitamagic/type_list.hpp"
+
 namespace mitama {
 
 namespace sym {
@@ -43,172 +45,174 @@ inline constexpr bool is_refinement_symbol_v = is_refinement_symbol<T>::value;
 
 } // namespace sym
 
-template <class, class> struct refinement_type;
-template <class, class...> struct refinement_type_for;
+template <class, template <class> class, class> struct refinement_type;
+template <class, template <class> class, class...> struct refinement_type_for;
 
-template <class... Symbols>
+template <template <class> class Pred, class... Symbols>
 struct refinement_type_for<
     std::enable_if_t<(sym::is_refinement_symbol_v<Symbols> && ...)>,
-    Symbols...> {
+    Pred, Symbols...> {
   template <class Q,
             std::enable_if_t<
-                is_same_dimensional_v<
+                Pred<is_same_dimensional<
                     std::decay_t<Q>,
                     quantity<make_dimensional_t<units_t<
-                        typename Symbols::basis, typename Symbols::exp>...>>>,
+                        typename Symbols::basis, typename Symbols::exp>...>>>>::value,
                 bool> = false>
   decltype(auto) operator()(Q &&q) const {
     return std::forward<Q>(q);
   }
 
-  template <class Q,
-            std::enable_if_t<
-                !is_same_dimensional_v<
-                    std::decay_t<Q>,
-                    quantity<make_dimensional_t<units_t<
-                        typename Symbols::basis, typename Symbols::exp>...>>>,
-                bool> = false>
-  decltype(auto) operator()(Q &&q) const = delete;
+  decltype(auto) operator()(...) const = delete;
 
   template <class Q,
             std::enable_if_t<
-                is_same_dimensional_v<
+                Pred<is_same_dimensional<
                     std::decay_t<Q>,
                     quantity<make_dimensional_t<units_t<
-                        typename Symbols::basis, typename Symbols::exp>...>>>,
+                        typename Symbols::basis, typename Symbols::exp>...>>>>::value,
                 bool> = false>
   decltype(auto) operator|=(Q &&q) const {
     return std::forward<Q>(q);
   }
 
-  template <class Q,
-            std::enable_if_t<
-                !is_same_dimensional_v<
-                    std::decay_t<Q>,
-                    quantity<make_dimensional_t<units_t<
-                        typename Symbols::basis, typename Symbols::exp>...>>>,
-                bool> = false>
-  decltype(auto) operator|=(Q &&q) const = delete;
+  template < class... Args >
+  decltype(auto) operator|=(Args&&...) const = delete;
 };
 
-template <template <class...> class Requires, class... Symbols>
+template <template <class> class Pred, template <class...> class Requires, class... Symbols>
 struct refinement_type<
     std::enable_if_t<std::conjunction_v<sym::is_refinement_symbol<Symbols>...>>,
-    Requires<Symbols...>> {
+    Pred, Requires<Symbols...>> {
   template <class Q,
             std::enable_if_t<
-                is_same_dimensional_v<
+                Pred<is_same_dimensional<
                     std::decay_t<Q>,
                     quantity<make_dimensional_t<units_t<
-                        typename Symbols::basis, typename Symbols::exp>...>>>,
+                        typename Symbols::basis, typename Symbols::exp>...>>>>::value,
                 bool> = false>
   decltype(auto) operator()(Q &&q) const {
     return std::forward<Q>(q);
   }
 
-  template <class Q,
-            std::enable_if_t<
-                !is_same_dimensional_v<
-                    std::decay_t<Q>,
-                    quantity<make_dimensional_t<units_t<
-                        typename Symbols::basis, typename Symbols::exp>...>>>,
-                bool> = false>
-  decltype(auto) operator()(Q &&q) const = delete;
+  decltype(auto) operator()(...) const = delete;
 
   template <class Q,
             std::enable_if_t<
-                is_same_dimensional_v<
+                Pred<is_same_dimensional<
                     std::decay_t<Q>,
                     quantity<make_dimensional_t<units_t<
-                        typename Symbols::basis, typename Symbols::exp>...>>>,
+                        typename Symbols::basis, typename Symbols::exp>...>>>>::value,
                 bool> = false>
   decltype(auto) operator|=(Q &&q) const {
     return std::forward<Q>(q);
   }
 
-  template <class Q,
-            std::enable_if_t<
-                !is_same_dimensional_v<
-                    std::decay_t<Q>,
-                    quantity<make_dimensional_t<units_t<
-                        typename Symbols::basis, typename Symbols::exp>...>>>,
-                bool> = false>
-  decltype(auto) operator|=(Q &&q) const = delete;
+  template <class... Dummy>
+  decltype(auto) operator|=(Dummy&&...) const = delete;
 };
 
 template <class... Requires>
-inline constexpr refinement_type_for<void, Requires...> refined_for{};
+inline constexpr refinement_type_for<void, identity, Requires...> accepts_for{};
 
 template <class Requires>
-inline constexpr refinement_type<void, Requires> refined{};
+inline constexpr refinement_type<void, identity, Requires> accepts{};
+
+template <class... Requires>
+inline constexpr refinement_type_for<void, std::negation, Requires...> rejects_for{};
+
+template <class Requires>
+inline constexpr refinement_type<void, std::negation, Requires> rejects{};
 
 
-template <class, class...> struct partial_refinement_type_for;
-template <class, class> struct partial_refinement_type;
+template <class, template <class> class, class...> struct partial_refinement_type_for;
+template <class, template <class> class, class> struct partial_refinement_type;
 
-template <class... Symbols>
+template <template <class> class Pred, class... Symbols>
 struct partial_refinement_type_for<
 	std::enable_if_t<std::conjunction_v<sym::is_refinement_symbol<Symbols>...>>,
-	Symbols...> {
+	Pred, Symbols...> {
+
   template <class Q,
-            std::enable_if_t<std::conjunction_v<std::is_base_of<dimension_tag<typename Symbols::basis, typename Symbols::exp>, typename std::decay_t<Q>::dimension_type>...>,
-                bool> = false>
+            std::enable_if_t<
+              Pred<std::conjunction<
+                std::is_base_of<
+                  dimension_tag<typename Symbols::basis, typename Symbols::exp>,
+                  typename std::decay_t<Q>::dimension_type
+                >...
+              >>::value,
+            bool> = false>
   decltype(auto) operator()(Q &&q) const {
     return std::forward<Q>(q);
   }
 
-  template <class Q,
-            std::enable_if_t<!std::conjunction_v<std::is_base_of<dimension_tag<typename Symbols::basis, typename Symbols::exp>, typename std::decay_t<Q>::dimension_type>...>,
-                bool> = false>
-  decltype(auto) operator()(Q &&q) const = delete;
+  decltype(auto) operator()(...) const = delete;
 
   template <class Q,
-            std::enable_if_t<std::conjunction_v<std::is_base_of<dimension_tag<typename Symbols::basis, typename Symbols::exp>, typename std::decay_t<Q>::dimension_type>...>,
-                bool> = false>
+            std::enable_if_t<
+              Pred<std::conjunction<
+                std::is_base_of<
+                  dimension_tag<typename Symbols::basis, typename Symbols::exp>,
+                  typename std::decay_t<Q>::dimension_type
+                >...
+              >>::value,
+            bool> = false>
   decltype(auto) operator|=(Q &&q) const {
     return std::forward<Q>(q);
   }
 
-  template <class Q,
-            std::enable_if_t<!std::conjunction_v<std::is_base_of<dimension_tag<typename Symbols::basis, typename Symbols::exp>, typename std::decay_t<Q>::dimension_type>...>,
-                bool> = false>
-  decltype(auto) operator|=(Q &&q) const = delete;
+  template <class... Dummy>
+  decltype(auto) operator|=(Dummy&&...) const = delete;
 };
 
-template <template <class...> class Requires, class... Symbols>
+template <template <class> class Pred, template <class...> class Requires, class... Symbols>
 struct partial_refinement_type<
 	std::enable_if_t<std::conjunction_v<sym::is_refinement_symbol<Symbols>...>>,
-	Requires<Symbols...>> {
+	Pred, Requires<Symbols...>> {
+
   template <class Q,
-            std::enable_if_t<std::conjunction_v<std::is_base_of<dimension_tag<typename Symbols::basis, typename Symbols::exp>, typename std::decay_t<Q>::dimension_type>...>,
-                bool> = false>
+            std::enable_if_t<
+              Pred<std::conjunction<
+                std::is_base_of<
+                  dimension_tag<typename Symbols::basis, typename Symbols::exp>,
+                  typename std::decay_t<Q>::dimension_type
+                >...
+              >>::value,
+            bool> = false>
   decltype(auto) operator()(Q &&q) const {
     return std::forward<Q>(q);
   }
 
-  template <class Q,
-            std::enable_if_t<!std::conjunction_v<std::is_base_of<dimension_tag<typename Symbols::basis, typename Symbols::exp>, typename std::decay_t<Q>::dimension_type>...>,
-                bool> = false>
-  decltype(auto) operator()(Q &&q) const = delete;
+  decltype(auto) operator()(...) const = delete;
 
   template <class Q,
-            std::enable_if_t<std::conjunction_v<std::is_base_of<dimension_tag<typename Symbols::basis, typename Symbols::exp>, typename std::decay_t<Q>::dimension_type>...>,
-                bool> = false>
+            std::enable_if_t<
+              Pred<std::conjunction<
+                std::is_base_of<
+                  dimension_tag<typename Symbols::basis, typename Symbols::exp>,
+                  typename std::decay_t<Q>::dimension_type
+                >...
+              >>::value,
+            bool> = false>
   decltype(auto) operator|=(Q &&q) const {
     return std::forward<Q>(q);
   }
 
-  template <class Q,
-            std::enable_if_t<!std::conjunction_v<std::is_base_of<dimension_tag<typename Symbols::basis, typename Symbols::exp>, typename std::decay_t<Q>::dimension_type>...>,
-                bool> = false>
-  decltype(auto) operator|=(Q &&q) const = delete;
+  template <class... Dummy>
+  decltype(auto) operator|=(Dummy&&...) const = delete;
 };
 
 template <class... Requires>
-inline constexpr partial_refinement_type_for<void, Requires...> partial_refined_for{};
+inline constexpr partial_refinement_type_for<void, identity, Requires...> partial_accepts_for{};
 
 template <class Requires>
-inline constexpr partial_refinement_type<void, Requires> partial_refined{};
+inline constexpr partial_refinement_type<void, identity, Requires> partial_accepts{};
+
+template <class... Requires>
+inline constexpr partial_refinement_type_for<void, std::negation, Requires...> partial_rejects_for{};
+
+template <class Requires>
+inline constexpr partial_refinement_type<void, std::negation, Requires> partial_rejects{};
 } // namespace mitama
 
 namespace mitama {
@@ -234,16 +238,16 @@ struct atomic_refinement_symbol
 } // ! namespace mitamagic
 
 
-template < class > struct make_refiment_symbol;
+template < class > struct make_refinement_symbol;
 
 template < template <class> class Repr, class... Units >
-struct make_refiment_symbol<Repr<dimensional_t<Units...>>>
+struct make_refinement_symbol<Repr<dimensional_t<Units...>>>
 {
   using type = mitamagic::type_list<mitamagic::atomic_refinement_symbol<Units>...>;
 };
 
 template < class T >
-using make_refiment_symbol_t = typename make_refiment_symbol<std::decay_t<T>>::type;
+using make_refinement_symbol_t = typename make_refinement_symbol<std::decay_t<T>>::type;
 
 } // ! namespace mitama
 

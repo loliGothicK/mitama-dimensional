@@ -1,7 +1,9 @@
 #include "../include/dimensional/quantity.hpp"
 #include "../include/dimensional/arithmetic.hpp"
-#include "../include/dimensional/si/meter.hpp"
-#include "../include/dimensional/si/second.hpp"
+#include "../include/dimensional/si_units/all.hpp"
+#include "../include/dimensional/nonsi_units/hour.hpp"
+#include "../include/dimensional/derived_units/area.hpp"
+#include "../include/dimensional/derived_units/angle.hpp"
 #include "../include/dimensional/io.hpp"
 #include "../include/dimensional/refinement.hpp"
 #include "../include/dimensional/prefix.hpp"
@@ -44,6 +46,7 @@ int main(){
         // a / b := a * b^{-1}
         auto r4 = a / b;
         REPL(r4);
+        REPL(1 + r4);       
         REPL(boost::typeindex::type_id<decltype(r4)>().pretty_name());
 
         quantity<si::millimeter_t, int> d(a);
@@ -76,7 +79,7 @@ int main(){
         quantity<speed_t> V = L/T;
         std::cout << boost::typeindex::type_id<decltype(L*T)>().pretty_name() << std::endl;
 
-        std::cout << V.get() << "[ km/h ]" << std::endl;
+        std::cout << V.value() << "[ km/h ]" << std::endl;
         {
             auto w = 36 | si::kilogram<> * si::meter<2> * si::second<-2> * si::ampere<-1>;
             std::cout << boost::typeindex::type_id<decltype(w)>().pretty_name() << std::endl;
@@ -109,8 +112,8 @@ int main(){
         REPL(sqrt(v));
         REPL(cbrt(v));
 
-        REPL(min((1|si::meters),(1|si::millimeters),(1|si::centimeters)));
-        REPL(max((1|si::meters),(1|si::millimeters),(1|si::centimeters)));
+        REPL(mitama::min((1|si::meters),(1|si::millimeters),(1|si::centimeters)));
+        REPL(mitama::max((1|si::meters),(1|si::millimeters),(1|si::centimeters)));
         std::cout << "------------------------\n";
 
         REPL(pow<5>(2|si::meters));
@@ -149,21 +152,27 @@ int main(){
     }
 
     {
-        quantity_t a1 = refined<area_r> |= (2|si::meters) * (7|si::meters);
+        quantity_t a1 = accepts<si::area_r> |= (2|si::meters) * (7|si::meters);
         REPL(a1);
 
-        quantity_t a2 = refined<area_r> |= (2|si::millimeters) * (7|si::millimeters);
+        quantity_t a2 = accepts<si::area_r> |= (2|si::millimeters) * (7|si::millimeters);
         REPL(a2);
 
         // error!
-        // quantity_t a3 = refined<area_r> |= (2|si::millimeters);
+        // quantity_t a3 = accepts<area_r> |= (2|si::millimeters);
 
-        quantity_t a3 = partial_refined_for<sym::M<>> |= (2|si::meters) * (2|si::meters) * (2|si::kilograms) / (2|si::second<2>);
+        quantity_t a3 = partial_accepts_for<sym::M<>> |= (2|si::meters) * (2|si::meters) * (2|si::kilograms) / (2|si::second<2>);
         REPL(a3);
     }
 
     {
         delta d = (2|si::kelvins) - (1|si::kelvins);
         REPL((1|nonsi::degree_celsius) + d);
+    }
+
+    {
+        quantity_t m = 1.0 | si::meters * si::radian;
+        quantity_for<double, si::meter_<>> x = m.into();
+        REPL(x);
     }
 }

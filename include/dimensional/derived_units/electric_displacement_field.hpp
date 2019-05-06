@@ -11,7 +11,7 @@ template<class> struct electric_displacement_field_repr{};
 using electric_displacement_field_t = make_synonym_t<electric_displacement_field_repr, decltype(coulomb / meter<2>)>;
 
 inline constexpr electric_displacement_field_t electric_displacement_field{};
-using electric_displacement_field_r = make_refiment_symbol_t<electric_displacement_field_t>;
+using electric_displacement_field_r = make_refinement_symbol_t<electric_displacement_field_t>;
 }
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_POLARIZATION_DENSITY_HPP

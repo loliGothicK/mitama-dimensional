@@ -12,7 +12,7 @@ using diffusion_coefficient_t = make_synonym_t<diffusion_coefficient_repr, declt
 
 #if !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_THERMAL_DIFFUSIVITY_HPP) && !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_KINEMATIC_VISCOSITY_HPP)
 inline constexpr diffusion_coefficient_t diffusion_coefficient{};
-using diffusion_coefficient_r = make_refiment_symbol_t<diffusion_coefficient_t>;
+using diffusion_coefficient_r = make_refinement_symbol_t<diffusion_coefficient_t>;
 #endif
 }
 

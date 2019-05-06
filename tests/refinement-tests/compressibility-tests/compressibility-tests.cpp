@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("compressibility refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::compressibility_r> |= quantity_t<si::compressibility_t>{}) == quantity_t<si::compressibility_t>{});
+  REQUIRE((mitama::accepts<si::compressibility_r> |= quantity_t<si::compressibility_t>{}) == quantity_t<si::compressibility_t>{});
 }
 

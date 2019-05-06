@@ -5,7 +5,6 @@
 #include <utility>
 #include <tuple>
 #include <random>
-#include <catch2/catch.hpp>
 #include <Result.hpp>
 
 #define IS_INVALID_EXPR(...)                                     \
@@ -90,6 +89,8 @@ struct protean_bool {
 
 template <class T, class... Ts> struct Overload : T, Overload<Ts...> {
   Overload(T a, Ts... xs) : T{a}, Overload<Ts...>{xs...} {}
+  Overload(Overload const&) = default;
+  Overload(Overload&&) = default;
   using T::operator();
   using Overload<Ts...>::operator();
 };
@@ -97,6 +98,8 @@ template <class T, class... Ts> struct Overload : T, Overload<Ts...> {
 template <class T> struct Overload<T> : T {
   Overload(T a) : T{a} {}
   using T::operator();
+  Overload(Overload const&) = default;
+  Overload(Overload&&) = default;
 };
 
 template <class... F> inline constexpr Overload<F...> make_overload(F &&... f) {

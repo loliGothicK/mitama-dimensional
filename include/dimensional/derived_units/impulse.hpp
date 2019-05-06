@@ -11,7 +11,7 @@ template<class> struct impulse_repr{};
 using impulse_t = make_synonym_t<impulse_repr, decltype(meter<> * kilogram<> * second<-1>)>;
 
 inline constexpr impulse_t impulse{};
-using impulse_r = make_refiment_symbol_t<impulse_t>;
+using impulse_r = make_refinement_symbol_t<impulse_t>;
 }
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_MOMENTUM_HPP

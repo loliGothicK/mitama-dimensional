@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("catalytic_efficiency refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::catalytic_efficiency_r> |= quantity_t<si::catalytic_efficiency_t>{}) == quantity_t<si::catalytic_efficiency_t>{});
+  REQUIRE((mitama::accepts<si::catalytic_efficiency_r> |= quantity_t<si::catalytic_efficiency_t>{}) == quantity_t<si::catalytic_efficiency_t>{});
 }
 

@@ -11,7 +11,7 @@ template<class> struct surface_tension_repr{};
 using surface_tension_t = make_synonym_t<surface_tension_repr, decltype(newton / meter<>)>;
 
 inline constexpr surface_tension_t surface_tension{};
-using surface_tension_r = make_refiment_symbol_t<surface_tension_t>;
+using surface_tension_r = make_refinement_symbol_t<surface_tension_t>;
 }
 
 namespace mitama {

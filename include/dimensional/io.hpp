@@ -2,7 +2,7 @@
 #define MITAMA_DIMENSIONAL_IO_HPP
 #include "quantity.hpp"
 #include "si_units/all.hpp"
-#include "mitamagic/utility.hpp"
+#include "mitamagic/utility_ext.hpp"
 #include <iostream>
 #include <type_traits>
 #include <string>
@@ -90,7 +90,7 @@ std::string
 to_string(quantity_t<Repr<dimensional_t<Head, Tail...>>, T> const &quantity) {
   using namespace std::literals;
   std::ostringstream ss;
-  ss << quantity.get();
+  ss << quantity.value();
   return ss.str() + " [" + si_formatter<Head>::format() +
          (("·"s + si_formatter<Tail>::format()) + ... + "]");
 }
@@ -99,7 +99,7 @@ template <template <class> class Repr, class T>
 std::string
 to_string(quantity_t<Repr<dimensional_t<>>, T> const &quantity) {
   std::ostringstream ss;
-  ss << quantity.get();
+  ss << quantity.value();
   return ss.str() + " [dimensionless]";
 }
 
@@ -109,7 +109,7 @@ operator<<(std::ostream &os,
            quantity_t<Repr<dimensional_t<Units...>>, T> const &quantity) {
   if constexpr (is_complete_type<
                            abbreviation<Repr<dimensional_t<Units...>>>>::value) {
-    return os << quantity.get() << " ["
+    return os << quantity.value() << " ["
               << abbreviation<Repr<dimensional_t<Units...>>>::str << "]";
   } else if constexpr (std::conjunction_v<
                     is_complete_type<prefix_<typename Units::scale>>...>) {

@@ -11,7 +11,7 @@ template<class> struct moment_of_inertia_repr{};
 using moment_of_inertia_t = make_synonym_t<moment_of_inertia_repr, decltype(kilogram<> * meter<2>)>;
 
 inline constexpr moment_of_inertia_t moment_of_inertia{};
-using moment_of_inertia_r = make_refiment_symbol_t<moment_of_inertia_t>;
+using moment_of_inertia_r = make_refinement_symbol_t<moment_of_inertia_t>;
 }
 
 namespace mitama {

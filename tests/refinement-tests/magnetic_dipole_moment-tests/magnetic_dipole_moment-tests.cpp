@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("magnetic_dipole_moment refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::magnetic_dipole_moment_r> |= quantity_t<si::magnetic_dipole_moment_t>{}) == quantity_t<si::magnetic_dipole_moment_t>{});
+  REQUIRE((mitama::accepts<si::magnetic_dipole_moment_r> |= quantity_t<si::magnetic_dipole_moment_t>{}) == quantity_t<si::magnetic_dipole_moment_t>{});
 }
 

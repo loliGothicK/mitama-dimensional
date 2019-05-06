@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("magnetization refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::magnetization_r> |= quantity_t<si::magnetization_t>{}) == quantity_t<si::magnetization_t>{});
+  REQUIRE((mitama::accepts<si::magnetization_r> |= quantity_t<si::magnetization_t>{}) == quantity_t<si::magnetization_t>{});
 }
 

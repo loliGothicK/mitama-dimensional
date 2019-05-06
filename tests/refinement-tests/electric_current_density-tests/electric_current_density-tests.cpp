@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("electric_current_density refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::electric_current_density_r> |= quantity_t<si::electric_current_density_t>{}) == quantity_t<si::electric_current_density_t>{});
+  REQUIRE((mitama::accepts<si::electric_current_density_r> |= quantity_t<si::electric_current_density_t>{}) == quantity_t<si::electric_current_density_t>{});
 }
 

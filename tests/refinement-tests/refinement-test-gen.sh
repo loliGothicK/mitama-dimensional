@@ -14,7 +14,7 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("$1 refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::$1_r> |= quantity_t<si::$1_t>{}) == quantity_t<si::$1_t>{});
+  REQUIRE((mitama::accepts<si::$1_r> |= quantity_t<si::$1_t>{}) == quantity_t<si::$1_t>{});
 }
 
 EOS
