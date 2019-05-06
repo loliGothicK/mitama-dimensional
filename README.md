@@ -2,6 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/LoliGothick/mitama-dimensional.svg?style=svg)](https://circleci.com/gh/LoliGothick/mitama-dimensional)
 
+[![Build status](https://ci.appveyor.com/api/projects/status/3wv0d11ovfagkmvy/branch/master?svg=true)](https://ci.appveyor.com/project/LoliGothick/mitama-dimensional/branch/master)
 
 ## What is mitama-dimensional?
 
@@ -104,14 +105,14 @@ int main() {
 
 int main() {
     namespace si = mitama::si;
-    using mitama::refined, mitama::sym::L;
+    using mitama::accepts_for, mitama::sym::L;
 
     // width = 2 m
     mitama::quantity_t<si::meter_t, int> width = 2;
     // height = 3 mm
     mitama::quantity_t<si::millimeter_t, int> height = 3;
     // area = 6000 mm^2
-    mitama::quantity_t area = refined<L<2>> |= width * height;
+    mitama::quantity_t area = accepts_for<L<2>> |= width * height;
     //                        ^~~~~~~~~~~~~~~~
     //                        refine for L^2
 }
