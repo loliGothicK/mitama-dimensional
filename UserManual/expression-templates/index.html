@@ -42,7 +42,7 @@
     
     
       
-        <title>Dimensional refinement - Mitama.Dimensional | User Manual</title>
+        <title>Expression templates - Mitama.Dimensional | User Manual</title>
       
     
     
@@ -112,7 +112,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#dimensional-refinement" tabindex="1" class="md-skip">
+      <a href="#expression-templates" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -137,7 +137,7 @@
               Mitama.Dimensional | User Manual
             </span>
             <span class="md-header-nav__topic">
-              Dimensional refinement
+              Expression templates
             </span>
           
         </div>
@@ -204,14 +204,16 @@
       
         
 
-<nav class="md-tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
   <li class="md-tabs__item">
     
-      <a href="../.." title="Home" class="md-tabs__link md-tabs__link--active">
+      <a href="../.." title="Home" class="md-tabs__link">
         Home
       </a>
     
@@ -223,7 +225,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../dimensional-quantity-101/" title="User Manual" class="md-tabs__link">
+        <a href="../dimensional-quantity-101/" title="User Manual" class="md-tabs__link md-tabs__link--active">
           User Manual
         </a>
       
@@ -305,10 +307,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
     
     <label class="md-nav__link" for="nav-2">
       User Manual
@@ -428,6 +432,52 @@
   </li>
 
         
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Expression templates
+      </label>
+    
+    <a href="./" title="Expression templates" class="md-nav__link md-nav__link--active">
+      Expression templates
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#expression-templates" title="Expression templates" class="md-nav__link">
+    Expression templates
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -507,8 +557,6 @@
 <nav class="md-nav md-nav--secondary">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
@@ -537,18 +585,15 @@
               
                 
                 
-                <h1 id="dimensional-refinement">Dimensional refinement</h1>
-<blockquote>
-<p>"I mean, it's sort of exciting, isn't it, breaking the rules?" — Hermione Granger, Harry Potter and the Order of the Phoenix</p>
-</blockquote>
-<hr />
-<h2 id="expression-templates">Expression templates</h2>
-<p>Addition of celsious temperature and absolute temperature is possible by performing a conversion.
+                  <h1>Expression templates</h1>
+                
+                <h2 id="expression-templates">Expression templates</h2>
+<p>Addition of celsius temperature and absolute temperature is possible by performing a conversion.
 However, there is a problem.
 Compiler do not know if it would be nice if the result could be adjusted to either unit.</p>
 <p>In order to solve this problem, an expression template is used.
-An expression template creates a temporary object and delays unit conversion until substitution.
-Determine how to perform unit conversion from the dimension of substitution destination.</p>
+An expression template creates a temporary object and delays unit calculation until assignment.
+Determine how to perform unit conversion from the dimension of assignment destination.</p>
 <div class="codehilite"><pre><span></span><span class="c1">// begin example</span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/quantity.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/nonsi_units/degree_celsius.hpp&gt;</span><span class="cp"></span>
@@ -587,6 +632,41 @@ Determine how to perform unit conversion from the dimension of substitution dest
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../user-defined-dimension/" title="User define dimension" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                User define dimension
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../Reference/quantity/" title="class quantity_t" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                class quantity_t
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

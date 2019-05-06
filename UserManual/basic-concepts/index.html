@@ -519,6 +519,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../expression-templates/" title="Expression templates" class="md-nav__link">
+      Expression templates
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -683,7 +695,7 @@
 </blockquote>
 <hr />
 <h2 id="tldr">TL;DR</h2>
-<p><code class="codehilite">mitama::quantity_t</code> is a class template that is represents a dimensional quantity.
+<p><code class="codehilite">mitama::quantity_t</code> is a class template that is represents dimensional quantity.
 quantity_t has units as a phantom type.
 It can handle rational exponents like <script type="math/tex">m ^ {2/3}</script> as a unit.</p>
 <p>In the following are the explanations of the detailed definitions, their techniques, and metaprogramming, but if you are not interested, please proceed to the next page.</p>
@@ -792,13 +804,13 @@ a: D_\Lambda
 mul(U_1, U_2) := (e_1 + e_2, min(s_1, s_2))_\lambda
 </script>
 </p>
-<p>And consider simple dual loop:</p>
+<p>And we consider simple dual loop:</p>
 <ol>
 <li>Pick a <code class="codehilite">unit_t</code> <strong>A</strong> from left.</li>
 <li>If there is a right for <strong>B</strong> with the same dimensions as <strong>A</strong>, push If there is a right for <strong>B</strong> with the same dimensions as <strong>A</strong>, push <script type="math/tex">mul(A, B)</script> to result and pop <strong>A</strong> and remove <strong>B</strong> from right, else push <strong>A</strong> to result and pop <strong>A</strong>.</li>
 <li>If left does not empty, return to 1, else push the rest of right to result</li>
 </ol>
-<p>start with empty result.</p>
+<p>Start with:</p>
 <p>
 <script type="math/tex; mode=display">
 left = [m^2 \cdot s^{-1}] \\
@@ -806,7 +818,8 @@ right = [kg \cdot s^{-1}] \\
 result = [\ ]
 </script>
 </p>
-<p>pick <script type="math/tex">A=m^2</script>, and not found B.</p>
+<p>Pick <script type="math/tex">A=m^2</script>, and not found B.
+Then, we push <script type="math/tex">m^2</script> to result and pop <script type="math/tex">m^2</script> from left.</p>
 <p>
 <script type="math/tex; mode=display">
 left = [s^{-1}] \\
@@ -814,7 +827,8 @@ right = [kg \cdot s^{-1}] \\
 result = [m^2]
 </script>
 </p>
-<p>pick <script type="math/tex">A=s^{-1}</script>, found <script type="math/tex">B=s^{-1}</script>.</p>
+<p>Pick <script type="math/tex">A=s^{-1}</script>, found <script type="math/tex">B=s^{-1}</script>.
+Then, we push <script type="math/tex">s^{-1}</script> to result, pop <script type="math/tex">s^{-1}</script> from left, and pop <script type="math/tex">s^{-1}</script> from right.</p>
 <p>
 <script type="math/tex; mode=display">
 left = [\ ] \\
@@ -822,7 +836,8 @@ right = [kg] \\
 result = [m^2 \cdot s^{-2}]
 </script>
 </p>
-<p>push the rest of right to result</p>
+<p>Now, left is empty.
+So we push the rest units of right to result.</p>
 <p>
 <script type="math/tex; mode=display">
 left = [\ ] \\
