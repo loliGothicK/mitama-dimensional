@@ -13,7 +13,7 @@
         <meta name="description" content="Mitama.Dimensional C++17 Library">
       
       
-        <link rel="canonical" href="https://loligothick.github.io/mitama-dimensional/">
+        <link rel="canonical" href="https://loligothick.github.io/mitama-dimensional/UserManual/expression-templates/">
       
       
         <meta name="author" content="mitama">
@@ -37,18 +37,18 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="assets/images/favicon.ico">
+      <link rel="shortcut icon" href="../../assets/images/favicon.ico">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.2">
     
     
       
-        <title>Mitama.Dimensional | User Manual</title>
+        <title>Dimensional refinement - Mitama.Dimensional | User Manual</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/application.3020aac5.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.3020aac5.css">
       
-        <link rel="stylesheet" href="assets/stylesheets/application-palette.224b79ff.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
       
       
         
@@ -57,7 +57,7 @@
       
     
     
-      <script src="assets/javascripts/modernizr.01ccdecf.js"></script>
+      <script src="../../assets/javascripts/modernizr.01ccdecf.js"></script>
     
     
       
@@ -66,12 +66,12 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     
-      <link rel="stylesheet" href="cppmap_styles.css">
+      <link rel="stylesheet" href="../../cppmap_styles.css">
     
     
       
@@ -112,7 +112,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#introduction" tabindex="1" class="md-skip">
+      <a href="#dimensional-refinement" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -137,7 +137,7 @@
               Mitama.Dimensional | User Manual
             </span>
             <span class="md-header-nav__topic">
-              Home
+              Dimensional refinement
             </span>
           
         </div>
@@ -211,7 +211,7 @@
         
   <li class="md-tabs__item">
     
-      <a href="." title="Home" class="md-tabs__link md-tabs__link--active">
+      <a href="../.." title="Home" class="md-tabs__link md-tabs__link--active">
         Home
       </a>
     
@@ -223,7 +223,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="UserManual/dimensional-quantity-101/" title="User Manual" class="md-tabs__link">
+        <a href="../dimensional-quantity-101/" title="User Manual" class="md-tabs__link">
           User Manual
         </a>
       
@@ -236,7 +236,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="Reference/quantity/" title="Reference" class="md-tabs__link">
+        <a href="../../Reference/quantity/" title="Reference" class="md-tabs__link">
           Reference
         </a>
       
@@ -293,49 +293,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Home
-      </label>
-    
-    <a href="." title="Home" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
       Home
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#motivation" title="Motivation" class="md-nav__link">
-    Motivation
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
     
@@ -364,7 +326,7 @@
 
 
   <li class="md-nav__item">
-    <a href="UserManual/dimensional-quantity-101/" title="Dimensional quantity 101" class="md-nav__link">
+    <a href="../dimensional-quantity-101/" title="Dimensional quantity 101" class="md-nav__link">
       Dimensional quantity 101
     </a>
   </li>
@@ -376,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="UserManual/basic-concepts/" title="Basic Concepts" class="md-nav__link">
+    <a href="../basic-concepts/" title="Basic Concepts" class="md-nav__link">
       Basic Concepts
     </a>
   </li>
@@ -388,7 +350,7 @@
 
 
   <li class="md-nav__item">
-    <a href="UserManual/mitama_quantity_t/" title="Quantity" class="md-nav__link">
+    <a href="../mitama_quantity_t/" title="Quantity" class="md-nav__link">
       Quantity
     </a>
   </li>
@@ -400,7 +362,7 @@
 
 
   <li class="md-nav__item">
-    <a href="UserManual/dimensional-quantifiers/" title="Dimensional quantifiers" class="md-nav__link">
+    <a href="../dimensional-quantifiers/" title="Dimensional quantifiers" class="md-nav__link">
       Dimensional quantifiers
     </a>
   </li>
@@ -412,7 +374,7 @@
 
 
   <li class="md-nav__item">
-    <a href="UserManual/metric-prefixes/" title="Metric prefixes" class="md-nav__link">
+    <a href="../metric-prefixes/" title="Metric prefixes" class="md-nav__link">
       Metric prefixes
     </a>
   </li>
@@ -424,7 +386,7 @@
 
 
   <li class="md-nav__item">
-    <a href="UserManual/si-derived-units/" title="Library defined SI derived units and format" class="md-nav__link">
+    <a href="../si-derived-units/" title="Library defined SI derived units and format" class="md-nav__link">
       Library defined SI derived units and format
     </a>
   </li>
@@ -436,7 +398,7 @@
 
 
   <li class="md-nav__item">
-    <a href="UserManual/dimensional-refinement/" title="Dimensional refinement" class="md-nav__link">
+    <a href="../dimensional-refinement/" title="Dimensional refinement" class="md-nav__link">
       Dimensional refinement
     </a>
   </li>
@@ -448,7 +410,7 @@
 
 
   <li class="md-nav__item">
-    <a href="UserManual/delta-type/" title="Delta type" class="md-nav__link">
+    <a href="../delta-type/" title="Delta type" class="md-nav__link">
       Delta type
     </a>
   </li>
@@ -460,7 +422,7 @@
 
 
   <li class="md-nav__item">
-    <a href="UserManual/user-defined-dimension/" title="User define dimension" class="md-nav__link">
+    <a href="../user-defined-dimension/" title="User define dimension" class="md-nav__link">
       User define dimension
     </a>
   </li>
@@ -496,7 +458,7 @@
 
 
   <li class="md-nav__item">
-    <a href="Reference/quantity/" title="class quantity_t" class="md-nav__link">
+    <a href="../../Reference/quantity/" title="class quantity_t" class="md-nav__link">
       class quantity_t
     </a>
   </li>
@@ -508,7 +470,7 @@
 
 
   <li class="md-nav__item">
-    <a href="Reference/arithmetic/" title="arithmetic" class="md-nav__link">
+    <a href="../../Reference/arithmetic/" title="arithmetic" class="md-nav__link">
       arithmetic
     </a>
   </li>
@@ -525,7 +487,7 @@
 
 
   <li class="md-nav__item">
-    <a href="CONTRIBUTION/" title="Contribution" class="md-nav__link">
+    <a href="../../CONTRIBUTION/" title="Contribution" class="md-nav__link">
       Contribution
     </a>
   </li>
@@ -552,8 +514,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#motivation" title="Motivation" class="md-nav__link">
-    Motivation
+  <a href="#expression-templates" title="Expression templates" class="md-nav__link">
+    Expression templates
   </a>
   
 </li>
@@ -575,22 +537,40 @@
               
                 
                 
-                <p><img alt="logo" src="assets/images/logo.png" /></p>
-<h1 id="introduction">Introduction</h1>
+                <h1 id="dimensional-refinement">Dimensional refinement</h1>
 <blockquote>
-<p>"Don't trust what you compile in your brain unless you know where wording of standard is."</p>
+<p>"I mean, it's sort of exciting, isn't it, breaking the rules?" — Hermione Granger, Harry Potter and the Order of the Phoenix</p>
 </blockquote>
 <hr />
-<h2 id="motivation">Motivation</h2>
-<p>In real world, we treat dimensional quantities (length, mass, time, ...).
-And we know that addition and subtraction of quantities with different dimensions like <code class="codehilite">1 m + 2 kg</code> do not make sense.</p>
-<p>Because we use a statically typed programming language C++, expressions that do not make sense should be ill-formed.
-Consequently, the natural idea of ​​expressing and distinguishing dimensions by types comes out.</p>
-<p>C++ Units Libraries already exist (e.g. Boost.Units).</p>
-<p>However, these libraries have the problem that the quantities that can be represent are limited to <em>Physical Quantities</em>.</p>
-<p>This library proposes a type system that does not limit available dimensions.
-In this library, it becomes possible to handle physical quantities and user defined dimensions (e.g. currency) in an integrated syntax.</p>
-<p>In addition, Mitama.Dimensional takes advantage of C++17 features/libraries and provides better syntax than the conventional Units libraries.</p>
+<h2 id="expression-templates">Expression templates</h2>
+<p>Addition of celsious temperature and absolute temperature is possible by performing a conversion.
+However, there is a problem.
+Compiler do not know if it would be nice if the result could be adjusted to either unit.</p>
+<p>In order to solve this problem, an expression template is used.
+An expression template creates a temporary object and delays unit conversion until substitution.
+Determine how to perform unit conversion from the dimension of substitution destination.</p>
+<div class="codehilite"><pre><span></span><span class="c1">// begin example</span>
+<span class="cp">#include</span> <span class="cpf">&lt;dimensional/quantity.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;dimensional/nonsi_units/degree_celsius.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;dimensional/expr.hpp&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="k">namespace</span> <span class="n">si</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
+    <span class="k">namespace</span> <span class="n">nonsi</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">nonsi</span><span class="p">;</span>
+    <span class="k">using</span> <span class="n">mitama</span><span class="o">::</span><span class="n">quantity</span><span class="p">,</span> <span class="n">mitama</span><span class="o">::</span><span class="n">as_expr</span><span class="p">;</span>
+
+    <span class="n">quantity</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">si</span><span class="o">::</span><span class="n">kelvin</span><span class="o">&lt;&gt;</span> <span class="o">/</span> <span class="n">si</span><span class="o">::</span><span class="n">second</span><span class="o">&lt;&gt;</span><span class="p">)</span><span class="o">&gt;</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">as_expr</span><span class="p">(</span><span class="mi">1</span><span class="o">|</span><span class="n">si</span><span class="o">::</span><span class="n">kelvins</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">|</span><span class="n">si</span><span class="o">::</span><span class="n">seconds</span><span class="p">)</span> <span class="o">+</span>
+            <span class="n">as_expr</span><span class="p">(</span><span class="mi">2</span><span class="o">|</span><span class="n">nonsi</span><span class="o">::</span><span class="n">degree_celsius</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">|</span><span class="n">si</span><span class="o">::</span><span class="n">seconds</span><span class="p">);</span>
+    <span class="c1">// x = 137.575 [K/s]</span>
+
+    <span class="n">quantity</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">si</span><span class="o">::</span><span class="n">kelvin</span><span class="o">&lt;&gt;</span> <span class="o">/</span> <span class="n">si</span><span class="o">::</span><span class="n">second</span><span class="o">&lt;&gt;</span><span class="p">)</span><span class="o">&gt;</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">as_expr</span><span class="p">(</span><span class="mi">11</span><span class="o">|</span><span class="n">si</span><span class="o">::</span><span class="n">kelvins</span><span class="p">)</span> <span class="o">-</span> <span class="n">as_expr</span><span class="p">(</span><span class="mi">1</span><span class="o">|</span><span class="n">si</span><span class="o">::</span><span class="n">kelvins</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">|</span><span class="n">si</span><span class="o">::</span><span class="n">seconds</span><span class="p">)</span> <span class="o">+</span> 
+            <span class="p">(</span><span class="n">as_expr</span><span class="p">(</span><span class="mi">21</span><span class="o">|</span><span class="n">nonsi</span><span class="o">::</span><span class="n">degree_celsius</span><span class="p">)</span> <span class="o">-</span> <span class="n">as_expr</span><span class="p">(</span><span class="mi">1</span><span class="o">|</span><span class="n">nonsi</span><span class="o">::</span><span class="n">degree_celsius</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">|</span><span class="n">si</span><span class="o">::</span><span class="n">seconds</span><span class="p">);</span>
+    <span class="c1">// x = 15 [K/s]</span>
+<span class="p">}</span>
+<span class="c1">// end example</span>
+</pre></div>
                 
                   
                 
@@ -608,27 +588,6 @@ In this library, it becomes possible to handle physical quantities and user defi
         
 <footer class="md-footer">
   
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-        
-          <a href="UserManual/dimensional-quantity-101/" title="Dimensional quantity 101" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Dimensional quantity 101
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
-  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
@@ -641,7 +600,7 @@ In this library, it becomes possible to handle physical quantities and user defi
       </div>
       
   <div class="md-footer-social">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.css">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
     
       <a href="https://twitter.com/mitama_rs" class="md-footer-social__link fa fa-twitter"></a>
     
@@ -653,13 +612,13 @@ In this library, it becomes possible to handle physical quantities and user defi
       
     </div>
     
-      <script src="assets/javascripts/application.267712eb.js"></script>
+      <script src="../../assets/javascripts/application.267712eb.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
         <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
       
-        <script src="mathjaxhelper.js"></script>
+        <script src="../../mathjaxhelper.js"></script>
       
     
   </body>

@@ -234,6 +234,19 @@
 
       
         
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Reference/quantity/" title="Reference" class="md-tabs__link">
+          Reference
+        </a>
+      
+    </li>
+  
+
+      
+        
       
     </ul>
   </div>
@@ -341,8 +354,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../mitama_quantity_t/" title="mitama::quantity_t" class="md-nav__link">
-      mitama::quantity_t
+    <a href="../mitama_quantity_t/" title="Quantity" class="md-nav__link">
+      Quantity
     </a>
   </li>
 
@@ -353,8 +366,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../dimensional-quantifiers/" title="dimensional quantifiers" class="md-nav__link">
-      dimensional quantifiers
+    <a href="../dimensional-quantifiers/" title="Dimensional quantifiers" class="md-nav__link">
+      Dimensional quantifiers
     </a>
   </li>
 
@@ -474,6 +487,54 @@
       
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Reference
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Reference
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Reference/quantity/" title="class quantity_t" class="md-nav__link">
+      class quantity_t
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Reference/arithmetic/" title="arithmetic" class="md-nav__link">
+      arithmetic
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
   <li class="md-nav__item">
     <a href="../../CONTRIBUTION/" title="Contribution" class="md-nav__link">
       Contribution
@@ -542,23 +603,23 @@
 <p>A function that can be guaranteed at compile time to have dimensions in accordance with the purpose while inferring units of quantity type.</p>
 <p>The following is a compilation error if the quantity <code class="codehilite">(2 | meters) * (7 | meters)</code> does not have the dimension of area <script type="math/tex"> L^2</script>  completely.
 This code can be compiled through refinement, since <script type="math/tex">m^2</script>  is of dimension <script type="math/tex"> L^2</script> .</p>
-<div class="codehilite"><pre><span></span><span class="n">quantity_t</span> <span class="n">a1</span> <span class="o">=</span> <span class="n">refined</span><span class="o">&lt;</span><span class="n">area_r</span><span class="o">&gt;</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">2</span><span class="o">|</span><span class="n">meters</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">7</span><span class="o">|</span><span class="n">meters</span><span class="p">);</span>
+<div class="codehilite"><pre><span></span><span class="n">quantity_t</span> <span class="n">a1</span> <span class="o">=</span> <span class="n">accepts</span><span class="o">&lt;</span><span class="n">area_r</span><span class="o">&gt;</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">2</span><span class="o">|</span><span class="n">meters</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">7</span><span class="o">|</span><span class="n">meters</span><span class="p">);</span>
 </pre></div>
 
 <p>If you want to specify the unit should be written as follows. The difference is that automatic unit conversion is performed when units are different.
-<code class="codehilite">refined</code> examines only the dimensions, not the units.</p>
+<code class="codehilite">accepts</code> examines only the dimensions, not the units.</p>
 <div class="codehilite"><pre><span></span><span class="n">quantity</span><span class="o">&lt;</span><span class="n">meter_t</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">a1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">|</span><span class="n">meters</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">7</span><span class="o">|</span><span class="n">meters</span><span class="p">);</span>
 </pre></div>
 
 <p>The following example does not compile. This is because <script type="math/tex">m</script> is the dimension of <script type="math/tex">L</script>  and not <script type="math/tex">L^2</script> .</p>
-<div class="codehilite"><pre><span></span><span class="n">quantity_t</span> <span class="n">a3</span> <span class="o">=</span> <span class="n">refined</span><span class="o">&lt;</span><span class="n">area_r</span><span class="o">&gt;</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">2</span><span class="o">|</span><span class="n">millimeters</span><span class="p">);</span> <span class="c1">// error!</span>
+<div class="codehilite"><pre><span></span><span class="n">quantity_t</span> <span class="n">a3</span> <span class="o">=</span> <span class="n">accepts</span><span class="o">&lt;</span><span class="n">area_r</span><span class="o">&gt;</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">2</span><span class="o">|</span><span class="n">millimeters</span><span class="p">);</span> <span class="c1">// error!</span>
 </pre></div>
 
 <h2 id="partial-refinement-type">Partial refinement type</h2>
 <p>The following is a compilation error if the quantity <code class="codehilite">(2 | meters) * (2 | meters) * (2 | kilograms) / (2 | second &lt;2&gt;)</code> does not partially have the dimension of mass <script type="math/tex">M</script> .
 The compilation passes because it actually has.</p>
 <div class="codehilite"><pre><span></span><span class="n">quantity_t</span> <span class="n">a3</span>
-    <span class="o">=</span> <span class="n">partial_refined</span><span class="o">&lt;</span><span class="n">sym</span><span class="o">::</span><span class="n">M</span><span class="o">&lt;&gt;&gt;</span>
+    <span class="o">=</span> <span class="n">partial_accepts</span><span class="o">&lt;</span><span class="n">sym</span><span class="o">::</span><span class="n">M</span><span class="o">&lt;&gt;&gt;</span>
     <span class="o">|=</span> <span class="p">(</span><span class="mi">2</span><span class="o">|</span><span class="n">meters</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">|</span><span class="n">meters</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">|</span><span class="n">kilograms</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">|</span><span class="n">second</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">);</span>
 </pre></div>
                 

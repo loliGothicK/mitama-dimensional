@@ -42,7 +42,7 @@
     
     
       
-        <title>mitama::quantity_t - Mitama.Dimensional | User Manual</title>
+        <title>Quantity - Mitama.Dimensional | User Manual</title>
       
     
     
@@ -137,7 +137,7 @@
               Mitama.Dimensional | User Manual
             </span>
             <span class="md-header-nav__topic">
-              mitama::quantity_t
+              Quantity
             </span>
           
         </div>
@@ -227,6 +227,19 @@
       
         <a href="../dimensional-quantity-101/" title="User Manual" class="md-tabs__link md-tabs__link--active">
           User Manual
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Reference/quantity/" title="Reference" class="md-tabs__link">
+          Reference
         </a>
       
     </li>
@@ -350,11 +363,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        mitama::quantity_t
+        Quantity
       </label>
     
-    <a href="./" title="mitama::quantity_t" class="md-nav__link md-nav__link--active">
-      mitama::quantity_t
+    <a href="./" title="Quantity" class="md-nav__link md-nav__link--active">
+      Quantity
     </a>
     
       
@@ -405,8 +418,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../dimensional-quantifiers/" title="dimensional quantifiers" class="md-nav__link">
-      dimensional quantifiers
+    <a href="../dimensional-quantifiers/" title="Dimensional quantifiers" class="md-nav__link">
+      Dimensional quantifiers
     </a>
   </li>
 
@@ -467,6 +480,54 @@
   <li class="md-nav__item">
     <a href="../user-defined-dimension/" title="User define dimension" class="md-nav__link">
       User define dimension
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Reference
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Reference
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Reference/quantity/" title="class quantity_t" class="md-nav__link">
+      class quantity_t
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Reference/arithmetic/" title="arithmetic" class="md-nav__link">
+      arithmetic
     </a>
   </li>
 
@@ -647,6 +708,10 @@ Conversion between units with different dimensions will result in compilation er
 <td align="center"><code class="codehilite">q1 / v</code></td>
 <td align="center"><code class="codehilite">std::declval&lt;T1&gt;() / std::declval&lt;T3&gt;()</code> is valid expression</td>
 </tr>
+<tr>
+<td align="center"><code class="codehilite">v / q1</code></td>
+<td align="center"><code class="codehilite">std::declval&lt;T3&gt;() / std::declval&lt;T1&gt;()</code> is valid expression</td>
+</tr>
 </tbody>
 </table>
 <p>Otherwise, arithmetic operators do not participate in overload resolution.</p>
@@ -669,6 +734,7 @@ Conversion between units with different dimensions will result in compilation er
     <span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="p">;</span> <span class="c1">// 8 [m]</span>
     <span class="n">b</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 8 [m]</span>
     <span class="n">b</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 1 [m]</span>
+    <span class="mi">2</span> <span class="o">/</span> <span class="n">b</span><span class="p">;</span> <span class="c1">// 1 [m^-1]</span>
 <span class="p">}</span>
 <span class="c1">// end example</span>
 </pre></div>
@@ -731,13 +797,13 @@ For example, meters plus millimeters convert meters to millimeters.</p>
           </a>
         
         
-          <a href="../dimensional-quantifiers/" title="dimensional quantifiers" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../dimensional-quantifiers/" title="Dimensional quantifiers" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                dimensional quantifiers
+                Dimensional quantifiers
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
