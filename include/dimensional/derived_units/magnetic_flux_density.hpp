@@ -11,7 +11,7 @@ template<class> struct magnetic_flux_density_repr{};
 using magnetic_flux_density_t = make_synonym_t<magnetic_flux_density_repr, decltype(kilogram<> * second<-2> * ampere<-1>)>;
 
 inline constexpr magnetic_flux_density_t tesla{};
-using magnetic_flux_density_r = make_refiment_symbol_t<magnetic_flux_density_t>;
+using magnetic_flux_density_r = make_refinement_symbol_t<magnetic_flux_density_t>;
 }
 
 namespace mitama {

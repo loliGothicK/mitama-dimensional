@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("pop refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::pop_r> |= quantity_t<si::pop_t>{}) == quantity_t<si::pop_t>{});
+  REQUIRE((mitama::accepts<si::pop_r> |= quantity_t<si::pop_t>{}) == quantity_t<si::pop_t>{});
 }
 

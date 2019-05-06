@@ -15,7 +15,7 @@ TEMPLATE_TEST_CASE("delta construct",
                    meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
 {
     delta d = (2|TestType{}) - (1|TestType{});
-    REQUIRE(d.get() == (1|TestType{}));
+    REQUIRE(d.value() == (1|TestType{}));
 }
 
 TEMPLATE_TEST_CASE("delta addition",

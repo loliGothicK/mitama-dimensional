@@ -11,7 +11,7 @@ template<class> struct magnetic_vector_potential_repr{};
 using magnetic_vector_potential_t = make_synonym_t<magnetic_vector_potential_repr, decltype(weber / meter<>)>;
 
 inline constexpr magnetic_vector_potential_t magnetic_vector_potential{};
-using magnetic_vector_potential_r = make_refiment_symbol_t<magnetic_vector_potential_t>;
+using magnetic_vector_potential_r = make_refinement_symbol_t<magnetic_vector_potential_t>;
 }
 
 namespace mitama {

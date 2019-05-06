@@ -10,7 +10,7 @@ namespace mitama::si {
 using frequency_drift_t = std::decay_t<decltype(second<-2>)>;
 
 inline constexpr frequency_drift_t frequency_drift{};
-using frequency_drift_r = make_refiment_symbol_t<frequency_drift_t>;
+using frequency_drift_r = make_refinement_symbol_t<frequency_drift_t>;
 }
 
 namespace mitama {

@@ -11,7 +11,7 @@ template<class> struct heat_flux_repr{};
 using heat_flux_t = make_synonym_t<heat_flux_repr, decltype(watt * meter<-2>)>;
 
 inline constexpr heat_flux_t heat_flux{};
-using heat_flux_r = make_refiment_symbol_t<heat_flux_t>;
+using heat_flux_r = make_refinement_symbol_t<heat_flux_t>;
 }
 
 namespace mitama {

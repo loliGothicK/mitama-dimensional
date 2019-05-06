@@ -11,7 +11,7 @@ template<class> struct molar_conductivity_repr{};
 using molar_conductivity_t = make_synonym_t<molar_conductivity_repr, decltype(siemens * meter<2> / mol<>)>;
 
 inline constexpr molar_conductivity_t molar_conductivity{};
-using molar_conductivity_r = make_refiment_symbol_t<molar_conductivity_t>;
+using molar_conductivity_r = make_refinement_symbol_t<molar_conductivity_t>;
 }
 
 namespace mitama {

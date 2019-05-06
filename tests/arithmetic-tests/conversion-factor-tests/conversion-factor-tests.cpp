@@ -6,18 +6,18 @@ TEMPLATE_TEST_CASE("conversion-factor-tests",
     quantity<TestType, int> a = 1;
     quantity<TestType, int> b = 1;
     SECTION( "same scale" ) {
-        REQUIRE( (a + b).get() == 2 );
-        REQUIRE( (a - b).get() == 0 );
+        REQUIRE( (a + b).value() == 2 );
+        REQUIRE( (a - b).value() == 0 );
     }
     SECTION( "different scale" ) {
         quantity<scaled_unit_t<TestType, std::milli>, int> c = 1;
         quantity<scaled_unit_t<TestType, std::kilo>, int> d = 1;
-        REQUIRE( (c + b).get() == 1'001 );
-        REQUIRE( (a - c).get() == 999 );
-        REQUIRE( (b + d).get() == 1'001 );
-        REQUIRE( (b - d).get() == -999 );
-        REQUIRE( (c + d).get() == 1'000'001 );
-        REQUIRE( (d - c).get() == 999'999 );
+        REQUIRE( (c + b).value() == 1'001 );
+        REQUIRE( (a - c).value() == 999 );
+        REQUIRE( (b + d).value() == 1'001 );
+        REQUIRE( (b - d).value() == -999 );
+        REQUIRE( (c + d).value() == 1'000'001 );
+        REQUIRE( (d - c).value() == 999'999 );
     }
 }
 

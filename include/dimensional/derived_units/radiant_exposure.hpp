@@ -11,7 +11,7 @@ template<class> struct radiant_exposure_repr{};
 using radiant_exposure_t = make_synonym_t<radiant_exposure_repr, decltype(joule / meter<2>)>;
 
 inline constexpr radiant_exposure_t radiant_exposure{};
-using radiant_exposure_r = make_refiment_symbol_t<radiant_exposure_t>;
+using radiant_exposure_r = make_refinement_symbol_t<radiant_exposure_t>;
 }
 
 namespace mitama {

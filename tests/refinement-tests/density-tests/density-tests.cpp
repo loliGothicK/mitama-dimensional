@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("density refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::density_r> |= quantity_t<si::density_t>{}) == quantity_t<si::density_t>{});
+  REQUIRE((mitama::accepts<si::density_r> |= quantity_t<si::density_t>{}) == quantity_t<si::density_t>{});
 }
 

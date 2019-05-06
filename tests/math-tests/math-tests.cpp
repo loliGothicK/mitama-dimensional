@@ -26,7 +26,7 @@ TEMPLATE_TEST_CASE("abs tests",
             .take(1000)
             .required([](auto value){
                 quantity<TestType, int> v = value;
-                return abs(v).get() == std::abs(value);
+                return abs(v).value() == std::abs(value);
             }));
 }
 
@@ -42,7 +42,7 @@ TEMPLATE_TEST_CASE("min tests",
             .template required<2>([](auto v1, auto v2){
                 quantity<TestType, int> q1 = v1;
                 quantity<TestType, int> q2 = v2;
-                return min(q1, q2).get() == std::min({v1, v2});
+                return min(q1, q2).value() == std::min({v1, v2});
             }));
 }
 
@@ -58,7 +58,7 @@ TEMPLATE_TEST_CASE("max tests",
             .template required<2>([](auto v1, auto v2){
                 quantity<TestType, int> q1 = v1;
                 quantity<TestType, int> q2 = v2;
-                return max(q1, q2).get() == std::max({v1, v2});
+                return max(q1, q2).value() == std::max({v1, v2});
             }));
 }
 
@@ -80,14 +80,14 @@ TEMPLATE_TEST_CASE("pow tests",
             .take(1000)
             .required([](auto value){
                 quantity<TestType> v = value;
-                return mitama::pow<-1>(v).get() == Approx(std::pow(value, -1));
+                return mitama::pow<-1>(v).value() == Approx(std::pow(value, -1));
             }));
     REQUIRE(
         test_util::RandomGenerator<int>::uniform(0, 10000)
             .take(1000)
             .required([](auto value){
                 quantity<TestType> v = value;
-                return mitama::pow<std::ratio<3, 2>>(v).get() == Approx(std::pow(value, 3.l/2.l));
+                return mitama::pow<std::ratio<3, 2>>(v).value() == Approx(std::pow(value, 3.l/2.l));
             }));
 }
 
@@ -132,7 +132,7 @@ TEMPLATE_TEST_CASE("sqrt tests",
             .take(1000)
             .required([](auto value){
                 quantity<TestType> v = value;
-                return sqrt(v).get() == Approx(std::sqrt(value));
+                return sqrt(v).value() == Approx(std::sqrt(value));
             }));
 }
 
@@ -147,7 +147,7 @@ TEMPLATE_TEST_CASE("cbrt tests",
             .take(1000)
             .required([](auto value){
                 quantity<TestType> v = value;
-                return cbrt(v).get() == Approx(std::cbrt(value));
+                return cbrt(v).value() == Approx(std::cbrt(value));
             }));
 }
 
@@ -378,66 +378,66 @@ TEMPLATE_TEST_CASE("fmod with dimensionless denominator", "[math],[quantity],[fm
                    radian_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
 {
     using namespace Catch::literals;
-    REQUIRE(fmod(quantity<TestType>(5.0), 2.0).get() == 1.0_a);
-    REQUIRE(fmod(quantity<TestType>(6.0), 4.0).get() == 2.0_a);
-    REQUIRE(fmod(quantity<TestType>(6.3), 3.0).get() == 0.3_a);
-    REQUIRE(fmod(quantity<TestType>(6.3), -3.0).get() == 0.3_a);
-    REQUIRE(fmod(quantity<TestType>(-6.3), 3.0).get() == -0.3_a);
-    REQUIRE(fmod(quantity<TestType>(-6.3), -3.0).get() == -0.3_a);
-    REQUIRE(fmod(quantity<TestType>(6.3), 3.15).get() == 0.0_a);
-    REQUIRE(fmod(quantity<TestType>(6.0), 2.0).get() == 0.0_a);
+    REQUIRE(fmod(quantity<TestType>(5.0), 2.0).value() == 1.0_a);
+    REQUIRE(fmod(quantity<TestType>(6.0), 4.0).value() == 2.0_a);
+    REQUIRE(fmod(quantity<TestType>(6.3), 3.0).value() == 0.3_a);
+    REQUIRE(fmod(quantity<TestType>(6.3), -3.0).value() == 0.3_a);
+    REQUIRE(fmod(quantity<TestType>(-6.3), 3.0).value() == -0.3_a);
+    REQUIRE(fmod(quantity<TestType>(-6.3), -3.0).value() == -0.3_a);
+    REQUIRE(fmod(quantity<TestType>(6.3), 3.15).value() == 0.0_a);
+    REQUIRE(fmod(quantity<TestType>(6.0), 2.0).value() == 0.0_a);
 }
 
 TEMPLATE_TEST_CASE("fmod with dimensional quantity denominator", "[math],[quantity],[fmod]",
                    radian_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
 {
     using namespace Catch::literals;
-    REQUIRE(fmod(quantity<TestType>(5.0), quantity<TestType>(2.0)).get() == 1.0_a);
-    REQUIRE(fmod(quantity<TestType>(6.0), quantity<TestType>(4.0)).get() == 2.0_a);
-    REQUIRE(fmod(quantity<TestType>(6.3), quantity<TestType>(3.0)).get() == 0.3_a);
-    REQUIRE(fmod(quantity<TestType>(6.3), quantity<TestType>(-3.0)).get() == 0.3_a);
-    REQUIRE(fmod(quantity<TestType>(-6.3), quantity<TestType>(3.0)).get() == -0.3_a);
-    REQUIRE(fmod(quantity<TestType>(-6.3), quantity<TestType>(-3.0)).get() == -0.3_a);
-    REQUIRE(fmod(quantity<TestType>(6.3), quantity<TestType>(3.15)).get() == 0.0_a);
-    REQUIRE(fmod(quantity<TestType>(6.0), quantity<TestType>(2.0)).get() == 0.0_a);
+    REQUIRE(fmod(quantity<TestType>(5.0), quantity<TestType>(2.0)).value() == 1.0_a);
+    REQUIRE(fmod(quantity<TestType>(6.0), quantity<TestType>(4.0)).value() == 2.0_a);
+    REQUIRE(fmod(quantity<TestType>(6.3), quantity<TestType>(3.0)).value() == 0.3_a);
+    REQUIRE(fmod(quantity<TestType>(6.3), quantity<TestType>(-3.0)).value() == 0.3_a);
+    REQUIRE(fmod(quantity<TestType>(-6.3), quantity<TestType>(3.0)).value() == -0.3_a);
+    REQUIRE(fmod(quantity<TestType>(-6.3), quantity<TestType>(-3.0)).value() == -0.3_a);
+    REQUIRE(fmod(quantity<TestType>(6.3), quantity<TestType>(3.15)).value() == 0.0_a);
+    REQUIRE(fmod(quantity<TestType>(6.0), quantity<TestType>(2.0)).value() == 0.0_a);
 }
 
 TEMPLATE_TEST_CASE("remainder with dimensionless denominator", "[math],[quantity],[remainder]",
                    radian_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
 {
     using namespace Catch::literals;
-    REQUIRE(remainder(quantity<TestType>(5), 2).get() == 1.0_a);
-    REQUIRE(remainder(quantity<TestType>(6), 4).get() == -2.0_a);
-    REQUIRE(remainder(quantity<TestType>(6.3), 3).get() == 0.3_a);
-    REQUIRE(remainder(quantity<TestType>(6.3), -3).get() == 0.3_a);
-    REQUIRE(remainder(quantity<TestType>(-6.3), 3).get() == -0.3_a);
-    REQUIRE(remainder(quantity<TestType>(-6.3), -3).get() == -0.3_a);
-    REQUIRE(remainder(quantity<TestType>(6.3), 3.15).get() == 0.0_a);
-    REQUIRE(remainder(quantity<TestType>(6), 2).get() == 0.0_a);
+    REQUIRE(remainder(quantity<TestType>(5), 2).value() == 1.0_a);
+    REQUIRE(remainder(quantity<TestType>(6), 4).value() == -2.0_a);
+    REQUIRE(remainder(quantity<TestType>(6.3), 3).value() == 0.3_a);
+    REQUIRE(remainder(quantity<TestType>(6.3), -3).value() == 0.3_a);
+    REQUIRE(remainder(quantity<TestType>(-6.3), 3).value() == -0.3_a);
+    REQUIRE(remainder(quantity<TestType>(-6.3), -3).value() == -0.3_a);
+    REQUIRE(remainder(quantity<TestType>(6.3), 3.15).value() == 0.0_a);
+    REQUIRE(remainder(quantity<TestType>(6), 2).value() == 0.0_a);
 }
 
 TEMPLATE_TEST_CASE("remainder with dimensional quantity denominator", "[math],[quantity],[remainder]",
                    radian_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
 {
     using namespace Catch::literals;
-    REQUIRE(remainder(quantity<TestType>(5), quantity<TestType>(2)).get() == 1.0_a);
-    REQUIRE(remainder(quantity<TestType>(6), quantity<TestType>(4)).get() == -2.0_a);
-    REQUIRE(remainder(quantity<TestType>(6.3), quantity<TestType>(3)).get() == 0.3_a);
-    REQUIRE(remainder(quantity<TestType>(6.3), quantity<TestType>(-3)).get() == 0.3_a);
-    REQUIRE(remainder(quantity<TestType>(-6.3), quantity<TestType>(3)).get() == -0.3_a);
-    REQUIRE(remainder(quantity<TestType>(-6.3), quantity<TestType>(-3)).get() == -0.3_a);
-    REQUIRE(remainder(quantity<TestType>(6.3), quantity<TestType>(3.15)).get() == 0.0_a);
-    REQUIRE(remainder(quantity<TestType>(6), quantity<TestType>(2)).get() == 0.0_a);
+    REQUIRE(remainder(quantity<TestType>(5), quantity<TestType>(2)).value() == 1.0_a);
+    REQUIRE(remainder(quantity<TestType>(6), quantity<TestType>(4)).value() == -2.0_a);
+    REQUIRE(remainder(quantity<TestType>(6.3), quantity<TestType>(3)).value() == 0.3_a);
+    REQUIRE(remainder(quantity<TestType>(6.3), quantity<TestType>(-3)).value() == 0.3_a);
+    REQUIRE(remainder(quantity<TestType>(-6.3), quantity<TestType>(3)).value() == -0.3_a);
+    REQUIRE(remainder(quantity<TestType>(-6.3), quantity<TestType>(-3)).value() == -0.3_a);
+    REQUIRE(remainder(quantity<TestType>(6.3), quantity<TestType>(3.15)).value() == 0.0_a);
+    REQUIRE(remainder(quantity<TestType>(6), quantity<TestType>(2)).value() == 0.0_a);
 }
 
 TEMPLATE_TEST_CASE("dim", "[math],[quantity],[remainder]",
                    radian_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
 {
     using namespace Catch::literals;
-    REQUIRE(dim(quantity<TestType>(5), quantity<TestType>(2)).get() == 3.0_a);
-    REQUIRE(dim(quantity<TestType>(6), quantity<TestType>(4)).get() == 2.0_a);
-    REQUIRE(dim(quantity<TestType>(1), quantity<TestType>(3)).get() == +0);
-    REQUIRE(dim(quantity<TestType>(-4), quantity<TestType>(-3)).get() == +0);
+    REQUIRE(dim(quantity<TestType>(5), quantity<TestType>(2)).value() == 3.0_a);
+    REQUIRE(dim(quantity<TestType>(6), quantity<TestType>(4)).value() == 2.0_a);
+    REQUIRE(dim(quantity<TestType>(1), quantity<TestType>(3)).value() == +0);
+    REQUIRE(dim(quantity<TestType>(-4), quantity<TestType>(-3)).value() == +0);
 }
 
 TEMPLATE_TEST_CASE("log", "[math],[quantity],[log]",

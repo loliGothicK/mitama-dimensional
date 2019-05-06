@@ -12,7 +12,7 @@ template<class> struct specific_heat_capacity_repr{};
 using specific_heat_capacity_t = make_synonym_t<specific_heat_capacity_repr, decltype( joule * kilogram<-1> * kelvin<-1> )>;
 
 inline constexpr specific_heat_capacity_t specific_heat_capacity{};
-using specific_heat_capacity_r = make_refiment_symbol_t<specific_heat_capacity_t>;
+using specific_heat_capacity_r = make_refinement_symbol_t<specific_heat_capacity_t>;
 }
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_SPECIFIC_ENTROPY_HPP

@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("fuel_efficiency refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::fuel_efficiency_r> |= quantity_t<si::fuel_efficiency_t>{}) == quantity_t<si::fuel_efficiency_t>{});
+  REQUIRE((mitama::accepts<si::fuel_efficiency_r> |= quantity_t<si::fuel_efficiency_t>{}) == quantity_t<si::fuel_efficiency_t>{});
 }
 

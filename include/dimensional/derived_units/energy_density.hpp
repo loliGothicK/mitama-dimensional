@@ -11,7 +11,7 @@ template<class> struct energy_density_repr{};
 using energy_density_t = make_synonym_t<energy_density_repr, decltype(joule / meter<3>)>;
 
 inline constexpr energy_density_t energy_density{};
-using energy_density_r = make_refiment_symbol_t<energy_density_t>;
+using energy_density_r = make_refinement_symbol_t<energy_density_t>;
 }
 
 namespace mitama {

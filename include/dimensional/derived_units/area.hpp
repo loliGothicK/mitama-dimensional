@@ -10,7 +10,7 @@ namespace mitama::si {
 using area_t = powered_t<meter_t, 2>;
 
 inline constexpr area_t area{};
-using area_r = make_refiment_symbol_t<area_t>;
+using area_r = make_refinement_symbol_t<area_t>;
 }
 
 #endif

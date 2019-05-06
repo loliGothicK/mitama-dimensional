@@ -7,15 +7,15 @@
 namespace mitama {
     template < class T >
     auto sin(quantity<si::radian_t, T> const& rad) {
-        return std::sin(rad.get());
+        return std::sin(rad.value());
     }
     template < class T >
     auto cos(quantity<si::radian_t, T> const& rad) {
-        return std::cos(rad.get());
+        return std::cos(rad.value());
     }
     template < class T >
     auto tan(quantity<si::radian_t, T> const& rad) {
-        return std::tan(rad.get());
+        return std::tan(rad.value());
     }
     template < class T, std::enable_if_t<!is_quantity_v<T>, bool> = false>
     auto asin(T const& v) {

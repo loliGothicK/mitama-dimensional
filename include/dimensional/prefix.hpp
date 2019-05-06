@@ -1,8 +1,13 @@
 #ifndef MITAMA_DIMENSIONAL_PREFIX_HPP
 #define MITAMA_DIMENSIONAL_PREFIX_HPP
-#include "mitamagic/utility.hpp"
 #include "dimensional_phantom.hpp"
 #include "units.hpp"
+#include "mitamagic/utility_ext.hpp"
+#include "mitamagic/ratio_ext.hpp"
+
+#include <ratio>
+#include <type_traits>
+
 namespace mitama {
 template <
     template<class> class Repr,

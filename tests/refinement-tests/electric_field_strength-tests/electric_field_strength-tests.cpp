@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("electric_field_strength refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::electric_field_strength_r> |= quantity_t<si::electric_field_strength_t>{}) == quantity_t<si::electric_field_strength_t>{});
+  REQUIRE((mitama::accepts<si::electric_field_strength_r> |= quantity_t<si::electric_field_strength_t>{}) == quantity_t<si::electric_field_strength_t>{});
 }
 

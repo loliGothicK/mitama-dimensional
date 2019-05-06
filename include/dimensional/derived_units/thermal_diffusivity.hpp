@@ -12,7 +12,7 @@ using thermal_diffusivity_t = make_synonym_t<thermal_diffusivity_repr, decltype(
 
 #if !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_KINEMATIC_VISCOSITY_HPP) && !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_DIFFUSION_COEFFICIENT_HPP)
 inline constexpr thermal_diffusivity_t thermal_diffusivity{};
-using thermal_diffusivity_r = make_refiment_symbol_t<thermal_diffusivity_t>;
+using thermal_diffusivity_r = make_refinement_symbol_t<thermal_diffusivity_t>;
 #endif
 }
 

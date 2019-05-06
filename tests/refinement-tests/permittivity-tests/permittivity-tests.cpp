@@ -9,6 +9,6 @@ using namespace mitama;
 using namespace mitama::si;
 
 TEST_CASE("permittivity refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::refined<si::permittivity_r> |= quantity_t<si::permittivity_t>{}) == quantity_t<si::permittivity_t>{});
+  REQUIRE((mitama::accepts<si::permittivity_r> |= quantity_t<si::permittivity_t>{}) == quantity_t<si::permittivity_t>{});
 }
 
