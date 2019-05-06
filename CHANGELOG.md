@@ -317,8 +317,27 @@ int main() {
 
 - 単項 +/- 演算子サポート
 - 無次元の次元量のみ特別に暗黙のUnderlying Typeへの変換を許可
-- `get()` と同じ用途の関数 `value()` を追加
-- Into Traitと`qantity_t::into()`メソッドを追加
+- `get()` を廃止して `value()` に変更
+- Into Traitと`qantity_t::into()`メソッドを追加（無次元を含む組み立て次元量を無次元を含まない次元量に変換可能な一時オブジェクトを返す）
 - refinementをacceptsとrejectsに分割して再定義
+- in-placeコンストラクタの追加
+- quantity_for alias templateとquantity_forのためのSI basic unitsのalias template群を追加
 
+### バグ修正
+
+- 四則演算の型制限の見直し
+- 比較演算子（`==`, `!=`, `<`, `<=`, `>`, `>=`）の型制限の見直し 
+- fix typo {make_refiment_symbol_t => make_refinement_symbol_t}
+- 
+
+### New compiler support
+
+- MSVC (latest only)
+- clang-7.1
+- gcc-9.1
+
+### ドキュメント
+
+- [environment](https://loligothick.github.io/mitama-dimensional/)として公開中（expression templatesを書き足した）
+- リファレンスを執筆中
 
