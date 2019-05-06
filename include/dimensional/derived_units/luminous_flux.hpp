@@ -7,8 +7,8 @@
 #include "solid_angle.hpp"
 
 namespace mitama::si {
-template<class> struct luminous_flux_repr{};
-using luminous_flux_t = make_synonym_t<luminous_flux_repr, decltype(candela<> * steradian)>;
+template<class> struct luminous_flux_synonym{};
+using luminous_flux_t = make_synonym_t<luminous_flux_synonym, decltype(candela<> * steradian)>;
 
 inline constexpr luminous_flux_t lumen{};
 using luminous_flux_r = make_refinement_symbol_t<luminous_flux_t>;

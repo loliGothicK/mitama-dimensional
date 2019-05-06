@@ -7,8 +7,8 @@
 #include "power.hpp"
 
 namespace mitama::si {
-template<class> struct heat_flux_density_repr{};
-using heat_flux_density_t = make_synonym_t<heat_flux_density_repr, decltype(watt / meter<2>)>;
+template<class> struct heat_flux_density_synonym{};
+using heat_flux_density_t = make_synonym_t<heat_flux_density_synonym, decltype(watt / meter<2>)>;
 
 inline constexpr heat_flux_density_t heat_flux_density{};
 using heat_flux_density_r = make_refinement_symbol_t<heat_flux_density_t>;

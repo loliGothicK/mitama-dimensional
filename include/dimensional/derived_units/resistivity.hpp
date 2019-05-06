@@ -7,8 +7,8 @@
 #include "resistance.hpp"
 
 namespace mitama::si {
-template<class> struct resistivity_repr{};
-using resistivity_t = make_synonym_t<resistivity_repr, decltype(ohm * meter<>)>;
+template<class> struct resistivity_synonym{};
+using resistivity_t = make_synonym_t<resistivity_synonym, decltype(ohm * meter<>)>;
 
 inline constexpr resistivity_t resistivity{};
 using resistivity_r = make_refinement_symbol_t<resistivity_t>;

@@ -8,8 +8,8 @@
 
 
 namespace mitama::si {
-template<class> struct specific_entropy_repr{};
-using specific_entropy_t = make_synonym_t<specific_entropy_repr, decltype( joule / (kilograms * kelvins) )>;
+template<class> struct specific_entropy_synonym{};
+using specific_entropy_t = make_synonym_t<specific_entropy_synonym, decltype( joule / (kilograms * kelvins) )>;
 
 inline constexpr specific_entropy_t specific_entropy{};
 using specific_entropy_r = make_refinement_symbol_t<specific_entropy_t>;

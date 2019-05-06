@@ -7,8 +7,8 @@
 
 
 namespace mitama::si {
-template<class> struct catalytic_efficiency_repr{};
-using catalytic_efficiency_t = make_synonym_t<catalytic_efficiency_repr, decltype(meter<3> / (mol<> * second<>))>;
+template<class> struct catalytic_efficiency_synonym{};
+using catalytic_efficiency_t = make_synonym_t<catalytic_efficiency_synonym, decltype(meter<3> / (mol<> * second<>))>;
 
 inline constexpr catalytic_efficiency_t catalytic_efficiency{};
 using catalytic_efficiency_r = make_refinement_symbol_t<catalytic_efficiency_t>;

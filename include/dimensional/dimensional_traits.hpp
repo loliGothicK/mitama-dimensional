@@ -20,8 +20,8 @@ namespace mitama {
     // dimensional_t traits
     template <class> struct is_dimensional : std::false_type {};
 
-    template <template <class> class Repr, class... Units>
-    struct is_dimensional<Repr<dimensional_t<Units...>>> : std::true_type {};
+    template <template <class> class Synonym, class... Units>
+    struct is_dimensional<Synonym<dimensional_t<Units...>>> : std::true_type {};
 
     template <class D>
     inline constexpr bool is_dimensional_v = is_dimensional<D>::value;
@@ -36,10 +36,10 @@ namespace mitama {
     template <class T, class U,
             class... Units1,
             class... Units2,
-            template <class> class Repr1,
-            template <class> class Repr2>
-    struct is_same_dimensional<quantity_t<Repr1<dimensional_t<Units1...>>, T>,
-                            quantity_t<Repr2<dimensional_t<Units2...>>, U>>
+            template <class> class Synonym1,
+            template <class> class Synonym2>
+    struct is_same_dimensional<quantity_t<Synonym1<dimensional_t<Units1...>>, T>,
+                            quantity_t<Synonym2<dimensional_t<Units2...>>, U>>
         : std::conjunction<
             std::bool_constant<sizeof...(Units1) == sizeof...(Units2)>,
             std::is_base_of<typename Units1::tag,
@@ -61,9 +61,9 @@ namespace mitama {
     template < template <class> class, class >
     struct remove_dim_if;
 
-    template < template <class> class Pred, template <class> class Repr, class T, class... Units >
-    struct remove_dim_if<Pred, quantity_t<Repr<dimensional_t<Units...>>, T>> {
-    using type = quantity_t<Repr<mitamagic::tlist_remove_if_t<Pred, dimensional_t<Units...>>>, T>;
+    template < template <class> class Pred, template <class> class Synonym, class T, class... Units >
+    struct remove_dim_if<Pred, quantity_t<Synonym<dimensional_t<Units...>>, T>> {
+    using type = quantity_t<Synonym<mitamagic::tlist_remove_if_t<Pred, dimensional_t<Units...>>>, T>;
     };
 
     template < template <class> class Pred, class Q >
@@ -78,8 +78,8 @@ namespace mitama {
 
     template < class > struct is_dimensional_quantifier: std::false_type {};
 
-    template < template<class>class Repr, class... Units >
-    struct is_dimensional_quantifier<Repr<dimensional_t<Units...>>>: std::true_type {};
+    template < template<class>class Synonym, class... Units >
+    struct is_dimensional_quantifier<Synonym<dimensional_t<Units...>>>: std::true_type {};
 
     template <class Q1, class Q2, class... Quantities>
     struct common_type

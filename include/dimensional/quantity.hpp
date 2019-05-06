@@ -8,9 +8,9 @@ namespace mitama {
 template < class >
 struct dimensionless_converter {};
 
-template < template <class> class Repr, class T >
-struct dimensionless_converter<quantity_t<Repr<dimensional_t<>>, T>> {
-  operator T() const { return static_cast<quantity_t<Repr<dimensional_t<>>, T> const*>(this)->value(); }
+template < template <class> class Synonym, class T >
+struct dimensionless_converter<quantity_t<Synonym<dimensional_t<>>, T>> {
+  operator T() const { return static_cast<quantity_t<Synonym<dimensional_t<>>, T> const*>(this)->value(); }
 };
 
 
@@ -18,11 +18,11 @@ struct dimensionless_converter<quantity_t<Repr<dimensional_t<>>, T>> {
 template < class Quantity >
 class Into;
 
-template < template <class> class Repr, class T, class... Units >
-class Into<quantity_t<Repr<dimensional_t<Units...>>, T>> {
-  quantity_t<Repr<dimensional_t<Units...>>, T> const& quantity_;
+template < template <class> class Synonym, class T, class... Units >
+class Into<quantity_t<Synonym<dimensional_t<Units...>>, T>> {
+  quantity_t<Synonym<dimensional_t<Units...>>, T> const& quantity_;
 public:
-  constexpr explicit Into(quantity_t<Repr<dimensional_t<Units...>>, T> const& q): quantity_(q) {}
+  constexpr explicit Into(quantity_t<Synonym<dimensional_t<Units...>>, T> const& q): quantity_(q) {}
   // explicitly deleted
   Into() = delete;
   Into(Into const&) = delete;
@@ -33,7 +33,7 @@ public:
   template < class To,
             std::enable_if_t<is_same_dimensional_v<
               remove_dim_if_t<has_dimensionless_tag, To>,
-              remove_dim_if_t<has_dimensionless_tag, quantity_t<Repr<dimensional_t<Units...>>, T>>>
+              remove_dim_if_t<has_dimensionless_tag, quantity_t<Synonym<dimensional_t<Units...>>, T>>>
     , bool> = false >
   constexpr operator To() const {
     return To(quantity_.value());
@@ -58,9 +58,9 @@ dimensional_convert(From const& from) {
 
 namespace mitama {
 
-template <class T, template <class> class Repr, class...Units>
-class quantity_t<Repr<dimensional_t<Units...>>, T>
-  : public dimensionless_converter<quantity_t<Repr<dimensional_t<Units...>>, T>>
+template <class T, template <class> class Synonym, class...Units>
+class quantity_t<Synonym<dimensional_t<Units...>>, T>
+  : public dimensionless_converter<quantity_t<Synonym<dimensional_t<Units...>>, T>>
 {
   template < class >
   friend struct dimensionless_converter;
@@ -320,19 +320,19 @@ template <class T> inline constexpr bool is_quantity_v = is_quantity<T>::value;
 
 namespace mitamagic {
 template <class Dim> struct into_dimensional {
-  using type = si_base_units_repr<dimensional_t<units_t<Dim>>>;
+  using type = si_base_units<dimensional_t<units_t<Dim>>>;
 };
 
 template <class Dim> struct into_dimensional<units_t<Dim>> {
-  using type = si_base_units_repr<dimensional_t<units_t<Dim>>>;
+  using type = si_base_units<dimensional_t<units_t<Dim>>>;
 };
 
 template <class... Units> struct into_dimensional<dimensional_t<Units...>> {
-  using type = si_base_units_repr<dimensional_t<Units...>>;
+  using type = si_base_units<dimensional_t<Units...>>;
 };
 
-template <template<class>class Repr, class... Units> struct into_dimensional<Repr<dimensional_t<Units...>>> {
-  using type = Repr<dimensional_t<Units...>>;
+template <template<class>class Synonym, class... Units> struct into_dimensional<Synonym<dimensional_t<Units...>>> {
+  using type = Synonym<dimensional_t<Units...>>;
 };
 
 template <class Unit>
@@ -369,7 +369,7 @@ operator|(T &&t, Dim) {
   return { mitama::decay_copy(std::forward<T>(t)) };
 }
 
-using dimless_t = si_base_units_repr<dimensional_t<>>;
+using dimless_t = si_base_units<dimensional_t<>>;
 
 template <class Dim, class T = double>
 using quantity = quantity_t<mitamagic::into_dimensional_t<Dim>, T>;

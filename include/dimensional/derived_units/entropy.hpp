@@ -7,8 +7,8 @@
 #include "energy.hpp"
 
 namespace mitama::si {
-template<class> struct entropy_repr{};
-using entropy_t = make_synonym_t<entropy_repr, decltype(joule / kelvins)>;
+template<class> struct entropy_synonym{};
+using entropy_t = make_synonym_t<entropy_synonym, decltype(joule / kelvins)>;
 
 inline constexpr entropy_t entropy{};
 using entropy_r = make_refinement_symbol_t<entropy_t>;

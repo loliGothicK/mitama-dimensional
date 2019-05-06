@@ -6,18 +6,18 @@
 #include "../si_units/meter.hpp"
 namespace mitama {
 
-template < template <class> class Repr, class T, class... Units >
-auto sqrt(quantity_t<Repr<dimensional_t<Units...>>, T> const& quantity) {
-    return quantity_t<Repr<typename mitamagic::powered_dimensional<dimensional_t<Units...>, std::ratio<1, 2>>::type>, T>
+template < template <class> class Synonym, class T, class... Units >
+auto sqrt(quantity_t<Synonym<dimensional_t<Units...>>, T> const& quantity) {
+    return quantity_t<Synonym<typename mitamagic::powered_dimensional<dimensional_t<Units...>, std::ratio<1, 2>>::type>, T>
         {
             static_cast<T>(std::sqrt(quantity.value()))
         };
 }
 
 
-template < template <class> class Repr, class T, class... Units >
-auto cbrt(quantity_t<Repr<dimensional_t<Units...>>, T> const& quantity) {
-    return quantity_t<Repr<typename mitamagic::powered_dimensional<dimensional_t<Units...>, std::ratio<1, 3>>::type>, T>
+template < template <class> class Synonym, class T, class... Units >
+auto cbrt(quantity_t<Synonym<dimensional_t<Units...>>, T> const& quantity) {
+    return quantity_t<Synonym<typename mitamagic::powered_dimensional<dimensional_t<Units...>, std::ratio<1, 3>>::type>, T>
         {
             static_cast<T>(std::cbrt(quantity.value()))
         };

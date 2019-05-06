@@ -125,7 +125,7 @@ template <class... L, class... R,
 struct scaled_demension_helper<dimensional_t<L...>,
                                dimensional_t<R...>,
                                std::index_sequence<I...>> {
-  using type = si_base_units_repr<dimensional_t<
+  using type = si_base_units<dimensional_t<
       units_t<
           typename tlist_element_t<I, type_list<L...>>::dimension_type,
           typename tlist_element_t<I, type_list<L...>>::exponent,
@@ -133,11 +133,11 @@ struct scaled_demension_helper<dimensional_t<L...>,
                     typename tlist_element_t<I, type_list<R...>>::scale>>...>>;
 };
 
-template <template <class> class ReprL,
-          template <class> class ReprR,
+template <template <class> class SynonymL,
+          template <class> class SynonymR,
           class... L, class... R>
-struct scaled_demension<ReprL<dimensional_t<L...>>,
-                        ReprR<dimensional_t<R...>>> {
+struct scaled_demension<SynonymL<dimensional_t<L...>>,
+                        SynonymR<dimensional_t<R...>>> {
   using type = typename scaled_demension_helper<
       dimensional_t<L...>,
       dimensional_t<L...>,
@@ -181,16 +181,16 @@ struct inverse<dimensional_t<Units...>> { // invoke to mitamagic::inversed
   using type = dimensional_t<typename mitamagic::inversed<Units>::type...>;
 };
 
-template < template<class>class Repr, class... Units >
-struct inverse<Repr<dimensional_t<Units...>>> { // invoke to mitamagic::inversed
-  using type = Repr<dimensional_t<typename mitamagic::inversed<Units>::type...>>;
+template < template<class>class Synonym, class... Units >
+struct inverse<Synonym<dimensional_t<Units...>>> { // invoke to mitamagic::inversed
+  using type = Synonym<dimensional_t<typename mitamagic::inversed<Units>::type...>>;
 };
 
 // alias template for inverse
 template <class T> using inverse_t = typename inverse<T>::type;
 
 // meta-operator for reduce with two same dimensions
-// parimary template
+// primary template
 template <class, class> struct reduce { using type = void; };
 
 // meta-operator for reduce with two same dimensions
@@ -255,7 +255,7 @@ template <class... LeftPhantomTypes,
           class... RightPhantomTypes>
 struct quotient<dimensional_t<LeftPhantomTypes...>,
                 dimensional_t<RightPhantomTypes...>> {
-  using type = si_base_units_repr<
+  using type = si_base_units<
     mitamagic::tlist_remove_if_t<
       is_dimensionless_type,
       typename mitamagic::quotient_impl<
@@ -265,13 +265,13 @@ struct quotient<dimensional_t<LeftPhantomTypes...>,
       >::result_type>>;
 };
 
-template <template<class>class ReprL,
-          template<class>class ReprR,
+template <template<class>class SynonymL,
+          template<class>class SynonymR,
           class... LeftPhantomTypes,
           class... RightPhantomTypes>
-struct quotient<ReprL<dimensional_t<LeftPhantomTypes...>>,
-                ReprR<dimensional_t<RightPhantomTypes...>>> {
-  using type = si_base_units_repr<
+struct quotient<SynonymL<dimensional_t<LeftPhantomTypes...>>,
+                SynonymR<dimensional_t<RightPhantomTypes...>>> {
+  using type = si_base_units<
     mitamagic::tlist_remove_if_t<
       is_dimensionless_type,
       typename mitamagic::quotient_impl<
@@ -293,11 +293,11 @@ struct powered_dimensional<dimensional_t<PhantomTypes...>,
                                                 std::ratio<N, D>>,
                             typename PhantomTypes::scale>...>;
 };
-template <template<class>class Repr, std::intmax_t N, std::intmax_t D, class... PhantomTypes>
-struct powered_dimensional<Repr<dimensional_t<PhantomTypes...>>,
+template <template<class>class Synonym, std::intmax_t N, std::intmax_t D, class... PhantomTypes>
+struct powered_dimensional<Synonym<dimensional_t<PhantomTypes...>>,
                            std::ratio<N, D>> {
   using type =
-      Repr<dimensional_t<units_t<typename PhantomTypes::dimension_type,
+      Synonym<dimensional_t<units_t<typename PhantomTypes::dimension_type,
                             std::ratio_multiply<typename PhantomTypes::exponent,
                                                 std::ratio<N, D>>,
                             typename PhantomTypes::scale>...>>;

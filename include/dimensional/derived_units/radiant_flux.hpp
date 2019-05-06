@@ -7,8 +7,8 @@
 
 
 namespace mitama::si {
-template<class> struct radiant_flux_repr{};
-using radiant_flux_t = make_synonym_t<radiant_flux_repr, decltype(kilogram<> * meter<2> * second<-3>)>;
+template<class> struct radiant_flux_synonym{};
+using radiant_flux_t = make_synonym_t<radiant_flux_synonym, decltype(kilogram<> * meter<2> * second<-3>)>;
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_POWER_HPP
 inline constexpr radiant_flux_t watt{};

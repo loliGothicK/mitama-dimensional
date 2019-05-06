@@ -8,8 +8,8 @@
 
 
 namespace mitama::si {
-template<class> struct thermal_resistance_repr{};
-using thermal_resistance_t = make_synonym_t<thermal_resistance_repr, decltype(kelvin<> / watt)>;
+template<class> struct thermal_resistance_synonym{};
+using thermal_resistance_t = make_synonym_t<thermal_resistance_synonym, decltype(kelvin<> / watt)>;
 
 inline constexpr thermal_resistance_t thermal_resistance{};
 using thermal_resistance_r = make_refinement_symbol_t<thermal_resistance_t>;

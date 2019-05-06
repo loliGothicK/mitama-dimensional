@@ -7,8 +7,8 @@
 #include "electric_charge.hpp"
 
 namespace mitama::si {
-template<class> struct electric_displacement_field_repr{};
-using electric_displacement_field_t = make_synonym_t<electric_displacement_field_repr, decltype(coulomb / meter<2>)>;
+template<class> struct electric_displacement_field_synonym{};
+using electric_displacement_field_t = make_synonym_t<electric_displacement_field_synonym, decltype(coulomb / meter<2>)>;
 
 inline constexpr electric_displacement_field_t electric_displacement_field{};
 using electric_displacement_field_r = make_refinement_symbol_t<electric_displacement_field_t>;

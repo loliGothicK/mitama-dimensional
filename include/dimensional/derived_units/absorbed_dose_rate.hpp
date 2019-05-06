@@ -7,9 +7,9 @@
 #include "absorbed_dose.hpp"
 
 namespace mitama::si {
-template < class > struct absorbed_dose_rate_repr{};
+template < class > struct absorbed_dose_rate_synonym{};
 
-using absorbed_dose_rate_t = make_synonym_t<absorbed_dose_rate_repr, decltype(gray / second<>)>;
+using absorbed_dose_rate_t = make_synonym_t<absorbed_dose_rate_synonym, decltype(gray / second<>)>;
 
 inline constexpr absorbed_dose_rate_t absorbed_dose_rate{};
 using absorbed_dose_rate_r = make_refinement_symbol_t<absorbed_dose_rate_t>;

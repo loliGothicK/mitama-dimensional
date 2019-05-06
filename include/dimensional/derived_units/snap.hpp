@@ -7,8 +7,8 @@
 
 
 namespace mitama::si {
-template<class> struct snap_repr{};
-using snap_t = make_synonym_t<snap_repr, decltype(meters * second<-4>)>;
+template<class> struct snap_synonym{};
+using snap_t = make_synonym_t<snap_synonym, decltype(meters * second<-4>)>;
 
 inline constexpr snap_t snap{};
 using snap_r = make_refinement_symbol_t<snap_t>;

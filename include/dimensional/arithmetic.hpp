@@ -123,7 +123,7 @@ constexpr auto
 operator/(typename std::decay_t<R>::value_type const& lhs, R&& rhs)
 {
     return quantity_t<
-            si_base_units_repr<mitamagic::inverse_t<typename std::decay_t<R>::dimension_type>>,
+            si_base_units<mitamagic::inverse_t<typename std::decay_t<R>::dimension_type>>,
             typename std::decay_t<R>::value_type
         >
         { lhs / std::forward<R>(rhs).value() };

@@ -7,8 +7,8 @@
 
 
 namespace mitama::si {
-template<class> struct power_repr{};
-using power_t = make_synonym_t<power_repr, decltype(kilogram<> * meter<2> * second<-3>)>;
+template<class> struct power_synonym{};
+using power_t = make_synonym_t<power_synonym, decltype(kilogram<> * meter<2> * second<-3>)>;
 
 inline constexpr power_t watt{};
 using power_r = make_refinement_symbol_t<power_t>;

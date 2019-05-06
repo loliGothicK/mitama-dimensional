@@ -8,8 +8,8 @@
 #include "magnetic_flux_density.hpp"
 
 namespace mitama::si {
-template<class> struct magnetic_dipole_moment_repr{};
-using magnetic_dipole_moment_t = make_synonym_t<magnetic_dipole_moment_repr, decltype(joule / tesla)>;
+template<class> struct magnetic_dipole_moment_synonym{};
+using magnetic_dipole_moment_t = make_synonym_t<magnetic_dipole_moment_synonym, decltype(joule / tesla)>;
 
 inline constexpr magnetic_dipole_moment_t magnetic_dipole_moment{};
 using magnetic_dipole_moment_r = make_refinement_symbol_t<magnetic_dipole_moment_t>;

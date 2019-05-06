@@ -8,8 +8,8 @@
 
 
 namespace mitama::si {
-template<class> struct thermal_conductivity_repr{};
-using thermal_conductivity_t = make_synonym_t<thermal_conductivity_repr, decltype( watt * meter<-1> * kelvin<-1> )>;
+template<class> struct thermal_conductivity_synonym{};
+using thermal_conductivity_t = make_synonym_t<thermal_conductivity_synonym, decltype( watt * meter<-1> * kelvin<-1> )>;
 
 inline constexpr thermal_conductivity_t thermal_conductivity{};
 using thermal_conductivity_r = make_refinement_symbol_t<thermal_conductivity_t>;

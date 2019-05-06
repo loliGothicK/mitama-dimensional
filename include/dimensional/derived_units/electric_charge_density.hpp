@@ -7,8 +7,8 @@
 #include "electric_charge.hpp"
 
 namespace mitama::si {
-template<class> struct electric_charge_density_repr{};
-using electric_charge_density_t = make_synonym_t<electric_charge_density_repr, decltype(coulomb / meter<3>)>;
+template<class> struct electric_charge_density_synonym{};
+using electric_charge_density_t = make_synonym_t<electric_charge_density_synonym, decltype(coulomb / meter<3>)>;
 
 inline constexpr electric_charge_density_t electric_charge_density{};
 using electric_charge_density_r = make_refinement_symbol_t<electric_charge_density_t>;

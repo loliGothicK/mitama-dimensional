@@ -8,8 +8,8 @@
 
 
 namespace mitama::si {
-template<class> struct angular_velocity_repr{};
-using angular_velocity_t = make_synonym_t<angular_velocity_repr, decltype(radian / seconds)>;
+template<class> struct angular_velocity_synonym{};
+using angular_velocity_t = make_synonym_t<angular_velocity_synonym, decltype(radian / seconds)>;
 
 inline constexpr angular_velocity_t angular_velocity{};
 using angular_velocity_r = make_refinement_symbol_t<angular_velocity_t>;

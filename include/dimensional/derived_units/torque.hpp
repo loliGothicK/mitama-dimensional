@@ -7,8 +7,8 @@
 #include "force.hpp"
 
 namespace mitama::si {
-template<class> struct torque_repr{};
-using torque_t = make_synonym_t<torque_repr, decltype(newton * meters)>;
+template<class> struct torque_synonym{};
+using torque_t = make_synonym_t<torque_synonym, decltype(newton * meters)>;
 
 inline constexpr torque_t torque{};
 using torque_r = make_refinement_symbol_t<torque_t>;

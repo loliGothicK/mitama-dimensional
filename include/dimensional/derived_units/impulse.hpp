@@ -7,8 +7,8 @@
 
 
 namespace mitama::si {
-template<class> struct impulse_repr{};
-using impulse_t = make_synonym_t<impulse_repr, decltype(meter<> * kilogram<> * second<-1>)>;
+template<class> struct impulse_synonym{};
+using impulse_t = make_synonym_t<impulse_synonym, decltype(meter<> * kilogram<> * second<-1>)>;
 
 inline constexpr impulse_t impulse{};
 using impulse_r = make_refinement_symbol_t<impulse_t>;
