@@ -7,7 +7,7 @@
 
 ## TL;DR
 
-`mitama::quantity_t` is a class template that is represents a dimensional quantity.
+`mitama::quantity_t` is a class template that is represents dimensional quantity.
 quantity_t has units as a phantom type.
 It can handle rational exponents like $m ^ {2/3}$ as a unit.
 
@@ -138,14 +138,14 @@ $$
 mul(U_1, U_2) := (e_1 + e_2, min(s_1, s_2))_\lambda
 $$
 
-And consider simple dual loop:
+And we consider simple dual loop:
 
 
 1. Pick a `unit_t` **A** from left.
 2. If there is a right for **B** with the same dimensions as **A**, push If there is a right for **B** with the same dimensions as **A**, push $mul(A, B)$ to result and pop **A** and remove **B** from right, else push **A** to result and pop **A**.
 3. If left does not empty, return to 1, else push the rest of right to result
 
-start with empty result.
+Start with:
 
 $$
 left = [m^2 \cdot s^{-1}] \\
@@ -153,7 +153,9 @@ right = [kg \cdot s^{-1}] \\
 result = [\ ]
 $$
 
-pick $A=m^2$, and not found B.
+
+Pick $A=m^2$, and not found B.
+Then, we push $m^2$ to result and pop $m^2$ from left.
 
 $$
 left = [s^{-1}] \\
@@ -161,7 +163,8 @@ right = [kg \cdot s^{-1}] \\
 result = [m^2]
 $$
 
-pick $A=s^{-1}$, found $B=s^{-1}$.
+Pick $A=s^{-1}$, found $B=s^{-1}$.
+Then, we push $s^{-1}$ to result, pop $s^{-1}$ from left, and pop $s^{-1}$ from right.
 
 $$
 left = [\ ] \\
@@ -169,7 +172,8 @@ right = [kg] \\
 result = [m^2 \cdot s^{-2}]
 $$
 
-push the rest of right to result
+Now, left is empty.
+So we push the rest units of right to result.
 
 $$
 left = [\ ] \\

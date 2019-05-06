@@ -58,6 +58,7 @@ nav:
     - Dimensional refinement: UserManual/dimensional-refinement.md
     - Delta type: UserManual/delta-type.md
     - User define dimension: UserManual/user-defined-dimension.md
+    - Expression templates: UserManual/expression-templates.md
   - Reference:
     - class quantity_t: Reference/quantity.md
     - arithmetic: Reference/arithmetic.md

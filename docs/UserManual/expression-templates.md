@@ -1,18 +1,12 @@
-# Dimensional refinement
-
->"I mean, it's sort of exciting, isn't it, breaking the rules?" — Hermione Granger, Harry Potter and the Order of the Phoenix
-
-----------------------
-
 ## Expression templates
 
-Addition of celsious temperature and absolute temperature is possible by performing a conversion.
+Addition of celsius temperature and absolute temperature is possible by performing a conversion.
 However, there is a problem.
 Compiler do not know if it would be nice if the result could be adjusted to either unit.
 
 In order to solve this problem, an expression template is used.
-An expression template creates a temporary object and delays unit conversion until substitution.
-Determine how to perform unit conversion from the dimension of substitution destination.
+An expression template creates a temporary object and delays unit calculation until assignment.
+Determine how to perform unit conversion from the dimension of assignment destination.
 
 ```cpp
 // begin example
