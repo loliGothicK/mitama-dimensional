@@ -95,7 +95,7 @@ namespace mitama {
     template <class Q1, class Q2, class... Quantities>
     struct common_type
         : ::mitama::common_type<
-            quantity_t<mitamagic::scaled_demension_t<typename Q1::dimension_type,
+            quantity_t<mitamagic::scaled_dimension_t<typename Q1::dimension_type,
                                                     typename Q2::dimension_type>,
                         std::common_type_t<typename Q1::value_type,
                                             typename Q2::value_type>>,
@@ -112,7 +112,7 @@ namespace mitama {
 
     template <class Q1, class Q2> struct common_type<Q1, Q2> {
     using type = quantity_t<
-        mitamagic::scaled_demension_t<typename Q1::dimension_type,
+        mitamagic::scaled_dimension_t<typename Q1::dimension_type,
                                         typename Q2::dimension_type>,
         std::common_type_t<typename Q1::value_type, typename Q2::value_type>>;
     };

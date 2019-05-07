@@ -156,7 +156,7 @@ struct scaled_demension<dimensional_t<L...>,
 };
 
 template <class L, class R>
-using scaled_demension_t =
+using scaled_dimension_t =
     typename scaled_demension<L, R>::type;
 } // namespace mitama::mitamagic
 
