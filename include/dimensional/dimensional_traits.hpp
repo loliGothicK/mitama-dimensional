@@ -9,6 +9,14 @@
 #include "mitamagic/quotient.hpp"
 
 namespace mitama {
+    // quantity_t traits
+    template <class T> struct is_quantity : std::false_type {};
+
+    template <class D, class T>
+    struct is_quantity<quantity_t<D, T>> : std::true_type {};
+
+    template <class T> inline constexpr bool is_quantity_v = is_quantity<T>::value;
+
     // units_t traits
     template <class> struct is_units : std::false_type {};
 
@@ -75,6 +83,9 @@ namespace mitama {
             is_complete_type<converter<From, To>>,
             is_same_dimensional<From, To>>
     {};
+
+    template < class From, class To >
+    inline constexpr bool is_dimensional_convertible_v = is_dimensional_convertible<From, To>::value;
 
     template < class > struct is_dimensional_quantifier: std::false_type {};
 

@@ -40,8 +40,6 @@ public:
   }
 };
 
-template < class From, class To >
-inline constexpr bool is_dimensional_convertible_v = is_dimensional_convertible<From, To>::value;
 
 template < class To, class From >
 inline constexpr std::enable_if_t<is_dimensional_convertible_v<From, To>, To>
@@ -323,14 +321,6 @@ public:
     return Into<quantity_t>(*this);
   }
 };
-
-template <class T> struct is_quantity : std::false_type {};
-
-template <class D, class T>
-struct is_quantity<quantity_t<D, T>> : std::true_type {};
-
-template <class T> inline constexpr bool is_quantity_v = is_quantity<T>::value;
-
 
 namespace mitamagic {
 template <class Dim> struct into_dimensional {
