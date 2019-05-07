@@ -302,8 +302,22 @@ public:
     return this->value_ >= mitamagic::converted_value<quantity_t>(o);
   }
 
-  quantity_t operator-() const { return { -value_ }; }
-  quantity_t operator+() const { using std::abs; return { abs(value_) }; }
+  auto operator-() const {
+    if constexpr (std::is_integral_v<T>) {
+      return quantity_t<Synonym<dimensional_t<Units...>>, decltype(-std::declval<T>())>{ -value_ };
+    }
+    else {
+      return quantity_t{ -value_ };
+    }
+  }
+  auto operator+() const {
+    if constexpr (std::is_integral_v<T>) {
+      return quantity_t<Synonym<dimensional_t<Units...>>, decltype(+std::declval<T>())>{ +value_ };
+    }
+    else {
+      return quantity_t{ +value_ };
+    }
+  }
 
   Into<quantity_t> into() const& {
     return Into<quantity_t>(*this);
