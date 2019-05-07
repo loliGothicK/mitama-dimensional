@@ -20,7 +20,7 @@ constexpr auto
 operator+(L &&lhs, R &&rhs)
 {
     using result_type = std::common_type_t<typename std::decay_t<L>::value_type, typename std::decay_t<R>::value_type>;
-    return quantity_t<mitamagic::scaled_demension_t<typename std::decay_t<L>::dimension_type, typename std::decay_t<R>::dimension_type>, result_type>
+    return quantity_t<mitamagic::scaled_dimension_t<typename std::decay_t<L>::dimension_type, typename std::decay_t<R>::dimension_type>, result_type>
         {
             mitamagic::scaled_value(std::forward<L>(lhs), std::forward<R>(rhs), [](auto a, auto b){ return a + b; })
         };
@@ -48,7 +48,7 @@ constexpr auto
 operator-(L &&lhs, R &&rhs)
 {
     using result_type = std::common_type_t<typename std::decay_t<L>::value_type, typename std::decay_t<R>::value_type>;
-    return quantity_t<mitamagic::scaled_demension_t<typename std::decay_t<L>::dimension_type, typename std::decay_t<R>::dimension_type>, result_type>
+    return quantity_t<mitamagic::scaled_dimension_t<typename std::decay_t<L>::dimension_type, typename std::decay_t<R>::dimension_type>, result_type>
         {
             mitamagic::scaled_value(std::forward<L>(lhs), std::forward<R>(rhs), [](auto a, auto b){ return a - b; })
         };

@@ -101,6 +101,28 @@ constexpr quantity_t &operator=(quantity_t<D, U> const &o) & {
 }
 ```
 
+### In-place constructor
+
+```cpp
+template <class... Args,
+    std::enable_if_t<
+        std::is_constructible_v<T, Args&&...>
+    , bool> = false>
+explicit constexpr quantity_t(std::in_place_t, Args&& ...args)
+    : value_(std::forward<Args>(args)...) {}
+```
+
+### In-place constructor for initializer_list
+
+```cpp
+template <class U, class... Args,
+    std::enable_if_t<
+        std::is_constructible_v<T, std::initializer_list<U>, Args&&...>
+    , bool> = false>
+constexpr explicit quantity_t(std::in_place_t, std::initializer_list<U> il, Args&&... args)
+    : value_(il, std::forward<Args>(args)...) {}
+```
+
 ## Equality and Comparisons
 
 !!! Note
