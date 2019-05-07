@@ -7,8 +7,8 @@
 
 
 namespace mitama::si {
-template<class> struct molar_mass_repr{};
-using molar_mass_t = make_synonym_t<molar_mass_repr, decltype(kilogram<> / mol<>)>;
+template<class> struct molar_mass_synonym{};
+using molar_mass_t = make_synonym_t<molar_mass_synonym, decltype(kilogram<> / mol<>)>;
 
 inline constexpr molar_mass_t molar_mass{};
 using molar_mass_r = make_refinement_symbol_t<molar_mass_t>;

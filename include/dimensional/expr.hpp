@@ -19,32 +19,32 @@ inline constexpr bool is_expr_v = std::is_base_of_v<expr_tag, T>;
 
 template < class T > struct lexical_converter;
 
-template <template <class> class Repr, class T, class Head, class... Tail >
-struct lexical_converter<quantity_t<Repr<dimensional_t<Head, Tail...>>, T>>
+template <template <class> class Synonym, class T, class Head, class... Tail >
+struct lexical_converter<quantity_t<Synonym<dimensional_t<Head, Tail...>>, T>>
 {
   template < class Quantity >
   static constexpr auto convert(Quantity&& value) {
-    if constexpr (is_complete_type_v<converter<std::decay_t<Quantity>, quantity_t<Repr<dimensional_t<Head>>, T>>>)
+    if constexpr (is_complete_type_v<converter<std::decay_t<Quantity>, quantity_t<Synonym<dimensional_t<Head>>, T>>>)
     {
-      return quantity_t<Repr<dimensional_t<Head>>, T>{
-          converter<std::decay_t<Quantity>, quantity_t<Repr<dimensional_t<Head>>, T>>::convert(value)};
+      return quantity_t<Synonym<dimensional_t<Head>>, T>{
+          converter<std::decay_t<Quantity>, quantity_t<Synonym<dimensional_t<Head>>, T>>::convert(value)};
     }
     else
     {
-      return lexical_converter<quantity_t<Repr<dimensional_t<Tail...>>, T>>::convert(value);
+      return lexical_converter<quantity_t<Synonym<dimensional_t<Tail...>>, T>>::convert(value);
     }
   }
 };
 
-template < template <class> class Repr, class T, class Head >
-struct lexical_converter<quantity_t<Repr<dimensional_t<Head>>, T>>
+template < template <class> class Synonym, class T, class Head >
+struct lexical_converter<quantity_t<Synonym<dimensional_t<Head>>, T>>
 {
   template < class Quantity >
   static constexpr auto convert(Quantity&& value) {
-    if constexpr (is_complete_type_v<converter<std::decay_t<Quantity>, quantity_t<Repr<dimensional_t<Head>>, T>>>)
+    if constexpr (is_complete_type_v<converter<std::decay_t<Quantity>, quantity_t<Synonym<dimensional_t<Head>>, T>>>)
     {
-      return quantity_t<Repr<dimensional_t<Head>>, T>{
-          converter<std::decay_t<Quantity>, quantity_t<Repr<dimensional_t<Head>>, T>>::convert(value)};
+      return quantity_t<Synonym<dimensional_t<Head>>, T>{
+          converter<std::decay_t<Quantity>, quantity_t<Synonym<dimensional_t<Head>>, T>>::convert(value)};
     }
     else
     {

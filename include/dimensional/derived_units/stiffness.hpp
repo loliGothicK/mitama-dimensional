@@ -7,8 +7,8 @@
 #include "./force.hpp"
 
 namespace mitama::si {
-template<class> struct stiffness_repr{};
-using stiffness_t = make_synonym_t<stiffness_repr, decltype(newton / meter<>)>;
+template<class> struct stiffness_synonym{};
+using stiffness_t = make_synonym_t<stiffness_synonym, decltype(newton / meter<>)>;
 
 inline constexpr stiffness_t stiffness{};
 using stiffness_r = make_refinement_symbol_t<stiffness_t>;

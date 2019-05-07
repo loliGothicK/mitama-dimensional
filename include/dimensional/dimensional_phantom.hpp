@@ -17,7 +17,7 @@ inline constexpr std::size_t dimension_count_v =
 namespace mitama {
 
 template < class >
-struct si_base_units_repr {};
+struct si_base_units {};
 
 template <class Dim, class Exponent> struct dimension_tag {};
 
@@ -31,7 +31,7 @@ struct dimensional_t : private Units::tag... // for Dimensional tags
 };
 
 template <class... Units>
-using make_dimensional_t = si_base_units_repr<dimensional_t<Units...>>;
+using make_dimensional_t = si_base_units<dimensional_t<Units...>>;
 
 
 } // namespace mitama

@@ -7,8 +7,8 @@
 #include "voltage.hpp"
 
 namespace mitama::si {
-template<class> struct electric_field_strength_repr{};
-using electric_field_strength_t = make_synonym_t<electric_field_strength_repr, decltype(volts / meters)>;
+template<class> struct electric_field_strength_synonym{};
+using electric_field_strength_t = make_synonym_t<electric_field_strength_synonym, decltype(volts / meters)>;
 
 inline constexpr electric_field_strength_t electric_field_strength{};
 using electric_field_strength_r = make_refinement_symbol_t<electric_field_strength_t>;

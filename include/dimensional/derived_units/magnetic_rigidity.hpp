@@ -7,8 +7,8 @@
 #include "magnetic_flux_density.hpp"
 
 namespace mitama::si {
-template<class> struct magnetic_rigidity_repr{};
-using magnetic_rigidity_t = make_synonym_t<magnetic_rigidity_repr, decltype(tesla * meter<>)>;
+template<class> struct magnetic_rigidity_synonym{};
+using magnetic_rigidity_t = make_synonym_t<magnetic_rigidity_synonym, decltype(tesla * meter<>)>;
 
 inline constexpr magnetic_rigidity_t magnetic_rigidity{};
 using magnetic_rigidity_r = make_refinement_symbol_t<magnetic_rigidity_t>;

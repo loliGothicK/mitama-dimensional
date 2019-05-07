@@ -7,8 +7,8 @@
 #include "energy.hpp"
 
 namespace mitama::si {
-template<class> struct molar_heat_capacity_repr{};
-using molar_heat_capacity_t = make_synonym_t<molar_heat_capacity_repr, decltype( joule / (kelvin<> * mol<>) )>;
+template<class> struct molar_heat_capacity_synonym{};
+using molar_heat_capacity_t = make_synonym_t<molar_heat_capacity_synonym, decltype( joule / (kelvin<> * mol<>) )>;
 
 inline constexpr molar_heat_capacity_t molar_heat_capacity{};
 using molar_heat_capacity_r = make_refinement_symbol_t<molar_heat_capacity_t>;

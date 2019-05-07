@@ -10,12 +10,12 @@
 
 namespace mitama {
 template <
-    template<class> class Repr,
+    template<class> class Synonym,
     class Rational, class Unit,
     std::enable_if_t<mitamagic::is_rational_v<Rational> && is_units_v<Unit>,
                      bool> = false>
-constexpr auto operator*(Rational, Repr<dimensional_t<Unit>>) {
-  return scaled_unit_t<Repr<dimensional_t<Unit>>, Rational>{};
+constexpr auto operator*(Rational, Synonym<dimensional_t<Unit>>) {
+  return scaled_unit_t<Synonym<dimensional_t<Unit>>, Rational>{};
 }
 
 inline constexpr auto pico = std::pico{};

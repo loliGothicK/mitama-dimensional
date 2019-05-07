@@ -8,8 +8,8 @@
 
 
 namespace mitama::si {
-template<class> struct heat_capacity_repr{};
-using heat_capacity_t = make_synonym_t<heat_capacity_repr, decltype(joule / kelvins)>;
+template<class> struct heat_capacity_synonym{};
+using heat_capacity_t = make_synonym_t<heat_capacity_synonym, decltype(joule / kelvins)>;
 
 inline constexpr heat_capacity_t heat_capacity{};
 using heat_capacity_r = make_refinement_symbol_t<heat_capacity_t>;

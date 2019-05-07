@@ -7,8 +7,8 @@
 #include "voltage.hpp"
 
 namespace mitama::si {
-template<class> struct electron_mobility_repr{};
-using electron_mobility_t = make_synonym_t<electron_mobility_repr, decltype( meter<2> * volt<-1> * second<-1> )>;
+template<class> struct electron_mobility_synonym{};
+using electron_mobility_t = make_synonym_t<electron_mobility_synonym, decltype( meter<2> * volt<-1> * second<-1> )>;
 
 inline constexpr electron_mobility_t electron_mobility{};
 using electron_mobility_r = make_refinement_symbol_t<electron_mobility_t>;

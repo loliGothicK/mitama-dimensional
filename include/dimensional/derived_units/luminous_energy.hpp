@@ -7,8 +7,8 @@
 #include "luminous_flux.hpp"
 
 namespace mitama::si {
-template<class> struct luminous_energy_repr{};
-using luminous_energy_t = make_synonym_t<luminous_energy_repr, decltype(lumen * second<>)>;
+template<class> struct luminous_energy_synonym{};
+using luminous_energy_t = make_synonym_t<luminous_energy_synonym, decltype(lumen * second<>)>;
 
 inline constexpr luminous_energy_t luminous_energy{};
 using luminous_energy_r = make_refinement_symbol_t<luminous_energy_t>;

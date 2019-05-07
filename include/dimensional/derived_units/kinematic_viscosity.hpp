@@ -7,8 +7,8 @@
 
 
 namespace mitama::si {
-template<class> struct kinematic_viscosity_repr{};
-using kinematic_viscosity_t = make_synonym_t<kinematic_viscosity_repr, decltype(meter<2> / second<1>)>;
+template<class> struct kinematic_viscosity_synonym{};
+using kinematic_viscosity_t = make_synonym_t<kinematic_viscosity_synonym, decltype(meter<2> / second<1>)>;
 
 #if !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_THERMAL_DIFFUSIVITY_HPP) && !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_DIFFUSION_COEFFICIENT_HPP)
 inline constexpr kinematic_viscosity_t kinematic_viscosity{};

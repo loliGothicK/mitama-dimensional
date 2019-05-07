@@ -240,8 +240,8 @@ struct atomic_refinement_symbol
 
 template < class > struct make_refinement_symbol;
 
-template < template <class> class Repr, class... Units >
-struct make_refinement_symbol<Repr<dimensional_t<Units...>>>
+template < template <class> class Synonym, class... Units >
+struct make_refinement_symbol<Synonym<dimensional_t<Units...>>>
 {
   using type = mitamagic::type_list<mitamagic::atomic_refinement_symbol<Units>...>;
 };

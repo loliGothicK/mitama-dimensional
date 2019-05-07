@@ -7,8 +7,8 @@
 
 
 namespace mitama::si {
-template<class> struct absorbed_dose_repr{};
-using absorbed_dose_t = make_synonym_t<absorbed_dose_repr, decltype(meter<2> * second<-2>)>;
+template<class> struct absorbed_dose_synonym{};
+using absorbed_dose_t = make_synonym_t<absorbed_dose_synonym, decltype(meter<2> * second<-2>)>;
 
 inline constexpr absorbed_dose_t gray{};
 using absorbed_dose_r = make_refinement_symbol_t<absorbed_dose_t>;

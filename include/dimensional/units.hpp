@@ -23,8 +23,8 @@ template <class D> using make_unit_t = make_dimensional_t<units_t<D>>;
 
 template <class, class> struct scaled_unit;
 
-template <template <class> class Repr, class Base, class Scale>
-struct scaled_unit<Repr<dimensional_t<Base>>, Scale> {
+template <template <class> class Synonym, class Base, class Scale>
+struct scaled_unit<Synonym<dimensional_t<Base>>, Scale> {
   using type = make_dimensional_t<
       units_t<typename Base::dimension_type, typename Base::exponent, std::ratio_multiply<typename Base::scale, Scale>>>;
 };

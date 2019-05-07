@@ -7,8 +7,8 @@
 #include "electric_charge.hpp"
 
 namespace mitama::si {
-template<class> struct exposure_repr{};
-using exposure_t = make_synonym_t<exposure_repr, decltype(coulomb / kilogram<>)>;
+template<class> struct exposure_synonym{};
+using exposure_t = make_synonym_t<exposure_synonym, decltype(coulomb / kilogram<>)>;
 
 inline constexpr exposure_t exposure{};
 using exposure_r = make_refinement_symbol_t<exposure_t>;

@@ -7,8 +7,8 @@
 
 
 namespace mitama::si {
-template<class> struct catalytic_activity_repr{};
-using catalytic_activity_t = make_synonym_t<catalytic_activity_repr, decltype(second<-1> * mol<>)>;
+template<class> struct catalytic_activity_synonym{};
+using catalytic_activity_t = make_synonym_t<catalytic_activity_synonym, decltype(second<-1> * mol<>)>;
 
 inline constexpr catalytic_activity_t katal{};
 using catalytic_activity_r = make_refinement_symbol_t<catalytic_activity_t>;

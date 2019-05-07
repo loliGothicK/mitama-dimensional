@@ -7,8 +7,8 @@
 #include "inductance.hpp"
 
 namespace mitama::si {
-template<class> struct permeability_repr{};
-using permeability_t = make_synonym_t<permeability_repr, decltype(henry / meter<>)>;
+template<class> struct permeability_synonym{};
+using permeability_t = make_synonym_t<permeability_synonym, decltype(henry / meter<>)>;
 
 inline constexpr permeability_t permeability{};
 using permeability_r = make_refinement_symbol_t<permeability_t>;

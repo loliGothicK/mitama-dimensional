@@ -7,8 +7,8 @@
 
 
 namespace mitama::si {
-template<class> struct compressibility_repr{};
-using compressibility_t = make_synonym_t<compressibility_repr, decltype(meter<> * kilogram<-1> * second<2>)>;
+template<class> struct compressibility_synonym{};
+using compressibility_t = make_synonym_t<compressibility_synonym, decltype(meter<> * kilogram<-1> * second<2>)>;
 
 inline constexpr compressibility_t compressibility{};
 using compressibility_r = make_refinement_symbol_t<compressibility_t>;

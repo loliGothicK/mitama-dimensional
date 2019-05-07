@@ -7,8 +7,8 @@
 
 
 namespace mitama::si {
-template<class> struct molarity_repr{};
-using molarity_t = make_synonym_t<molarity_repr, decltype(mol<> / meter<3>)>;
+template<class> struct molarity_synonym{};
+using molarity_t = make_synonym_t<molarity_synonym, decltype(mol<> / meter<3>)>;
 
 inline constexpr molarity_t molarity{};
 using molarity_r = make_refinement_symbol_t<molarity_t>;

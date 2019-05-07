@@ -7,8 +7,8 @@
 #include "power.hpp"
 
 namespace mitama::si {
-template<class> struct irradiance_repr{};
-using irradiance_t = make_synonym_t<irradiance_repr, decltype(watt * meter<-2>)>;
+template<class> struct irradiance_synonym{};
+using irradiance_t = make_synonym_t<irradiance_synonym, decltype(watt * meter<-2>)>;
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_HEAT_FLUX_DENSITY_HPP
 inline constexpr irradiance_t irradiance{};

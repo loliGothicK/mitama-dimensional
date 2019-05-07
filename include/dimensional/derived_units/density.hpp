@@ -7,8 +7,8 @@
 
 
 namespace mitama::si {
-template<class> struct density_repr{};
-using density_t = make_synonym_t<density_repr, decltype(meter<-3> * kilogram<>)>;
+template<class> struct density_synonym{};
+using density_t = make_synonym_t<density_synonym, decltype(meter<-3> * kilogram<>)>;
 
 inline constexpr density_t density{};
 using density_r = make_refinement_symbol_t<density_t>;

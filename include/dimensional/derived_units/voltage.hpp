@@ -7,8 +7,8 @@
 
 
 namespace mitama::si {
-template<class> struct voltage_repr{};
-using voltage_t = make_synonym_t<voltage_repr, decltype(kilogram<> * meter<2> * second<-3> * ampere<-1>)>;
+template<class> struct voltage_synonym{};
+using voltage_t = make_synonym_t<voltage_synonym, decltype(kilogram<> * meter<2> * second<-3> * ampere<-1>)>;
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_ELECTRIC_POTENTIAL_HPP
 inline constexpr voltage_t volts{};

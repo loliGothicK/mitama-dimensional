@@ -7,8 +7,8 @@
 #include "energy.hpp"
 
 namespace mitama::si {
-template<class> struct specific_energy_repr{};
-using specific_energy_t = make_synonym_t<specific_energy_repr, decltype(joule / kilogram<>)>;
+template<class> struct specific_energy_synonym{};
+using specific_energy_t = make_synonym_t<specific_energy_synonym, decltype(joule / kilogram<>)>;
 
 inline constexpr specific_energy_t specific_energy{};
 using specific_energy_r = make_refinement_symbol_t<specific_energy_t>;
