@@ -232,6 +232,16 @@ constexpr bool operator>=(quantity_t<D, U> const &o) const {
 }
 ```
 
+## Unary operators
+
+### unary plus (promotion)
+
+Returns the quantity of its operand and integral promotion is performed.
+
+### unary minus (negation)
+
+Calculates the negative of its quantity and integral promotion is performed.
+
 ## Accessor
 
 ### value()
@@ -273,7 +283,7 @@ int main() {
 
 ### quantity_for
 
-`quantity_for` is a type alias for variadic templates.
+`quantity_for` is a type alias to make SI derived units using variadic templates.
 
 ```cpp
 // begin example
@@ -285,8 +295,7 @@ int main() {
     using mitama::quantity_for;
 
     quantity_for<int, si::meter_<1>, si::second_<-1>> speed = 2; // 2 [m/s]
-
-    
+    // you can also write as: quantity_t<decltype(si::meter<> / si::second<>), int> speed = 2;
 }
 // end example
 ```
