@@ -60,9 +60,6 @@ template <class T, template <class> class Synonym, class...Units>
 class quantity_t<Synonym<dimensional_t<Units...>>, T>
   : public dimensionless_converter<quantity_t<Synonym<dimensional_t<Units...>>, T>>
 {
-  template < class >
-  friend struct dimensionless_converter;
-
   T value_;
 
 public:
@@ -187,7 +184,8 @@ public:
           is_equal_comparable_with<T, U>>
         , bool> = false>
   constexpr bool operator==(quantity_t<D, U> const &o) const {
-    return this->value_ == mitamagic::converted_value<quantity_t>(o);
+    auto [l, r] = mitamagic::scaler<dimension_type, typename quantity_t<D, U>::dimension_type>::template value<std::common_type_t<T, U>>();
+    return l * this->value() == r * o.value();
   }
 
   template <
@@ -209,7 +207,8 @@ public:
           is_notequal_comparable_with<T, U>>
         , bool> = false>
   constexpr bool operator!=(quantity_t<D, U> const &o) const {
-    return this->value_ != mitamagic::converted_value<quantity_t>(o);
+    auto [l, r] = mitamagic::scaler<dimension_type, typename quantity_t<D, U>::dimension_type>::template value<std::common_type_t<T, U>>();
+    return l * this->value() != r * o.value();
   }
 
   template <
@@ -231,7 +230,8 @@ public:
           is_less_comparable_with<T, U>>
         , bool> = false>
   constexpr bool operator<(quantity_t<D, U> const &o) const {
-    return this->value_ < mitamagic::converted_value<quantity_t>(o);
+    auto [l, r] = mitamagic::scaler<dimension_type, typename quantity_t<D, U>::dimension_type>::template value<std::common_type_t<T, U>>();
+    return l * this->value() < r * o.value();
   }
 
   template <
@@ -253,7 +253,8 @@ public:
           is_less_or_equal_comparable_with<T, U>>
         , bool> = false>
   constexpr bool operator<=(quantity_t<D, U> const &o) const {
-    return this->value_ <= mitamagic::converted_value<quantity_t>(o);
+    auto [l, r] = mitamagic::scaler<dimension_type, typename quantity_t<D, U>::dimension_type>::template value<std::common_type_t<T, U>>();
+    return l * this->value() <= r * o.value();
   }
 
   template <
@@ -275,7 +276,8 @@ public:
           is_greater_comparable_with<T, U>>
         , bool> = false>
   constexpr bool operator>(quantity_t<D, U> const &o) const {
-    return this->value_ > mitamagic::converted_value<quantity_t>(o);
+    auto [l, r] = mitamagic::scaler<dimension_type, typename quantity_t<D, U>::dimension_type>::template value<std::common_type_t<T, U>>();
+    return l * this->value() > r * o.value();
   }
 
   template <
@@ -297,7 +299,8 @@ public:
           is_greater_or_equal_comparable_with<T, U>>
         , bool> = false>
   constexpr bool operator>=(quantity_t<D, U> const &o) const {
-    return this->value_ >= mitamagic::converted_value<quantity_t>(o);
+    auto [l, r] = mitamagic::scaler<dimension_type, typename quantity_t<D, U>::dimension_type>::template value<std::common_type_t<T, U>>();
+    return l * this->value() >= r * o.value();
   }
 
   auto operator-() const {
