@@ -20,13 +20,13 @@
 #include <catch2/catch.hpp>
 #include <dimensional/arithmetic.hpp>
 #include <dimensional/io.hpp>
-#include <dimensional/prefix.hpp>
+#include <dimensional/systems/si/prefix.hpp>
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
+#include <dimensional/systems/si/all.hpp>
 #include <string>
 using namespace mitama;
-using namespace mitama::si;
-using namespace mitama::nonsi;
+using namespace mitama::systems::si;
+using namespace mitama::systems::nonsi;
 
 inline auto fmt = [](auto const &a) {
   return (boost::format("%1%") % a).str();
@@ -52,13 +52,13 @@ TEST_CASE("prefix format tests", "[prefix]") {
 // Second, we test SI unit symbols format.
 TEST_CASE("symbol format tests", "[symbol]") {
   using namespace std::literals;
-  REQUIRE(symbol_<::mitama::si::length>::str == "m"s);
+  REQUIRE(symbol_<::mitama::systems::si::length>::str == "m"s);
   REQUIRE(symbol_<electric_current>::str == "A"s);
   REQUIRE(symbol_<luminous_intensity>::str == "cd"s);
   REQUIRE(symbol_<thermodynamic_temperature>::str == "K"s);
-  REQUIRE(symbol_<::mitama::si::mass>::str == "g"s);
+  REQUIRE(symbol_<::mitama::systems::si::mass>::str == "g"s);
   REQUIRE(symbol_<amount_of_substance>::str == "mol"s);
-  REQUIRE(symbol_<::mitama::si::time>::str == "s"s);
+  REQUIRE(symbol_<::mitama::systems::si::time>::str == "s"s);
 }
 
 // Third, we test symbol with metric prefix.

@@ -106,7 +106,7 @@ TEMPLATE_TEST_CASE("second_t division",
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a/b)>,
         quantity_t<si_base_units<dimensional_t<
-            units_t<mitama::si::time, std::ratio<1>, std::ratio<1>>,
+            units_t<mitama::systems::si::time, std::ratio<1>, std::ratio<1>>,
             units_t<typename basis_<TestType>::template type<0>, std::ratio<-1>, std::ratio<1>>
         >>, double>>);
 }

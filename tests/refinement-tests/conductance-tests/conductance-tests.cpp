@@ -1,14 +1,14 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/si_units/all.hpp>
-#include <dimensional/derived_units/conductance.hpp>
+#include <dimensional/systems/si/all.hpp>
+#include <dimensional/systems/si/derived_units/conductance.hpp>
 #include <dimensional/refinement.hpp>
 #include <test_util.hpp>
 
 using namespace mitama;
-using namespace mitama::si;
+using namespace mitama::systems::si;
 
 TEST_CASE("conductance refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::accepts<si::conductance_r> |= quantity_t<si::conductance_t>{}) == quantity_t<si::conductance_t>{});
+  REQUIRE((mitama::accepts<systems::si::conductance_r> |= quantity_t<systems::si::conductance_t>{}) == quantity_t<systems::si::conductance_t>{});
 }
 

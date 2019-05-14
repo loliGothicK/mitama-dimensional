@@ -3,14 +3,14 @@
 #include <catch2/catch.hpp>
 #include <dimensional/arithmetic.hpp>
 #include <dimensional/io.hpp>
-#include <dimensional/prefix.hpp>
+#include <dimensional/systems/si/prefix.hpp>
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
+#include <dimensional/systems/si/all.hpp>
 #include <test_util.hpp>
 
 using namespace mitama;
-using namespace mitama::si;
-using namespace mitama::nonsi;
+using namespace mitama::systems::si;
+using namespace mitama::systems::nonsi;
 
 inline auto fmt = [](auto const &a) {
   return (boost::format("%1%") % a).str();

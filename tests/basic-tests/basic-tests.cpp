@@ -1,17 +1,18 @@
 // main is provided in tests-main.cpp
 #include <catch2/catch.hpp>
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
-#include <dimensional/prefix.hpp>
+#include <dimensional/systems/si/all.hpp>
+#include <dimensional/systems/si/prefix.hpp>
 #include <dimensional/arithmetic.hpp>
 #include <dimensional/refinement.hpp>
-#include <dimensional/nonsi_units/minute.hpp>
-#include <dimensional/nonsi_units/hour.hpp>
-#include <dimensional/nonsi_units/day.hpp>
+#include <dimensional/systems/nonsi/minute.hpp>
+#include <dimensional/systems/nonsi/hour.hpp>
+#include <dimensional/systems/nonsi/day.hpp>
 #include <test_util.hpp>
 
 using namespace mitama;
-using namespace mitama::si;
+using namespace mitama::systems::si;
+using namespace mitama::systems::nonsi;
 
 TEMPLATE_TEST_CASE("constructor from values",
                    "[quantity][constructor]",
@@ -146,7 +147,7 @@ TEMPLATE_TEST_CASE("refinement L^1 positive",
 
 TEMPLATE_TEST_CASE("refinement L^1 positive",
                    "[quantity][refinement]",
-                   second_t, millisecond_t, microsecond_t, nanosecond_t, nonsi::minute_t, nonsi::hour_t, nonsi::day_t)
+                   second_t, millisecond_t, microsecond_t, nanosecond_t, minute_t, hour_t, day_t)
 {
     REQUIRE( !IS_INVALID_EXPR( accepts_for<sym::T<1>> |= quantity<DECLTYPE(0)>{} )(TestType) );
 }

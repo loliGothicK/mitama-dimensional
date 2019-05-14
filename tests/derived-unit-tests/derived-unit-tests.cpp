@@ -1,17 +1,17 @@
 // main is provided in tests-main.cpp
 #include <catch2/catch.hpp>
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
-#include <dimensional/nonsi_units/degree_celsius.hpp>
-#include <dimensional/prefix.hpp>
+#include <dimensional/systems/si/all.hpp>
+#include <dimensional/systems/nonsi/degree_celsius.hpp>
+#include <dimensional/systems/si/prefix.hpp>
 #include <random>
 #include <test_util.hpp>
 #include <dimensional/expr.hpp>
 #include <dimensional/arithmetic.hpp>
 
 using namespace mitama;
-using namespace mitama::si;
-using namespace mitama::nonsi;
+using namespace mitama::systems::si;
+using namespace mitama::systems::nonsi;
 
 TEST_CASE("degree celsius and kelvin",
           "[quantity][derived-units][temperature]")

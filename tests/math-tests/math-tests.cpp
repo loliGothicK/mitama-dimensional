@@ -1,19 +1,19 @@
 // main is provided in tests-main.cpp
 #include <catch2/catch.hpp>
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
-#include <dimensional/prefix.hpp>
+#include <dimensional/systems/si/all.hpp>
+#include <dimensional/systems/si/prefix.hpp>
 #include <random>
 #include <test_util.hpp>
 #include <dimensional/expr.hpp>
 #include <dimensional/arithmetic.hpp>
 #include <dimensional/math/all.hpp>
-#include <dimensional/derived_units/angle.hpp>
+#include <dimensional/systems/si/derived_units/angle.hpp>
 
 using namespace mitama;
 using Catch::Detail::Approx;
-using namespace mitama::si;
-using namespace mitama::nonsi;
+using namespace mitama::systems::si;
+using namespace mitama::systems::nonsi;
 
 TEMPLATE_TEST_CASE("abs tests",
                    "[quantity][abs][math]",

@@ -5,16 +5,16 @@ fi
 cat <<EOS > $1-tests/$1-tests.cpp
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/si_units/all.hpp>
-#include <dimensional/derived_units/$1.hpp>
+#include <dimensional/systems/si/all.hpp>
+#include <dimensional/systems/si/derived_units/$1.hpp>
 #include <dimensional/refinement.hpp>
 #include <test_util.hpp>
 
 using namespace mitama;
-using namespace mitama::si;
+using namespace mitama::systems::si;
 
 TEST_CASE("$1 refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::accepts<si::$1_r> |= quantity_t<si::$1_t>{}) == quantity_t<si::$1_t>{});
+  REQUIRE((mitama::accepts<systems::si::$1_r> |= quantity_t<systems::si::$1_t>{}) == quantity_t<systems::si::$1_t>{});
 }
 
 EOS
