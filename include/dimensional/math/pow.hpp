@@ -8,17 +8,19 @@ namespace mitama {
 
 template < class Exp, template <class> class Synonym, class T, class... Units >
 auto pow(quantity_t<Synonym<dimensional_t<Units...>>, T> const& quantity) {
+    using std::pow;
     return quantity_t<Synonym<typename mitamagic::powered_dimensional<dimensional_t<Units...>, Exp>::type>, T>
         {
-            static_cast<T>(std::pow(quantity.value(), static_cast<long double>(Exp::num) / Exp::den))
+            static_cast<T>(pow(quantity.value(), static_cast<long double>(Exp::num) / Exp::den))
         };
 }
 
 template < std::intmax_t Exp, template <class> class Synonym, class T, class... Units >
 auto pow(quantity_t<Synonym<dimensional_t<Units...>>, T> const& quantity) {
+    using std::pow;
     return quantity_t<Synonym<typename mitamagic::powered_dimensional<dimensional_t<Units...>, std::ratio<Exp>>::type>, T>
         {
-            static_cast<T>(std::pow(quantity.value(), static_cast<long double>(Exp)))
+            static_cast<T>(pow(quantity.value(), static_cast<long double>(Exp)))
         };
 }
 
