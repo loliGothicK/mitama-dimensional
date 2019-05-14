@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
-#include <dimensional/prefix.hpp>
+#include <dimensional/systems/si/all.hpp>
+#include <dimensional/systems/si/prefix.hpp>
 #include <boost/preprocessor/list/for_each_product.hpp>
 #define SI_UNITS (meter_t, (ampere_t, (candela_t, (kelvin_t, (kilogram_t, (mol_t, (second_t, BOOST_PP_NIL)))))))
 #define SI_PREFIXES (pico, (nano, (micro, (milli, (centi, (deci, (deca, (hecto, (kilo, (mega, (giga, (tera, BOOST_PP_NIL))))))))))))
@@ -31,7 +31,7 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace mitama;
-using namespace mitama::si;
+using namespace mitama::systems::si;
 
 namespace BasicTest
 {
