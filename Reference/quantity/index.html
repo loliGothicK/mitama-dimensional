@@ -543,14 +543,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#in-place-constructor" title="In-place constructor" class="md-nav__link">
+    In-place constructor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-place-constructor-for-initializer_list" title="In-place constructor for initializer_list" class="md-nav__link">
+    In-place constructor for initializer_list
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#comparisons" title="Comparisons" class="md-nav__link">
-    Comparisons
+  <a href="#equality-and-comparisons" title="Equality and Comparisons" class="md-nav__link">
+    Equality and Comparisons
   </a>
   
     <nav class="md-nav">
@@ -604,6 +618,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#unary-operators" title="Unary operators" class="md-nav__link">
+    Unary operators
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unary-plus-promotion" title="unary plus (promotion)" class="md-nav__link">
+    unary plus (promotion)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unary-minus-negation" title="unary minus (negation)" class="md-nav__link">
+    unary minus (negation)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#accessor" title="Accessor" class="md-nav__link">
     Accessor
   </a>
@@ -627,6 +668,26 @@
   <a href="#operator-for-dimensional-quantifier" title="operator | for dimensional quantifier" class="md-nav__link">
     operator | for dimensional quantifier
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-synonyms" title="Type synonyms" class="md-nav__link">
+    Type synonyms
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quantity_for" title="quantity_for" class="md-nav__link">
+    quantity_for
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -733,14 +794,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#in-place-constructor" title="In-place constructor" class="md-nav__link">
+    In-place constructor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-place-constructor-for-initializer_list" title="In-place constructor for initializer_list" class="md-nav__link">
+    In-place constructor for initializer_list
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#comparisons" title="Comparisons" class="md-nav__link">
-    Comparisons
+  <a href="#equality-and-comparisons" title="Equality and Comparisons" class="md-nav__link">
+    Equality and Comparisons
   </a>
   
     <nav class="md-nav">
@@ -794,6 +869,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#unary-operators" title="Unary operators" class="md-nav__link">
+    Unary operators
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unary-plus-promotion" title="unary plus (promotion)" class="md-nav__link">
+    unary plus (promotion)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unary-minus-negation" title="unary minus (negation)" class="md-nav__link">
+    unary minus (negation)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#accessor" title="Accessor" class="md-nav__link">
     Accessor
   </a>
@@ -820,6 +922,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#type-synonyms" title="Type synonyms" class="md-nav__link">
+    Type synonyms
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quantity_for" title="quantity_for" class="md-nav__link">
+    quantity_for
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -840,7 +962,7 @@
                 <h1 id="class-quantity">class quantity</h1>
 <h2 id="constructors-and-destructors">Constructors and Destructors</h2>
 <h3 id="default-constructor">default constructor</h3>
-<div class="codehilite"><pre><span></span>  <span class="k">constexpr</span> <span class="nf">quantity_t</span><span class="p">()</span><span class="o">:</span> <span class="n">value_</span><span class="p">{}</span> <span class="p">{}</span>
+<div class="codehilite"><pre><span></span><span class="k">constexpr</span> <span class="nf">quantity_t</span><span class="p">()</span><span class="o">:</span> <span class="n">value_</span><span class="p">{}</span> <span class="p">{}</span>
 </pre></div>
 
 <h3 id="constructors-for-value">Constructors for value</h3>
@@ -923,7 +1045,25 @@ This constructor may shall call between absolute temperature and celsius tempera
 <span class="p">}</span>
 </pre></div>
 
-<h2 id="comparisons">Comparisons</h2>
+<h3 id="in-place-constructor">In-place constructor</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="p">...</span> <span class="n">Args</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">enable_if_t</span><span class="o">&lt;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">is_constructible_v</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">Args</span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="o">&gt;</span>
+    <span class="p">,</span> <span class="kt">bool</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nb">false</span><span class="o">&gt;</span>
+<span class="k">explicit</span> <span class="k">constexpr</span> <span class="n">quantity_t</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">in_place_t</span><span class="p">,</span> <span class="n">Args</span><span class="o">&amp;&amp;</span> <span class="p">...</span><span class="n">args</span><span class="p">)</span>
+    <span class="o">:</span> <span class="n">value_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Args</span><span class="o">&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">)...)</span> <span class="p">{}</span>
+</pre></div>
+
+<h3 id="in-place-constructor-for-initializer_list">In-place constructor for initializer_list</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">U</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Args</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">enable_if_t</span><span class="o">&lt;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">is_constructible_v</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">initializer_list</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">Args</span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="o">&gt;</span>
+    <span class="p">,</span> <span class="kt">bool</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nb">false</span><span class="o">&gt;</span>
+<span class="k">constexpr</span> <span class="k">explicit</span> <span class="n">quantity_t</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">in_place_t</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">initializer_list</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;</span> <span class="n">il</span><span class="p">,</span> <span class="n">Args</span><span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">args</span><span class="p">)</span>
+    <span class="o">:</span> <span class="n">value_</span><span class="p">(</span><span class="n">il</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Args</span><span class="o">&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">)...)</span> <span class="p">{}</span>
+</pre></div>
+
+<h2 id="equality-and-comparisons">Equality and Comparisons</h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This operator shall not participate in overload resolution unless <code class="codehilite">is_{xxx}_comparable&lt;T, U&gt;</code> is true. <code class="codehilite">{xxx}</code> denotes equal (<code class="codehilite">==</code>), not_equal (<code class="codehilite">!=</code>), less (<code class="codehilite">&lt;</code>), less_or_equal (<code class="codehilite">&lt;=</code>), greater (<code class="codehilite">&gt;</code>) or greater_or_equal (<code class="codehilite">&gt;=</code>).</p>
@@ -1042,6 +1182,11 @@ This constructor may shall call between absolute temperature and celsius tempera
 <span class="p">}</span>
 </pre></div>
 
+<h2 id="unary-operators">Unary operators</h2>
+<h3 id="unary-plus-promotion">unary plus (promotion)</h3>
+<p>Returns the quantity of its operand and integral promotion is performed.</p>
+<h3 id="unary-minus-negation">unary minus (negation)</h3>
+<p>Calculates the negative of its quantity and integral promotion is performed.</p>
 <h2 id="accessor">Accessor</h2>
 <h3 id="value">value()</h3>
 <p>Returns contained value.</p>
@@ -1058,14 +1203,33 @@ This constructor may shall call between absolute temperature and celsius tempera
     <span class="k">namespace</span> <span class="n">si</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
     <span class="k">using</span> <span class="n">mitama</span><span class="o">::</span><span class="n">quantity_t</span><span class="p">;</span>
 
-    <span class="c1">// using template argument deduction for class templates</span>
-
     <span class="n">quantity_t</span> <span class="n">mass</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">|</span> <span class="n">si</span><span class="o">::</span><span class="n">kilograms</span><span class="p">;</span> <span class="c1">// 3 [kg]</span>
-
-    <span class="n">quantity_t</span> <span class="n">time</span> <span class="o">=</span> <span class="mf">1.66</span> <span class="o">|</span> <span class="n">si</span><span class="o">::</span><span class="n">seconds</span><span class="p">;</span> <span class="c1">// 1.66 [s]</span>
+<span class="c1">//  ^~~~~~~~~~ template argument deduction for class templates: since C++17</span>
 
     <span class="n">quantity_t</span> <span class="n">volume</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">|</span> <span class="n">si</span><span class="o">::</span><span class="n">meter</span><span class="o">&lt;</span><span class="mi">3</span><span class="o">&gt;</span><span class="p">;</span> <span class="c1">// 4 [m^3]</span>
-    <span class="c1">//                               ^~~ variable template</span>
+<span class="c1">//                          ^~~~~~~~~~~~ variable template: since C++14</span>
+
+    <span class="n">quantity_t</span> <span class="n">time</span> <span class="o">=</span> <span class="mf">1.66</span> <span class="o">|</span> <span class="n">si</span><span class="o">::</span><span class="n">second</span><span class="o">&lt;&gt;</span><span class="p">;</span> <span class="c1">// 1.66 [s]</span>
+<span class="c1">//                           ^~~~~~~~~~|~ default template argument for variable templates: since C++17</span>
+<span class="c1">//                                     |</span>
+<span class="c1">//                                     default argument is 1 (same as si::second&lt;1&gt;)</span>
+<span class="p">}</span>
+<span class="c1">// end example</span>
+</pre></div>
+
+<h2 id="type-synonyms">Type synonyms</h2>
+<h3 id="quantity_for">quantity_for</h3>
+<p><code class="codehilite">quantity_for</code> is a type alias to make SI derived units using variadic templates.</p>
+<div class="codehilite"><pre><span></span><span class="c1">// begin example</span>
+<span class="cp">#include</span> <span class="cpf">&lt;dimensional/quantity.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;dimensional/si_units/all.hpp&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">namespace</span> <span class="n">si</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
+    <span class="k">using</span> <span class="n">mitama</span><span class="o">::</span><span class="n">quantity_for</span><span class="p">;</span>
+
+    <span class="n">quantity_for</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">meter_</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">second_</span><span class="o">&lt;-</span><span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="n">speed</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 2 [m/s]</span>
+    <span class="c1">// you can also write as: quantity_t&lt;decltype(si::meter&lt;&gt; / si::second&lt;&gt;), int&gt; speed = 2;</span>
 <span class="p">}</span>
 <span class="c1">// end example</span>
 </pre></div>

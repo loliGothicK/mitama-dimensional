@@ -1,0 +1,1305 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Mitama.Dimensional C++17 Library">
+      
+      
+        <link rel="canonical" href="https://loligothick.github.io/mitama-dimensional/Reference/math-functions/">
+      
+      
+        <meta name="author" content="mitama">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.2">
+    
+    
+      
+        <title>Math functions for quantity - Mitama.Dimensional | User Manual</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.3020aac5.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#009688">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.01ccdecf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../../cppmap_styles.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#math-functions-for-quantity" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://loligothick.github.io/mitama-dimensional/" title="Mitama.Dimensional | User Manual" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">donut_small</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Mitama.Dimensional | User Manual
+            </span>
+            <span class="md-header-nav__topic">
+              Math functions for quantity
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/loligothick/mitama-dimensional" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    loligothick/mitama-dimensional
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." title="Home" class="md-tabs__link md-tabs__link--active">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../UserManual/dimensional-quantity-101/" title="User Manual" class="md-tabs__link">
+          User Manual
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../quantity/" title="Reference" class="md-tabs__link">
+          Reference
+        </a>
+      
+    </li>
+  
+
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://loligothick.github.io/mitama-dimensional/" title="Mitama.Dimensional | User Manual" class="md-nav__button md-logo">
+      
+        <i class="md-icon">donut_small</i>
+      
+    </a>
+    Mitama.Dimensional | User Manual
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/loligothick/mitama-dimensional" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    loligothick/mitama-dimensional
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      User Manual
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        User Manual
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UserManual/dimensional-quantity-101/" title="Dimensional quantity 101" class="md-nav__link">
+      Dimensional quantity 101
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UserManual/basic-concepts/" title="Basic Concepts" class="md-nav__link">
+      Basic Concepts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UserManual/mitama_quantity_t/" title="Quantity" class="md-nav__link">
+      Quantity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UserManual/dimensional-quantifiers/" title="Dimensional quantifiers" class="md-nav__link">
+      Dimensional quantifiers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UserManual/metric-prefixes/" title="Metric prefixes" class="md-nav__link">
+      Metric prefixes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UserManual/si-derived-units/" title="Library defined SI derived units and format" class="md-nav__link">
+      Library defined SI derived units and format
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UserManual/dimensional-refinement/" title="Dimensional refinement" class="md-nav__link">
+      Dimensional refinement
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UserManual/delta-type/" title="Delta type" class="md-nav__link">
+      Delta type
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UserManual/user-defined-dimension/" title="User define dimension" class="md-nav__link">
+      User define dimension
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UserManual/expression-templates/" title="Expression templates" class="md-nav__link">
+      Expression templates
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Reference
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Reference
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../quantity/" title="class quantity_t" class="md-nav__link">
+      class quantity_t
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../arithmetic/" title="arithmetic" class="md-nav__link">
+      arithmetic
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../CONTRIBUTION/" title="Contribution" class="md-nav__link">
+      Contribution
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abshpp" title="abs.hpp" class="md-nav__link">
+    abs.hpp
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#abs-quantity" title="abs( quantity )" class="md-nav__link">
+    abs( quantity )
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logarithmhpp" title="logarithm.hpp" class="md-nav__link">
+    logarithm.hpp
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log-quantity" title="log( quantity )" class="md-nav__link">
+    log( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log2-quantity" title="log2( quantity )" class="md-nav__link">
+    log2( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log10-quantity" title="log10( quantity )" class="md-nav__link">
+    log10( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log1p-quantity" title="log1p( quantity )" class="md-nav__link">
+    log1p( quantity )
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minmaxhpp" title="minmax.hpp" class="md-nav__link">
+    minmax.hpp
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#min-quantities" title="min( quantities... )" class="md-nav__link">
+    min( quantities... )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#max-quantities" title="max( quantities... )" class="md-nav__link">
+    max( quantities... )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fdim-quantity-quantity" title="fdim( quantity, quantity )" class="md-nav__link">
+    fdim( quantity, quantity )
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modularhpp" title="modular.hpp" class="md-nav__link">
+    modular.hpp
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fmod-quantity-quantity" title="fmod( quantity, quantity )" class="md-nav__link">
+    fmod( quantity, quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fmod-quantity-value" title="fmod( quantity, value )" class="md-nav__link">
+    fmod( quantity, value )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remainder-quantity-quantity" title="remainder( quantity, quantity )" class="md-nav__link">
+    remainder( quantity, quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remainder-quantity-value" title="remainder( quantity, value )" class="md-nav__link">
+    remainder( quantity, value )
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nearest_integerhpp" title="nearest_integer.hpp" class="md-nav__link">
+    nearest_integer.hpp
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ceil-quantity" title="ceil( quantity )" class="md-nav__link">
+    ceil( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floor-quantity" title="floor( quantity )" class="md-nav__link">
+    floor( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trunc-quantity" title="trunc( quantity )" class="md-nav__link">
+    trunc( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#round-quantity" title="round( quantity )" class="md-nav__link">
+    round( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lround-quantity" title="lround( quantity )" class="md-nav__link">
+    lround( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llround-quantity" title="llround( quantity )" class="md-nav__link">
+    llround( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nearbyint-quantity" title="nearbyint( quantity )" class="md-nav__link">
+    nearbyint( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rint-quantity" title="rint( quantity )" class="md-nav__link">
+    rint( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lrint-quantity" title="lrint( quantity )" class="md-nav__link">
+    lrint( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llrint-quantity" title="llrint( quantity )" class="md-nav__link">
+    llrint( quantity )
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powhpp" title="pow.hpp" class="md-nav__link">
+    pow.hpp
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pown-quantity" title="pow&lt;N&gt;( quantity )" class="md-nav__link">
+    pow&lt;N&gt;( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#powstdratio-quantity" title="pow&lt;std::ratio&gt;( quantity )" class="md-nav__link">
+    pow&lt;std::ratio&gt;( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#square-quantity" title="square( quantity )" class="md-nav__link">
+    square( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cubic-quantity" title="cubic( quantity )" class="md-nav__link">
+    cubic( quantity )
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sqrthpp" title="sqrt.hpp" class="md-nav__link">
+    sqrt.hpp
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sqrt-quantity" title="sqrt( quantity )" class="md-nav__link">
+    sqrt( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cbrt-quantity" title="cbrt( quantity )" class="md-nav__link">
+    cbrt( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hypot-radian-radian-radian-value" title="hypot( radian, radian, [radian] ) -&gt; value" class="md-nav__link">
+    hypot( radian, radian, [radian] ) -&gt; value
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trigonometric" title="trigonometric" class="md-nav__link">
+    trigonometric
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sin-radian-value" title="sin( radian ) -&gt; value" class="md-nav__link">
+    sin( radian ) -&gt; value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cos-radian-value" title="cos( radian ) -&gt; value" class="md-nav__link">
+    cos( radian ) -&gt; value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tan-radian-value" title="tan( radian ) -&gt; value" class="md-nav__link">
+    tan( radian ) -&gt; value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asin-value-radian" title="asin( value ) -&gt; radian" class="md-nav__link">
+    asin( value ) -&gt; radian
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acos-value-radian" title="acos( value ) -&gt; radian" class="md-nav__link">
+    acos( value ) -&gt; radian
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atan-value-radian" title="atan( value ) -&gt; radian" class="md-nav__link">
+    atan( value ) -&gt; radian
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="math-functions-for-quantity">Math functions for quantity</h1>
+<h2 id="abshpp">abs.hpp</h2>
+<h3 id="abs-quantity">abs( quantity )</h3>
+<p>Calculates absolute value of quantity.</p>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span> <span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">abs</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">quantity</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">abs</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">quantity</span><span class="p">)</span><span class="o">&gt;</span><span class="p">{</span> <span class="n">abs</span><span class="p">(</span><span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">())</span> <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2 id="logarithmhpp">logarithm.hpp</h2>
+<h3 id="log-quantity">log( quantity )</h3>
+<p>Calculates <script type="math/tex">log</script> of quantity and returns dimensionless quantity. </p>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Repr</span><span class="p">,</span>
+          <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span> <span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">log</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Repr</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">q</span><span class="p">)</span>
+    <span class="o">-&gt;</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">si_base_units_repr</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="p">{</span>
+    <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">log</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">log</span><span class="p">(</span><span class="n">q</span><span class="p">.</span><span class="n">value</span><span class="p">())};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="log2-quantity">log2( quantity )</h3>
+<p>Calculates <script type="math/tex">log2</script> of quantity and returns dimensionless quantity. </p>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Repr</span><span class="p">,</span>
+          <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span> <span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">log2</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Repr</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">q</span><span class="p">)</span>
+    <span class="o">-&gt;</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">si_base_units_repr</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="p">{</span>
+    <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">log2</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">log2</span><span class="p">(</span><span class="n">q</span><span class="p">.</span><span class="n">value</span><span class="p">())};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="log10-quantity">log10( quantity )</h3>
+<p>Calculates <script type="math/tex">log10</script> of quantity and returns dimensionless quantity. </p>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Repr</span><span class="p">,</span>
+          <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span> <span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">log10</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Repr</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">q</span><span class="p">)</span>
+    <span class="o">-&gt;</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">si_base_units_repr</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="p">{</span>
+    <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">log10</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">log10</span><span class="p">(</span><span class="n">q</span><span class="p">.</span><span class="n">value</span><span class="p">())};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="log1p-quantity">log1p( quantity )</h3>
+<p>Calculates <script type="math/tex">log1p</script> of quantity and returns dimensionless quantity. </p>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Repr</span><span class="p">,</span>
+          <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span> <span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">log1p</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Repr</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">q</span><span class="p">)</span>
+    <span class="o">-&gt;</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">si_base_units_repr</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="p">{</span>
+    <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">log1p</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">log1p</span><span class="p">(</span><span class="n">q</span><span class="p">.</span><span class="n">value</span><span class="p">())};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2 id="minmaxhpp">minmax.hpp</h2>
+<h3 id="min-quantities">min( quantities... )</h3>
+<p>Calculates <script type="math/tex">min</script> of quantities.
+Units conversion is perform automatically.</p>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">First</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Second</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Quantities</span>
+        <span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">enable_if_t</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">conjunction_v</span><span class="o">&lt;</span><span class="n">is_quantity</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="n">First</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">is_quantity</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="n">Second</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">is_quantity</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="n">Quantities</span><span class="o">&gt;&gt;</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">bool</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nb">false</span><span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">min</span><span class="p">(</span><span class="n">First</span> <span class="n">first</span><span class="p">,</span> <span class="n">Second</span> <span class="n">second</span><span class="p">,</span> <span class="n">Quantities</span><span class="p">...</span> <span class="n">quantities</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="o">::</span><span class="n">mitama</span><span class="o">::</span><span class="n">common_type_t</span><span class="o">&lt;</span><span class="n">First</span><span class="p">,</span> <span class="n">Second</span><span class="p">,</span> <span class="n">Quantities</span><span class="p">...</span><span class="o">&gt;</span>
+<span class="p">{</span>
+  <span class="k">using</span> <span class="n">ret</span> <span class="o">=</span> <span class="o">::</span><span class="n">mitama</span><span class="o">::</span><span class="n">common_type_t</span><span class="o">&lt;</span><span class="n">First</span><span class="p">,</span> <span class="n">Second</span><span class="p">,</span> <span class="n">Quantities</span><span class="p">...</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="k">if</span> <span class="nf">constexpr</span> <span class="p">(</span><span class="k">sizeof</span><span class="p">...(</span><span class="n">Quantities</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">first</span> <span class="o">&lt;</span> <span class="n">second</span> <span class="o">?</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">ret</span><span class="o">&gt;</span><span class="p">(</span><span class="n">first</span><span class="p">)</span> <span class="o">:</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">ret</span><span class="o">&gt;</span><span class="p">(</span><span class="n">second</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">::</span><span class="n">mitama</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">first</span> <span class="o">&lt;</span> <span class="n">second</span> <span class="o">?</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">ret</span><span class="o">&gt;</span><span class="p">(</span><span class="n">first</span><span class="p">)</span>
+                                        <span class="o">:</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">ret</span><span class="o">&gt;</span><span class="p">(</span><span class="n">second</span><span class="p">),</span>
+                         <span class="n">quantities</span><span class="p">...);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="max-quantities">max( quantities... )</h3>
+<p>Calculates <script type="math/tex">max</script> of quantities.
+Units conversion is perform automatically.</p>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">First</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Second</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Quantities</span>
+        <span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">enable_if_t</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">conjunction_v</span><span class="o">&lt;</span><span class="n">is_quantity</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="n">First</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">is_quantity</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="n">Second</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">is_quantity</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="n">Quantities</span><span class="o">&gt;&gt;</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">bool</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nb">false</span><span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">max</span><span class="p">(</span><span class="n">First</span> <span class="n">first</span><span class="p">,</span> <span class="n">Second</span> <span class="n">second</span><span class="p">,</span> <span class="n">Quantities</span><span class="p">...</span> <span class="n">quantities</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="o">::</span><span class="n">mitama</span><span class="o">::</span><span class="n">common_type_t</span><span class="o">&lt;</span><span class="n">First</span><span class="p">,</span> <span class="n">Second</span><span class="p">,</span> <span class="n">Quantities</span><span class="p">...</span><span class="o">&gt;</span>
+<span class="p">{</span>
+  <span class="k">using</span> <span class="n">ret</span> <span class="o">=</span> <span class="o">::</span><span class="n">mitama</span><span class="o">::</span><span class="n">common_type_t</span><span class="o">&lt;</span><span class="n">First</span><span class="p">,</span> <span class="n">Second</span><span class="p">,</span> <span class="n">Quantities</span><span class="p">...</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="k">if</span> <span class="nf">constexpr</span> <span class="p">(</span><span class="k">sizeof</span><span class="p">...(</span><span class="n">Quantities</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">first</span> <span class="o">&gt;</span> <span class="n">second</span> <span class="o">?</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">ret</span><span class="o">&gt;</span><span class="p">(</span><span class="n">first</span><span class="p">)</span> <span class="o">:</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">ret</span><span class="o">&gt;</span><span class="p">(</span><span class="n">second</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">::</span><span class="n">mitama</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">first</span> <span class="o">&gt;</span> <span class="n">second</span> <span class="o">?</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">ret</span><span class="o">&gt;</span><span class="p">(</span><span class="n">first</span><span class="p">)</span>
+                                        <span class="o">:</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">ret</span><span class="o">&gt;</span><span class="p">(</span><span class="n">second</span><span class="p">),</span>
+                         <span class="n">quantities</span><span class="p">...);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="fdim-quantity-quantity">fdim( quantity, quantity )</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">class</span> <span class="nc">Q1</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Q2</span> <span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">fdim</span><span class="p">(</span><span class="n">Q1</span><span class="o">&amp;&amp;</span> <span class="n">q1</span><span class="p">,</span> <span class="n">Q2</span><span class="o">&amp;&amp;</span> <span class="n">q2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="o">::</span><span class="n">mitama</span><span class="o">::</span><span class="n">common_type_t</span><span class="o">&lt;</span><span class="n">Q1</span><span class="p">,</span> <span class="n">Q2</span><span class="o">&gt;</span>
+<span class="p">{</span>
+  <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">fdim</span><span class="p">;</span>
+  <span class="k">return</span> <span class="o">::</span><span class="n">mitama</span><span class="o">::</span><span class="n">common_type_t</span><span class="o">&lt;</span><span class="n">Q1</span><span class="p">,</span> <span class="n">Q2</span><span class="o">&gt;</span><span class="p">(</span> <span class="n">fdim</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Q1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">q1</span><span class="p">).</span><span class="n">value</span><span class="p">(),</span> <span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Q2</span><span class="o">&gt;</span><span class="p">(</span><span class="n">q2</span><span class="p">).</span><span class="n">value</span><span class="p">())</span> <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2 id="modularhpp">modular.hpp</h2>
+<h3 id="fmod-quantity-quantity">fmod( quantity, quantity )</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym1</span><span class="p">,</span>
+          <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym2</span><span class="p">,</span>
+          <span class="k">class</span> <span class="nc">T1</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units1</span><span class="p">,</span>
+          <span class="k">class</span> <span class="nc">T2</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units2</span> <span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">fmod</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym1</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units1</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T1</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">q1</span><span class="p">,</span>
+          <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym2</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units2</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T2</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">q2</span><span class="p">)</span>
+    <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">enable_if_t</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">is_convertible_v</span><span class="o">&lt;</span><span class="n">T1</span><span class="p">,</span> <span class="kt">long</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="n">std</span><span class="o">::</span><span class="n">is_convertible_v</span><span class="o">&lt;</span><span class="n">T2</span><span class="p">,</span> <span class="kt">long</span> <span class="kt">double</span><span class="o">&gt;</span><span class="p">,</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">q1</span><span class="o">/</span><span class="n">q2</span><span class="p">)</span><span class="o">&gt;&gt;</span>
+<span class="p">{</span>
+    <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">fmod</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">q1</span><span class="o">/</span><span class="n">q2</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">fmod</span><span class="p">(</span><span class="n">q1</span><span class="p">.</span><span class="n">value</span><span class="p">(),</span> <span class="n">q2</span><span class="p">.</span><span class="n">value</span><span class="p">()));</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="fmod-quantity-value">fmod( quantity, value )</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span> <span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">fmod</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">quantity</span><span class="p">,</span>
+          <span class="k">typename</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;::</span><span class="n">value_type</span> <span class="n">value</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">fmod</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">quantity</span><span class="p">)</span><span class="o">&gt;</span><span class="p">{</span> <span class="n">fmod</span><span class="p">(</span><span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span> <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="remainder-quantity-quantity">remainder( quantity, quantity )</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym1</span><span class="p">,</span>
+          <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym2</span><span class="p">,</span>
+          <span class="k">class</span> <span class="nc">T1</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units1</span><span class="p">,</span>
+          <span class="k">class</span> <span class="nc">T2</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units2</span> <span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">remainder</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym1</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units1</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T1</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">q1</span><span class="p">,</span>
+               <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym2</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units2</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T2</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">q2</span><span class="p">)</span>
+    <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">enable_if_t</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">is_convertible_v</span><span class="o">&lt;</span><span class="n">T1</span><span class="p">,</span> <span class="kt">long</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="n">std</span><span class="o">::</span><span class="n">is_convertible_v</span><span class="o">&lt;</span><span class="n">T2</span><span class="p">,</span> <span class="kt">long</span> <span class="kt">double</span><span class="o">&gt;</span><span class="p">,</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">q1</span><span class="o">/</span><span class="n">q2</span><span class="p">)</span><span class="o">&gt;&gt;</span>
+<span class="p">{</span>
+    <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">remainder</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">q1</span><span class="o">/</span><span class="n">q2</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">remainder</span><span class="p">(</span><span class="n">q1</span><span class="p">.</span><span class="n">value</span><span class="p">(),</span> <span class="n">q2</span><span class="p">.</span><span class="n">value</span><span class="p">()));</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="remainder-quantity-value">remainder( quantity, value )</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span> <span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">remainder</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">quantity</span><span class="p">,</span>
+               <span class="k">typename</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;::</span><span class="n">value_type</span> <span class="n">value</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">remainder</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">quantity</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">remainder</span><span class="p">(</span><span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">(),</span> <span class="n">value</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2 id="nearest_integerhpp">nearest_integer.hpp</h2>
+<h3 id="ceil-quantity">ceil( quantity )</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span><span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span><span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">ceil</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">quantity</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">ceil</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">quantity</span><span class="p">)</span><span class="o">&gt;</span><span class="p">{</span><span class="n">ceil</span><span class="p">(</span><span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">())};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="floor-quantity">floor( quantity )</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span><span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span><span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">floor</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">quantity</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">floor</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">quantity</span><span class="p">)</span><span class="o">&gt;</span><span class="p">{</span><span class="n">floor</span><span class="p">(</span><span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">())};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="trunc-quantity">trunc( quantity )</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span><span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span><span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">trunc</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">quantity</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">trunc</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">quantity</span><span class="p">)</span><span class="o">&gt;</span><span class="p">{</span><span class="n">trunc</span><span class="p">(</span><span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">())};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="round-quantity">round( quantity )</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span><span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span><span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">round</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">quantity</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">round</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">quantity</span><span class="p">)</span><span class="o">&gt;</span><span class="p">{</span><span class="n">round</span><span class="p">(</span><span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">())};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="lround-quantity">lround( quantity )</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span><span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span><span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">lround</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">quantity</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">lround</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="kt">long</span><span class="o">&gt;</span><span class="p">{</span>
+      <span class="n">lround</span><span class="p">(</span><span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">())};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="llround-quantity">llround( quantity )</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span><span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span><span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">llround</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">quantity</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">llround</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="kt">long</span> <span class="kt">long</span><span class="o">&gt;</span><span class="p">{</span>
+      <span class="n">llround</span><span class="p">(</span><span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">())};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="nearbyint-quantity">nearbyint( quantity )</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span><span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span><span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">nearbyint</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">quantity</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">nearbyint</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">quantity</span><span class="p">)</span><span class="o">&gt;</span><span class="p">{</span><span class="n">nearbyint</span><span class="p">(</span><span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">())};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="rint-quantity">rint( quantity )</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span><span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span><span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">rint</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">quantity</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">rint</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">quantity</span><span class="p">)</span><span class="o">&gt;</span><span class="p">{</span><span class="n">rint</span><span class="p">(</span><span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">())};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="lrint-quantity">lrint( quantity )</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span><span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span><span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">lrint</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">quantity</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">using</span> <span class="n">lrint</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="kt">long</span><span class="o">&gt;</span><span class="p">{</span>
+      <span class="n">lrint</span><span class="p">(</span><span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">())};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="llrint-quantity">llrint( quantity )</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span><span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span><span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">llrint</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">quantity</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">llrint</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="kt">long</span> <span class="kt">long</span><span class="o">&gt;</span><span class="p">{</span>
+      <span class="n">llrint</span><span class="p">(</span><span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">())};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2 id="powhpp">pow.hpp</h2>
+<h3 id="pown-quantity">pow&lt;N&gt;( quantity )</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">class</span> <span class="nc">Exp</span><span class="p">,</span> <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span> <span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">pow</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">quantity</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">pow</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">mitamagic</span><span class="o">::</span><span class="n">powered_dimensional</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">Exp</span><span class="o">&gt;::</span><span class="n">type</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span>
+        <span class="p">{</span>
+            <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">pow</span><span class="p">(</span><span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">(),</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">long</span> <span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Exp</span><span class="o">::</span><span class="n">num</span><span class="p">)</span> <span class="o">/</span> <span class="n">Exp</span><span class="o">::</span><span class="n">den</span><span class="p">))</span>
+        <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="powstdratio-quantity">pow&lt;std::ratio<N,D>&gt;( quantity )</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="kt">intmax_t</span> <span class="n">Exp</span><span class="p">,</span> <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span> <span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">pow</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">quantity</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">pow</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">mitamagic</span><span class="o">::</span><span class="n">powered_dimensional</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">ratio</span><span class="o">&lt;</span><span class="n">Exp</span><span class="o">&gt;&gt;::</span><span class="n">type</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span>
+        <span class="p">{</span>
+            <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">pow</span><span class="p">(</span><span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">(),</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">long</span> <span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Exp</span><span class="p">)))</span>
+        <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="square-quantity">square( quantity )</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span> <span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">square</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">quantity</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">mitamagic</span><span class="o">::</span><span class="n">powered_dimensional</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">ratio</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;&gt;::</span><span class="n">type</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span>
+        <span class="p">{</span>
+            <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">()</span> <span class="o">*</span> <span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">())</span>
+        <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="cubic-quantity">cubic( quantity )</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span> <span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">cubic</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">quantity</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">mitamagic</span><span class="o">::</span><span class="n">powered_dimensional</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">ratio</span><span class="o">&lt;</span><span class="mi">3</span><span class="o">&gt;&gt;::</span><span class="n">type</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span>
+        <span class="p">{</span>
+            <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">()</span> <span class="o">*</span> <span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">()</span> <span class="o">*</span> <span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">())</span>
+        <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2 id="sqrthpp">sqrt.hpp</h2>
+<h3 id="sqrt-quantity">sqrt( quantity )</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span> <span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">quantity</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">mitamagic</span><span class="o">::</span><span class="n">powered_dimensional</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">ratio</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">&gt;&gt;::</span><span class="n">type</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span>
+        <span class="p">{</span>
+            <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">sqrt</span><span class="p">(</span><span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">()))</span>
+        <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="cbrt-quantity">cbrt( quantity )</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span> <span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">cbrt</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">quantity</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">mitamagic</span><span class="o">::</span><span class="n">powered_dimensional</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">ratio</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;&gt;::</span><span class="n">type</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span>
+        <span class="p">{</span>
+            <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cbrt</span><span class="p">(</span><span class="n">quantity</span><span class="p">.</span><span class="n">value</span><span class="p">()))</span>
+        <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="hypot-radian-radian-radian-value">hypot( radian, radian, [radian] ) -&gt; value</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="n">class</span><span class="p">...</span> <span class="n">Quantities</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">enable_if_t</span><span class="o">&lt;</span><span class="p">(</span><span class="k">sizeof</span><span class="p">...(</span><span class="n">Quantities</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">||</span> <span class="k">sizeof</span><span class="p">...(</span><span class="n">Quantities</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
+                  <span class="o">&amp;&amp;</span> <span class="n">std</span><span class="o">::</span><span class="n">conjunction_v</span><span class="o">&lt;::</span><span class="n">mitama</span><span class="o">::</span><span class="n">is_same_dimensional</span><span class="o">&lt;</span><span class="n">Quantities</span><span class="p">,</span> <span class="o">::</span><span class="n">mitama</span><span class="o">::</span><span class="n">quantity</span><span class="o">&lt;::</span><span class="n">mitama</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">meter_t</span><span class="o">&gt;&gt;</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
+                <span class="kt">bool</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nb">false</span><span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">hypot</span><span class="p">(</span><span class="n">Quantities</span><span class="p">...</span> <span class="n">quantities</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">::</span><span class="n">mitama</span><span class="o">::</span><span class="n">common_type_t</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="n">Quantities</span><span class="o">&gt;</span><span class="p">...</span><span class="o">&gt;</span><span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">hypot</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;::</span><span class="n">mitama</span><span class="o">::</span><span class="n">common_type_t</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="n">Quantities</span><span class="o">&gt;</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">quantities</span><span class="p">).</span><span class="n">value</span><span class="p">()...)</span> <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2 id="trigonometric">trigonometric</h2>
+<h3 id="sin-radian-value">sin( radian ) -&gt; value</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">class</span> <span class="nc">T</span> <span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">sin</span><span class="p">(</span><span class="n">quantity</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">radian_t</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">rad</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">sin</span><span class="p">(</span><span class="n">rad</span><span class="p">.</span><span class="n">value</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="cos-radian-value">cos( radian ) -&gt; value</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">class</span> <span class="nc">T</span> <span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">cos</span><span class="p">(</span><span class="n">quantity</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">radian_t</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">rad</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">cos</span><span class="p">(</span><span class="n">rad</span><span class="p">.</span><span class="n">value</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="tan-radian-value">tan( radian ) -&gt; value</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">class</span> <span class="nc">T</span> <span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">tan</span><span class="p">(</span><span class="n">quantity</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">radian_t</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">rad</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">tan</span><span class="p">(</span><span class="n">rad</span><span class="p">.</span><span class="n">value</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="asin-value-radian">asin( value ) -&gt; radian</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">enable_if_t</span><span class="o">&lt;!</span><span class="n">is_quantity_v</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">bool</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nb">false</span><span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">asin</span><span class="p">(</span><span class="n">T</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">asin</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">|</span> <span class="n">si</span><span class="o">::</span><span class="n">radian</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="acos-value-radian">acos( value ) -&gt; radian</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">enable_if_t</span><span class="o">&lt;!</span><span class="n">is_quantity_v</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">bool</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nb">false</span><span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">acos</span><span class="p">(</span><span class="n">T</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">acos</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">|</span> <span class="n">si</span><span class="o">::</span><span class="n">radian</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="atan-value-radian">atan( value ) -&gt; radian</h3>
+<div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">enable_if_t</span><span class="o">&lt;!</span><span class="n">is_quantity_v</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">bool</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nb">false</span><span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">atan</span><span class="p">(</span><span class="n">T</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">atan</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">|</span> <span class="n">si</span><span class="o">::</span><span class="n">radian</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://twitter.com/mitama_rs" class="md-footer-social__link fa fa-twitter"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.267712eb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+      
+        <script src="../../mathjaxhelper.js"></script>
+      
+    
+  </body>
+</html>
