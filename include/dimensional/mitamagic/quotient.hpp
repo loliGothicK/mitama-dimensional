@@ -1,9 +1,9 @@
 #ifndef MITAMA_DIMENSIONAL_MITAMAGIC_QUOTIENT_HPP
 #define MITAMA_DIMENSIONAL_MITAMAGIC_QUOTIENT_HPP
-#include "../dimensional_phantom.hpp"
-#include "../units.hpp"
-#include "type_list.hpp"
-#include "../dimensional_traits.hpp"
+#include <dimensional/dimensional_phantom.hpp>
+#include <dimensional/units.hpp>
+#include <dimensional/mitamagic/type_list.hpp>
+#include <dimensional/dimensional_traits.hpp>
 #include <cmath>
 #include <iostream>
 #include <ratio>
@@ -57,12 +57,21 @@ template <class U, class H> struct find_if<U, H> {
 template <class _>
 struct find_if<_> { using type = not_found; };
 
+template < class T, std::size_t... Indices >
+static constexpr auto power(T a, std::index_sequence<Indices...>) {
+    return (((void)Indices, a) * ... * T{1});
+}
+
 template <class... U1, class... U2>
 struct scaler<dimensional_t<U1...>, dimensional_t<U2...>> {
-  template <class R1, class R2> static constexpr long double convert() {
+
+  template <class R1, class R2, std::enable_if_t<!(R2::den == 1 && R2::num >= 0), bool> = false> static long double convert() {
     return std::pow(
         static_cast<long double>(R1::num) / static_cast<long double>(R1::den),
         static_cast<long double>(R2::num) / static_cast<long double>(R2::den));
+  }
+  template <class R1, class R2, std::enable_if_t<R2::den == 1 && R2::num >= 0, bool> = false> static constexpr long double convert() {
+    return power(static_cast<long double>(R1::num) / static_cast<long double>(R1::den), std::make_index_sequence<R2::num>{});
   }
 
   template <class T, class... Seq> static constexpr auto eval() {

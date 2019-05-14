@@ -2,7 +2,7 @@
 #define MITAMA_DIMENSIONAL_MATH_ABS_HPP
 
 #include <cmath>
-#include "../quantity.hpp"
+#include <dimensional/quantity.hpp>
 
 namespace mitama {
 

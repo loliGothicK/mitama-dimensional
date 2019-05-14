@@ -1,8 +1,8 @@
 #ifndef MITAMA_DIMENSIONAL_UNITS_HPP
 #define MITAMA_DIMENSIONAL_UNITS_HPP
-#include "fwd/units_fwd.hpp"
-#include "dimensional_phantom.hpp"
-#include "dimensional_traits.hpp"
+#include <dimensional/fwd/units_fwd.hpp>
+#include <dimensional/dimensional_phantom.hpp>
+#include <dimensional/dimensional_traits.hpp>
 #include <ratio>
 
 namespace mitama {

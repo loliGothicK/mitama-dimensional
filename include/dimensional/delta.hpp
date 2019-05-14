@@ -1,15 +1,15 @@
 #ifndef MITAMA_DIMENSIONAL_DELTA_HPP
 #define MITAMA_DIMENSIONAL_DELTA_HPP
-#include "quantity.hpp"
-#include "nonsi_units/degree_celsius.hpp"
-#include "si_units/kelvin.hpp"
+#include <dimensional/quantity.hpp>
+#include <dimensional/systems/nonsi/degree_celsius.hpp>
+#include <dimensional/systems/si/kelvin.hpp>
 #include <type_traits>
 
 namespace mitama {
 
 template < class > struct is_temperature_quantity: std::false_type {};
-template < class T > struct is_temperature_quantity<quantity_t<si::kelvin_t, T>>: std::true_type {};
-template < class T > struct is_temperature_quantity<quantity_t<nonsi::degree_celsius_t, T>>: std::true_type {};
+template < class T > struct is_temperature_quantity<quantity_t<systems::si::kelvin_t, T>>: std::true_type {};
+template < class T > struct is_temperature_quantity<quantity_t<systems::nonsi::degree_celsius_t, T>>: std::true_type {};
 
 template < class T > inline constexpr bool is_temperature_quantity_v = is_temperature_quantity<T>::value;
 

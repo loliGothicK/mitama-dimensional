@@ -1,8 +1,8 @@
 #ifndef MITAMA_DIMENSIONAL_REFINEMENT_HPP
 #define MITAMA_DIMENSIONAL_REFINEMENT_HPP
-#include "quantity.hpp"
-#include "si_units/all.hpp"
-#include "mitamagic/type_list.hpp"
+#include <dimensional/quantity.hpp>
+#include <dimensional/systems/si/all.hpp>
+#include <dimensional/mitamagic/type_list.hpp>
 
 namespace mitama {
 
@@ -10,31 +10,31 @@ namespace sym {
 class refinement_symbol_tag {};
 
 template <std::intmax_t N = 1> struct L : private refinement_symbol_tag {
-  using basis = ::mitama::si::length;
+  using basis = ::mitama::systems::si::length;
   using exp = std::ratio<N>;
 };
 template <std::intmax_t N = 1> struct M : private refinement_symbol_tag {
-  using basis = ::mitama::si::mass;
+  using basis = ::mitama::systems::si::mass;
   using exp = std::ratio<N>;
 };
 template <std::intmax_t N = 1> struct T : private refinement_symbol_tag {
-  using basis = ::mitama::si::time;
+  using basis = ::mitama::systems::si::time;
   using exp = std::ratio<N>;
 };
 template <std::intmax_t N = 1> struct I : private refinement_symbol_tag {
-  using basis = ::mitama::si::electric_current;
+  using basis = ::mitama::systems::si::electric_current;
   using exp = std::ratio<N>;
 };
 template <std::intmax_t N = 1> struct S : private refinement_symbol_tag {
-  using basis = ::mitama::si::thermodynamic_temperature;
+  using basis = ::mitama::systems::si::thermodynamic_temperature;
   using exp = std::ratio<N>;
 };
 template <std::intmax_t E = 1> struct N : private refinement_symbol_tag {
-  using basis = ::mitama::si::amount_of_substance;
+  using basis = ::mitama::systems::si::amount_of_substance;
   using exp = std::ratio<E>;
 };
 template <std::intmax_t N = 1> struct J : private refinement_symbol_tag {
-  using basis = ::mitama::si::luminous_intensity;
+  using basis = ::mitama::systems::si::luminous_intensity;
   using exp = std::ratio<N>;
 };
 

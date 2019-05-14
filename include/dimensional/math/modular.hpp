@@ -2,8 +2,8 @@
 #define MITAMA_DIMENSIONAL_MATH_MODULAR_HPP
 
 #include <cmath>
-#include "../quantity.hpp"
-#include "../arithmetic.hpp"
+#include <dimensional/quantity.hpp>
+#include <dimensional/arithmetic.hpp>
 
 namespace mitama {
 

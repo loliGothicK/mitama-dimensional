@@ -1,8 +1,8 @@
 #ifndef MITAMA_DIMENSIONAL_MATH_LOGATITHM_HPP
 #define MITAMA_DIMENSIONAL_MATH_LOGATITHM_HPP
 #include <cmath>
-#include "../quantity.hpp"
-#include "../arithmetic.hpp"
+#include <dimensional/quantity.hpp>
+#include <dimensional/arithmetic.hpp>
 
 namespace mitama {
 template <template <class> class Synonym,

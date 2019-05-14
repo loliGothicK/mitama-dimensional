@@ -1,7 +1,7 @@
 #ifndef MITAMA_DIMENSIONAL_ARITHMETIC_HPP
 #define MITAMA_DIMENSIONAL_ARITHMETIC_HPP
-#include "quantity.hpp"
-#include "delta.hpp"
+#include <dimensional/quantity.hpp>
+#include <dimensional/delta.hpp>
 
 namespace mitama {
 

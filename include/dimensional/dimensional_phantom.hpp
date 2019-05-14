@@ -1,9 +1,9 @@
 #ifndef MITAMA_DIMENSIONAL_PHANTOM_HPP
 #define MITAMA_DIMENSIONAL_PHANTOM_HPP
-#include "fwd/dimensional_fwd.hpp"
-#include "mitamagic/utility_ext.hpp"
-#include "mitamagic/type_traits_ext.hpp"
-#include "mitamagic/ratio_ext.hpp"
+#include <dimensional/fwd/dimensional_fwd.hpp>
+#include <dimensional/mitamagic/utility_ext.hpp>
+#include <dimensional/mitamagic/type_traits_ext.hpp>
+#include <dimensional/mitamagic/ratio_ext.hpp>
 #include <type_traits>
 
 namespace mitama::mitamagic {

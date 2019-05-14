@@ -1,7 +1,7 @@
 #ifndef MITAMA_DIMENSIONAL_QUANTITY_HPP
 #define MITAMA_DIMENSIONAL_QUANTITY_HPP
-#include "fwd/quantity_fwd.hpp"
-#include "dimensional_traits.hpp"
+#include <dimensional/fwd/quantity_fwd.hpp>
+#include <dimensional/dimensional_traits.hpp>
 
 namespace mitama {
 

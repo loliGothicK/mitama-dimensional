@@ -1,6 +1,6 @@
 #ifndef MITAMA_DIMENSIONAL_MATH_NEARBYINT_HPP
 #define MITAMA_DIMENSIONAL_MATH_NEARBYINT_HPP
-#include "../quantity.hpp"
+#include <dimensional/quantity.hpp>
 #include <cmath>
 namespace mitama {
 template <template<class> class Synonym, class T, class... Units>

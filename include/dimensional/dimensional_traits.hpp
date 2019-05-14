@@ -1,12 +1,12 @@
 #ifndef MITAMA_DIMENSIONAL_DIMENSIONAL_TRAITS_HPP
 #define MITAMA_DIMENSIONAL_DIMENSIONAL_TRAITS_HPP
-#include "fwd/quantity_fwd.hpp"
-#include "fwd/units_fwd.hpp"
-#include "fwd/dimensional_fwd.hpp"
-#include "mitamagic/type_traits_ext.hpp"
-#include "mitamagic/type_list.hpp"
+#include <dimensional/fwd/quantity_fwd.hpp>
+#include <dimensional/fwd/units_fwd.hpp>
+#include <dimensional/fwd/dimensional_fwd.hpp>
+#include <dimensional/mitamagic/type_traits_ext.hpp>
+#include <dimensional/mitamagic/type_list.hpp>
 #include <type_traits>
-#include "mitamagic/quotient.hpp"
+#include <dimensional/mitamagic/quotient.hpp>
 
 namespace mitama {
     // quantity_t traits
@@ -42,16 +42,37 @@ namespace mitama {
     // meta-operator for dimension equivalence
     // template partial specialization for dimensional_t
     template <class T, class U,
-            class... Units1,
-            class... Units2,
-            template <class> class Synonym1,
-            template <class> class Synonym2>
+              class... Units1,
+              class... Units2,
+              template <class> class Synonym1,
+              template <class> class Synonym2>
     struct is_same_dimensional<quantity_t<Synonym1<dimensional_t<Units1...>>, T>,
-                            quantity_t<Synonym2<dimensional_t<Units2...>>, U>>
+                               quantity_t<Synonym2<dimensional_t<Units2...>>, U>>
         : std::conjunction<
             std::bool_constant<sizeof...(Units1) == sizeof...(Units2)>,
             std::is_base_of<typename Units1::tag,
                             dimensional_t<Units2...>>...> {};
+
+    template <class... Units1,
+              class... Units2,
+              template <class> class Synonym1,
+              template <class> class Synonym2>
+    struct is_same_dimensional<Synonym1<dimensional_t<Units1...>>,
+                               Synonym2<dimensional_t<Units2...>>>
+        : std::conjunction<
+            std::bool_constant<sizeof...(Units1) == sizeof...(Units2)>,
+            std::is_base_of<typename Units1::tag,
+                            dimensional_t<Units2...>>...> {};
+
+    template <class... Units1,
+              class... Units2>
+    struct is_same_dimensional<dimensional_t<Units1...>,
+                               dimensional_t<Units2...>>
+        : std::conjunction<
+            std::bool_constant<sizeof...(Units1) == sizeof...(Units2)>,
+            std::is_base_of<typename Units1::tag,
+                            dimensional_t<Units2...>>...> {};
+
 
     // alias variable template
     template <class L, class R>

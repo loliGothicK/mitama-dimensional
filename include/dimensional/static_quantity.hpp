@@ -1,9 +1,9 @@
 #ifndef MITAMA_DIMENSIONAL_STATIC_QUANTITY_HPP
 #define MITAMA_DIMENSIONAL_STATIC_QUANTITY_HPP
-#include "fwd/quantity_fwd.hpp"
-#include "mitamagic/quotient.hpp"
-#include "mitamagic/ratio_ext.hpp"
-#include "mitamagic/type_traits_ext.hpp"
+#include <dimensional/fwd/quantity_fwd.hpp>
+#include <dimensional/mitamagic/quotient.hpp>
+#include <dimensional/mitamagic/ratio_ext.hpp>
+#include <dimensional/mitamagic/type_traits_ext.hpp>
 
 namespace mitama {
 
@@ -27,7 +27,7 @@ namespace mitama {
     struct Pow {
         template < class T, std::size_t... Indices >
         static constexpr auto impl(T a,std::index_sequence<Indices...>) {
-            return ((Indices, a) * ... * T{1});
+            return (((void)Indices, a) * ... * T{1});
         } 
 
         template < class T >
@@ -55,9 +55,15 @@ namespace mitama {
     }
 
     template < class... Units1, template <class> class Synonym1, auto Value1,
-               class... Units2, template <class> class Synonym2, auto Value2 >
+               class... Units2, template <class> class Synonym2, auto Value2,
+               std::enable_if_t<
+                   is_same_dimensional_v<
+                       dimensional_t<Units1...>,
+                       dimensional_t<Units2...>>,
+               bool> = false >
     inline constexpr auto
-    operator+ (static_quantity_t<Synonym1<dimensional_t<Units1...>>, Value1>, static_quantity_t<Synonym2<dimensional_t<Units2...>>, Value2>)
+    operator+ (static_quantity_t<Synonym1<dimensional_t<Units1...>>, Value1>,
+               static_quantity_t<Synonym2<dimensional_t<Units2...>>, Value2>) noexcept
         -> static_quantity_t<mitamagic::scaled_dimension_t<dimensional_t<Units1...>, dimensional_t<Units2...>>,
                              make_scaled_value<dimensional_t<Units1...>,
                                                dimensional_t<Units2...>,
@@ -66,9 +72,15 @@ namespace mitama {
         { return {}; }
 
     template < class... Units1, template <class> class Synonym1, auto Value1,
-               class... Units2, template <class> class Synonym2, auto Value2 >
+               class... Units2, template <class> class Synonym2, auto Value2,
+                   std::enable_if_t<
+                   is_same_dimensional_v<
+                       dimensional_t<Units1...>,
+                       dimensional_t<Units2...>>,
+               bool> = false >
     inline constexpr auto
-    operator- (static_quantity_t<Synonym1<dimensional_t<Units1...>>, Value1>, static_quantity_t<Synonym2<dimensional_t<Units2...>>, Value2>)
+    operator- (static_quantity_t<Synonym1<dimensional_t<Units1...>>, Value1>,
+               static_quantity_t<Synonym2<dimensional_t<Units2...>>, Value2>) noexcept
         -> static_quantity_t<mitamagic::scaled_dimension_t<dimensional_t<Units1...>, dimensional_t<Units2...>>,
                              make_scaled_value<dimensional_t<Units1...>,
                                                dimensional_t<Units2...>,
@@ -79,7 +91,8 @@ namespace mitama {
     template < class... Units1, template <class> class Synonym1, auto Value1,
                class... Units2, template <class> class Synonym2, auto Value2 >
     inline constexpr auto
-    operator* (static_quantity_t<Synonym1<dimensional_t<Units1...>>, Value1>, static_quantity_t<Synonym2<dimensional_t<Units2...>>, Value2>)
+    operator* (static_quantity_t<Synonym1<dimensional_t<Units1...>>, Value1>,
+               static_quantity_t<Synonym2<dimensional_t<Units2...>>, Value2>) noexcept
         -> static_quantity_t<mitamagic::quotient_t<dimensional_t<Units1...>,
                                                    dimensional_t<Units2...>>,
                              make_scaled_value<dimensional_t<Units1...>,
@@ -91,7 +104,8 @@ namespace mitama {
     template < class... Units1, template <class> class Synonym1, auto Value1,
                class... Units2, template <class> class Synonym2, auto Value2 >
     inline constexpr auto
-    operator/ (static_quantity_t<Synonym1<dimensional_t<Units1...>>, Value1>, static_quantity_t<Synonym2<dimensional_t<Units2...>>, Value2>)
+    operator/ (static_quantity_t<Synonym1<dimensional_t<Units1...>>, Value1>,
+               static_quantity_t<Synonym2<dimensional_t<Units2...>>, Value2>) noexcept
         -> static_quantity_t<mitamagic::quotient_t<dimensional_t<Units1...>,
                                                    mitamagic::inverse_t<dimensional_t<Units2...>>>,
                              make_scaled_value<dimensional_t<Units1...>,
@@ -103,7 +117,7 @@ namespace mitama {
     template < std::size_t N,
                class... Units, template <class> class Synonym, auto Value >
     inline constexpr auto
-    pow(static_quantity_t<Synonym<dimensional_t<Units...>>, Value>)
+    pow(static_quantity_t<Synonym<dimensional_t<Units...>>, Value>) noexcept
         -> static_quantity_t<powered_t<Synonym<dimensional_t<Units...>>, 2>, Pow<N>::invoke(Value)>
         { return {}; }
 
