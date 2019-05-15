@@ -395,7 +395,7 @@ auto cbrt(quantity_t<Synonym<dimensional_t<Units...>>, T> const& quantity) {
 ```cpp
 template < class... Quantities,
     std::enable_if_t<(sizeof...(Quantities) == 2 || sizeof...(Quantities) == 3)
-                  && std::conjunction_v<::mitama::is_same_dimensional<Quantities, ::mitama::quantity<::mitama::si::meter_t>>...>,
+                  && std::conjunction_v<::mitama::is_same_dimensional<Quantities, ::mitama::quantity<systems::si::meter_t>>...>,
                 bool> = false>
 auto hypot(Quantities... quantities) {
     return ::mitama::common_type_t<std::decay_t<Quantities>...>{ std::hypot(static_cast<::mitama::common_type_t<std::decay_t<Quantities>...>>(quantities).value()...) };
@@ -408,7 +408,7 @@ auto hypot(Quantities... quantities) {
 
 ```cpp
 template < class T >
-auto sin(quantity<si::radian_t, T> const& rad) {
+auto sin(quantity<systems::si::radian_t, T> const& rad) {
     return std::sin(rad.value());
 }
 ```
@@ -417,7 +417,7 @@ auto sin(quantity<si::radian_t, T> const& rad) {
 
 ```cpp
 template < class T >
-auto cos(quantity<si::radian_t, T> const& rad) {
+auto cos(quantity<systems::si::radian_t, T> const& rad) {
     return std::cos(rad.value());
 }
 ```
@@ -426,7 +426,7 @@ auto cos(quantity<si::radian_t, T> const& rad) {
 
 ```cpp
 template < class T >
-auto tan(quantity<si::radian_t, T> const& rad) {
+auto tan(quantity<systems::si::radian_t, T> const& rad) {
     return std::tan(rad.value());
 }
 ```
@@ -436,7 +436,7 @@ auto tan(quantity<si::radian_t, T> const& rad) {
 ```cpp
 template < class T, std::enable_if_t<!is_quantity_v<T>, bool> = false>
 auto asin(T const& v) {
-    return std::asin(v) | si::radian;
+    return std::asin(v) | systems::si::radian;
 }
 ```
 
@@ -445,7 +445,7 @@ auto asin(T const& v) {
 ```cpp
 template < class T, std::enable_if_t<!is_quantity_v<T>, bool> = false>
 auto acos(T const& v) {
-    return std::acos(v) | si::radian;
+    return std::acos(v) | systems::si::radian;
 }
 ```
 
@@ -454,6 +454,6 @@ auto acos(T const& v) {
 ```cpp
 template < class T, std::enable_if_t<!is_quantity_v<T>, bool> = false>
 auto atan(T const& v) {
-    return std::atan(v) | si::radian;
+    return std::atan(v) | systems::si::radian;
 }
 ```
