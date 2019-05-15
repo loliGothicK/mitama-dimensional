@@ -434,10 +434,10 @@ TEMPLATE_TEST_CASE("dim", "[math],[quantity],[remainder]",
                    radian_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
 {
     using namespace Catch::literals;
-    REQUIRE(dim(quantity<TestType>(5), quantity<TestType>(2)).value() == 3.0_a);
-    REQUIRE(dim(quantity<TestType>(6), quantity<TestType>(4)).value() == 2.0_a);
-    REQUIRE(dim(quantity<TestType>(1), quantity<TestType>(3)).value() == +0);
-    REQUIRE(dim(quantity<TestType>(-4), quantity<TestType>(-3)).value() == +0);
+    REQUIRE(fdim(quantity<TestType>(5), quantity<TestType>(2)).value() == 3.0_a);
+    REQUIRE(fdim(quantity<TestType>(6), quantity<TestType>(4)).value() == 2.0_a);
+    REQUIRE(fdim(quantity<TestType>(1), quantity<TestType>(3)).value() == +0);
+    REQUIRE(fdim(quantity<TestType>(-4), quantity<TestType>(-3)).value() == +0);
 }
 
 TEMPLATE_TEST_CASE("log", "[math],[quantity],[log]",
