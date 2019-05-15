@@ -18,7 +18,7 @@ auto abs(quantity_t<Synonym<dimensional_t<Units...>>, T> const& quantity) {
 
 ### log( quantity )
 
-Calculates $log$ of quantity and returns dimensionless quantity. 
+Calculates $log$ of quantity and returns dimensionless quantity.
 
 ```cpp
 template <template <class> class Repr,
@@ -33,7 +33,7 @@ auto log(quantity_t<Repr<dimensional_t<Units...>>, T> const& q)
 
 ### log2( quantity )
 
-Calculates $log2$ of quantity and returns dimensionless quantity. 
+Calculates $log2$ of quantity and returns dimensionless quantity.
 
 ```cpp
 template <template <class> class Repr,
@@ -48,7 +48,7 @@ auto log2(quantity_t<Repr<dimensional_t<Units...>>, T> const& q)
 
 ### log10( quantity )
 
-Calculates $log10$ of quantity and returns dimensionless quantity. 
+Calculates $log10$ of quantity and returns dimensionless quantity.
 
 ```cpp
 template <template <class> class Repr,
@@ -63,7 +63,7 @@ auto log10(quantity_t<Repr<dimensional_t<Units...>>, T> const& q)
 
 ### log1p( quantity )
 
-Calculates $log1p$ of quantity and returns dimensionless quantity. 
+Calculates $log1p$ of quantity and returns dimensionless quantity.
 
 ```cpp
 template <template <class> class Repr,
@@ -124,6 +124,9 @@ auto max(First first, Second second, Quantities... quantities)
 
 ### fdim( quantity, quantity )
 
+Calculates $fdim$ of quantities.
+Units conversion is perform automatically.
+
 ```cpp
 template < class Q1, class Q2 >
 auto fdim(Q1&& q1, Q2&& q2) -> ::mitama::common_type_t<Q1, Q2>
@@ -136,6 +139,8 @@ auto fdim(Q1&& q1, Q2&& q2) -> ::mitama::common_type_t<Q1, Q2>
 ## modular.hpp
 
 ### fmod( quantity, quantity )
+
+Calculates $fdim$ of quantities.
 
 ```cpp
 template <template <class> class Synonym1,
@@ -154,6 +159,8 @@ auto fmod(quantity_t<Synonym1<dimensional_t<Units1...>>, T1> const& q1,
 
 ### fmod( quantity, value )
 
+Calculates $fmod$ of quantity and value.
+
 ```cpp
 template < template <class> class Synonym, class T, class... Units >
 auto fmod(quantity_t<Synonym<dimensional_t<Units...>>, T> const& quantity,
@@ -165,6 +172,8 @@ auto fmod(quantity_t<Synonym<dimensional_t<Units...>>, T> const& quantity,
 ```
 
 ### remainder( quantity, quantity )
+
+Calculates $remainder$ of quantities.
 
 ```cpp
 template <template <class> class Synonym1,
@@ -183,6 +192,7 @@ auto remainder(quantity_t<Synonym1<dimensional_t<Units1...>>, T1> const& q1,
 
 ### remainder( quantity, value )
 
+Calculates $remainder$ of quantity and value.
 
 ```cpp
 template < template <class> class Synonym, class T, class... Units >
@@ -198,6 +208,8 @@ auto remainder(quantity_t<Synonym<dimensional_t<Units...>>, T> const& quantity,
 
 ### ceil( quantity )
 
+Calculates $ceil$ of quantity and value.
+
 ```cpp
 template <template<class> class Synonym, class T, class... Units>
 auto ceil(quantity_t<Synonym<dimensional_t<Units...>>, T> const &quantity) {
@@ -207,7 +219,6 @@ auto ceil(quantity_t<Synonym<dimensional_t<Units...>>, T> const &quantity) {
 ```
 
 ### floor( quantity )
-
 
 ```cpp
 template <template<class> class Synonym, class T, class... Units>
@@ -422,7 +433,6 @@ auto tan(quantity<si::radian_t, T> const& rad) {
 
 ### asin( value ) -> radian
 
-
 ```cpp
 template < class T, std::enable_if_t<!is_quantity_v<T>, bool> = false>
 auto asin(T const& v) {
@@ -431,7 +441,6 @@ auto asin(T const& v) {
 ```
 
 ### acos( value ) -> radian
-
 
 ```cpp
 template < class T, std::enable_if_t<!is_quantity_v<T>, bool> = false>
