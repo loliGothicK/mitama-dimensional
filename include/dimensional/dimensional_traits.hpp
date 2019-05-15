@@ -114,12 +114,12 @@ namespace mitama {
     struct is_dimensional_quantifier<Synonym<dimensional_t<Units...>>>: std::true_type {};
 
     template <class Q1, class Q2, class... Quantities>
-    struct common_type
-        : ::mitama::common_type<
+    struct common_quantity
+        : ::mitama::common_quantity<
             quantity_t<mitamagic::scaled_dimension_t<typename Q1::dimension_type,
-                                                    typename Q2::dimension_type>,
+                                                     typename Q2::dimension_type>,
                         std::common_type_t<typename Q1::value_type,
-                                            typename Q2::value_type>>,
+                                           typename Q2::value_type>>,
             Quantities...>
     {
         static_assert(std::conjunction_v<is_same_dimensional<Q1, Q2>,
@@ -128,15 +128,16 @@ namespace mitama {
                         "common_type requires same dimension basis");
     };
 
-    template <class... Quantities>
-    using common_type_t = typename common_type<Quantities...>::type;
-
-    template <class Q1, class Q2> struct common_type<Q1, Q2> {
+    template <class Q1, class Q2> struct common_quantity<Q1, Q2> {
     using type = quantity_t<
         mitamagic::scaled_dimension_t<typename Q1::dimension_type,
-                                        typename Q2::dimension_type>,
-        std::common_type_t<typename Q1::value_type, typename Q2::value_type>>;
+                                      typename Q2::dimension_type>,
+        std::common_type_t<typename Q1::value_type,
+                           typename Q2::value_type>>;
     };
+
+    template <class... Quantities>
+    using common_quantity_t = typename common_quantity<Quantities...>::type;
 
     template <class U, std::intmax_t N>
     using powered_t =
