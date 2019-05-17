@@ -110,7 +110,7 @@ inline constexpr bool is_same_dimensional_v = is_same_dimensional<L, R>::value;
 ```
 
 
-## struct remove_dim_if&lt;template <class> class Pred, quantity_t<D..., T>&gt;
+## struct remove_dim_if&lt;template &lt;class&gt; class Pred, quantity_t<D..., T>&gt;
 
 Makes a `quantity_t<E ...>` consisting of the dimensions of `E ...` except where `Pred<D_i>::value` is false.
 Provides the member type that is `quantity_t<E ...>`.
@@ -126,4 +126,10 @@ Otherwise, value is equal to false.
 
 ## struct powered_t&lt;T, N&gt;
 
+Makes a powered dimensional.
+Provides the member type that is `dimensional_t<{powered units} ...>`.
+
 ## struct reciprocal_t&lt;T&gt;
+
+Makes a reciprocal dimensional.
+Provides the member type that is `dimensional_t<{reciprocal units} ...>`.
