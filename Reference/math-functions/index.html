@@ -904,7 +904,7 @@
 
 <h2 id="logarithmhpp">logarithm.hpp</h2>
 <h3 id="log-quantity">log( quantity )</h3>
-<p>Calculates <script type="math/tex">log</script> of quantity and returns dimensionless quantity. </p>
+<p>Calculates <script type="math/tex">log</script> of quantity and returns dimensionless quantity.</p>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Repr</span><span class="p">,</span>
           <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span> <span class="o">&gt;</span>
 <span class="k">auto</span> <span class="n">log</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Repr</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">q</span><span class="p">)</span>
@@ -916,7 +916,7 @@
 </pre></div>
 
 <h3 id="log2-quantity">log2( quantity )</h3>
-<p>Calculates <script type="math/tex">log2</script> of quantity and returns dimensionless quantity. </p>
+<p>Calculates <script type="math/tex">log2</script> of quantity and returns dimensionless quantity.</p>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Repr</span><span class="p">,</span>
           <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span> <span class="o">&gt;</span>
 <span class="k">auto</span> <span class="n">log2</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Repr</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">q</span><span class="p">)</span>
@@ -928,7 +928,7 @@
 </pre></div>
 
 <h3 id="log10-quantity">log10( quantity )</h3>
-<p>Calculates <script type="math/tex">log10</script> of quantity and returns dimensionless quantity. </p>
+<p>Calculates <script type="math/tex">log10</script> of quantity and returns dimensionless quantity.</p>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Repr</span><span class="p">,</span>
           <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span> <span class="o">&gt;</span>
 <span class="k">auto</span> <span class="n">log10</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Repr</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">q</span><span class="p">)</span>
@@ -940,7 +940,7 @@
 </pre></div>
 
 <h3 id="log1p-quantity">log1p( quantity )</h3>
-<p>Calculates <script type="math/tex">log1p</script> of quantity and returns dimensionless quantity. </p>
+<p>Calculates <script type="math/tex">log1p</script> of quantity and returns dimensionless quantity.</p>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Repr</span><span class="p">,</span>
           <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span> <span class="o">&gt;</span>
 <span class="k">auto</span> <span class="n">log1p</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Repr</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">q</span><span class="p">)</span>
@@ -991,6 +991,8 @@ Units conversion is perform automatically.</p>
 </pre></div>
 
 <h3 id="fdim-quantity-quantity">fdim( quantity, quantity )</h3>
+<p>Calculates <script type="math/tex">fdim</script> of quantities.
+Units conversion is perform automatically.</p>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">class</span> <span class="nc">Q1</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Q2</span> <span class="o">&gt;</span>
 <span class="k">auto</span> <span class="n">fdim</span><span class="p">(</span><span class="n">Q1</span><span class="o">&amp;&amp;</span> <span class="n">q1</span><span class="p">,</span> <span class="n">Q2</span><span class="o">&amp;&amp;</span> <span class="n">q2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="o">::</span><span class="n">mitama</span><span class="o">::</span><span class="n">common_type_t</span><span class="o">&lt;</span><span class="n">Q1</span><span class="p">,</span> <span class="n">Q2</span><span class="o">&gt;</span>
 <span class="p">{</span>
@@ -1001,6 +1003,7 @@ Units conversion is perform automatically.</p>
 
 <h2 id="modularhpp">modular.hpp</h2>
 <h3 id="fmod-quantity-quantity">fmod( quantity, quantity )</h3>
+<p>Calculates <script type="math/tex">fdim</script> of quantities.</p>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym1</span><span class="p">,</span>
           <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym2</span><span class="p">,</span>
           <span class="k">class</span> <span class="nc">T1</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units1</span><span class="p">,</span>
@@ -1016,6 +1019,7 @@ Units conversion is perform automatically.</p>
 </pre></div>
 
 <h3 id="fmod-quantity-value">fmod( quantity, value )</h3>
+<p>Calculates <script type="math/tex">fmod</script> of quantity and value.</p>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span> <span class="o">&gt;</span>
 <span class="k">auto</span> <span class="n">fmod</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">quantity</span><span class="p">,</span>
           <span class="k">typename</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;::</span><span class="n">value_type</span> <span class="n">value</span><span class="p">)</span>
@@ -1026,6 +1030,7 @@ Units conversion is perform automatically.</p>
 </pre></div>
 
 <h3 id="remainder-quantity-quantity">remainder( quantity, quantity )</h3>
+<p>Calculates <script type="math/tex">remainder</script> of quantities.</p>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym1</span><span class="p">,</span>
           <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym2</span><span class="p">,</span>
           <span class="k">class</span> <span class="nc">T1</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units1</span><span class="p">,</span>
@@ -1041,6 +1046,7 @@ Units conversion is perform automatically.</p>
 </pre></div>
 
 <h3 id="remainder-quantity-value">remainder( quantity, value )</h3>
+<p>Calculates <script type="math/tex">remainder</script> of quantity and value.</p>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span> <span class="o">&gt;</span>
 <span class="k">auto</span> <span class="n">remainder</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">quantity</span><span class="p">,</span>
                <span class="k">typename</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;::</span><span class="n">value_type</span> <span class="n">value</span><span class="p">)</span>
@@ -1052,6 +1058,7 @@ Units conversion is perform automatically.</p>
 
 <h2 id="nearest_integerhpp">nearest_integer.hpp</h2>
 <h3 id="ceil-quantity">ceil( quantity )</h3>
+<p>Calculates <script type="math/tex">ceil</script> of quantity and value.</p>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span><span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">class</span><span class="p">...</span> <span class="n">Units</span><span class="o">&gt;</span>
 <span class="k">auto</span> <span class="n">ceil</span><span class="p">(</span><span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Synonym</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">quantity</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">ceil</span><span class="p">;</span>
@@ -1202,7 +1209,7 @@ Units conversion is perform automatically.</p>
 <h3 id="hypot-radian-radian-radian-value">hypot( radian, radian, [radian] ) -&gt; value</h3>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="n">class</span><span class="p">...</span> <span class="n">Quantities</span><span class="p">,</span>
     <span class="n">std</span><span class="o">::</span><span class="n">enable_if_t</span><span class="o">&lt;</span><span class="p">(</span><span class="k">sizeof</span><span class="p">...(</span><span class="n">Quantities</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">||</span> <span class="k">sizeof</span><span class="p">...(</span><span class="n">Quantities</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
-                  <span class="o">&amp;&amp;</span> <span class="n">std</span><span class="o">::</span><span class="n">conjunction_v</span><span class="o">&lt;::</span><span class="n">mitama</span><span class="o">::</span><span class="n">is_same_dimensional</span><span class="o">&lt;</span><span class="n">Quantities</span><span class="p">,</span> <span class="o">::</span><span class="n">mitama</span><span class="o">::</span><span class="n">quantity</span><span class="o">&lt;::</span><span class="n">mitama</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">meter_t</span><span class="o">&gt;&gt;</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
+                  <span class="o">&amp;&amp;</span> <span class="n">std</span><span class="o">::</span><span class="n">conjunction_v</span><span class="o">&lt;::</span><span class="n">mitama</span><span class="o">::</span><span class="n">is_same_dimensional</span><span class="o">&lt;</span><span class="n">Quantities</span><span class="p">,</span> <span class="o">::</span><span class="n">mitama</span><span class="o">::</span><span class="n">quantity</span><span class="o">&lt;</span><span class="n">systems</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">meter_t</span><span class="o">&gt;&gt;</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
                 <span class="kt">bool</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nb">false</span><span class="o">&gt;</span>
 <span class="k">auto</span> <span class="n">hypot</span><span class="p">(</span><span class="n">Quantities</span><span class="p">...</span> <span class="n">quantities</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="o">::</span><span class="n">mitama</span><span class="o">::</span><span class="n">common_type_t</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="n">Quantities</span><span class="o">&gt;</span><span class="p">...</span><span class="o">&gt;</span><span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">hypot</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;::</span><span class="n">mitama</span><span class="o">::</span><span class="n">common_type_t</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="n">Quantities</span><span class="o">&gt;</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">quantities</span><span class="p">).</span><span class="n">value</span><span class="p">()...)</span> <span class="p">};</span>
@@ -1212,21 +1219,21 @@ Units conversion is perform automatically.</p>
 <h2 id="trigonometric">trigonometric</h2>
 <h3 id="sin-radian-value">sin( radian ) -&gt; value</h3>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">class</span> <span class="nc">T</span> <span class="o">&gt;</span>
-<span class="k">auto</span> <span class="n">sin</span><span class="p">(</span><span class="n">quantity</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">radian_t</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">rad</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">auto</span> <span class="n">sin</span><span class="p">(</span><span class="n">quantity</span><span class="o">&lt;</span><span class="n">systems</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">radian_t</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">rad</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">sin</span><span class="p">(</span><span class="n">rad</span><span class="p">.</span><span class="n">value</span><span class="p">());</span>
 <span class="p">}</span>
 </pre></div>
 
 <h3 id="cos-radian-value">cos( radian ) -&gt; value</h3>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">class</span> <span class="nc">T</span> <span class="o">&gt;</span>
-<span class="k">auto</span> <span class="n">cos</span><span class="p">(</span><span class="n">quantity</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">radian_t</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">rad</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">auto</span> <span class="n">cos</span><span class="p">(</span><span class="n">quantity</span><span class="o">&lt;</span><span class="n">systems</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">radian_t</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">rad</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">cos</span><span class="p">(</span><span class="n">rad</span><span class="p">.</span><span class="n">value</span><span class="p">());</span>
 <span class="p">}</span>
 </pre></div>
 
 <h3 id="tan-radian-value">tan( radian ) -&gt; value</h3>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">class</span> <span class="nc">T</span> <span class="o">&gt;</span>
-<span class="k">auto</span> <span class="n">tan</span><span class="p">(</span><span class="n">quantity</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">radian_t</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">rad</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">auto</span> <span class="n">tan</span><span class="p">(</span><span class="n">quantity</span><span class="o">&lt;</span><span class="n">systems</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">radian_t</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">rad</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">tan</span><span class="p">(</span><span class="n">rad</span><span class="p">.</span><span class="n">value</span><span class="p">());</span>
 <span class="p">}</span>
 </pre></div>
@@ -1234,21 +1241,21 @@ Units conversion is perform automatically.</p>
 <h3 id="asin-value-radian">asin( value ) -&gt; radian</h3>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">enable_if_t</span><span class="o">&lt;!</span><span class="n">is_quantity_v</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">bool</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nb">false</span><span class="o">&gt;</span>
 <span class="k">auto</span> <span class="n">asin</span><span class="p">(</span><span class="n">T</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">asin</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">|</span> <span class="n">si</span><span class="o">::</span><span class="n">radian</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">asin</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">|</span> <span class="n">systems</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">radian</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
 <h3 id="acos-value-radian">acos( value ) -&gt; radian</h3>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">enable_if_t</span><span class="o">&lt;!</span><span class="n">is_quantity_v</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">bool</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nb">false</span><span class="o">&gt;</span>
 <span class="k">auto</span> <span class="n">acos</span><span class="p">(</span><span class="n">T</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">acos</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">|</span> <span class="n">si</span><span class="o">::</span><span class="n">radian</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">acos</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">|</span> <span class="n">systems</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">radian</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
 <h3 id="atan-value-radian">atan( value ) -&gt; radian</h3>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">enable_if_t</span><span class="o">&lt;!</span><span class="n">is_quantity_v</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">bool</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nb">false</span><span class="o">&gt;</span>
 <span class="k">auto</span> <span class="n">atan</span><span class="p">(</span><span class="n">T</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">atan</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">|</span> <span class="n">si</span><span class="o">::</span><span class="n">radian</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">atan</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">|</span> <span class="n">systems</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">radian</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
                 
