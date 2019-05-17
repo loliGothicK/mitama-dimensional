@@ -42,7 +42,7 @@
     
     
       
-        <title>Meta functions - Mitama.Dimensional | User Manual</title>
+        <title>meta functions - Mitama.Dimensional | User Manual</title>
       
     
     
@@ -137,7 +137,7 @@
               Mitama.Dimensional | User Manual
             </span>
             <span class="md-header-nav__topic">
-              Meta functions
+              meta functions
             </span>
           
         </div>
@@ -204,14 +204,16 @@
       
         
 
-<nav class="md-tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
   <li class="md-tabs__item">
     
-      <a href="../.." title="Home" class="md-tabs__link md-tabs__link--active">
+      <a href="../.." title="Home" class="md-tabs__link">
         Home
       </a>
     
@@ -236,7 +238,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../quantity/" title="Reference" class="md-tabs__link">
+        <a href="../quantity/" title="Reference" class="md-tabs__link md-tabs__link--active">
           Reference
         </a>
       
@@ -449,10 +451,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Reference
@@ -485,6 +489,105 @@
     <a href="../arithmetic/" title="arithmetic" class="md-nav__link">
       arithmetic
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        meta functions
+      </label>
+    
+    <a href="./" title="meta functions" class="md-nav__link md-nav__link--active">
+      meta functions
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#struct-is_quantityt" title="struct is_quantity&lt;T&gt;" class="md-nav__link">
+    struct is_quantity&lt;T&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#struct-is_unitst" title="struct is_units&lt;T&gt;" class="md-nav__link">
+    struct is_units&lt;T&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#struct-is_dimensionalt" title="struct is_dimensional&lt;T&gt;" class="md-nav__link">
+    struct is_dimensional&lt;T&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#struct-is_same_dimensionalquantity_t-quantity_t" title="struct is_same_dimensional&lt;quantity_t, quantity_t&gt;" class="md-nav__link">
+    struct is_same_dimensional&lt;quantity_t, quantity_t&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#struct-remove_dim_iftemplate-class-class-pred-quantity_t" title="struct remove_dim_if&lt;template &lt;class&gt; class Pred, quantity_t&gt;" class="md-nav__link">
+    struct remove_dim_if&lt;template &lt;class&gt; class Pred, quantity_t&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#struct-is_dimensional_quantifiert" title="struct is_dimensional_quantifier&lt;T&gt;" class="md-nav__link">
+    struct is_dimensional_quantifier&lt;T&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#struct-powered_tt-n" title="struct powered_t&lt;T, N&gt;" class="md-nav__link">
+    struct powered_t&lt;T, N&gt;
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#struct-reciprocal_tt" title="struct reciprocal_t&lt;T&gt;" class="md-nav__link">
+    struct reciprocal_t&lt;T&gt;
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -554,8 +657,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#struct-remove_dim_iftemplate-class-pred-quantity_t" title="struct remove_dim_if&lt;template  class Pred, quantity_t&gt;" class="md-nav__link">
-    struct remove_dim_if&lt;template  class Pred, quantity_t&gt;
+  <a href="#struct-remove_dim_iftemplate-class-class-pred-quantity_t" title="struct remove_dim_if&lt;template &lt;class&gt; class Pred, quantity_t&gt;" class="md-nav__link">
+    struct remove_dim_if&lt;template &lt;class&gt; class Pred, quantity_t&gt;
   </a>
   
 </li>
@@ -692,7 +795,7 @@ Otherwise, value is equal to false.</p>
 <span class="kr">inline</span> <span class="k">constexpr</span> <span class="kt">bool</span> <span class="n">is_same_dimensional_v</span> <span class="o">=</span> <span class="n">is_same_dimensional</span><span class="o">&lt;</span><span class="n">L</span><span class="p">,</span> <span class="n">R</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
 </pre></div>
 
-<h2 id="struct-remove_dim_iftemplate-class-pred-quantity_t">struct remove_dim_if&lt;template <class> class Pred, quantity_t<D..., T>&gt;</h2>
+<h2 id="struct-remove_dim_iftemplate-class-class-pred-quantity_t">struct remove_dim_if&lt;template &lt;class&gt; class Pred, quantity_t<D..., T>&gt;</h2>
 <p>Makes a <code class="codehilite">quantity_t&lt;E ...&gt;</code> consisting of the dimensions of <code class="codehilite">E ...</code> except where <code class="codehilite">Pred&lt;D_i&gt;::value</code> is false.
 Provides the member type that is <code class="codehilite">quantity_t&lt;E ...&gt;</code>.</p>
 <h2 id="struct-is_dimensional_quantifiert">struct is_dimensional_quantifier&lt;T&gt;</h2>
@@ -703,7 +806,11 @@ const <code class="codehilite">TT&lt;dimensional_t&lt;D...&gt;&gt;</code>, volat
 or const volatile <code class="codehilite">TT&lt;dimensional_t&lt;D...&gt;&gt;</code>.
 Otherwise, value is equal to false.</p>
 <h2 id="struct-powered_tt-n">struct powered_t&lt;T, N&gt;</h2>
+<p>Makes a powered dimensional.
+Provides the member type that is <code class="codehilite">dimensional_t&lt;{powered units} ...&gt;</code>.</p>
 <h2 id="struct-reciprocal_tt">struct reciprocal_t&lt;T&gt;</h2>
+<p>Makes a reciprocal dimensional.
+Provides the member type that is <code class="codehilite">dimensional_t&lt;{reciprocal units} ...&gt;</code>.</p>
                 
                   
                 
@@ -720,6 +827,41 @@ Otherwise, value is equal to false.</p>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../arithmetic/" title="arithmetic" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                arithmetic
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../CONTRIBUTION/" title="Contribution" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Contribution
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
