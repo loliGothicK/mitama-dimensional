@@ -61,11 +61,11 @@ template <class D>
 inline constexpr bool is_dimensional_v = is_dimensional<D>::value;
 ```
 
-## struct is_same_dimensional&lt;quantity_t<D1..., T>, quantity_t<D2..., U>&gt;
+## struct is_same_dimensional&lt;quantity_t<D1, T>, quantity_t<D2, U>&gt;
 
-Checks whether `quantity_t<D1..., T>` and `quantity_t<D2..., U>` have same dimension.
+Checks whether `quantity_t<D1, T>` and `quantity_t<D2, U>` have same dimension.
 Provides the member constant value that is equal to true,
-if `quantity_t<D1..., T>` and `quantity_t<D2..., U>` have same dimension,
+if `quantity_t<D1, T>` and `quantity_t<D2, U>` have same dimension,
 Otherwise, value is equal to false.
 
 **definition**
@@ -86,9 +86,9 @@ struct is_same_dimensional<quantity_t<Synonym1<dimensional_t<Units1...>>, T>,
                         dimensional_t<Units2...>>...> {};
 
 template <class... Units1,
-            class... Units2,
-            template <class> class Synonym1,
-            template <class> class Synonym2>
+          class... Units2,
+          template <class> class Synonym1,
+          template <class> class Synonym2>
 struct is_same_dimensional<Synonym1<dimensional_t<Units1...>>,
                            Synonym2<dimensional_t<Units2...>>>
     : std::conjunction<
@@ -97,7 +97,7 @@ struct is_same_dimensional<Synonym1<dimensional_t<Units1...>>,
                         dimensional_t<Units2...>>...> {};
 
 template <class... Units1,
-            class... Units2>
+          class... Units2>
 struct is_same_dimensional<dimensional_t<Units1...>,
                            dimensional_t<Units2...>>
     : std::conjunction<
