@@ -35,14 +35,14 @@ namespace mitama {
     };
 
 
-    template < class, auto >
-    struct static_quantity_t;
-
     template < class... Units, template <class> class Synonym, auto Value >
     struct static_quantity_t<Synonym<dimensional_t<Units...>>, Value>
     {
         using value_type = decltype(Value);
         static constexpr value_type value = Value;
+
+        constexpr static_quantity_t<Synonym<dimensional_t<Units...>>, -Value>
+        operator-() const { return {}; }
     };
 
     template < class Dim, auto Value >
@@ -120,6 +120,129 @@ namespace mitama {
     pow(static_quantity_t<Synonym<dimensional_t<Units...>>, Value>) noexcept
         -> static_quantity_t<powered_t<Synonym<dimensional_t<Units...>>, 2>, Pow<N>::invoke(Value)>
         { return {}; }
+
+    template < template < auto > class Pred, class Dim, class T > 
+    class refined<Pred, quantity_t<Dim, T>> {
+        quantity_t<Dim, T> quantity_;
+    public:
+        template < auto Value, class Dimension,
+            std::enable_if_t<std::conjunction_v<
+                std::is_constructible<
+                    quantity_t<Dim, T>,
+                    quantity_t<Dimension, decltype(Value)>>,
+                Pred<Value>>
+            , bool> = false>
+        constexpr refined(static_quantity_t<Dimension, Value>)
+            : quantity_(quantity_t<Dimension, decltype(Value)>(Value))
+        {}
+
+        constexpr auto get() const noexcept { return quantity_; }
+    };
+}
+
+namespace mitama::mitamagic {
+    template < std::size_t B, std::size_t E >
+	struct Exponent_ : std::integral_constant<std::size_t, B*Exponent_<B,E-1>::value> {};
+	
+	template < std::size_t B >
+	struct Exponent_<B, 1> : std::integral_constant<std::size_t, B> {};
+	
+	
+	template < std::size_t Head, std::size_t... Digits >
+	struct to_decimal
+		: std::integral_constant<std::size_t, (Head-'0')*Exponent_<10, sizeof...(Digits)>::value + to_decimal<Digits...>::value > {};
+	
+	template < std::size_t Head >
+	struct to_decimal<Head>
+		: std::integral_constant<std::size_t, Head-'0'> {};
+
+    template < std::size_t... Digits >
+    inline constexpr std::size_t to_decimal_v = to_decimal<Digits...>::value;
+}
+
+#include <dimensional/systems/si/all.hpp>
+
+namespace mitama::literals::static_quantity_literals {
+template<char... Chars>
+constexpr
+static_quantity_t<
+    mitama::systems::si::meter_t,
+    static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+operator"" _m() {
+    return {};
+}
+template<char... Chars>
+constexpr
+static_quantity_t<
+    mitama::systems::si::millimeter_t,
+    static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+operator"" _mm() {
+    return {};
+}
+template<char... Chars>
+constexpr
+static_quantity_t<
+    mitama::systems::si::kilometer_t,
+    static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+operator"" _km() {
+    return {};
+}
+template<char... Chars>
+constexpr
+static_quantity_t<
+    mitama::systems::si::milligram_t,
+    static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+operator"" _mg() {
+    return {};
+}
+template<char... Chars>
+constexpr
+static_quantity_t<
+    mitama::systems::si::gram_t,
+    static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+operator"" _g() {
+    return {};
+}
+template<char... Chars>
+constexpr
+static_quantity_t<
+    mitama::systems::si::kilogram_t,
+    static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+operator"" _kg() {
+    return {};
+}
+template<char... Chars>
+constexpr
+static_quantity_t<
+    mitama::systems::si::nanosecond_t,
+    static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+operator"" _ns() {
+    return {};
+}
+template<char... Chars>
+constexpr
+static_quantity_t<
+    mitama::systems::si::microsecond_t,
+    static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+operator"" _us() {
+    return {};
+}
+template<char... Chars>
+constexpr
+static_quantity_t<
+    mitama::systems::si::millisecond_t,
+    static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+operator"" _ms() {
+    return {};
+}
+template<char... Chars>
+constexpr
+static_quantity_t<
+    mitama::systems::si::second_t,
+    static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+operator"" _s() {
+    return {};
+}
 
 }
 

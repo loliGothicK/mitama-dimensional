@@ -67,7 +67,28 @@ public:
   using dimension_type = dimensional_t<Units...>;
 
   constexpr quantity_t(): value_{} {}
-  
+
+  template < class Dimension, auto Value,
+      std::enable_if_t<
+        std::conjunction_v<
+          std::is_convertible<decltype(Value), T>,
+          is_same_dimensional_v<dimension_type, Dimension>>
+    , bool> = false>
+  constexpr quantity_t(static_quantity_t<Dimension, Value>) noexcept
+    : value_(Value)
+  {}
+
+  template < template <auto> class Pred,
+             class Dimension,
+             class U,
+      std::enable_if_t<
+        std::conjunction_v<
+          std::is_convertible<U, T>>
+    , bool> = false>
+  constexpr quantity_t(refined<Pred, quantity_t<Dimension, U>> refined_) noexcept
+    : quantity_t(refined_.get())
+  {}
+
   template <class U = T,
       std::enable_if_t<
         std::conjunction_v<
@@ -324,6 +345,12 @@ public:
     return Into<quantity_t>(*this);
   }
 };
+
+template < class Dim, auto Value >
+quantity_t(static_quantity_t<Dim, Value>) -> quantity_t<Dim, decltype(Value)>;
+
+template < template <auto> class Pred, class Dim, class T >
+quantity_t(refined<Pred, quantity_t<Dim, T>>) -> quantity_t<Dim, T>;
 
 namespace mitamagic {
 template <class Dim> struct into_dimensional {
