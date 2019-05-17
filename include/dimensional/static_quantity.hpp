@@ -45,6 +45,9 @@ namespace mitama {
         operator-() const { return {}; }
     };
 
+    template < class _, auto Value >
+    inline constexpr auto get(static_quantity_t<_, Value>) { return Value; }
+
     template < class Dim, auto Value >
     inline constexpr static_quantity_t<Dim, Value> static_quantity{};
 
@@ -162,88 +165,157 @@ namespace mitama::mitamagic {
 
 #include <dimensional/systems/si/all.hpp>
 
-namespace mitama::literals::static_quantity_literals {
-template<char... Chars>
-constexpr
-static_quantity_t<
-    mitama::systems::si::meter_t,
-    static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
-operator"" _m() {
-    return {};
-}
-template<char... Chars>
-constexpr
-static_quantity_t<
-    mitama::systems::si::millimeter_t,
-    static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
-operator"" _mm() {
-    return {};
-}
-template<char... Chars>
-constexpr
-static_quantity_t<
-    mitama::systems::si::kilometer_t,
-    static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
-operator"" _km() {
-    return {};
-}
-template<char... Chars>
-constexpr
-static_quantity_t<
-    mitama::systems::si::milligram_t,
-    static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
-operator"" _mg() {
-    return {};
-}
-template<char... Chars>
-constexpr
-static_quantity_t<
-    mitama::systems::si::gram_t,
-    static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
-operator"" _g() {
-    return {};
-}
-template<char... Chars>
-constexpr
-static_quantity_t<
-    mitama::systems::si::kilogram_t,
-    static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
-operator"" _kg() {
-    return {};
-}
-template<char... Chars>
-constexpr
-static_quantity_t<
-    mitama::systems::si::nanosecond_t,
-    static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
-operator"" _ns() {
-    return {};
-}
-template<char... Chars>
-constexpr
-static_quantity_t<
-    mitama::systems::si::microsecond_t,
-    static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
-operator"" _us() {
-    return {};
-}
-template<char... Chars>
-constexpr
-static_quantity_t<
-    mitama::systems::si::millisecond_t,
-    static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
-operator"" _ms() {
-    return {};
-}
-template<char... Chars>
-constexpr
-static_quantity_t<
-    mitama::systems::si::second_t,
-    static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
-operator"" _s() {
-    return {};
+namespace mitama::literals {
+inline namespace static_quantity_literals {
+
+inline namespace length_literals {
+    template<char... Chars>
+    inline constexpr
+    static_quantity_t<
+        mitama::systems::si::meter_t,
+        static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+    operator"" _m() { return {}; }
+
+    template<char... Chars>
+    inline constexpr
+    static_quantity_t<
+        mitama::systems::si::millimeter_t,
+        static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+    operator"" _mm() { return {}; }
+
+    template<char... Chars>
+    inline constexpr
+    static_quantity_t<
+        mitama::systems::si::kilometer_t,
+        static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+    operator"" _km() { return {}; }
 }
 
+inline namespace mass_literals {
+    template<char... Chars>
+    inline constexpr
+    static_quantity_t<
+        mitama::systems::si::milligram_t,
+        static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+    operator"" _mg() { return {}; }
+
+    template<char... Chars>
+    inline constexpr
+    static_quantity_t<
+        mitama::systems::si::gram_t,
+        static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+    operator"" _g() { return {}; }
+
+    template<char... Chars>
+    inline constexpr
+    static_quantity_t<
+        mitama::systems::si::kilogram_t,
+        static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+    operator"" _kg() { return {}; }
 }
 
+inline namespace time_literals {
+    template<char... Chars>
+    inline constexpr
+    static_quantity_t<
+        mitama::systems::si::nanosecond_t,
+        static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+    operator"" _ns() { return {};}
+
+    template<char... Chars>
+    inline constexpr
+    static_quantity_t<
+        mitama::systems::si::microsecond_t,
+        static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+    operator"" _us() { return {}; }
+
+    template<char... Chars>
+    inline constexpr
+    static_quantity_t<
+        mitama::systems::si::millisecond_t,
+        static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+    operator"" _ms() { return {}; }
+
+    template<char... Chars>
+    inline constexpr
+    static_quantity_t<
+        mitama::systems::si::second_t,
+        static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+    operator"" _s() { return {}; }
+}
+
+inline namespace electric_current_literals {
+    template<char... Chars>
+    inline constexpr
+    static_quantity_t<
+        mitama::systems::si::milliampere_t,
+        static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+    operator"" _mA() { return {};}
+
+    template<char... Chars>
+    inline constexpr
+    static_quantity_t<
+        mitama::systems::si::ampere_t,
+        static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+    operator"" _A() { return {}; }
+
+    template<char... Chars>
+    inline constexpr
+    static_quantity_t<
+        mitama::systems::si::kiloampere_t,
+        static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+    operator"" _kA() { return {}; }
+}
+
+inline namespace temperatire_literals {
+    template<char... Chars>
+    inline constexpr
+    static_quantity_t<
+        mitama::systems::si::millikelvin_t,
+        static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+    operator"" _mK() { return {};}
+
+    template<char... Chars>
+    inline constexpr
+    static_quantity_t<
+        mitama::systems::si::kelvin_t,
+        static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+    operator"" _K() { return {}; }
+}
+
+inline namespace amount_of_substance_literals {
+    template<char... Chars>
+    inline constexpr
+    static_quantity_t<
+        mitama::systems::si::millimol_t,
+        static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+    operator"" _mmol() { return {};}
+
+    template<char... Chars>
+    inline constexpr
+    static_quantity_t<
+        mitama::systems::si::mol_t,
+        static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+    operator"" _mol() { return {}; }
+
+    template<char... Chars>
+    inline constexpr
+    static_quantity_t<
+        mitama::systems::si::kilomol_t,
+        static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+    operator"" _kmol() { return {}; }
+}
+
+inline namespace luminous_intensity_literals {
+    template<char... Chars>
+    inline constexpr
+    static_quantity_t<
+        mitama::systems::si::candela_t,
+        static_cast<int>(mitamagic::to_decimal_v<Chars...>)> 
+    operator"" _cd() { return {};}
+}
+
+
+}
+}
 #endif
