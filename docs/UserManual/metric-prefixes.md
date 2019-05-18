@@ -1,14 +1,12 @@
 # Metric prefixes
 ---------------
 
-defined in header [`<dimensional/prefix.hpp>`]().
-
 # Metric prefix constants for dimensional quantifiers
 
 **definition**
 
 ```cpp
-namespace mitama {
+namespace mitama::systems::si {
 inline constexpr auto pico = std::pico{};
 inline constexpr auto nano = std::nano{};
 inline constexpr auto micro = std::micro{};
