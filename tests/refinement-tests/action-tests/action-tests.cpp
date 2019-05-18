@@ -1,14 +1,14 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/si_units/all.hpp>
-#include <dimensional/derived_units/action.hpp>
+#include <dimensional/systems/si/all.hpp>
+#include <dimensional/systems/si/derived_units/action.hpp>
 #include <dimensional/refinement.hpp>
 #include <test_util.hpp>
 
 using namespace mitama;
-using namespace mitama::si;
+using namespace mitama::systems::si;
 
 TEST_CASE("action refinement test", "[quantity][refinement]") {
-  REQUIRE((mitama::accepts<si::action_r> |= quantity_t<si::action_t>{}) == quantity_t<si::action_t>{});
+  REQUIRE((mitama::accepts<systems::si::action_r> |= quantity_t<systems::si::action_t>{}) == quantity_t<systems::si::action_t>{});
 }
 

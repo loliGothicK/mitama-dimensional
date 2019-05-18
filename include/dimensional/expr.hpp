@@ -1,10 +1,10 @@
 #ifndef MITAMA_DIMENSIONAL_EXPR_HPP
 #define MITAMA_DIMENSIONAL_EXPR_HPP
-#include "fwd/expr_fwd.hpp"
-#include "quantity.hpp"
-#include "arithmetic.hpp"
-#include "nonsi_units/degree_celsius.hpp"
-#include "mitamagic/utility_ext.hpp"
+#include <dimensional/fwd/expr_fwd.hpp>
+#include <dimensional/quantity.hpp>
+#include <dimensional/arithmetic.hpp>
+#include <dimensional/systems/nonsi/degree_celsius.hpp>
+#include <dimensional/mitamagic/utility_ext.hpp>
 #include <type_traits>
 #include <utility>
 

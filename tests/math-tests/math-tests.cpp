@@ -1,19 +1,19 @@
 // main is provided in tests-main.cpp
 #include <catch2/catch.hpp>
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
-#include <dimensional/prefix.hpp>
+#include <dimensional/systems/si/all.hpp>
+#include <dimensional/systems/si/prefix.hpp>
 #include <random>
 #include <test_util.hpp>
 #include <dimensional/expr.hpp>
 #include <dimensional/arithmetic.hpp>
 #include <dimensional/math/all.hpp>
-#include <dimensional/derived_units/angle.hpp>
+#include <dimensional/systems/si/derived_units/angle.hpp>
 
 using namespace mitama;
 using Catch::Detail::Approx;
-using namespace mitama::si;
-using namespace mitama::nonsi;
+using namespace mitama::systems::si;
+using namespace mitama::systems::nonsi;
 
 TEMPLATE_TEST_CASE("abs tests",
                    "[quantity][abs][math]",
@@ -434,10 +434,10 @@ TEMPLATE_TEST_CASE("dim", "[math],[quantity],[remainder]",
                    radian_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
 {
     using namespace Catch::literals;
-    REQUIRE(dim(quantity<TestType>(5), quantity<TestType>(2)).value() == 3.0_a);
-    REQUIRE(dim(quantity<TestType>(6), quantity<TestType>(4)).value() == 2.0_a);
-    REQUIRE(dim(quantity<TestType>(1), quantity<TestType>(3)).value() == +0);
-    REQUIRE(dim(quantity<TestType>(-4), quantity<TestType>(-3)).value() == +0);
+    REQUIRE(fdim(quantity<TestType>(5), quantity<TestType>(2)).value() == 3.0_a);
+    REQUIRE(fdim(quantity<TestType>(6), quantity<TestType>(4)).value() == 2.0_a);
+    REQUIRE(fdim(quantity<TestType>(1), quantity<TestType>(3)).value() == +0);
+    REQUIRE(fdim(quantity<TestType>(-4), quantity<TestType>(-3)).value() == +0);
 }
 
 TEMPLATE_TEST_CASE("log", "[math],[quantity],[log]",

@@ -1,17 +1,16 @@
 #include <dimensional/quantity.hpp>
 #include <dimensional/arithmetic.hpp>
-#include <dimensional/si_units/all.hpp>
-#include <dimensional/nonsi_units/hour.hpp>
-#include <dimensional/derived_units/area.hpp>
-#include <dimensional/derived_units/angle.hpp>
+#include <dimensional/systems/si/all.hpp>
+#include <dimensional/systems/nonsi/hour.hpp>
+#include <dimensional/systems/si/derived_units/area.hpp>
+#include <dimensional/systems/si/derived_units/angle.hpp>
 #include <dimensional/io.hpp>
 #include <dimensional/refinement.hpp>
-#include <dimensional/prefix.hpp>
+#include <dimensional/systems/si/prefix.hpp>
 #include <dimensional/math/all.hpp>
-#include <dimensional/currency/jpy.hpp>
-#include <dimensional/nonsi_units/degree_celsius.hpp>
+#include <dimensional/systems/currency/jpy.hpp>
+#include <dimensional/systems/nonsi/degree_celsius.hpp>
 #include <dimensional/expr.hpp>
-#include <dimensional/delta.hpp>
 #include <dimensional/delta.hpp>
 #include <boost/type_index.hpp>
 #include <iostream>
@@ -21,6 +20,8 @@
     do { std::cout << "$ " << #__VA_ARGS__ << "\n=> " << (__VA_ARGS__) << std::endl; } while(false)
 int main(){
     using namespace mitama;
+    namespace si = mitama::systems::si;
+    namespace nonsi = mitama::systems::nonsi;
     { // Homogeneous dimension examples
         std::cout << "--[Homogeneous dimension examples]--\n";
 
@@ -132,7 +133,7 @@ int main(){
         REPL(nearbyint(2.2|si::meters));
         REPL(rint(2.2|si::meters));
         REPL(lrint(2.2|si::meters));
-        REPL(llrint(2.2|mitama::milli*si::meters));
+        REPL(llrint(2.2|si::milli*si::meters));
     }
 
     { // User defined dimension examples
@@ -160,7 +161,7 @@ int main(){
         REPL(a2);
 
         // error!
-        // quantity_t a3 = refined<area_r> |= (2|si::millimeters);
+        // quantity_t a3 = accepts<area_r> |= (2|si::millimeters);
 
         quantity_t a3 = partial_accepts_for<sym::M<>> |= (2|si::meters) * (2|si::meters) * (2|si::kilograms) / (2|si::second<2>);
         REPL(a3);
@@ -173,7 +174,7 @@ int main(){
 
     {
         quantity_t m = 1.0 | si::meters * si::radian;
-        quantity_t<si::meter_t> x = m.into();
+        quantity_for<double, si::meter_<>> x = m.into();
         REPL(x);
     }
 }

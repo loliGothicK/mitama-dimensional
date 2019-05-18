@@ -1,7 +1,7 @@
 #ifndef MITAMA_DIMENSIONAL_ARITHMETIC_HPP
 #define MITAMA_DIMENSIONAL_ARITHMETIC_HPP
-#include "quantity.hpp"
-#include "delta.hpp"
+#include <dimensional/quantity.hpp>
+#include <dimensional/delta.hpp>
 
 namespace mitama {
 
@@ -52,10 +52,10 @@ operator*(L &&lhs, R &&rhs)
 {
     return quantity_t<
             mitamagic::quotient_t<typename std::decay_t<L>::dimension_type,
-                                    typename std::decay_t<R>::dimension_type
+                                  typename std::decay_t<R>::dimension_type
             >,
             std::common_type_t<typename std::decay_t<L>::value_type,
-                                typename std::decay_t<R>::value_type>>
+                               typename std::decay_t<R>::value_type>>
         {
             mitamagic::scaled_value(std::forward<L>(lhs), std::forward<R>(rhs), [](auto a, auto b){ return a * b; })
         };

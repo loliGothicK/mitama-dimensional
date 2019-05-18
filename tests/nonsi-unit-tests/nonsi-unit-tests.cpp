@@ -1,19 +1,19 @@
 // main is provided in tests-main.cpp
 #include <catch2/catch.hpp>
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
-#include <dimensional/nonsi_units/degree_angle.hpp>
-#include <dimensional/prefix.hpp>
+#include <dimensional/systems/si/all.hpp>
+#include <dimensional/systems/nonsi/degree_angle.hpp>
+#include <dimensional/systems/si/prefix.hpp>
 #include <random>
 #include <test_util.hpp>
 #include <dimensional/expr.hpp>
 #include <dimensional/arithmetic.hpp>
 
 using namespace mitama;
-namespace si = mitama::si;
-namespace nsi = mitama::nonsi;
+namespace si = mitama::systems::si;
+namespace nsi = mitama::systems::nonsi;
 TEST_CASE("degree angle and radian",
-          "[quantity][nonsi_units][degree_angle]")
+          "[quantity][systems/nonsi][degree_angle]")
 {
     using namespace Catch::literals;
     quantity<nsi::degree_angle> s1 = 90;
@@ -24,7 +24,7 @@ TEST_CASE("degree angle and radian",
 }
 
 TEST_CASE("degree amgle and radian generate tests",
-          "[quantity][nonsi_units][degree_angle]")
+          "[quantity][systems/nonsi][degree_angle]")
 {
     using namespace Catch::literals;
 

@@ -1,14 +1,14 @@
 // main is provided in tests-main.cpp
 #include <catch2/catch.hpp>
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
-#include <dimensional/prefix.hpp>
+#include <dimensional/systems/si/all.hpp>
+#include <dimensional/systems/si/prefix.hpp>
 #include <dimensional/arithmetic.hpp>
 #include <dimensional/delta.hpp>
-#include <dimensional/nonsi_units/degree_celsius.hpp>
+#include <dimensional/systems/nonsi/degree_celsius.hpp>
 #include <test_util.hpp>
 
-using mitama::delta, mitama::si::meter_t, mitama::si::ampere_t, mitama::si::candela_t, mitama::si::kelvin_t, mitama::si::kilogram_t, mitama::si::mol_t, mitama::si::second_t;
+using mitama::delta, mitama::systems::si::meter_t, mitama::systems::si::ampere_t, mitama::systems::si::candela_t, mitama::systems::si::kelvin_t, mitama::systems::si::kilogram_t, mitama::systems::si::mol_t, mitama::systems::si::second_t;
 
 TEMPLATE_TEST_CASE("delta construct",
                    "[delta][constructor]",
@@ -61,7 +61,7 @@ TEMPLATE_TEST_CASE("delta division",
 TEST_CASE("delta temperature",
                    "[delta][constructor]")
 {
-    using mitama::si::kelvins, mitama::delta, mitama::nonsi::degree_celsius;
+    using mitama::systems::si::kelvins, mitama::delta, mitama::systems::nonsi::degree_celsius;
     {
         delta d = (2|degree_celsius) - (1|degree_celsius);
         REQUIRE((1|kelvins) + d == (2|kelvins));

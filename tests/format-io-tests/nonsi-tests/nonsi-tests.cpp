@@ -1,14 +1,14 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/nonsi_units/au.hpp>
-#include <dimensional/nonsi_units/day.hpp>
-#include <dimensional/nonsi_units/degree_angle.hpp>
-#include <dimensional/nonsi_units/hectare.hpp>
-#include <dimensional/nonsi_units/hour.hpp>
-#include <dimensional/nonsi_units/liter.hpp>
-#include <dimensional/nonsi_units/minute.hpp>
-#include <dimensional/nonsi_units/tonne.hpp>
-#include <dimensional/nonsi_units/degree_celsius.hpp>
+#include <dimensional/systems/nonsi/au.hpp>
+#include <dimensional/systems/nonsi/day.hpp>
+#include <dimensional/systems/nonsi/degree_angle.hpp>
+#include <dimensional/systems/nonsi/hectare.hpp>
+#include <dimensional/systems/nonsi/hour.hpp>
+#include <dimensional/systems/nonsi/liter.hpp>
+#include <dimensional/systems/nonsi/minute.hpp>
+#include <dimensional/systems/nonsi/tonne.hpp>
+#include <dimensional/systems/nonsi/degree_celsius.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("hectare format test", "[quantity][abbreviation]") {
@@ -36,7 +36,7 @@ TEST_CASE("minutes format test", "[quantity][abbreviation]") {
 }
 
 TEST_CASE("hours format test", "[quantity][abbreviation]") {
-  REQUIRE(fmt(1 | mitama::nonsi::hours) == "1 [h]");
+  REQUIRE(fmt(1 | mitama::systems::nonsi::hours) == "1 [h]");
 }
 
 TEST_CASE("days format test", "[quantity][abbreviation]") {

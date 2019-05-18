@@ -1,8 +1,8 @@
 #ifndef MITAMA_DIMENSIONAL_IO_HPP
 #define MITAMA_DIMENSIONAL_IO_HPP
-#include "quantity.hpp"
-#include "si_units/all.hpp"
-#include "mitamagic/utility_ext.hpp"
+#include <dimensional/quantity.hpp>
+#include <dimensional/systems/si/all.hpp>
+#include <dimensional/mitamagic/utility_ext.hpp>
 #include <iostream>
 #include <type_traits>
 #include <string>
@@ -31,25 +31,25 @@ using make_synonym_t = typename make_synonym<Synonym, std::decay_t<Dim>>::type;
 template <class, class = void> struct symbol_;
 template <class, class = void> struct prefix_;
 
-template <> struct symbol_<::mitama::si::length> {
+template <> struct symbol_<::mitama::systems::si::length> {
   static constexpr char str[] = "m";
 };
-template <> struct symbol_<::mitama::si::electric_current> {
+template <> struct symbol_<::mitama::systems::si::electric_current> {
   static constexpr char str[] = "A";
 };
-template <> struct symbol_<::mitama::si::luminous_intensity> {
+template <> struct symbol_<::mitama::systems::si::luminous_intensity> {
   static constexpr char str[] = "cd";
 };
-template <> struct symbol_<::mitama::si::thermodynamic_temperature> {
+template <> struct symbol_<::mitama::systems::si::thermodynamic_temperature> {
   static constexpr char str[] = "K";
 };
-template <> struct symbol_<::mitama::si::mass> {
+template <> struct symbol_<::mitama::systems::si::mass> {
   static constexpr char str[] = "g";
 };
-template <> struct symbol_<::mitama::si::amount_of_substance> {
+template <> struct symbol_<::mitama::systems::si::amount_of_substance> {
   static constexpr char str[] = "mol";
 };
-template <> struct symbol_<::mitama::si::time> {
+template <> struct symbol_<::mitama::systems::si::time> {
   static constexpr char str[] = "s";
 };
 template <> struct prefix_<std::ratio<1>> { static constexpr char str[] = ""; };
@@ -76,7 +76,7 @@ struct si_formatter<
                                         is_complete_type<symbol_<D>>>>> {
   static std::string format() {
     using namespace std::literals;
-    using scale = std::conditional_t<std::is_same_v<D, ::mitama::si::mass>,
+    using scale = std::conditional_t<std::is_same_v<D, ::mitama::systems::si::mass>,
                                      std::ratio_multiply<S, std::kilo>, S>;
     return std::string(prefix_<scale>::str) + std::string(symbol_<D>::str) +
            (E::den == 1
