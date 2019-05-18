@@ -42,7 +42,7 @@
     
     
       
-        <title>Math functions for quantity - Mitama.Dimensional | User Manual</title>
+        <title>math functions - Mitama.Dimensional | User Manual</title>
       
     
     
@@ -137,7 +137,7 @@
               Mitama.Dimensional | User Manual
             </span>
             <span class="md-header-nav__topic">
-              Math functions for quantity
+              math functions
             </span>
           
         </div>
@@ -204,14 +204,16 @@
       
         
 
-<nav class="md-tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
   <li class="md-tabs__item">
     
-      <a href="../.." title="Home" class="md-tabs__link md-tabs__link--active">
+      <a href="../.." title="Home" class="md-tabs__link">
         Home
       </a>
     
@@ -236,7 +238,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../quantity/" title="Reference" class="md-tabs__link">
+        <a href="../quantity/" title="Reference" class="md-tabs__link md-tabs__link--active">
           Reference
         </a>
       
@@ -461,10 +463,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Reference
@@ -497,6 +501,398 @@
     <a href="../arithmetic/" title="arithmetic" class="md-nav__link">
       arithmetic
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        math functions
+      </label>
+    
+    <a href="./" title="math functions" class="md-nav__link md-nav__link--active">
+      math functions
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abshpp" title="abs.hpp" class="md-nav__link">
+    abs.hpp
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#abs-quantity" title="abs( quantity )" class="md-nav__link">
+    abs( quantity )
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logarithmhpp" title="logarithm.hpp" class="md-nav__link">
+    logarithm.hpp
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log-quantity" title="log( quantity )" class="md-nav__link">
+    log( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log2-quantity" title="log2( quantity )" class="md-nav__link">
+    log2( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log10-quantity" title="log10( quantity )" class="md-nav__link">
+    log10( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log1p-quantity" title="log1p( quantity )" class="md-nav__link">
+    log1p( quantity )
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minmaxhpp" title="minmax.hpp" class="md-nav__link">
+    minmax.hpp
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#min-quantities" title="min( quantities... )" class="md-nav__link">
+    min( quantities... )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#max-quantities" title="max( quantities... )" class="md-nav__link">
+    max( quantities... )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fdim-quantity-quantity" title="fdim( quantity, quantity )" class="md-nav__link">
+    fdim( quantity, quantity )
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modularhpp" title="modular.hpp" class="md-nav__link">
+    modular.hpp
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fmod-quantity-quantity" title="fmod( quantity, quantity )" class="md-nav__link">
+    fmod( quantity, quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fmod-quantity-value" title="fmod( quantity, value )" class="md-nav__link">
+    fmod( quantity, value )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remainder-quantity-quantity" title="remainder( quantity, quantity )" class="md-nav__link">
+    remainder( quantity, quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remainder-quantity-value" title="remainder( quantity, value )" class="md-nav__link">
+    remainder( quantity, value )
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nearest_integerhpp" title="nearest_integer.hpp" class="md-nav__link">
+    nearest_integer.hpp
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ceil-quantity" title="ceil( quantity )" class="md-nav__link">
+    ceil( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floor-quantity" title="floor( quantity )" class="md-nav__link">
+    floor( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trunc-quantity" title="trunc( quantity )" class="md-nav__link">
+    trunc( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#round-quantity" title="round( quantity )" class="md-nav__link">
+    round( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lround-quantity" title="lround( quantity )" class="md-nav__link">
+    lround( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llround-quantity" title="llround( quantity )" class="md-nav__link">
+    llround( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nearbyint-quantity" title="nearbyint( quantity )" class="md-nav__link">
+    nearbyint( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rint-quantity" title="rint( quantity )" class="md-nav__link">
+    rint( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lrint-quantity" title="lrint( quantity )" class="md-nav__link">
+    lrint( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llrint-quantity" title="llrint( quantity )" class="md-nav__link">
+    llrint( quantity )
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powhpp" title="pow.hpp" class="md-nav__link">
+    pow.hpp
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pown-quantity" title="pow&lt;N&gt;( quantity )" class="md-nav__link">
+    pow&lt;N&gt;( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#powstdratio-quantity" title="pow&lt;std::ratio&gt;( quantity )" class="md-nav__link">
+    pow&lt;std::ratio&gt;( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#square-quantity" title="square( quantity )" class="md-nav__link">
+    square( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cubic-quantity" title="cubic( quantity )" class="md-nav__link">
+    cubic( quantity )
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sqrthpp" title="sqrt.hpp" class="md-nav__link">
+    sqrt.hpp
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sqrt-quantity" title="sqrt( quantity )" class="md-nav__link">
+    sqrt( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cbrt-quantity" title="cbrt( quantity )" class="md-nav__link">
+    cbrt( quantity )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hypot-radian-radian-radian-value" title="hypot( radian, radian, [radian] ) -&gt; value" class="md-nav__link">
+    hypot( radian, radian, [radian] ) -&gt; value
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trigonometric" title="trigonometric" class="md-nav__link">
+    trigonometric
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sin-radian-value" title="sin( radian ) -&gt; value" class="md-nav__link">
+    sin( radian ) -&gt; value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cos-radian-value" title="cos( radian ) -&gt; value" class="md-nav__link">
+    cos( radian ) -&gt; value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tan-radian-value" title="tan( radian ) -&gt; value" class="md-nav__link">
+    tan( radian ) -&gt; value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asin-value-radian" title="asin( value ) -&gt; radian" class="md-nav__link">
+    asin( value ) -&gt; radian
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acos-value-radian" title="acos( value ) -&gt; radian" class="md-nav__link">
+    acos( value ) -&gt; radian
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atan-value-radian" title="atan( value ) -&gt; radian" class="md-nav__link">
+    atan( value ) -&gt; radian
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -1298,6 +1694,41 @@ Units conversion is perform automatically.</p>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../arithmetic/" title="arithmetic" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                arithmetic
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../meta-functions/" title="meta functions" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                meta functions
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

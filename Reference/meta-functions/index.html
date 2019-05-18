@@ -508,6 +508,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../math-functions/" title="math functions" class="md-nav__link">
+      math functions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -574,20 +586,6 @@
         <li class="md-nav__item">
   <a href="#struct-is_dimensional_quantifiert" title="struct is_dimensional_quantifier&lt;T&gt;" class="md-nav__link">
     struct is_dimensional_quantifier&lt;T&gt;
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#struct-powered_tt-n" title="struct powered_t&lt;T, N&gt;" class="md-nav__link">
-    struct powered_t&lt;T, N&gt;
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#struct-reciprocal_tt" title="struct reciprocal_t&lt;T&gt;" class="md-nav__link">
-    struct reciprocal_t&lt;T&gt;
   </a>
   
 </li>
@@ -682,20 +680,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#struct-powered_tt-n" title="struct powered_t&lt;T, N&gt;" class="md-nav__link">
-    struct powered_t&lt;T, N&gt;
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#struct-reciprocal_tt" title="struct reciprocal_t&lt;T&gt;" class="md-nav__link">
-    struct reciprocal_t&lt;T&gt;
-  </a>
-  
-</li>
-      
       
       
       
@@ -731,11 +715,11 @@ Otherwise, value is equal to false.</p>
 </pre></div>
 
 <h2 id="struct-is_unitst">struct is_units&lt;T&gt;</h2>
-<p>Checks whether T is a units_t.
+<p>Checks whether <code class="codehilite">T</code> is a <code class="codehilite">units_t</code>.
 Provides the member constant value that is equal to true,
-if T is the type units_t,
-const units_t, volatile units_t,
-or const volatile units_t.
+if <code class="codehilite">T</code> is the type <code class="codehilite">units_t</code>,
+<code class="codehilite">const units_t</code>, <code class="codehilite">volatile units_t</code>,
+or <code class="codehilite">const volatile units_t</code>.
 Otherwise, value is equal to false.</p>
 <p><strong>definition</strong></p>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">struct</span> <span class="nl">is_units</span> <span class="p">:</span> <span class="n">std</span><span class="o">::</span><span class="n">false_type</span> <span class="p">{};</span>
@@ -747,11 +731,11 @@ Otherwise, value is equal to false.</p>
 </pre></div>
 
 <h2 id="struct-is_dimensionalt">struct is_dimensional&lt;T&gt;</h2>
-<p>Checks whether T is a dimensional_t.
+<p>Checks whether <code class="codehilite">T</code> is a <code class="codehilite">dimensional_t</code>.
 Provides the member constant value that is equal to true,
-if T is the type dimensional_t,
-const dimensional_t, volatile dimensional_t,
-or const volatile dimensional_t.
+if <code class="codehilite">T</code> is the type <code class="codehilite">dimensional_t</code>,
+<code class="codehilite">const dimensional_t</code>, <code class="codehilite">volatile dimensional_t</code>,
+or <code class="codehilite">const volatile dimensional_t</code>.
 Otherwise, value is equal to false.</p>
 <p><strong>definition</strong></p>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">struct</span> <span class="nl">is_dimensional</span> <span class="p">:</span> <span class="n">std</span><span class="o">::</span><span class="n">false_type</span> <span class="p">{};</span>
@@ -814,15 +798,9 @@ Provides the member type that is <code class="codehilite">quantity_t&lt;E ...&gt
 <p>Checks whether T is a <code class="codehilite">TT&lt;dimensional_t&lt;D...&gt;&gt;</code> (TT is a variadic template template).
 Provides the member constant value that is equal to true,
 if T is the type <code class="codehilite">TT&lt;dimensional_t&lt;D...&gt;&gt;</code>,
-const <code class="codehilite">TT&lt;dimensional_t&lt;D...&gt;&gt;</code>, volatile <code class="codehilite">TT&lt;dimensional_t&lt;D...&gt;&gt;</code>,
-or const volatile <code class="codehilite">TT&lt;dimensional_t&lt;D...&gt;&gt;</code>.
+<code class="codehilite">const TT&lt;dimensional_t&lt;D...&gt;&gt;</code>, <code class="codehilite">volatile TT&lt;dimensional_t&lt;D...&gt;&gt;</code>,
+or <code class="codehilite">const volatile TT&lt;dimensional_t&lt;D...&gt;&gt;</code>.
 Otherwise, value is equal to false.</p>
-<h2 id="struct-powered_tt-n">struct powered_t&lt;T, N&gt;</h2>
-<p>Makes a powered dimensional.
-Provides the member type that is <code class="codehilite">dimensional_t&lt;{powered units} ...&gt;</code>.</p>
-<h2 id="struct-reciprocal_tt">struct reciprocal_t&lt;T&gt;</h2>
-<p>Makes a reciprocal dimensional.
-Provides the member type that is <code class="codehilite">dimensional_t&lt;{reciprocal units} ...&gt;</code>.</p>
                 
                   
                 
@@ -843,7 +821,7 @@ Provides the member type that is <code class="codehilite">dimensional_t&lt;{reci
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../arithmetic/" title="arithmetic" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../math-functions/" title="math functions" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -852,7 +830,7 @@ Provides the member type that is <code class="codehilite">dimensional_t&lt;{reci
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                arithmetic
+                math functions
               </span>
             </div>
           </a>
