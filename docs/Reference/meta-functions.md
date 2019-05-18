@@ -22,11 +22,11 @@ template <class T> inline constexpr bool is_quantity_v = is_quantity<T>::value;
 
 ## struct is_units&lt;T&gt;
 
-Checks whether T is a units_t.
+Checks whether `T` is a `units_t`.
 Provides the member constant value that is equal to true,
-if T is the type units_t,
-const units_t, volatile units_t,
-or const volatile units_t.
+if `T` is the type `units_t`,
+`const units_t`, `volatile units_t`,
+or `const volatile units_t`.
 Otherwise, value is equal to false.
 
 **definition**
@@ -42,11 +42,11 @@ template <class U> inline constexpr bool is_units_v = is_units<U>::value;
 
 ## struct is_dimensional&lt;T&gt;
 
-Checks whether T is a dimensional_t.
+Checks whether `T` is a `dimensional_t`.
 Provides the member constant value that is equal to true,
-if T is the type dimensional_t,
-const dimensional_t, volatile dimensional_t,
-or const volatile dimensional_t.
+if `T` is the type `dimensional_t`,
+`const dimensional_t`, `volatile dimensional_t`,
+or `const volatile dimensional_t`.
 Otherwise, value is equal to false.
 
 **definition**
@@ -120,16 +120,7 @@ Provides the member type that is `quantity_t<E ...>`.
 Checks whether T is a `TT<dimensional_t<D...>>` (TT is a variadic template template).
 Provides the member constant value that is equal to true,
 if T is the type `TT<dimensional_t<D...>>`,
-const `TT<dimensional_t<D...>>`, volatile `TT<dimensional_t<D...>>`,
-or const volatile `TT<dimensional_t<D...>>`.
+`const TT<dimensional_t<D...>>`, `volatile TT<dimensional_t<D...>>`,
+or `const volatile TT<dimensional_t<D...>>`.
 Otherwise, value is equal to false.
 
-## struct powered_t&lt;T, N&gt;
-
-Makes a powered dimensional.
-Provides the member type that is `dimensional_t<{powered units} ...>`.
-
-## struct reciprocal_t&lt;T&gt;
-
-Makes a reciprocal dimensional.
-Provides the member type that is `dimensional_t<{reciprocal units} ...>`.
