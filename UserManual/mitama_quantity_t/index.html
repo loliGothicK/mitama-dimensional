@@ -676,7 +676,7 @@
 <p class="admonition-title">Note</p>
 <p>If the second template argument is omitted, it will be of type <code class="codehilite">double</code>.</p>
 </div>
-<p><strong>example</strong></p>
+<p>example:</p>
 <div class="codehilite"><pre><span></span><span class="c1">// begin example</span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/quantity.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/systems/si/all.hpp&gt;</span><span class="cp"></span>
@@ -695,6 +695,7 @@
 <hr />
 <p>Conversion between different units is performed automatically.
 Conversion between units with different dimensions will result in compilation errors.</p>
+<p>example:</p>
 <div class="codehilite"><pre><span></span><span class="c1">// begin example</span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/quantity.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/systems/si/all.hpp&gt;</span><span class="cp"></span>
@@ -730,11 +731,11 @@ Conversion between units with different dimensions will result in compilation er
 <tbody>
 <tr>
 <td align="center"><code class="codehilite">q1 + q2</code></td>
-<td align="center"><code class="codehilite">D1</code> and <code class="codehilite">D2</code> has same dimension and <code class="codehilite">std::declval&lt;T1&gt;() + std::declval&lt;T2&gt;()</code> is valid expression</td>
+<td align="center"><code class="codehilite">D1</code> and <code class="codehilite">D2</code> has same dimension and <br> <code class="codehilite">std::declval&lt;T1&gt;() + std::declval&lt;T2&gt;()</code> is valid expression</td>
 </tr>
 <tr>
 <td align="center"><code class="codehilite">q1 - q2</code></td>
-<td align="center"><code class="codehilite">D1</code> and <code class="codehilite">D2</code> has same dimension and <code class="codehilite">std::declval&lt;T1&gt;() - std::declval&lt;T2&gt;()</code> is valid expression</td>
+<td align="center"><code class="codehilite">D1</code> and <code class="codehilite">D2</code> has same dimension and <br> <code class="codehilite">std::declval&lt;T1&gt;() - std::declval&lt;T2&gt;()</code> is valid expression</td>
 </tr>
 <tr>
 <td align="center"><code class="codehilite">q1 * q2</code></td>
@@ -763,6 +764,7 @@ Conversion between units with different dimensions will result in compilation er
 </tbody>
 </table>
 <p>Otherwise, arithmetic operators do not participate in overload resolution.</p>
+<p>example:</p>
 <div class="codehilite"><pre><span></span><span class="c1">// begin example</span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/quantity.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/arithmetic.hpp&gt;</span><span class="cp"></span>
@@ -791,6 +793,7 @@ Conversion between units with different dimensions will result in compilation er
 <hr />
 <p>If unit conversion occurs, it is always converted to the higher precision.
 For example, meters plus millimeters convert meters to millimeters.</p>
+<p>example:</p>
 <div class="codehilite"><pre><span></span><span class="c1">// begin example</span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/quantity.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/arithmetic.hpp&gt;</span><span class="cp"></span>

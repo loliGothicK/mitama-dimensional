@@ -726,22 +726,23 @@
 <span class="k">struct</span> <span class="nl">is_even</span><span class="p">:</span> <span class="n">std</span><span class="o">::</span><span class="n">bool_constant</span><span class="o">&lt;</span><span class="n">Arg</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">&gt;</span> <span class="p">{};</span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-    <span class="k">namespace</span> <span class="n">si</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">systems</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
+    <span class="k">using</span> <span class="n">mitama</span><span class="o">::</span><span class="n">systems</span><span class="o">::</span><span class="n">si</span><span class="o">::</span><span class="n">meter_t</span><span class="p">;</span>
     <span class="k">using</span> <span class="n">mitama</span><span class="o">::</span><span class="n">static_quantity</span><span class="p">,</span> <span class="n">mitama</span><span class="o">::</span><span class="n">refined</span><span class="p">,</span> <span class="n">mitama</span><span class="o">::</span><span class="n">quantity_t</span><span class="p">;</span>
     <span class="k">using</span> <span class="k">namespace</span> <span class="n">mitama</span><span class="o">::</span><span class="n">literals</span><span class="o">::</span><span class="n">static_quantity_literals</span><span class="p">;</span>
 
-    <span class="k">constexpr</span> <span class="n">refined</span><span class="o">&lt;</span><span class="n">is_even</span><span class="p">,</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">meter_t</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">2</span><span class="n">_m</span><span class="p">;</span>
-<span class="c1">//            ^~~~~~~ ^~~~~~~  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~      ^~~~</span>
-<span class="c1">//            |       |        |                                 |</span>
-<span class="c1">//            |       |        refined type                      static quantity literal                  </span>
-<span class="c1">//            |       |        </span>
-<span class="c1">//            |       refinement predicate</span>
-<span class="c1">//            |</span>
-<span class="c1">//            refinement type</span>
+    <span class="k">constexpr</span> 
+    <span class="n">refined</span><span class="o">&lt;</span><span class="n">is_even</span><span class="p">,</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">meter_t</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">2</span><span class="n">_m</span><span class="p">;</span>
+<span class="c1">//  ^~~~~~~ ^~~~~~~  ^~~~~~~~~~~~~~~~~~~~~~~~      ^~~~</span>
+<span class="c1">//  |       |        |                             |</span>
+<span class="c1">//  |       |        refined type                  UDL for static_quantity     </span>
+<span class="c1">//  |       |                                    </span>
+<span class="c1">//  |       refinement predicate</span>
+<span class="c1">//  |</span>
+<span class="c1">//  refinement type</span>
 
     <span class="c1">// It is a compilation error because a specified predicate `is_even` is not satisfied:</span>
 
-    <span class="c1">// constexpr refined&lt;is_even, quantity_t&lt;si::meter_t, int&gt;&gt; error_ = 3_m;</span>
+    <span class="c1">// constexpr refined&lt;is_even, quantity_t&lt;meter_t, int&gt;&gt; error_ = 3_m;</span>
 
 <span class="p">}</span>
 <span class="c1">// end example</span>
