@@ -5,7 +5,7 @@
 ----------------------
 
 
-defined in header [`<dimensional/refinement.hpp>`]().
+Defined in header [`<dimensional/refinement.hpp>`](https://github.com/LoliGothick/mitama-dimensional/blob/master/include/dimensional/refinement.hpp).
 
 ## Refinement type
 

@@ -59,6 +59,7 @@ nav:
     - Delta type: UserManual/delta-type.md
     - User define dimension: UserManual/user-defined-dimension.md
     - Expression templates: UserManual/expression-templates.md
+    - Static quantity: UserManual/static-quantity.md
   - Reference:
     - class quantity_t: Reference/quantity.md
     - arithmetic: Reference/arithmetic.md
