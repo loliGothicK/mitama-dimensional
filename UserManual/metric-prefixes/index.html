@@ -582,14 +582,14 @@
 <p><strong>Usage</strong> </p>
 <div class="codehilite"><pre><span></span><span class="c1">// begin example</span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/quantity.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;dimensional/si_units/all.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;dimensional/prefix.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;dimensional/systems/si/all.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;dimensional/systems/si/prefix.hpp&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">using</span> <span class="n">mitama</span><span class="o">::</span><span class="n">quantity_t</span><span class="p">;</span>
-    <span class="k">namespace</span> <span class="n">si</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
+    <span class="k">namespace</span> <span class="n">si</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">systems</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
 
-    <span class="n">quantity_t</span> <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">|</span> <span class="n">mitama</span><span class="o">::</span><span class="n">giga</span> <span class="o">*</span> <span class="n">si</span><span class="o">::</span><span class="n">meters</span><span class="p">);</span> <span class="c1">// 1 [Gm]</span>
+    <span class="n">quantity_t</span> <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">|</span> <span class="n">si</span><span class="o">::</span><span class="n">giga</span> <span class="o">*</span> <span class="n">si</span><span class="o">::</span><span class="n">meters</span><span class="p">);</span> <span class="c1">// 1 [Gm]</span>
 <span class="p">}</span>
 <span class="c1">// end example</span>
 </pre></div>

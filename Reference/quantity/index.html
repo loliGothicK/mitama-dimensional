@@ -1209,10 +1209,10 @@ This constructor may shall call between absolute temperature and celsius tempera
 <p>It is allowed to convert values into quantities by piping a value to dimensional quantifiers.</p>
 <div class="codehilite"><pre><span></span><span class="c1">// begin example</span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/quantity.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;dimensional/si_units/all.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;dimensional/systems/si/all.hpp&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">namespace</span> <span class="n">si</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
+    <span class="k">namespace</span> <span class="n">si</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">systems</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
     <span class="k">using</span> <span class="n">mitama</span><span class="o">::</span><span class="n">quantity_t</span><span class="p">;</span>
 
     <span class="n">quantity_t</span> <span class="n">mass</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">|</span> <span class="n">si</span><span class="o">::</span><span class="n">kilograms</span><span class="p">;</span> <span class="c1">// 3 [kg]</span>
@@ -1234,10 +1234,10 @@ This constructor may shall call between absolute temperature and celsius tempera
 <p><code class="codehilite">quantity_for</code> is a type alias to make SI derived units using variadic templates.</p>
 <div class="codehilite"><pre><span></span><span class="c1">// begin example</span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/quantity.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;dimensional/si_units/all.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;dimensional/systems/si/all.hpp&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">namespace</span> <span class="n">si</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
+    <span class="k">namespace</span> <span class="n">si</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">systems</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
     <span class="k">using</span> <span class="n">mitama</span><span class="o">::</span><span class="n">quantity_for</span><span class="p">;</span>
 
     <span class="n">quantity_for</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">meter_</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">si</span><span class="o">::</span><span class="n">second_</span><span class="o">&lt;-</span><span class="mi">1</span><span class="o">&gt;&gt;</span> <span class="n">speed</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 2 [m/s]</span>

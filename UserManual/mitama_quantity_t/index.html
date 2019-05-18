@@ -655,10 +655,10 @@
 <p><strong>example</strong></p>
 <div class="codehilite"><pre><span></span><span class="c1">// begin example</span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/quantity.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;dimensional/si_units/all.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;dimensional/systems/si/all.hpp&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">namespace</span> <span class="n">si</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
+    <span class="k">namespace</span> <span class="n">si</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">systems</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
     <span class="k">using</span> <span class="n">mitama</span><span class="o">::</span><span class="n">quantity_t</span><span class="p">;</span>
 
     <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">si</span><span class="o">::</span><span class="n">meter_t</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">len1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 1 [m]</span>
@@ -673,10 +673,10 @@
 Conversion between units with different dimensions will result in compilation errors.</p>
 <div class="codehilite"><pre><span></span><span class="c1">// begin example</span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/quantity.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;dimensional/si_units/all.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;dimensional/systems/si/all.hpp&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">namespace</span> <span class="n">si</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
+    <span class="k">namespace</span> <span class="n">si</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">systems</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
     <span class="k">using</span> <span class="n">mitama</span><span class="o">::</span><span class="n">quantity_t</span><span class="p">;</span>
 
     <span class="n">quantity_t</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">|</span> <span class="n">si</span><span class="o">::</span><span class="n">kilograms</span><span class="p">;</span>
@@ -742,10 +742,10 @@ Conversion between units with different dimensions will result in compilation er
 <div class="codehilite"><pre><span></span><span class="c1">// begin example</span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/quantity.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/arithmetic.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;dimensional/si_units/all.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;dimensional/systems/si/all.hpp&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">namespace</span> <span class="n">si</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
+    <span class="k">namespace</span> <span class="n">si</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">systems</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
     <span class="k">using</span> <span class="n">mitama</span><span class="o">::</span><span class="n">quantity_t</span><span class="p">;</span>
 
     <span class="n">quantity_t</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">|</span> <span class="n">si</span><span class="o">::</span><span class="n">meters</span><span class="p">;</span>
@@ -770,10 +770,10 @@ For example, meters plus millimeters convert meters to millimeters.</p>
 <div class="codehilite"><pre><span></span><span class="c1">// begin example</span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/quantity.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;dimensional/arithmetic.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;dimensional/si_units/all.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;dimensional/systems/si/all.hpp&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">namespace</span> <span class="n">si</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
+    <span class="k">namespace</span> <span class="n">si</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">systems</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
     <span class="k">using</span> <span class="n">mitama</span><span class="o">::</span><span class="n">quantity_t</span><span class="p">;</span>
 
     <span class="n">quantity_t</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">|</span> <span class="n">si</span><span class="o">::</span><span class="n">meters</span><span class="p">;</span>

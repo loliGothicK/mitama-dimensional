@@ -751,10 +751,10 @@ Otherwise, value is equal to false.</p>
 <span class="kr">inline</span> <span class="k">constexpr</span> <span class="kt">bool</span> <span class="n">is_dimensional_v</span> <span class="o">=</span> <span class="n">is_dimensional</span><span class="o">&lt;</span><span class="n">D</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
 </pre></div>
 
-<h2 id="struct-is_same_dimensionalquantity_t-quantity_t">struct is_same_dimensional&lt;quantity_t<D1..., T>, quantity_t<D2..., U>&gt;</h2>
-<p>Checks whether <code class="codehilite">quantity_t&lt;D1..., T&gt;</code> and <code class="codehilite">quantity_t&lt;D2..., U&gt;</code> have same dimension.
+<h2 id="struct-is_same_dimensionalquantity_t-quantity_t">struct is_same_dimensional&lt;quantity_t<D1, T>, quantity_t<D2, U>&gt;</h2>
+<p>Checks whether <code class="codehilite">quantity_t&lt;D1, T&gt;</code> and <code class="codehilite">quantity_t&lt;D2, U&gt;</code> have same dimension.
 Provides the member constant value that is equal to true,
-if <code class="codehilite">quantity_t&lt;D1..., T&gt;</code> and <code class="codehilite">quantity_t&lt;D2..., U&gt;</code> have same dimension,
+if <code class="codehilite">quantity_t&lt;D1, T&gt;</code> and <code class="codehilite">quantity_t&lt;D2, U&gt;</code> have same dimension,
 Otherwise, value is equal to false.</p>
 <p><strong>definition</strong></p>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="p">,</span> <span class="n">class</span><span class="o">&gt;</span> <span class="k">struct</span> <span class="nl">is_same_dimensional</span> <span class="p">:</span> <span class="n">std</span><span class="o">::</span><span class="n">false_type</span> <span class="p">{};</span>
@@ -772,9 +772,9 @@ Otherwise, value is equal to false.</p>
                         <span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units2</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">...</span><span class="o">&gt;</span> <span class="p">{};</span>
 
 <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="p">...</span> <span class="n">Units1</span><span class="p">,</span>
-            <span class="n">class</span><span class="p">...</span> <span class="n">Units2</span><span class="p">,</span>
-            <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym1</span><span class="p">,</span>
-            <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym2</span><span class="o">&gt;</span>
+          <span class="n">class</span><span class="p">...</span> <span class="n">Units2</span><span class="p">,</span>
+          <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym1</span><span class="p">,</span>
+          <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Synonym2</span><span class="o">&gt;</span>
 <span class="k">struct</span> <span class="n">is_same_dimensional</span><span class="o">&lt;</span><span class="n">Synonym1</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units1</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">,</span>
                            <span class="n">Synonym2</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units2</span><span class="p">...</span><span class="o">&gt;&gt;&gt;</span>
     <span class="o">:</span> <span class="n">std</span><span class="o">::</span><span class="n">conjunction</span><span class="o">&lt;</span>
@@ -783,7 +783,7 @@ Otherwise, value is equal to false.</p>
                         <span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units2</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">...</span><span class="o">&gt;</span> <span class="p">{};</span>
 
 <span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="p">...</span> <span class="n">Units1</span><span class="p">,</span>
-            <span class="n">class</span><span class="p">...</span> <span class="n">Units2</span><span class="o">&gt;</span>
+          <span class="n">class</span><span class="p">...</span> <span class="n">Units2</span><span class="o">&gt;</span>
 <span class="k">struct</span> <span class="n">is_same_dimensional</span><span class="o">&lt;</span><span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units1</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
                            <span class="n">dimensional_t</span><span class="o">&lt;</span><span class="n">Units2</span><span class="p">...</span><span class="o">&gt;&gt;</span>
     <span class="o">:</span> <span class="n">std</span><span class="o">::</span><span class="n">conjunction</span><span class="o">&lt;</span>
