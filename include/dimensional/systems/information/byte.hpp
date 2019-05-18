@@ -3,12 +3,21 @@
 #include <dimensional/systems/information/bit.hpp>
 
 namespace mitama::systems::information {
-using byte_t = scaled_unit_t<bit_t, std::ratio<8>>;
+struct info8 {
+    using is_base_dimension = void;
+    using is_dimesionless = void;
+};
+
+using byte_t = make_unit_t<info8>;
+
+inline constexpr byte_t byte{};
+inline constexpr byte_t bytes{};
 }
 
 namespace mitama {
-struct abbreviation<mitama::systems::information::byte_t> {
-    static constexpr char str[] = "bit";
+template<>
+struct symbol_<mitama::systems::information::info8> {
+    static constexpr char str[] = "B";
 };
 }
 

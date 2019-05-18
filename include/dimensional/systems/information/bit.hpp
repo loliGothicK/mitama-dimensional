@@ -10,11 +10,15 @@ struct info {
 };
 
 using bit_t = make_unit_t<info>;
+
+inline constexpr bit_t bit{};
+inline constexpr bit_t bits{};
 }
 
 namespace mitama {
-struct abbreviation<mitama::systems::information::bit_t> {
-    static constexpr char str[] = "bit";
+template<>
+struct symbol_<mitama::systems::information::info> {
+    static constexpr char str[] = "b";
 };
 }
 
