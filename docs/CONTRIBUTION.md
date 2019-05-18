@@ -59,5 +59,6 @@ If you are implementing a new feature, add sample code to `examples/`. This will
 ## Documentation
 -----------------
 
-If you add a new feature, you will probably want to change the document. Please send PR to `feature/gitbook`.
+If you add a new feature, you will probably want to change the document.
+Please send PR to `docs` branch.
 Of course, typo and minor wording fixes are also welcome.
