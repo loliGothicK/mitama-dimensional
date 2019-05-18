@@ -6,7 +6,7 @@
 
 **A. Literal refinement at value level is possible at compile time.**
 
-See bellow:
+See below:
 
 ```cpp
 // begin example
@@ -61,10 +61,10 @@ struct static_quantity_t<Synonym<dimensional_t<Units...>>, Value>
 ```
 
 `static_quantity_t` is a class for pure compile-time quantity manipulation.
-The idea of static quantity is almost same as `std::integral_constant`.
+The idea of static quantity is almost the same as `std::integral_constant`.
 
 C++17 introduced **declaring non-type template parameters with auto**.
-So, `static_quantity_t` is declared as `static_quantity_t<class Dim, auto Value>`.
+Thus, `static_quantity_t` is declared as `static_quantity_t<class Dim, auto Value>`.
 
 Use values ​​directly in the template as in `static_quantity_t<meter_t, 2>`.
 
@@ -77,7 +77,7 @@ template < class Dim, auto Value >
 inline constexpr static_quantity_t<Dim, Value> static_quantity{};
 ```
 
-For long time, C++ meta-programmer using class for compile-time manipulation.
+For a long time, C++ meta-programmer have used classes for compile-time manipulation.
 
 Like below:
 
@@ -99,7 +99,7 @@ struct RightTriangle
 
 That is elephant.
 
-Using constexpr variable template is elegant solution.
+Using constexpr variable template is an elegant solution.
 
 ```cpp
 // Value level metaprogramming.
@@ -108,9 +108,9 @@ static_quantity<meter_t, 1> + static_quantity<meter_t, 1>;
 // -> static_quantity<meter_t, 2>
 ```
 
-This technique used in [Boost.Hana ](https://www.boost.org/doc/libs/1_61_0/libs/hana/doc/html/index.html).
+This technique is used in [Boost.Hana ](https://www.boost.org/doc/libs/1_61_0/libs/hana/doc/html/index.html).
 
-Provided operations for `static_quantity`:
+The following operations are provided for:
 
 - operator +
 - operator -
@@ -174,7 +174,7 @@ public:
 ```
 
 The predicate must be a class template with `auto` as a template parameter.
-This is typically write as follows:
+This is typically written as follows:
 
 ```cpp
 template < auto A >
@@ -188,10 +188,10 @@ Refined quantity is convertible to `quantity_t`.
 - quantity_t constructor
 
     `quantity_t<D1, T>` has constructor from `refined<Pred, quantity_t<E, U>>`.
-    This constructor shall not participates in overload resolution unless `is_same_dimensional_v<D, E>` is true and `std::is_convertible_v<U, T>` is true.
+    This constructor shall not participate in overload resolution unless `is_same_dimensional_v<D, E>` is true and `std::is_convertible_v<U, T>` is true.
     Units conversion is automatically performed.
 
-- quantity_t's deduction guide for refined&lt;Pred, quantity_t&lt;D, T&gt;&gt;
+- quantity_t's deduction guide for `refined<Pred, quantity_t<D, T>>`
 
     `quantity_t` provides deduction guide for refined:
 
@@ -200,7 +200,7 @@ Refined quantity is convertible to `quantity_t`.
     quantity_t(refined<Pred, quantity_t<Dim, T>>) -> quantity_t<Dim, T>;
     ```
 
-    Therefore, you can infer template parameters as follows:
+    Thus, you can infer template parameters as follows:
 
     ```cpp
     refined<is_positive, quantity_t<si::meter_t, int>> x = 42_m;
