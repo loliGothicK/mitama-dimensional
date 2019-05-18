@@ -29,14 +29,14 @@ inline constexpr auto tera = std::tera{};
 ```cpp
 // begin example
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
-#include <dimensional/prefix.hpp>
+#include <dimensional/systems/si/all.hpp>
+#include <dimensional/systems/si/prefix.hpp>
 
 int main() {
     using mitama::quantity_t;
-    namespace si = mitama::si;
+    namespace si = mitama::systems::si;
 
-    quantity_t a = (1 | mitama::giga * si::meters); // 1 [Gm]
+    quantity_t a = (1 | si::giga * si::meters); // 1 [Gm]
 }
 // end example
 ```

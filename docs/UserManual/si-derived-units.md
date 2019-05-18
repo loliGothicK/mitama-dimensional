@@ -11,12 +11,12 @@
 ```cpp
 // begin example
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
+#include <dimensional/systems/si/all.hpp>
 #include <dimensional/io.hpp>
 
 int main() {
     using mitama::quantity_t;
-    namespace si = mitama::si;
+    namespace si = mitama::systems::si;
 
     quantity_t a = 1 | si::meters;
 

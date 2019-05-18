@@ -11,12 +11,12 @@ Determine how to perform unit conversion from the dimension of assignment destin
 ```cpp
 // begin example
 #include <dimensional/quantity.hpp>
-#include <dimensional/nonsi_units/degree_celsius.hpp>
+#include <dimensional/systems/nonsi/degree_celsius.hpp>
 #include <dimensional/expr.hpp>
 
 int main(){
-    namespace si = mitama::si;
-    namespace nonsi = mitama::nonsi;
+    namespace si = mitama::systems::si;
+    namespace nonsi = mitama::systems::nonsi;
     using mitama::quantity, mitama::as_expr;
 
     quantity<decltype(si::kelvin<> / si::second<>)>

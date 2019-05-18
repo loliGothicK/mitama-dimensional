@@ -30,10 +30,10 @@ namespace mitama {
 ```cpp
 // begin example
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
+#include <dimensional/systems/si/all.hpp>
 
 int main() {
-    namespace si = mitama::si;
+    namespace si = mitama::systems::si;
     using mitama::quantity_t;
 
     quantity_t<si::meter_t, int> len1 = 1; // 1 [m]
@@ -51,10 +51,10 @@ Conversion between units with different dimensions will result in compilation er
 ```cpp
 // begin example
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
+#include <dimensional/systems/si/all.hpp>
 
 int main() {
-    namespace si = mitama::si;
+    namespace si = mitama::systems::si;
     using mitama::quantity_t;
 
     quantity_t a = 3 | si::kilograms;
@@ -94,10 +94,10 @@ Otherwise, arithmetic operators do not participate in overload resolution.
 // begin example
 #include <dimensional/quantity.hpp>
 #include <dimensional/arithmetic.hpp>
-#include <dimensional/si_units/all.hpp>
+#include <dimensional/systems/si/all.hpp>
 
 int main() {
-    namespace si = mitama::si;
+    namespace si = mitama::systems::si;
     using mitama::quantity_t;
 
     quantity_t a = 4 | si::meters;
@@ -125,10 +125,10 @@ For example, meters plus millimeters convert meters to millimeters.
 // begin example
 #include <dimensional/quantity.hpp>
 #include <dimensional/arithmetic.hpp>
-#include <dimensional/si_units/all.hpp>
+#include <dimensional/systems/si/all.hpp>
 
 int main() {
-    namespace si = mitama::si;
+    namespace si = mitama::systems::si;
     using mitama::quantity_t;
 
     quantity_t a = 4 | si::meters;

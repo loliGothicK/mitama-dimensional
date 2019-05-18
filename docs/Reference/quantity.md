@@ -281,10 +281,10 @@ It is allowed to convert values into quantities by piping a value to dimensional
 ```cpp
 // begin example
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
+#include <dimensional/systems/si/all.hpp>
 
 int main() {
-    namespace si = mitama::si;
+    namespace si = mitama::systems::si;
     using mitama::quantity_t;
 
     quantity_t mass = 3 | si::kilograms; // 3 [kg]
@@ -310,10 +310,10 @@ int main() {
 ```cpp
 // begin example
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
+#include <dimensional/systems/si/all.hpp>
 
 int main() {
-    namespace si = mitama::si;
+    namespace si = mitama::systems::si;
     using mitama::quantity_for;
 
     quantity_for<int, si::meter_<1>, si::second_<-1>> speed = 2; // 2 [m/s]

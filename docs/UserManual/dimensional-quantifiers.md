@@ -29,10 +29,10 @@ It is allowed to convert values into quantities by piping a value to dimensional
 ```cpp
 // begin example
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
+#include <dimensional/systems/si/all.hpp>
 
 int main() {
-    namespace si = mitama::si;
+    namespace si = mitama::systems::si;
     using mitama::quantity_t;
 
     // Template argument deduction for class templates
@@ -53,10 +53,10 @@ Multiplication and division operators for dimensional quantifiers are provided t
 ```cpp
 // begin example
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
+#include <dimensional/systems/si/all.hpp>
 
 int main() {
-    namespace si = mitama::si;
+    namespace si = mitama::systems::si;
     using mitama::quantity_t;
 
     // Template argument deduction for class templates
