@@ -725,41 +725,41 @@ Conversion between units with different dimensions will result in compilation er
 <thead>
 <tr>
 <th align="center">expression</th>
-<th align="center">condition</th>
+<th align="left">condition</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="center"><code class="codehilite">q1 + q2</code></td>
-<td align="center"><code class="codehilite">D1</code> and <code class="codehilite">D2</code> has same dimension and <br> <code class="codehilite">std::declval&lt;T1&gt;() + std::declval&lt;T2&gt;()</code> is valid expression</td>
+<td align="left"><code class="codehilite">D1</code> and <code class="codehilite">D2</code> has same dimension and <br> <code class="codehilite">std::declval&lt;T1&gt;() + std::declval&lt;T2&gt;()</code> is valid expression</td>
 </tr>
 <tr>
 <td align="center"><code class="codehilite">q1 - q2</code></td>
-<td align="center"><code class="codehilite">D1</code> and <code class="codehilite">D2</code> has same dimension and <br> <code class="codehilite">std::declval&lt;T1&gt;() - std::declval&lt;T2&gt;()</code> is valid expression</td>
+<td align="left"><code class="codehilite">D1</code> and <code class="codehilite">D2</code> has same dimension and <br> <code class="codehilite">std::declval&lt;T1&gt;() - std::declval&lt;T2&gt;()</code> is valid expression</td>
 </tr>
 <tr>
 <td align="center"><code class="codehilite">q1 * q2</code></td>
-<td align="center"><code class="codehilite">std::declval&lt;T1&gt;() * std::declval&lt;T2&gt;()</code> is valid expression</td>
+<td align="left"><code class="codehilite">std::declval&lt;T1&gt;() * std::declval&lt;T2&gt;()</code> is valid expression</td>
 </tr>
 <tr>
 <td align="center"><code class="codehilite">q1 / q2</code></td>
-<td align="center"><code class="codehilite">std::declval&lt;T1&gt;() / std::declval&lt;T2&gt;()</code> is valid expression</td>
+<td align="left"><code class="codehilite">std::declval&lt;T1&gt;() / std::declval&lt;T2&gt;()</code> is valid expression</td>
 </tr>
 <tr>
 <td align="center"><code class="codehilite">q1 * v</code></td>
-<td align="center"><code class="codehilite">std::declval&lt;T1&gt;() * std::declval&lt;T3&gt;()</code> is valid expression</td>
+<td align="left"><code class="codehilite">std::declval&lt;T1&gt;() * std::declval&lt;T3&gt;()</code> is valid expression</td>
 </tr>
 <tr>
 <td align="center"><code class="codehilite">v * q1</code></td>
-<td align="center"><code class="codehilite">std::declval&lt;T3&gt;() * std::declval&lt;T1&gt;()</code> is valid expression</td>
+<td align="left"><code class="codehilite">std::declval&lt;T3&gt;() * std::declval&lt;T1&gt;()</code> is valid expression</td>
 </tr>
 <tr>
 <td align="center"><code class="codehilite">q1 / v</code></td>
-<td align="center"><code class="codehilite">std::declval&lt;T1&gt;() / std::declval&lt;T3&gt;()</code> is valid expression</td>
+<td align="left"><code class="codehilite">std::declval&lt;T1&gt;() / std::declval&lt;T3&gt;()</code> is valid expression</td>
 </tr>
 <tr>
 <td align="center"><code class="codehilite">v / q1</code></td>
-<td align="center"><code class="codehilite">std::declval&lt;T3&gt;() / std::declval&lt;T1&gt;()</code> is valid expression</td>
+<td align="left"><code class="codehilite">std::declval&lt;T3&gt;() / std::declval&lt;T1&gt;()</code> is valid expression</td>
 </tr>
 </tbody>
 </table>

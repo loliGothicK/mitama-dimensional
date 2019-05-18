@@ -386,9 +386,45 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Metric prefixes
+      </label>
+    
     <a href="./" title="Metric prefixes" class="md-nav__link md-nav__link--active">
       Metric prefixes
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#metric-prefix-for-si" title="Metric prefix for SI" class="md-nav__link">
+    Metric prefix for SI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metric-prefix-for-information" title="Metric prefix for information" class="md-nav__link">
+    Metric prefix for information
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -571,6 +607,29 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#metric-prefix-for-si" title="Metric prefix for SI" class="md-nav__link">
+    Metric prefix for SI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metric-prefix-for-information" title="Metric prefix for information" class="md-nav__link">
+    Metric prefix for information
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -584,7 +643,7 @@
                 
                 <h1 id="metric-prefixes">Metric prefixes</h1>
 <hr />
-<h1 id="metric-prefix-constants-for-dimensional-quantifiers">Metric prefix constants for dimensional quantifiers</h1>
+<h2 id="metric-prefix-for-si">Metric prefix for SI</h2>
 <p><strong>definition</strong></p>
 <div class="codehilite"><pre><span></span><span class="k">namespace</span> <span class="n">mitama</span><span class="o">::</span><span class="n">systems</span><span class="o">::</span><span class="n">si</span> <span class="p">{</span>
 <span class="kr">inline</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">pico</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">pico</span><span class="p">{};</span>
@@ -613,6 +672,34 @@
     <span class="k">namespace</span> <span class="n">si</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">systems</span><span class="o">::</span><span class="n">si</span><span class="p">;</span>
 
     <span class="n">quantity_t</span> <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">|</span> <span class="n">si</span><span class="o">::</span><span class="n">giga</span> <span class="o">*</span> <span class="n">si</span><span class="o">::</span><span class="n">meters</span><span class="p">);</span> <span class="c1">// 1 [Gm]</span>
+<span class="p">}</span>
+<span class="c1">// end example</span>
+</pre></div>
+
+<h2 id="metric-prefix-for-information">Metric prefix for information</h2>
+<p><strong>definition</strong></p>
+<div class="codehilite"><pre><span></span><span class="k">namespace</span> <span class="n">mitama</span><span class="o">::</span><span class="n">systems</span><span class="o">::</span><span class="n">information</span> <span class="p">{</span>
+<span class="kr">inline</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">kibi</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">ratio</span><span class="o">&lt;</span><span class="p">(</span><span class="mi">1ll</span> <span class="o">&lt;&lt;</span> <span class="mi">10</span><span class="p">)</span><span class="o">&gt;</span><span class="p">{};</span>
+<span class="kr">inline</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">mebi</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">ratio</span><span class="o">&lt;</span><span class="p">(</span><span class="mi">1ll</span> <span class="o">&lt;&lt;</span> <span class="mi">20</span><span class="p">)</span><span class="o">&gt;</span><span class="p">{};</span>
+<span class="kr">inline</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">gibi</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">ratio</span><span class="o">&lt;</span><span class="p">(</span><span class="mi">1ll</span> <span class="o">&lt;&lt;</span> <span class="mi">30</span><span class="p">)</span><span class="o">&gt;</span><span class="p">{};</span>
+<span class="kr">inline</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">tebi</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">ratio</span><span class="o">&lt;</span><span class="p">(</span><span class="mi">1ll</span> <span class="o">&lt;&lt;</span> <span class="mi">40</span><span class="p">)</span><span class="o">&gt;</span><span class="p">{};</span>
+<span class="kr">inline</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">pebi</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">ratio</span><span class="o">&lt;</span><span class="p">(</span><span class="mi">1ll</span> <span class="o">&lt;&lt;</span> <span class="mi">50</span><span class="p">)</span><span class="o">&gt;</span><span class="p">{};</span>
+<span class="kr">inline</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">exbi</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">ratio</span><span class="o">&lt;</span><span class="p">(</span><span class="mi">1ll</span> <span class="o">&lt;&lt;</span> <span class="mi">60</span><span class="p">)</span><span class="o">&gt;</span><span class="p">{};</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><strong>Usage</strong></p>
+<div class="codehilite"><pre><span></span><span class="c1">// begin example</span>
+<span class="cp">#include</span> <span class="cpf">&lt;dimensional/quantity.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;dimensional/systems/information/byte.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;dimensional/systems/information/prefix.hpp&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">using</span> <span class="n">mitama</span><span class="o">::</span><span class="n">quantity_t</span><span class="p">;</span>
+    <span class="k">namespace</span> <span class="n">info</span> <span class="o">=</span> <span class="n">mitama</span><span class="o">::</span><span class="n">systems</span><span class="o">::</span><span class="n">information</span><span class="p">;</span>
+
+    <span class="n">quantity_t</span> <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">|</span> <span class="n">info</span><span class="o">::</span><span class="n">gibi</span> <span class="o">*</span> <span class="n">info</span><span class="o">::</span><span class="n">bytes</span><span class="p">);</span> <span class="c1">// 1 [GiB]</span>
+    <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">info</span><span class="o">::</span><span class="n">byte_t</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span> <span class="c1">// 1&#39;073&#39;741&#39;824 [B]</span>
 <span class="p">}</span>
 <span class="c1">// end example</span>
 </pre></div>
