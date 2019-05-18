@@ -16,6 +16,7 @@ using shannon_t = make_unit_t<log2_info>;
 }
 
 namespace mitama {
+template<>
 struct abbreviation<mitama::systems::information::shannon_t> {
     static constexpr char str[] = "Sh";
 };

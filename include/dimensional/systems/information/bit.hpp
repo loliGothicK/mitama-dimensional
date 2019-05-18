@@ -13,6 +13,7 @@ using bit_t = make_unit_t<info>;
 }
 
 namespace mitama {
+template<>
 struct abbreviation<mitama::systems::information::bit_t> {
     static constexpr char str[] = "bit";
 };

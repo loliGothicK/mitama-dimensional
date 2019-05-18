@@ -7,6 +7,7 @@ using byte_t = scaled_unit_t<bit_t, std::ratio<8>>;
 }
 
 namespace mitama {
+template<>
 struct abbreviation<mitama::systems::information::byte_t> {
     static constexpr char str[] = "bit";
 };

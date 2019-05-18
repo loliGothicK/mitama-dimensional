@@ -15,6 +15,7 @@ using nat_t = make_unit_t<ln_info>;
 }
 
 namespace mitama {
+template<>
 struct abbreviation<mitama::systems::information::nat_t> {
     static constexpr char str[] = "nat";
 };

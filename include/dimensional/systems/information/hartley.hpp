@@ -15,6 +15,7 @@ using hartley_t = make_unit_t<log10_info>;
 }
 
 namespace mitama {
+template<>
 struct abbreviation<mitama::systems::information::hartley_t> {
     static constexpr char str[] = "Hart";
 };
