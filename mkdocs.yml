@@ -63,5 +63,6 @@ nav:
   - Reference:
     - class quantity_t: Reference/quantity.md
     - arithmetic: Reference/arithmetic.md
+    - math functions: Reference/math-functions.md
     - meta functions: Reference/meta-functions.md
   - Contribution: CONTRIBUTION.md
