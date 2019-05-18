@@ -21,22 +21,23 @@ template < auto Arg >
 struct is_even: std::bool_constant<Arg % 2 == 0> {};
 
 int main(){
-    namespace si = mitama::systems::si;
+    using mitama::systems::si::meter_t;
     using mitama::static_quantity, mitama::refined, mitama::quantity_t;
     using namespace mitama::literals::static_quantity_literals;
 
-    constexpr refined<is_even, quantity_t<si::meter_t, int>> r = 2_m;
-//            ^~~~~~~ ^~~~~~~  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~      ^~~~
-//            |       |        |                                 |
-//            |       |        refined type                      static quantity literal                  
-//            |       |        
-//            |       refinement predicate
-//            |
-//            refinement type
+    constexpr 
+    refined<is_even, quantity_t<meter_t, int>> r = 2_m;
+//  ^~~~~~~ ^~~~~~~  ^~~~~~~~~~~~~~~~~~~~~~~~      ^~~~
+//  |       |        |                             |
+//  |       |        refined type                  UDL for static_quantity     
+//  |       |                                    
+//  |       refinement predicate
+//  |
+//  refinement type
 
-    // It is a compilation error because a specified predicate `is_even` is not satisfied:
+    // It is a compiler error because a specified predicate `is_even` is not satisfied:
 
-    // constexpr refined<is_even, quantity_t<si::meter_t, int>> error_ = 3_m;
+    // constexpr refined<is_even, quantity_t<meter_t, int>> error_ = 3_m;
 
 }
 // end example
@@ -190,7 +191,7 @@ Refined quantity is convertible to `quantity_t`.
     This constructor shall not participates in overload resolution unless `is_same_dimensional_v<D, E>` is true and `std::is_convertible_v<U, T>` is true.
     Units conversion is automatically performed.
 
-- quantity_t's deduction guide for refined<Pred, quantity_t<D, T>>
+- quantity_t's deduction guide for refined&lt;Pred, quantity_t&lt;D, T&gt;&gt;
 
     `quantity_t` provides deduction guide for refined:
 

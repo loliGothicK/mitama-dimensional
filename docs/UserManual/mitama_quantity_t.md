@@ -25,7 +25,7 @@ namespace mitama {
     If the second template argument is omitted, it will be of type `double`.
 
 
-**example**
+example:
 
 ```cpp
 // begin example
@@ -47,6 +47,8 @@ int main() {
 
 Conversion between different units is performed automatically.
 Conversion between units with different dimensions will result in compilation errors.
+
+example:
 
 ```cpp
 // begin example
@@ -77,18 +79,20 @@ Let
 
 And arithmetic operators listed bellow are defined:
 
-| expression |                                             condition                                              |
-| :--------: | :------------------------------------------------------------------------------------------------: |
-| `q1 + q2`  | `D1` and `D2` has same dimension and `std::declval<T1>() + std::declval<T2>()` is valid expression |
-| `q1 - q2`  | `D1` and `D2` has same dimension and `std::declval<T1>() - std::declval<T2>()` is valid expression |
-| `q1 * q2`  |                   `std::declval<T1>() * std::declval<T2>()` is valid expression                    |
-| `q1 / q2`  |                   `std::declval<T1>() / std::declval<T2>()` is valid expression                    |
-|  `q1 * v`  |                   `std::declval<T1>() * std::declval<T3>()` is valid expression                    |
-|  `v * q1`  |                   `std::declval<T3>() * std::declval<T1>()` is valid expression                    |
-|  `q1 / v`  |                   `std::declval<T1>() / std::declval<T3>()` is valid expression                    |
-|  `v / q1`  |                   `std::declval<T3>() / std::declval<T1>()` is valid expression                    |
+| expression |                                                condition                                                |
+| :--------: | :------------------------------------------------------------------------------------------------------ |
+| `q1 + q2`  | `D1` and `D2` has same dimension and <br> `std::declval<T1>() + std::declval<T2>()` is valid expression |
+| `q1 - q2`  | `D1` and `D2` has same dimension and <br> `std::declval<T1>() - std::declval<T2>()` is valid expression |
+| `q1 * q2`  |                      `std::declval<T1>() * std::declval<T2>()` is valid expression                      |
+| `q1 / q2`  |                      `std::declval<T1>() / std::declval<T2>()` is valid expression                      |
+|  `q1 * v`  |                      `std::declval<T1>() * std::declval<T3>()` is valid expression                      |
+|  `v * q1`  |                      `std::declval<T3>() * std::declval<T1>()` is valid expression                      |
+|  `q1 / v`  |                      `std::declval<T1>() / std::declval<T3>()` is valid expression                      |
+|  `v / q1`  |                      `std::declval<T3>() / std::declval<T1>()` is valid expression                      |
 
 Otherwise, arithmetic operators do not participate in overload resolution.
+
+example:
 
 ```cpp
 // begin example
@@ -120,6 +124,8 @@ int main() {
 
 If unit conversion occurs, it is always converted to the higher precision.
 For example, meters plus millimeters convert meters to millimeters.
+
+example:
 
 ```cpp
 // begin example
