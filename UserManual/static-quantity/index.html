@@ -869,7 +869,7 @@ This constructor shall not participates in overload resolution unless <code clas
 Units conversion is automatically performed.</p>
 </li>
 <li>
-<p>quantity_t's deduction guide for refined<Pred, quantity_t<D, T>&gt;</p>
+<p>quantity_t's deduction guide for refined&lt;Pred, quantity_t&lt;D, T&gt;&gt;</p>
 <p><code class="codehilite">quantity_t</code> provides deduction guide for refined:</p>
 <div class="codehilite"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span> <span class="k">template</span> <span class="o">&lt;</span><span class="k">auto</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Pred</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Dim</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span> <span class="o">&gt;</span>
 <span class="n">quantity_t</span><span class="p">(</span><span class="n">refined</span><span class="o">&lt;</span><span class="n">Pred</span><span class="p">,</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Dim</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">quantity_t</span><span class="o">&lt;</span><span class="n">Dim</span><span class="p">,</span> <span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
