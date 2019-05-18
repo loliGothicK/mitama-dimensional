@@ -341,3 +341,23 @@ int main() {
 - [environment](https://loligothick.github.io/mitama-dimensional/)として公開中（expression templatesを書き足した）
 - リファレンスを執筆中
 
+## v1.0.0
+
+### **新機能**
+
+- static quantityの追加
+  - class `static_quantity_t`
+  - variable template `static_quantity`
+  - class `refined`
+  - UDL for static quantity
+
+### バグ修正
+
+- ディレクトリ階層と名前空間階層の変更
+  - 単位がsystemsディレクトリ以下に移動
+  - 単位がsystems名前空間に入った
+- インクルードを絶対パスに変更
+
+### ドキュメント
+
+- v1.0.0に対応
