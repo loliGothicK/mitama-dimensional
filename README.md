@@ -26,11 +26,11 @@ Please refer to the [document](https://loligothick.github.io/mitama-dimensional/
 
 ```cpp
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
-#include <dimensional/derived_units/area.hpp>
+#include <dimensional/systems/si/all.hpp>
+#include <dimensional/systems/si/derived_units/area.hpp>
 
 int main() {
-    namespace si = mitama::si;
+    namespace si = mitama::systems::si;
     // width = 2 m
     mitama::quantity_t<si::meter_t, int> width = 2;
     // height = 3 m
@@ -44,11 +44,11 @@ Here is a dimensional sanity check example:
 
 ```cpp
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
-#include <dimensional/derived_units/area.hpp>
+#include <dimensional/systems/si/all.hpp>
+#include <dimensional/systems/si/derived_units/area.hpp>
 
 int main() {
-    namespace si = mitama::si;
+    namespace si = mitama::systems::si;
     // width = 2 m
     mitama::quantity_t<si::meter_t, int> width = 2;
     // height = 3 m
@@ -63,11 +63,11 @@ int main() {
 
 ```cpp
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
-#include <dimensional/derived_units/area.hpp>
+#include <dimensional/systems/si/all.hpp>
+#include <dimensional/systems/si/derived_units/area.hpp>
 
 int main() {
-    namespace si = mitama::si;
+    namespace si = mitama::systems::si;
     // width = 2 m
     mitama::quantity_t width = 2 | si::meter;
     // height = 3 m
@@ -81,11 +81,11 @@ int main() {
   
 ```cpp
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
-#include <dimensional/derived_units/area.hpp>
+#include <dimensional/systems/si/all.hpp>
+#include <dimensional/systems/si/derived_units/area.hpp>
 
 int main() {
-    namespace si = mitama::si;
+    namespace si = mitama::systems::si;
     // width = 2 m
     mitama::quantity_t<si::meter_t, int> width = 2;
     // height = 3 mm
@@ -99,12 +99,12 @@ int main() {
   
 ```cpp
 #include <dimensional/quantity.hpp>
-#include <dimensional/si_units/all.hpp>
-#include <dimensional/derived_units/area.hpp>
+#include <dimensional/systems/si/all.hpp>
+#include <dimensional/systems/si/derived_units/area.hpp>
 #include <dimensional/refinement.hpp>
 
 int main() {
-    namespace si = mitama::si;
+    namespace si = mitama::systems::si;
     using mitama::accepts_for, mitama::sym::L;
 
     // width = 2 m
