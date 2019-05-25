@@ -361,3 +361,10 @@ int main() {
 ### ドキュメント
 
 - v1.0.0に対応
+
+## v1.0.1
+
+### バグ修正
+
+- `<dimensional/systems/si/constants/constants.hpp>`のインクルードのミスを修正
+
