@@ -22,7 +22,7 @@ Please refer to the [document](https://loligothick.github.io/mitama-dimensional/
 
 ## Examples
 
-- [quantity and arithmetic operation](https://loligothick.github.io/mitama-dimensional/book/chapter1/mitama_quantity_t.html)
+- [quantity and arithmetic operation](https://loligothick.github.io/mitama-dimensional/UserManual/mitama_quantity_t/)
 
 ```cpp
 #include <dimensional/quantity.hpp>
@@ -59,7 +59,7 @@ int main() {
 }
 ```
 
-- [dimensional quantifiers](https://loligothick.github.io/mitama-dimensional/book/chapter1/dimensional-quantifiers.html)
+- [dimensional quantifiers](https://loligothick.github.io/mitama-dimensional/UserManual/dimensional-quantifiers/)
 
 ```cpp
 #include <dimensional/quantity.hpp>
@@ -77,7 +77,7 @@ int main() {
 }
 ```
 
-- [unit conversions](https://loligothick.github.io/mitama-dimensional/book/chapter1/mitama_quantity_t.html#unit-conversions)
+- [unit conversions](https://loligothick.github.io/mitama-dimensional/UserManual/mitama_quantity_t/#unit-conversions)
   
 ```cpp
 #include <dimensional/quantity.hpp>
@@ -95,7 +95,7 @@ int main() {
 }
 ```
 
-- [dimensional refinement](https://loligothick.github.io/mitama-dimensional/book/chapter2/dimensional-refinement.html)
+- [dimensional refinement](https://loligothick.github.io/mitama-dimensional/UserManual/dimensional-refinement/)
   
 ```cpp
 #include <dimensional/quantity.hpp>
@@ -119,7 +119,7 @@ int main() {
 ```
 
 
-- [user defined dimension example](example/wizarding-currency)
+- [user defined dimension example](https://loligothick.github.io/mitama-dimensional/UserManual/user-defined-dimension/)
 
 
 ```cpp
