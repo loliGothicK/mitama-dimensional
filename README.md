@@ -65,6 +65,7 @@ int main() {
 
 ```cpp
 #include <dimensional/quantity.hpp>
+#include <dimensional/arithmetic.hpp>
 #include <dimensional/systems/si/all.hpp>
 #include <dimensional/systems/si/derived_units/area.hpp>
 
