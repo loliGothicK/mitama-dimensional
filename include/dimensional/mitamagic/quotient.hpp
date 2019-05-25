@@ -1,6 +1,6 @@
 #ifndef MITAMA_DIMENSIONAL_MITAMAGIC_QUOTIENT_HPP
 #define MITAMA_DIMENSIONAL_MITAMAGIC_QUOTIENT_HPP
-#include <dimensional/dimensional_phantom.hpp>
+#include <dimensional/dimensional.hpp>
 #include <dimensional/units.hpp>
 #include <dimensional/mitamagic/type_list.hpp>
 #include <dimensional/dimensional_traits.hpp>

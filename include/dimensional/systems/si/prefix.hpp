@@ -1,6 +1,6 @@
 #ifndef MITAMA_DIMENSIONAL_PREFIX_HPP
 #define MITAMA_DIMENSIONAL_PREFIX_HPP
-#include <dimensional/dimensional_phantom.hpp>
+#include <dimensional/dimensional.hpp>
 #include <dimensional/units.hpp>
 #include <dimensional/mitamagic/utility_ext.hpp>
 #include <dimensional/mitamagic/ratio_ext.hpp>
