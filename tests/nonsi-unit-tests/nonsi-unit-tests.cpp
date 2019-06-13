@@ -68,7 +68,7 @@ TEST_CASE("information prefix format", "[info]")
 {
     using namespace mitama::systems::information;
     auto fmt = [](auto x){ return (boost::format("%1%") % x).str(); };
-    REQUIRE( fmt(1| kibi * bytes) == "1 [kiB]" );
+    REQUIRE( fmt(1| kibi * bytes) == "1 [KiB]" );
     REQUIRE( fmt(1| mebi * bytes) == "1 [MiB]" );
     REQUIRE( fmt(1| gibi * bytes) == "1 [GiB]" );
     REQUIRE( fmt(1| tebi * bytes) == "1 [TiB]" );
