@@ -16,6 +16,6 @@ using spectral_radiance_r = make_refinement_symbol_t<spectral_radiance_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::spectral_radiance_t> { static constexpr char str[] = "W/(sr·m^3)"; };
+template <> struct abbreviation<systems::si::spectral_radiance_t> { static constexpr char str[] = "W/(sr m^3)"; };
 }
 #endif

@@ -15,6 +15,6 @@ using molar_conductivity_r = make_refinement_symbol_t<molar_conductivity_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::molar_conductivity_t> { static constexpr char str[] = "S·m^2/mol"; };
+template <> struct abbreviation<systems::si::molar_conductivity_t> { static constexpr char str[] = "S m^2/mol"; };
 }
 #endif

@@ -1,9 +1,9 @@
 area m^2 meter<2>
 volume m^3 meter<3>
-momentum N·s meters*kilograms*second<-1>
-impulse N·s meters*kilograms*second<-1>
-angular_momentum N·m·s meter<2>*kilograms*second<-1>
-torque N·m meter<2>*kilograms*second<-2>
+momentum N s meters*kilograms*second<-1>
+impulse N s meters*kilograms*second<-1>
+angular_momentum N m s meter<2>*kilograms*second<-1>
+torque N m meter<2>*kilograms*second<-2>
 wavenumber m^-1 meter<-1>
 optical_power m^-1 meter<-1>
 curvature m^-1 meter<-1>
@@ -11,7 +11,7 @@ spatial_frequency m^-1 meter<-1>
 area_density kg/m^2 meter<-2>*kilograms
 density kg/m^3 meter<-3>*kilograms
 specific_volume m^3/kg meter<3>*kilogram<-1>
-action J·s meter<2>*kilograms*second<-1>
+action J s meter<2>*kilograms*second<-1>
 specific_energy J/kg meter<2>*second<-2>
 energy_density J/m^3 meter<-1>*kilograms*second<-2>
 surface_tension N/m kilograms*second<-2>
@@ -20,20 +20,20 @@ irradiance W/m^2 kilograms*second<-3>
 kinematic_viscosity m^2/s meter<2>*second<-1>
 thermal_diffusivity m^2/s meter<2>*second<-1>
 diffusion_coefficient m^2/s meter<2>*second<-1>
-dynamic_viscosity Pa·s meter<-1>*kilograms*second<-1>
+dynamic_viscosity Pa s meter<-1>*kilograms*second<-1>
 linear_mass_density kg/m meter<-1>*kilograms
 mass_flow_rate kg/s kilograms/seconds
-radiance W/(sr·m^2) kilograms/second<3>
-spectral_radiance W/(sr·m^3) meter<-1>*kilograms*second<-3>
+radiance W/(sr m^2) kilograms/second<3>
+spectral_radiance W/(sr m^3) meter<-1>*kilograms*second<-3>
 spectral_power W/m meters*kilograms*second<-3>
 absorbed_dose_rate Gy/s meter<2>*second<-3>
 fuel_efficiency m/m^3 meter<-2>
 power_density W/m^3 meter<-1>*kilograms*second<-3>
 spectral_irradiance W/m^3 meter<-1>*kilograms*second<-3>
-energy_flux_density J/(m^2·s) kilograms*second<-3>
+energy_flux_density J/(m^2 s) kilograms*second<-3>
 compressibility Pa^-1 meters*kilogram<-1>*second<2>
 radiant_exposure J/m^2 kilograms*second<-2>
-moment_of_inertia kg·m^2 meter<2>*kilograms
-specific_angular_momentum N·m·s/kg meter<2>*second<-1>
+moment_of_inertia kg m^2 meter<2>*kilograms
+specific_angular_momentum N m s/kg meter<2>*second<-1>
 radiant_intensity W/sr meter<2>*kilograms*second<-3>
-spectral_intensity W/(sr·m) meters*kilograms*second<-3>
+spectral_intensity W/(sr m) meters*kilograms*second<-3>

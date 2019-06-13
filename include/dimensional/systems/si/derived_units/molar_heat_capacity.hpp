@@ -16,7 +16,7 @@ using molar_heat_capacity_r = make_refinement_symbol_t<molar_heat_capacity_t>;
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_MOLAR_ENTROPY_HPP
 namespace mitama {
-template <> struct abbreviation<systems::si::molar_heat_capacity_t> { static constexpr char str[] = "J/(K·mol)"; };
+template <> struct abbreviation<systems::si::molar_heat_capacity_t> { static constexpr char str[] = "J/(K mol)"; };
 }
 #endif
 

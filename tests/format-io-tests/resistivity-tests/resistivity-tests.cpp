@@ -4,10 +4,10 @@
 #include "../format_io_common.hpp"
 
 TEST_CASE("resistivity format test", "[quantity][abbreviation]") {
-  REQUIRE(fmt(1 | systems::si::resistivity_t{}) == "1 [Ω·m]");
+  REQUIRE(fmt(1 | systems::si::resistivity_t{}) == "1 [Ω m]");
 }
 TEST_CASE("resistivity quantifier format test", "[quantity][abbreviation]") {
-  REQUIRE(fmt(1 | systems::si::resistivity) == "1 [Ω·m]");
+  REQUIRE(fmt(1 | systems::si::resistivity) == "1 [Ω m]");
 }
 TEST_CASE("resistivity type test", "[quantity][abbreviation]") {
   REQUIRE(mitama::is_same_dimensional_v<std::decay_t<decltype(1|systems::si::resistivity)>, mitama::quantity_t<std::decay_t<decltype(meter<3>*kilogram<>*second<-3>*ampere<-2>)>>>);

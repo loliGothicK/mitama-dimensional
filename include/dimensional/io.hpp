@@ -92,7 +92,7 @@ to_string(quantity_t<Synonym<dimensional_t<Head, Tail...>>, T> const &quantity) 
   std::ostringstream ss;
   ss << quantity.value();
   return ss.str() + " [" + si_formatter<Head>::format() +
-         (("·"s + si_formatter<Tail>::format()) + ... + "]");
+         ((" "s + si_formatter<Tail>::format()) + ... + "]");
 }
 
 template <template <class> class Synonym, class T>

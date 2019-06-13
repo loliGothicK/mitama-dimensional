@@ -16,7 +16,7 @@ using momentum_r = make_refinement_symbol_t<momentum_t>;
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_IMPULSE_HPP
 namespace mitama {
-template <> struct abbreviation<systems::si::momentum_t> { static constexpr char str[] = "N·s"; };
+template <> struct abbreviation<systems::si::momentum_t> { static constexpr char str[] = "N s"; };
 }
 #endif
 

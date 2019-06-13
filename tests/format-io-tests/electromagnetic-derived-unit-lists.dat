@@ -9,13 +9,13 @@ electric_field_strength V/m meter<>*kilogram<>*second<-3>*ampere<-1>
 magnetization A/m meter<-1>*ampere<>
 magnetic_field_strength A/m meter<-1>*ampere<>
 exposure C/kg kilogram<-1>*second<>*ampare
-resistivity Ω·m meter<3>*kilogram<>*second<-3>*ampere<-2>
+resistivity Ω m meter<3>*kilogram<>*second<-3>*ampere<-2>
 linear_charge_density C/m meter<-1>*second<>*ampere<>
 magnetic_dipole_moment J/T meter<2>*ampere<>
-electron_mobility m^2/(V·s) kilogram<-1>*second<2>*ampere<1>
+electron_mobility m^2/(V s) kilogram<-1>*second<2>*ampere<1>
 magnetic_reluctance H^-1 meter<-2>*kilogram<-1>*second<2>*ampere<2>
 magnetic_vector_potential Wb/m meter<>*kilogram<>*second<-2>*ampere<-1>
-magnetic_moment Wb·m meter<3>*kilogram<>*second<-2>*ampere<-1>
-magnetic_rigidity T·m meter<>*kilogram<>*second<-2>*ampere<-1>
-magnetomotive_force A·rad A*radian
+magnetic_moment Wb m meter<3>*kilogram<>*second<-2>*ampere<-1>
+magnetic_rigidity T m meter<>*kilogram<>*second<-2>*ampere<-1>
+magnetomotive_force A rad A*radian
 magnetic_susceptibility m/H meter<-1>*kilogram<-1>*second<2>*ampere<2>

@@ -15,6 +15,6 @@ using specific_angular_momentum_r = make_refinement_symbol_t<specific_angular_mo
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::specific_angular_momentum_t> { static constexpr char str[] = "N·m·s/kg"; };
+template <> struct abbreviation<systems::si::specific_angular_momentum_t> { static constexpr char str[] = "N m s/kg"; };
 }
 #endif

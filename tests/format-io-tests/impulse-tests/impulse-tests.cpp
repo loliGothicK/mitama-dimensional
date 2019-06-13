@@ -4,10 +4,10 @@
 #include "../format_io_common.hpp"
 
 TEST_CASE("impulse format test", "[quantity][abbreviation]") {
-  REQUIRE(fmt(1 | systems::si::impulse_t{}) == "1 [N·s]");
+  REQUIRE(fmt(1 | systems::si::impulse_t{}) == "1 [N s]");
 }
 TEST_CASE("impulse quantifier format test", "[quantity][abbreviation]") {
-  REQUIRE(fmt(1 | systems::si::impulse) == "1 [N·s]");
+  REQUIRE(fmt(1 | systems::si::impulse) == "1 [N s]");
 }
 TEST_CASE("impulse type test", "[quantity][abbreviation]") {
   REQUIRE(mitama::is_same_dimensional_v<std::decay_t<decltype(1|systems::si::impulse)>, mitama::quantity_t<std::decay_t<decltype(meters*kilograms*second<-1>)>>>);
