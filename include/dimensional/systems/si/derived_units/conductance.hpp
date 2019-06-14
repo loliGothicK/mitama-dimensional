@@ -15,6 +15,6 @@ using conductance_r = make_refinement_symbol_t<conductance_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::conductance_t> { static constexpr char str[] = "S"; };
+template <> struct  abbreviation_<systems::si::conductance_t> { static constexpr char str[] = "S"; };
 }
 #endif

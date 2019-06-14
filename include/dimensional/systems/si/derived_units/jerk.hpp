@@ -15,7 +15,7 @@ using jerk_r = make_refinement_symbol_t<jerk_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::jerk_t> { static constexpr char str[] = "m/s^3"; };
+template <> struct  abbreviation_<systems::si::jerk_t> { static constexpr char str[] = "m/s^3"; };
 }
 
 #endif

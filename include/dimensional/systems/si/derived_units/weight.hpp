@@ -16,7 +16,7 @@ using weight_r = make_refinement_symbol_t<weight_t>;
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_FORCE_HPP
 namespace mitama {
-template <> struct abbreviation<systems::si::weight_t> { static constexpr char str[] = "N"; };
+template <> struct  abbreviation_<systems::si::weight_t> { static constexpr char str[] = "N"; };
 }
 #endif
 

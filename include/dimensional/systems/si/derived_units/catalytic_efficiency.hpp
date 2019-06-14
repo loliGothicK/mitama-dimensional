@@ -15,6 +15,6 @@ using catalytic_efficiency_r = make_refinement_symbol_t<catalytic_efficiency_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::catalytic_efficiency_t> { static constexpr char str[] = "m^3/(mol·s)"; };
+template <> struct  abbreviation_<systems::si::catalytic_efficiency_t> { static constexpr char str[] = "m^3/(mol s)"; };
 }
 #endif

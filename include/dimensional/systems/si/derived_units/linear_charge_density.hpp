@@ -15,6 +15,6 @@ using linear_charge_density_r = make_refinement_symbol_t<linear_charge_density_t
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::linear_charge_density_t> { static constexpr char str[] = "C/m"; };
+template <> struct  abbreviation_<systems::si::linear_charge_density_t> { static constexpr char str[] = "C/m"; };
 }
 #endif

@@ -15,7 +15,7 @@ using area_density_r = make_refinement_symbol_t<area_density_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::area_density_t> { static constexpr char str[] = "kg/m^2"; };
+template <> struct  abbreviation_<systems::si::area_density_t> { static constexpr char str[] = "kg/m^2"; };
 }
 
 #endif

@@ -13,6 +13,6 @@ using pressure_r = make_refinement_symbol_t<pressure_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::pressure_t> { static constexpr char str[] = "Pa"; };
+template <> struct  abbreviation_<systems::si::pressure_t> { static constexpr char str[] = "Pa"; };
 }
 #endif

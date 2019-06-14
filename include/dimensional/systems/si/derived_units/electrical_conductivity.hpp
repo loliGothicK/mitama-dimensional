@@ -15,6 +15,6 @@ using electrical_conductivity_r = make_refinement_symbol_t<electrical_conductivi
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::electrical_conductivity_t> { static constexpr char str[] = "S/m"; };
+template <> struct  abbreviation_<systems::si::electrical_conductivity_t> { static constexpr char str[] = "S/m"; };
 }
 #endif

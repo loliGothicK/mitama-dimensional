@@ -167,9 +167,9 @@ namespace wizarding {
 
 namespace mitama {
     // (5) - define partial specialization class `abbreviation` for pretty printing [optional].
-    template <> struct abbreviation<wizarding::knut_t> { static constexpr char str[] = "knuts"; };
-    template <> struct abbreviation<wizarding::sickle_t> { static constexpr char str[] = "sickles"; };
-    template <> struct abbreviation<wizarding::galleon_t> { static constexpr char str[] = "galleons"; };
+    template <> struct abbreviation_<wizarding::knut_t> { static constexpr char str[] = "knuts"; };
+    template <> struct abbreviation_<wizarding::sickle_t> { static constexpr char str[] = "sickles"; };
+    template <> struct abbreviation_<wizarding::galleon_t> { static constexpr char str[] = "galleons"; };
 }
 ```
 

@@ -15,7 +15,7 @@ using power_r = make_refinement_symbol_t<power_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::power_t> { static constexpr char str[] = "W"; };
+template <> struct  abbreviation_<systems::si::power_t> { static constexpr char str[] = "W"; };
 }
 
 #endif

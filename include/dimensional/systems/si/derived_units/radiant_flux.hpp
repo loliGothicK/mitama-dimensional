@@ -18,7 +18,7 @@ using radiant_flux_r = make_refinement_symbol_t<radiant_flux_t>;
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_POWER_HPP
 namespace mitama {
-template <> struct abbreviation<systems::si::radiant_flux_t> { static constexpr char str[] = "W"; };
+template <> struct  abbreviation_<systems::si::radiant_flux_t> { static constexpr char str[] = "W"; };
 }
 #endif
 

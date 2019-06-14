@@ -15,6 +15,6 @@ using exposure_r = make_refinement_symbol_t<exposure_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::exposure_t> { static constexpr char str[] = "C/kg"; };
+template <> struct  abbreviation_<systems::si::exposure_t> { static constexpr char str[] = "C/kg"; };
 }
 #endif

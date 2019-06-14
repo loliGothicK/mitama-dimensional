@@ -15,6 +15,6 @@ using magnetic_rigidity_r = make_refinement_symbol_t<magnetic_rigidity_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::magnetic_rigidity_t> { static constexpr char str[] = "T·m"; };
+template <> struct  abbreviation_<systems::si::magnetic_rigidity_t> { static constexpr char str[] = "T m"; };
 }
 #endif

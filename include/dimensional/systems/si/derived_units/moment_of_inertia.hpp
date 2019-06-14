@@ -15,7 +15,7 @@ using moment_of_inertia_r = make_refinement_symbol_t<moment_of_inertia_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::moment_of_inertia_t> { static constexpr char str[] = "kg·m^2"; };
+template <> struct  abbreviation_<systems::si::moment_of_inertia_t> { static constexpr char str[] = "kg m^2"; };
 }
 
 #endif

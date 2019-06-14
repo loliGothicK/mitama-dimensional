@@ -16,7 +16,7 @@ using magnetization_r = make_refinement_symbol_t<magnetization_t>;
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_MAGNETIC_FIELD_STRENGTH_HPP
 namespace mitama {
-template <> struct abbreviation<systems::si::magnetization_t> { static constexpr char str[] = "A/m"; };
+template <> struct  abbreviation_<systems::si::magnetization_t> { static constexpr char str[] = "A/m"; };
 }
 #endif
 

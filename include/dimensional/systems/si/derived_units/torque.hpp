@@ -15,7 +15,7 @@ using torque_r = make_refinement_symbol_t<torque_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::torque_t> { static constexpr char str[] = "N·m"; };
+template <> struct  abbreviation_<systems::si::torque_t> { static constexpr char str[] = "N m"; };
 }
 
 #endif

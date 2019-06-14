@@ -12,6 +12,6 @@ using frequency_r = make_refinement_symbol_t<frequency_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::frequency_t> { static constexpr char str[] = "Hz"; };
+template <> struct  abbreviation_<systems::si::frequency_t> { static constexpr char str[] = "Hz"; };
 }
 #endif

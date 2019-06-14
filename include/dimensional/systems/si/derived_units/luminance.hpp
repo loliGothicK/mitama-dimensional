@@ -15,6 +15,6 @@ using luminance_r = make_refinement_symbol_t<luminance_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::luminance_t> { static constexpr char str[] = "cd/m^2"; };
+template <> struct  abbreviation_<systems::si::luminance_t> { static constexpr char str[] = "cd/m^2"; };
 }
 #endif

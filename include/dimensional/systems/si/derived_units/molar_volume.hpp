@@ -15,6 +15,6 @@ using molar_volume_r = make_refinement_symbol_t<molar_volume_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::molar_volume_t> { static constexpr char str[] = "m^3/mol"; };
+template <> struct  abbreviation_<systems::si::molar_volume_t> { static constexpr char str[] = "m^3/mol"; };
 }
 #endif

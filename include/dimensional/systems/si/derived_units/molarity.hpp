@@ -15,6 +15,6 @@ using molarity_r = make_refinement_symbol_t<molarity_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::molarity_t> { static constexpr char str[] = "mol/m^3"; };
+template <> struct  abbreviation_<systems::si::molarity_t> { static constexpr char str[] = "mol/m^3"; };
 }
 #endif

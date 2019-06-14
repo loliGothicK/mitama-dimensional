@@ -15,6 +15,6 @@ using compressibility_r = make_refinement_symbol_t<compressibility_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::compressibility_t> { static constexpr char str[] = "Pa^-1"; };
+template <> struct  abbreviation_<systems::si::compressibility_t> { static constexpr char str[] = "Pa^-1"; };
 }
 #endif

@@ -15,7 +15,7 @@ using action_r = make_refinement_symbol_t<action_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::action_t> { static constexpr char str[] = "J·s"; };
+template <> struct  abbreviation_<systems::si::action_t> { static constexpr char str[] = "J s"; };
 }
 
 #endif

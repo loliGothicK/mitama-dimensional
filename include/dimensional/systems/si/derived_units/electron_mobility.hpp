@@ -15,6 +15,6 @@ using electron_mobility_r = make_refinement_symbol_t<electron_mobility_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::electron_mobility_t> { static constexpr char str[] = "m^2/(V·s)"; };
+template <> struct  abbreviation_<systems::si::electron_mobility_t> { static constexpr char str[] = "m^2/(V s)"; };
 }
 #endif

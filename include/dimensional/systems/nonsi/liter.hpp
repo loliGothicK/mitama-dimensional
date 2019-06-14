@@ -13,7 +13,7 @@ inline constexpr liter_t liter{};
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::nonsi::litre_t> { static constexpr char str[] = "L"; };
+template <> struct  abbreviation_<systems::nonsi::litre_t> { static constexpr char str[] = "L"; };
 }
 
 #endif

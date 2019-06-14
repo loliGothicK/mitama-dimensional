@@ -15,7 +15,7 @@ using spectral_irradiance_r = make_refinement_symbol_t<spectral_irradiance_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::spectral_irradiance_t> { static constexpr char str[] = "W/m^3"; };
+template <> struct  abbreviation_<systems::si::spectral_irradiance_t> { static constexpr char str[] = "W/m^3"; };
 }
 
 #endif

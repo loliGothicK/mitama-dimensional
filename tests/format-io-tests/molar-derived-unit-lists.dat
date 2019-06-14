@@ -1,9 +1,9 @@
 molarity mol/m^3 meter<-3>*mol<>
 molar_volume m^3/mol meter<3>*mol<-1>
-molar_heat_capacity J/(K·mol) meter<2>*kilograms*second<-2>*kelvin<-1>*mol<-1>
-molar_entropy J/(K·mol) meter<2>*kilograms*second<-2>*kelvin<-1>*mol<-1>
+molar_heat_capacity J/(K mol) meter<2>*kilograms*second<-2>*kelvin<-1>*mol<-1>
+molar_entropy J/(K mol) meter<2>*kilograms*second<-2>*kelvin<-1>*mol<-1>
 molar_energy J/mol meter<2>*kilograms*second<-2>*mol<-1>
-molar_conductivity S·m^2/mol kilogram<-3>*second<-3>*ampere<2>*mol<-1>
+molar_conductivity S m^2/mol kilogram<-3>*second<-3>*ampere<2>*mol<-1>
 molality mol/kg kilogram<-1>*mol<>
 molar_mass kg/mol kilogram<>/mol<>
-catalytic_efficiency m^3/(mol·s) meter<3>*second<-1>*mol<-1>
+catalytic_efficiency m^3/(mol s) meter<3>*second<-1>*mol<-1>

@@ -10,7 +10,7 @@ inline constexpr minute_t minutes{};
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::nonsi::minute_t> { static constexpr char str[] = "m"; };
+template <> struct  abbreviation_<systems::nonsi::minute_t> { static constexpr char str[] = "m"; };
 }
 
 #endif

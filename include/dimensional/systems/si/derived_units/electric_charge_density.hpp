@@ -17,6 +17,6 @@ using electric_charge_density_r = make_refinement_symbol_t<electric_charge_densi
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::electric_charge_density_t> { static constexpr char str[] = "C/m^3"; };
+template <> struct  abbreviation_<systems::si::electric_charge_density_t> { static constexpr char str[] = "C/m^3"; };
 }
 #endif

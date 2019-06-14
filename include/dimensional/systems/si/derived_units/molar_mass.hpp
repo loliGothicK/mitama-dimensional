@@ -15,6 +15,6 @@ using molar_mass_r = make_refinement_symbol_t<molar_mass_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::molar_mass_t> { static constexpr char str[] = "kg/mol"; };
+template <> struct  abbreviation_<systems::si::molar_mass_t> { static constexpr char str[] = "kg/mol"; };
 }
 #endif

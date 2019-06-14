@@ -15,6 +15,6 @@ using energy_flux_density_r = make_refinement_symbol_t<energy_flux_density_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::energy_flux_density_t> { static constexpr char str[] = "J/(m^2·s)"; };
+template <> struct  abbreviation_<systems::si::energy_flux_density_t> { static constexpr char str[] = "J/(m^2 s)"; };
 }
 #endif

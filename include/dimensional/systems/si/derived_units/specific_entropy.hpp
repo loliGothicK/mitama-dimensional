@@ -17,7 +17,7 @@ using specific_entropy_r = make_refinement_symbol_t<specific_entropy_t>;
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_SPECIFIC_HEAT_CAPACITY_HPP
 namespace mitama {
-template <> struct abbreviation<systems::si::specific_entropy_t> { static constexpr char str[] = "J/(K⋅kg)"; };
+template <> struct  abbreviation_<systems::si::specific_entropy_t> { static constexpr char str[] = "J/(K⋅kg)"; };
 }
 #endif
 

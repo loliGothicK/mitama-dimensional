@@ -14,7 +14,7 @@ inline constexpr volumetric_flow_t volumetric_flow{};
 using volumetric_flow_r = make_refinement_symbol_t<volumetric_flow_t>;
 }
 namespace mitama {
-template <> struct abbreviation<systems::si::volumetric_flow_t> { static constexpr char str[] = "m^3/s"; };
+template <> struct  abbreviation_<systems::si::volumetric_flow_t> { static constexpr char str[] = "m^3/s"; };
 }
 
 #endif

@@ -16,6 +16,6 @@ using thermal_conductivity_r = make_refinement_symbol_t<thermal_conductivity_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::thermal_conductivity_t> { static constexpr char str[] = "W/(m·K)"; };
+template <> struct  abbreviation_<systems::si::thermal_conductivity_t> { static constexpr char str[] = "W/(m K)"; };
 }
 #endif

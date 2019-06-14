@@ -15,6 +15,6 @@ using electric_field_strength_r = make_refinement_symbol_t<electric_field_streng
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::electric_field_strength_t> { static constexpr char str[] = "V/m"; };
+template <> struct  abbreviation_<systems::si::electric_field_strength_t> { static constexpr char str[] = "V/m"; };
 }
 #endif

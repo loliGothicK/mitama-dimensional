@@ -18,7 +18,7 @@ using work_r = make_refinement_symbol_t<work_t>;
 
 #if !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_ENERGY_HPP) && !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_HEAT_HPP)
 namespace mitama {
-template <> struct abbreviation<systems::si::work_t> { static constexpr char str[] = "J"; };
+template <> struct  abbreviation_<systems::si::work_t> { static constexpr char str[] = "J"; };
 }
 #endif
 

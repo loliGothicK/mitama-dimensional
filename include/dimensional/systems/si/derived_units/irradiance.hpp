@@ -18,7 +18,7 @@ using irradiance_r = make_refinement_symbol_t<irradiance_t>;
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_HEAT_FLUX_DENSITY_HPP
 namespace mitama {
-template <> struct abbreviation<systems::si::irradiance_t> { static constexpr char str[] = "W/m^2"; };
+template <> struct  abbreviation_<systems::si::irradiance_t> { static constexpr char str[] = "W/m^2"; };
 }
 #endif
 

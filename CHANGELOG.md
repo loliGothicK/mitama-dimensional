@@ -368,3 +368,10 @@ int main() {
 
 - `<dimensional/systems/si/constants/constants.hpp>`のインクルードのミスを修正
 
+## v1.1.0
+
+### 修正
+
+- abbreviation関数の追加
+- formatのデリミタをスペースに変更
+

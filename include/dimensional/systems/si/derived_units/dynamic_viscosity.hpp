@@ -15,6 +15,6 @@ using dynamic_viscosity_r = make_refinement_symbol_t<dynamic_viscosity_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::dynamic_viscosity_t> { static constexpr char str[] = "Pa·s"; };
+template <> struct  abbreviation_<systems::si::dynamic_viscosity_t> { static constexpr char str[] = "Pa s"; };
 }
 #endif

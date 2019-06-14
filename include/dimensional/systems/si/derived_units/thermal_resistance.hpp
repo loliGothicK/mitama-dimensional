@@ -16,6 +16,6 @@ using thermal_resistance_r = make_refinement_symbol_t<thermal_resistance_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::thermal_resistance_t> { static constexpr char str[] = "K/W"; };
+template <> struct  abbreviation_<systems::si::thermal_resistance_t> { static constexpr char str[] = "K/W"; };
 }
 #endif

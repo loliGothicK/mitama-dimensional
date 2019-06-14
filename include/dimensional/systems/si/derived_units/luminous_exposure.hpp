@@ -15,6 +15,6 @@ using luminous_exposure_r = make_refinement_symbol_t<luminous_exposure_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::luminous_exposure_t> { static constexpr char str[] = "lx·s"; };
+template <> struct  abbreviation_<systems::si::luminous_exposure_t> { static constexpr char str[] = "lx s"; };
 }
 #endif

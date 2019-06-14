@@ -14,6 +14,6 @@ using angular_momentum_r = make_refinement_symbol_t<angular_momentum_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::angular_momentum_t> { static constexpr char str[] = "N·m·s"; };
+template <> struct  abbreviation_<systems::si::angular_momentum_t> { static constexpr char str[] = "N m s"; };
 }
 #endif

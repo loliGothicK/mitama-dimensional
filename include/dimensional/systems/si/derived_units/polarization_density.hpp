@@ -16,7 +16,7 @@ using polarization_density_r = make_refinement_symbol_t<polarization_density_t>;
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_ELECTRIC_DISPLACEMENT_FIELD_HPP
 namespace mitama {
-template <> struct abbreviation<systems::si::polarization_density_t> { static constexpr char str[] = "C/m^2"; };
+template <> struct  abbreviation_<systems::si::polarization_density_t> { static constexpr char str[] = "C/m^2"; };
 }
 #endif
 

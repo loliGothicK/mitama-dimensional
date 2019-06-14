@@ -15,6 +15,6 @@ using illuminance_r = make_refinement_symbol_t<illuminance_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::illuminance_t> { static constexpr char str[] = "lx"; };
+template <> struct  abbreviation_<systems::si::illuminance_t> { static constexpr char str[] = "lx"; };
 }
 #endif

@@ -15,6 +15,6 @@ using angular_acceleration_r = make_refinement_symbol_t<angular_acceleration_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::angular_acceleration_t> { static constexpr char str[] = "rad/s^2"; };
+template <> struct  abbreviation_<systems::si::angular_acceleration_t> { static constexpr char str[] = "rad/s^2"; };
 }
 #endif

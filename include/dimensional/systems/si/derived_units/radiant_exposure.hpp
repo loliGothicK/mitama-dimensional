@@ -15,6 +15,6 @@ using radiant_exposure_r = make_refinement_symbol_t<radiant_exposure_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::radiant_exposure_t> { static constexpr char str[] = "J/m^2"; };
+template <> struct  abbreviation_<systems::si::radiant_exposure_t> { static constexpr char str[] = "J/m^2"; };
 }
 #endif

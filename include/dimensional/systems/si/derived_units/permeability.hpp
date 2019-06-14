@@ -15,6 +15,6 @@ using permeability_r = make_refinement_symbol_t<permeability_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::permeability_t> { static constexpr char str[] = "H/m"; };
+template <> struct  abbreviation_<systems::si::permeability_t> { static constexpr char str[] = "H/m"; };
 }
 #endif

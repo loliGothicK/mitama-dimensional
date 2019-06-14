@@ -16,6 +16,6 @@ using luminous_efficacy_r = make_refinement_symbol_t<luminous_efficacy_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::luminous_efficacy_t> { static constexpr char str[] = "lm/W"; };
+template <> struct  abbreviation_<systems::si::luminous_efficacy_t> { static constexpr char str[] = "lm/W"; };
 }
 #endif

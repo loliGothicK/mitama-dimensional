@@ -15,7 +15,7 @@ using density_r = make_refinement_symbol_t<density_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::density_t> { static constexpr char str[] = "kg/m^3"; };
+template <> struct  abbreviation_<systems::si::density_t> { static constexpr char str[] = "kg/m^3"; };
 }
 
 

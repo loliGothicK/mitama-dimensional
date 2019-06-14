@@ -15,6 +15,6 @@ using permittivity_r = make_refinement_symbol_t<permittivity_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::permittivity_t> { static constexpr char str[] = "F/m"; };
+template <> struct  abbreviation_<systems::si::permittivity_t> { static constexpr char str[] = "F/m"; };
 }
 #endif

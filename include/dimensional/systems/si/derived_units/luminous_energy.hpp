@@ -15,6 +15,6 @@ using luminous_energy_r = make_refinement_symbol_t<luminous_energy_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::luminous_energy_t> { static constexpr char str[] = "lm·s"; };
+template <> struct  abbreviation_<systems::si::luminous_energy_t> { static constexpr char str[] = "lm s"; };
 }
 #endif

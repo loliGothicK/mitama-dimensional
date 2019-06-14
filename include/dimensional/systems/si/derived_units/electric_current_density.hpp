@@ -15,6 +15,6 @@ using electric_current_density_r = make_refinement_symbol_t<electric_current_den
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::electric_current_density_t> { static constexpr char str[] = "A/m^2"; };
+template <> struct  abbreviation_<systems::si::electric_current_density_t> { static constexpr char str[] = "A/m^2"; };
 }
 #endif

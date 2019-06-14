@@ -15,7 +15,7 @@ using velocity_r = make_refinement_symbol_t<velocity_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::velocity_t> { static constexpr char str[] = "m/s"; };
+template <> struct  abbreviation_<systems::si::velocity_t> { static constexpr char str[] = "m/s"; };
 }
 
 #endif

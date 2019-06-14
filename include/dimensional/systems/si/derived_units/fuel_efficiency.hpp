@@ -15,7 +15,7 @@ using fuel_efficiency_r = make_refinement_symbol_t<fuel_efficiency_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::fuel_efficiency_t> { static constexpr char str[] = "m/m^3"; };
+template <> struct  abbreviation_<systems::si::fuel_efficiency_t> { static constexpr char str[] = "m/m^3"; };
 }
 
 #endif

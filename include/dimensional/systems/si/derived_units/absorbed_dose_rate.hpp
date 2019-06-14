@@ -16,6 +16,6 @@ using absorbed_dose_rate_r = make_refinement_symbol_t<absorbed_dose_rate_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::absorbed_dose_rate_t> { static constexpr char str[] = "Gy/s"; };
+template <> struct  abbreviation_<systems::si::absorbed_dose_rate_t> { static constexpr char str[] = "Gy/s"; };
 }
 #endif
