@@ -14,7 +14,7 @@ using frequency_drift_r = make_refinement_symbol_t<frequency_drift_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::frequency_drift_t> { static constexpr char str[] = "Hz/s"; };
+template <> struct  abbreviation_<systems::si::frequency_drift_t> { static constexpr char str[] = "Hz/s"; };
 }
 
 #endif

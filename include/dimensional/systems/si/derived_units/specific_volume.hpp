@@ -15,7 +15,7 @@ using specific_volume_r = make_refinement_symbol_t<specific_volume_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::specific_volume_t> { static constexpr char str[] = "m^3/kg"; };
+template <> struct  abbreviation_<systems::si::specific_volume_t> { static constexpr char str[] = "m^3/kg"; };
 }
 
 #endif

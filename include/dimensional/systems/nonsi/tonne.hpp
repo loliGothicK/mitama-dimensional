@@ -10,7 +10,7 @@ inline constexpr tonne_t tonne{};
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::nonsi::tonne_t> { static constexpr char str[] = "t"; };
+template <> struct  abbreviation_<systems::nonsi::tonne_t> { static constexpr char str[] = "t"; };
 }
 
 #endif

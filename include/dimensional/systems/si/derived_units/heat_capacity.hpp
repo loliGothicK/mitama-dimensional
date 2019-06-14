@@ -17,7 +17,7 @@ using heat_capacity_r = make_refinement_symbol_t<heat_capacity_t>;
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_ENTROPY_HPP
 namespace mitama {
-template <> struct abbreviation<systems::si::heat_capacity_t> { static constexpr char str[] = "J/K"; };
+template <> struct  abbreviation_<systems::si::heat_capacity_t> { static constexpr char str[] = "J/K"; };
 }
 #endif
 

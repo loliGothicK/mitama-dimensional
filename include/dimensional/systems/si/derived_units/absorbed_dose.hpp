@@ -15,6 +15,6 @@ using absorbed_dose_r = make_refinement_symbol_t<absorbed_dose_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::absorbed_dose_t> { static constexpr char str[] = "Gy"; };
+template <> struct  abbreviation_<systems::si::absorbed_dose_t> { static constexpr char str[] = "Gy"; };
 }
 #endif

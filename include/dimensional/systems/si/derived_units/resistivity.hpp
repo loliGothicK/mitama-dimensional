@@ -15,6 +15,6 @@ using resistivity_r = make_refinement_symbol_t<resistivity_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::resistivity_t> { static constexpr char str[] = "Ω m"; };
+template <> struct  abbreviation_<systems::si::resistivity_t> { static constexpr char str[] = "Ω m"; };
 }
 #endif

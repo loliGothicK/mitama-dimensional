@@ -15,6 +15,6 @@ using specific_energy_r = make_refinement_symbol_t<specific_energy_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::specific_energy_t> { static constexpr char str[] = "J/kg"; };
+template <> struct  abbreviation_<systems::si::specific_energy_t> { static constexpr char str[] = "J/kg"; };
 }
 #endif

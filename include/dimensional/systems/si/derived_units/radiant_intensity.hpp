@@ -16,6 +16,6 @@ using radiant_intensity_r = make_refinement_symbol_t<radiant_intensity_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::radiant_intensity_t> { static constexpr char str[] = "W/sr"; };
+template <> struct  abbreviation_<systems::si::radiant_intensity_t> { static constexpr char str[] = "W/sr"; };
 }
 #endif

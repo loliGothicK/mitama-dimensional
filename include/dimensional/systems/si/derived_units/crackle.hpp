@@ -15,7 +15,7 @@ using crackle_r = make_refinement_symbol_t<crackle_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::crackle_t> { static constexpr char str[] = "m/s^5"; };
+template <> struct  abbreviation_<systems::si::crackle_t> { static constexpr char str[] = "m/s^5"; };
 }
 
 #endif

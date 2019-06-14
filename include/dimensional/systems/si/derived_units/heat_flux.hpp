@@ -15,6 +15,6 @@ using heat_flux_r = make_refinement_symbol_t<heat_flux_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::heat_flux_t> { static constexpr char str[] = "W/m^2"; };
+template <> struct  abbreviation_<systems::si::heat_flux_t> { static constexpr char str[] = "W/m^2"; };
 }
 #endif

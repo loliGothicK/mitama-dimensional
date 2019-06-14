@@ -14,6 +14,6 @@ using magnetic_reluctance_r = make_refinement_symbol_t<magnetic_reluctance_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::magnetic_reluctance_t> { static constexpr char str[] = "H^-1"; };
+template <> struct  abbreviation_<systems::si::magnetic_reluctance_t> { static constexpr char str[] = "H^-1"; };
 }
 #endif

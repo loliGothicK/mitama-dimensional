@@ -15,7 +15,7 @@ using surface_tension_r = make_refinement_symbol_t<surface_tension_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::surface_tension_t> { static constexpr char str[] = "N/m"; };
+template <> struct  abbreviation_<systems::si::surface_tension_t> { static constexpr char str[] = "N/m"; };
 }
 
 #endif

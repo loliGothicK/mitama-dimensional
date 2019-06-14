@@ -18,7 +18,7 @@ using resistance_r = make_refinement_symbol_t<resistance_t>;
 
 #if !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_REACTANCE_HPP) && !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_REACTANCE_HPP)
 namespace mitama {
-template <> struct abbreviation<systems::si::resistance_t> { static constexpr char str[] = "Ω"; };
+template <> struct  abbreviation_<systems::si::resistance_t> { static constexpr char str[] = "Ω"; };
 }
 #endif
 

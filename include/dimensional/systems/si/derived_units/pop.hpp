@@ -15,7 +15,7 @@ using pop_r = make_refinement_symbol_t<pop_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::pop_t> { static constexpr char str[] = "m/s^6"; };
+template <> struct  abbreviation_<systems::si::pop_t> { static constexpr char str[] = "m/s^6"; };
 }
 
 #endif

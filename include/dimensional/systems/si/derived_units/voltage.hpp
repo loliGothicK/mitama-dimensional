@@ -20,7 +20,7 @@ inline constexpr powered_t<voltage_t, N> volt{};
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_ELECTRIC_POTENTIAL_HPP
 namespace mitama {
-template <> struct abbreviation<systems::si::voltage_t> { static constexpr char str[] = "V"; };
+template <> struct  abbreviation_<systems::si::voltage_t> { static constexpr char str[] = "V"; };
 }
 #endif
 

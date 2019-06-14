@@ -15,6 +15,6 @@ using magnetic_moment_r = make_refinement_symbol_t<magnetic_moment_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::magnetic_moment_t> { static constexpr char str[] = "Wb m"; };
+template <> struct  abbreviation_<systems::si::magnetic_moment_t> { static constexpr char str[] = "Wb m"; };
 }
 #endif

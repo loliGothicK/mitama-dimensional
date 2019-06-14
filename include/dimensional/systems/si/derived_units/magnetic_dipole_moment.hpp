@@ -16,6 +16,6 @@ using magnetic_dipole_moment_r = make_refinement_symbol_t<magnetic_dipole_moment
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::magnetic_dipole_moment_t> { static constexpr char str[] = "J/T"; };
+template <> struct  abbreviation_<systems::si::magnetic_dipole_moment_t> { static constexpr char str[] = "J/T"; };
 }
 #endif

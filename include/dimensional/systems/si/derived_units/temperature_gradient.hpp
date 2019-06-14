@@ -15,7 +15,7 @@ using temperature_gradient_r = make_refinement_symbol_t<temperature_gradient_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::temperature_gradient_t> { static constexpr char str[] = "K/m"; };
+template <> struct  abbreviation_<systems::si::temperature_gradient_t> { static constexpr char str[] = "K/m"; };
 }
 
 #endif

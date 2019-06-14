@@ -15,6 +15,6 @@ using molar_energy_r = make_refinement_symbol_t<molar_energy_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::molar_energy_t> { static constexpr char str[] = "J/mol"; };
+template <> struct  abbreviation_<systems::si::molar_energy_t> { static constexpr char str[] = "J/mol"; };
 }
 #endif

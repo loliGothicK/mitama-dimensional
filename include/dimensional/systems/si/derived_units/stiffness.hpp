@@ -15,6 +15,6 @@ using stiffness_r = make_refinement_symbol_t<stiffness_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::stiffness_t> { static constexpr char str[] = "N/m"; };
+template <> struct  abbreviation_<systems::si::stiffness_t> { static constexpr char str[] = "N/m"; };
 }
 #endif

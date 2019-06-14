@@ -15,6 +15,6 @@ using luminous_flux_r = make_refinement_symbol_t<luminous_flux_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::luminous_flux_t> { static constexpr char str[] = "lm"; };
+template <> struct  abbreviation_<systems::si::luminous_flux_t> { static constexpr char str[] = "lm"; };
 }
 #endif

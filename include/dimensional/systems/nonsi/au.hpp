@@ -10,7 +10,7 @@ inline constexpr au_t au{};
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::nonsi::au_t> { static constexpr char str[] = "au"; };
+template <> struct  abbreviation_<systems::nonsi::au_t> { static constexpr char str[] = "au"; };
 }
 
 #endif

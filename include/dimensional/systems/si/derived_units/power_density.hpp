@@ -15,6 +15,6 @@ using power_density_r = make_refinement_symbol_t<power_density_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::power_density_t> { static constexpr char str[] = "W/m^3"; };
+template <> struct  abbreviation_<systems::si::power_density_t> { static constexpr char str[] = "W/m^3"; };
 }
 #endif

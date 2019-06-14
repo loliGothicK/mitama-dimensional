@@ -11,7 +11,7 @@ inline constexpr hectare_t hectare{};
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::nonsi::hectare_t> { static constexpr char str[] = "ha"; };
+template <> struct  abbreviation_<systems::nonsi::hectare_t> { static constexpr char str[] = "ha"; };
 }
 
 #endif

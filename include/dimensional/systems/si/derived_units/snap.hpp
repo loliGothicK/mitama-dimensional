@@ -15,7 +15,7 @@ using snap_r = make_refinement_symbol_t<snap_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::snap_t> { static constexpr char str[] = "m/s^4"; };
+template <> struct  abbreviation_<systems::si::snap_t> { static constexpr char str[] = "m/s^4"; };
 }
 
 #endif

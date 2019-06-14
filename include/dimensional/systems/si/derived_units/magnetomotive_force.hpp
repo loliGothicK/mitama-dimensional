@@ -15,7 +15,7 @@ using magnetomotive_force_r = make_refinement_symbol_t<magnetomotive_force_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::magnetomotive_force_t> { static constexpr char str[] = "A rad"; };
+template <> struct  abbreviation_<systems::si::magnetomotive_force_t> { static constexpr char str[] = "A rad"; };
 }
 
 #endif

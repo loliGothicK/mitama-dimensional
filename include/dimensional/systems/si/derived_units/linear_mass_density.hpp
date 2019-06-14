@@ -15,7 +15,7 @@ using linear_mass_density_r = make_refinement_symbol_t<linear_mass_density_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::linear_mass_density_t> { static constexpr char str[] = "kg/m"; };
+template <> struct  abbreviation_<systems::si::linear_mass_density_t> { static constexpr char str[] = "kg/m"; };
 }
 
 #endif

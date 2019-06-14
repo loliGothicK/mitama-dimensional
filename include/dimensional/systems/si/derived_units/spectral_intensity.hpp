@@ -16,6 +16,6 @@ using spectral_intensity_r = make_refinement_symbol_t<spectral_intensity_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::spectral_intensity_t> { static constexpr char str[] = "W/(sr m)"; };
+template <> struct  abbreviation_<systems::si::spectral_intensity_t> { static constexpr char str[] = "W/(sr m)"; };
 }
 #endif

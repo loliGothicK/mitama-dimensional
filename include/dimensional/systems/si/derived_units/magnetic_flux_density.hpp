@@ -15,6 +15,6 @@ using magnetic_flux_density_r = make_refinement_symbol_t<magnetic_flux_density_t
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::magnetic_flux_density_t> { static constexpr char str[] = "T"; };
+template <> struct  abbreviation_<systems::si::magnetic_flux_density_t> { static constexpr char str[] = "T"; };
 }
 #endif

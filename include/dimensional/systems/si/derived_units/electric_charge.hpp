@@ -15,6 +15,6 @@ using electric_charge_r = make_refinement_symbol_t<electric_charge_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::electric_charge_t> { static constexpr char str[] = "C"; };
+template <> struct  abbreviation_<systems::si::electric_charge_t> { static constexpr char str[] = "C"; };
 }
 #endif

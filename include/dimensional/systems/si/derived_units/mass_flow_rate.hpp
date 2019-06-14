@@ -15,7 +15,7 @@ using mass_flow_rate_r = make_refinement_symbol_t<mass_flow_rate_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::mass_flow_rate_t> { static constexpr char str[] = "kg/s"; };
+template <> struct  abbreviation_<systems::si::mass_flow_rate_t> { static constexpr char str[] = "kg/s"; };
 }
 
 #endif

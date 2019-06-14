@@ -10,7 +10,7 @@ inline constexpr day_t days{};
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::nonsi::day_t> { static constexpr char str[] = "d"; };
+template <> struct  abbreviation_<systems::nonsi::day_t> { static constexpr char str[] = "d"; };
 }
 
 #endif

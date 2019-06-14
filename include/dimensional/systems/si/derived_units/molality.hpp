@@ -15,6 +15,6 @@ using molality_r = make_refinement_symbol_t<molality_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::molality_t> { static constexpr char str[] = "mol/kg"; };
+template <> struct  abbreviation_<systems::si::molality_t> { static constexpr char str[] = "mol/kg"; };
 }
 #endif

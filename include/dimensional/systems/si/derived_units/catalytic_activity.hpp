@@ -15,6 +15,6 @@ using catalytic_activity_r = make_refinement_symbol_t<catalytic_activity_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::catalytic_activity_t> { static constexpr char str[] = "kat"; };
+template <> struct  abbreviation_<systems::si::catalytic_activity_t> { static constexpr char str[] = "kat"; };
 }
 #endif

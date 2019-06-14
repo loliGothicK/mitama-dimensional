@@ -18,7 +18,7 @@ using kinematic_viscosity_r = make_refinement_symbol_t<kinematic_viscosity_t>;
 
 #if !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_THERMAL_DIFFUSIVITY_HPP) && !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_DIFFUSION_COEFFICIENT_HPP)
 namespace mitama {
-template <> struct abbreviation<systems::si::kinematic_viscosity_t> { static constexpr char str[] = "m^2/s"; };
+template <> struct  abbreviation_<systems::si::kinematic_viscosity_t> { static constexpr char str[] = "m^2/s"; };
 }
 #endif
 

@@ -15,7 +15,7 @@ using acceleration_r = make_refinement_symbol_t<acceleration_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::acceleration_t> { static constexpr char str[] = "m/s^2"; };
+template <> struct  abbreviation_<systems::si::acceleration_t> { static constexpr char str[] = "m/s^2"; };
 }
 
 #endif

@@ -15,6 +15,6 @@ using magnetic_susceptibility_r = make_refinement_symbol_t<magnetic_susceptibili
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::magnetic_susceptibility_t> { static constexpr char str[] = "m/H"; };
+template <> struct  abbreviation_<systems::si::magnetic_susceptibility_t> { static constexpr char str[] = "m/H"; };
 }
 #endif

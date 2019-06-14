@@ -15,7 +15,7 @@ using spectral_power_r = make_refinement_symbol_t<spectral_power_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::spectral_power_t> { static constexpr char str[] = "W/m"; };
+template <> struct  abbreviation_<systems::si::spectral_power_t> { static constexpr char str[] = "W/m"; };
 }
 
 #endif

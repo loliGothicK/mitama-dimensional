@@ -15,6 +15,6 @@ using capacitance_r = make_refinement_symbol_t<capacitance_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::capacitance_t> { static constexpr char str[] = "F"; };
+template <> struct  abbreviation_<systems::si::capacitance_t> { static constexpr char str[] = "F"; };
 }
 #endif

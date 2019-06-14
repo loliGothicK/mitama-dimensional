@@ -16,6 +16,6 @@ using angular_velocity_r = make_refinement_symbol_t<angular_velocity_t>;
 }
 
 namespace mitama {
-template <> struct abbreviation<systems::si::angular_velocity_t> { static constexpr char str[] = "rad/s"; };
+template <> struct  abbreviation_<systems::si::angular_velocity_t> { static constexpr char str[] = "rad/s"; };
 }
 #endif
