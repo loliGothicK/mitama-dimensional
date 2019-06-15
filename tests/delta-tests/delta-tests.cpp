@@ -25,7 +25,8 @@ TEMPLATE_TEST_CASE("delta addition",
     delta d = (2|TestType{}) - (1|TestType{});
     REQUIRE(d + (2|TestType{}) == (3|TestType{}));
     REQUIRE((2|TestType{}) + d == (3|TestType{}));
-    REQUIRE(d + d == (2|TestType{}));
+    auto res = d + d;
+    REQUIRE(res == (2|TestType{}));
 }
 
 TEMPLATE_TEST_CASE("delta subtraction",

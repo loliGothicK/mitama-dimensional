@@ -3,6 +3,7 @@
 #include <dimensional/quantity.hpp>
 #include <dimensional/systems/si/all.hpp>
 #include <dimensional/mitamagic/type_list.hpp>
+#include <type_traits>
 
 namespace mitama {
 
@@ -50,7 +51,7 @@ template <class, template <class> class, class...> struct refinement_type_for;
 
 template <template <class> class Pred, class... Symbols>
 struct refinement_type_for<
-    std::enable_if_t<(sym::is_refinement_symbol_v<Symbols> && ...)>,
+    std::enable_if_t<std::conjunction_v<sym::is_refinement_symbol<Symbols>...>>,
     Pred, Symbols...> {
   template <class Q,
             std::enable_if_t<
@@ -59,7 +60,7 @@ struct refinement_type_for<
                     quantity<make_dimensional_t<units_t<
                         typename Symbols::basis, typename Symbols::exp>...>>>>::value,
                 bool> = false>
-  decltype(auto) operator()(Q &&q) const {
+  constexpr decltype(auto) operator()(Q &&q) const {
     return std::forward<Q>(q);
   }
 
@@ -72,7 +73,7 @@ struct refinement_type_for<
                     quantity<make_dimensional_t<units_t<
                         typename Symbols::basis, typename Symbols::exp>...>>>>::value,
                 bool> = false>
-  decltype(auto) operator|=(Q &&q) const {
+  constexpr decltype(auto) operator|=(Q &&q) const {
     return std::forward<Q>(q);
   }
 
@@ -91,7 +92,7 @@ struct refinement_type<
                     quantity<make_dimensional_t<units_t<
                         typename Symbols::basis, typename Symbols::exp>...>>>>::value,
                 bool> = false>
-  decltype(auto) operator()(Q &&q) const {
+  constexpr decltype(auto) operator()(Q &&q) const {
     return std::forward<Q>(q);
   }
 
@@ -104,7 +105,7 @@ struct refinement_type<
                     quantity<make_dimensional_t<units_t<
                         typename Symbols::basis, typename Symbols::exp>...>>>>::value,
                 bool> = false>
-  decltype(auto) operator|=(Q &&q) const {
+  constexpr decltype(auto) operator|=(Q &&q) const {
     return std::forward<Q>(q);
   }
 
@@ -142,7 +143,7 @@ struct partial_refinement_type_for<
                 >...
               >>::value,
             bool> = false>
-  decltype(auto) operator()(Q &&q) const {
+  constexpr decltype(auto) operator()(Q &&q) const {
     return std::forward<Q>(q);
   }
 
@@ -157,7 +158,7 @@ struct partial_refinement_type_for<
                 >...
               >>::value,
             bool> = false>
-  decltype(auto) operator|=(Q &&q) const {
+  constexpr decltype(auto) operator|=(Q &&q) const {
     return std::forward<Q>(q);
   }
 
@@ -179,7 +180,7 @@ struct partial_refinement_type<
                 >...
               >>::value,
             bool> = false>
-  decltype(auto) operator()(Q &&q) const {
+  constexpr decltype(auto) operator()(Q &&q) const {
     return std::forward<Q>(q);
   }
 
@@ -194,7 +195,7 @@ struct partial_refinement_type<
                 >...
               >>::value,
             bool> = false>
-  decltype(auto) operator|=(Q &&q) const {
+  constexpr decltype(auto) operator|=(Q &&q) const {
     return std::forward<Q>(q);
   }
 

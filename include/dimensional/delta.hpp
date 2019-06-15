@@ -93,7 +93,7 @@ Quantity operator+(Quantity const& q, delta<T> const& d){
   return q + Quantity(d.value());
 }
 template < class T, class U,
-          std::enable_if_t<is_quantity_v<std::decay_t<decltype(std::declval<T>() + std::declval<U>())>>, bool> = false>
+          std::enable_if_t<is_quantity_v<std::decay_t<decltype(std::declval<T const&>() + std::declval<U const&>())>>, bool> = false>
 auto operator+(delta<T> const& d1, delta<U> const d2){
   return d1.value() + d2.value();
 }
@@ -110,7 +110,7 @@ Quantity operator-(Quantity const& q, delta<T> d){
   return q - Quantity(d.value());
 }
 template < class T, class U,
-          std::enable_if_t<is_quantity_v<std::decay_t<decltype(std::declval<T>() - std::declval<U>())>>, bool> = false>
+          std::enable_if_t<is_quantity_v<std::decay_t<decltype(std::declval<T const&>() - std::declval<U const&>())>>, bool> = false>
 auto operator-(delta<T> d1, delta<U> d2){
   return d1.value() - d2.value();
 }
@@ -125,7 +125,7 @@ auto operator*(Quantity const& q, delta<T> d){
   return q * d.value();
 }
 template < class T, class U,
-          std::enable_if_t<is_quantity_v<std::decay_t<decltype(std::declval<T>() * std::declval<U>())>>, bool> = false>
+          std::enable_if_t<is_quantity_v<std::decay_t<decltype(std::declval<T const&>() * std::declval<U const&>())>>, bool> = false>
 auto operator*(delta<T> d1, delta<U> d2){
   return d1.value() * d2.value();
 }
@@ -140,7 +140,7 @@ auto operator/(Quantity const& q, delta<T> d){
   return q / d.value();
 }
 template < class T, class U,
-          std::enable_if_t<is_quantity_v<std::decay_t<decltype(std::declval<T>() / std::declval<U>())>>, bool> = false>
+          std::enable_if_t<is_quantity_v<std::decay_t<decltype(std::declval<T const&>() / std::declval<U const&>())>>, bool> = false>
 auto operator/(delta<T> d1, delta<U> d2){
   return d1.value() / d2.value();
 }

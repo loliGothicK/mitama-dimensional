@@ -1,5 +1,8 @@
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_PASCAL_HPP
 #define MITAMA_DIMENSIONAL_DERIVED_UNITS_PASCAL_HPP
+#ifdef pascal
+  #undef pascal // Fucking MSVC
+#endif
 #include <dimensional/systems/si/all.hpp>
 #include <dimensional/quantity.hpp>
 #include <dimensional/io.hpp>

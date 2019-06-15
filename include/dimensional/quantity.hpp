@@ -71,8 +71,8 @@ public:
   template < class Dimension, auto Value,
       std::enable_if_t<
         std::conjunction_v<
-          std::is_convertible<decltype(Value), T>,
-          is_same_dimensional_v<dimension_type, Dimension>>
+          std::is_convertible<std::decay_t<decltype(Value)>, T>,
+          is_same_dimensional<dimension_type, Dimension>>
     , bool> = false>
   constexpr quantity_t(static_quantity_t<Dimension, Value>) noexcept
     : value_(Value)
