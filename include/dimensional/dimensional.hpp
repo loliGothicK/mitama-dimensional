@@ -19,7 +19,7 @@ namespace mitama {
 template < class >
 struct si_base_units {};
 
-template <class Dim, class Exponent> struct dimension_tag {};
+template <int I, class Dim, class Exponent> struct dimension_tag {};
 
 template <class... Units>
 struct dimensional_t : private Units::tag... // for Dimensional tags

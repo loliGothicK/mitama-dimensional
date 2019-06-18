@@ -1,6 +1,6 @@
 #ifndef MITAMA_DIMENSIONAL_NONSI_UNITS_HOUR_HPP
 #define MITAMA_DIMENSIONAL_NONSI_UNITS_HOUR_HPP
-#include <dimensional/systems/si/second.hpp>
+#include <dimensional/systems/si/base_units/second.hpp>
 #include <dimensional/quantity.hpp>
 #include <dimensional/io.hpp>
 

@@ -12,34 +12,49 @@ namespace mitama {
     // quantity_t traits
     template <class T> struct is_quantity : std::false_type {};
 
-    template <class D, class T>
-    struct is_quantity<quantity_t<D, T>> : std::true_type {};
+    template <class D, class T, class S>
+    struct is_quantity<quantity_t<D, T, S>> : std::true_type {};
 
-    template <class D, class T>
-    struct is_quantity<const quantity_t<D, T>> : std::true_type {};
+    template <class D, class T, class S>
+    struct is_quantity<const quantity_t<D, T, S>> : std::true_type {};
 
-    template <class D, class T>
-    struct is_quantity<volatile quantity_t<D, T>> : std::true_type {};
+    template <class D, class T, class S>
+    struct is_quantity<volatile quantity_t<D, T, S>> : std::true_type {};
 
-    template <class D, class T>
-    struct is_quantity<const volatile quantity_t<D, T>> : std::true_type {};
+    template <class D, class T, class S>
+    struct is_quantity<const volatile quantity_t<D, T, S>> : std::true_type {};
 
     template <class T> inline constexpr bool is_quantity_v = is_quantity<T>::value;
+
+    template < class, class >
+    struct is_same_system;
+
+    template < class D1, class D2, class T1, class T2, class S1, class S2 >
+    struct is_same_system<quantity_t<D1, T1, S1>, quantity_t<D2, T2, S2>>
+      : std::disjunction<
+          std::is_same<S1, system<>>,
+          std::is_same<S2, system<>>,
+          std::is_same<S1, S2>
+        >
+    {};
+
+    template < class Q, class R >
+    inline constexpr bool is_same_system_v = is_same_system<Q, R>::value;
 
     // units_t traits
     template <class> struct is_units : std::false_type {};
 
-    template <class D, class E, class S>
-    struct is_units<units_t<D, E, S>> : std::true_type {};
+    template <int I, class D, class E, class S>
+    struct is_units<units_t<I, D, E, S>> : std::true_type {};
 
-    template <class D, class E, class S>
-    struct is_units<const units_t<D, E, S>> : std::true_type {};
+    template <int I, class D, class E, class S>
+    struct is_units<const units_t<I, D, E, S>> : std::true_type {};
 
-    template <class D, class E, class S>
-    struct is_units<volatile units_t<D, E, S>> : std::true_type {};
+    template <int I, class D, class E, class S>
+    struct is_units<volatile units_t<I, D, E, S>> : std::true_type {};
 
-    template <class D, class E, class S>
-    struct is_units<const volatile units_t<D, E, S>> : std::true_type {};
+    template <int I, class D, class E, class S>
+    struct is_units<const volatile units_t<I, D, E, S>> : std::true_type {};
 
     template <class U> inline constexpr bool is_units_v = is_units<U>::value;
 
@@ -68,10 +83,13 @@ namespace mitamagic {
               class... Units1,
               class... Units2,
               template <class> class Synonym1,
-              template <class> class Synonym2>
-    struct is_same_dimensional_impl<quantity_t<Synonym1<dimensional_t<Units1...>>, T>,
-                                    quantity_t<Synonym2<dimensional_t<Units2...>>, U>>
+              template <class> class Synonym2,
+              class... S>
+    struct is_same_dimensional_impl<quantity_t<Synonym1<dimensional_t<Units1...>>, T, system<S...>>,
+                                    quantity_t<Synonym2<dimensional_t<Units2...>>, U, system<S...>>>
         : std::conjunction<
+            mitama::is_same_system<quantity_t<Synonym1<dimensional_t<Units1...>>, T, system<S...>>,
+                                   quantity_t<Synonym2<dimensional_t<Units2...>>, U, system<S...>>>,
             std::bool_constant<sizeof...(Units1) == sizeof...(Units2)>,
             std::is_base_of<typename Units1::tag,
                             dimensional_t<Units2...>>...> {};
@@ -116,21 +134,21 @@ namespace mitamagic {
     template < template <class> class, class >
     struct remove_dim_if;
 
-    template < template <class> class Pred, template <class> class Synonym, class T, class... Units >
-    struct remove_dim_if<Pred, quantity_t<Synonym<dimensional_t<Units...>>, T>> {
-        using type = quantity_t<Synonym<mitamagic::tlist_remove_if_t<Pred, dimensional_t<Units...>>>, T>;
+    template < template <class> class Pred, template <class> class Synonym, class T, class... Units, class... Dim >
+    struct remove_dim_if<Pred, quantity_t<Synonym<dimensional_t<Units...>>, T, system<Dim...>>> {
+        using type = quantity_t<Synonym<mitamagic::tlist_remove_if_t<Pred, dimensional_t<Units...>>>, T, system<Dim...>>;
     };
-    template < template <class> class Pred, template <class> class Synonym, class T, class... Units >
-    struct remove_dim_if<Pred, const quantity_t<Synonym<dimensional_t<Units...>>, T>> {
-        using type = const quantity_t<Synonym<mitamagic::tlist_remove_if_t<Pred, dimensional_t<Units...>>>, T>;
+    template < template <class> class Pred, template <class> class Synonym, class T, class... Units, class... Dim >
+    struct remove_dim_if<Pred, const quantity_t<Synonym<dimensional_t<Units...>>, T, system<Dim...>>> {
+        using type = const quantity_t<Synonym<mitamagic::tlist_remove_if_t<Pred, dimensional_t<Units...>>>, T, system<Dim...>>;
     };
-    template < template <class> class Pred, template <class> class Synonym, class T, class... Units >
-    struct remove_dim_if<Pred, volatile quantity_t<Synonym<dimensional_t<Units...>>, T>> {
-        using type = volatile quantity_t<Synonym<mitamagic::tlist_remove_if_t<Pred, dimensional_t<Units...>>>, T>;
+    template < template <class> class Pred, template <class> class Synonym, class T, class... Units, class... Dim >
+    struct remove_dim_if<Pred, volatile quantity_t<Synonym<dimensional_t<Units...>>, T, system<Dim...>>> {
+        using type = volatile quantity_t<Synonym<mitamagic::tlist_remove_if_t<Pred, dimensional_t<Units...>>>, T, system<Dim...>>;
     };
-    template < template <class> class Pred, template <class> class Synonym, class T, class... Units >
-    struct remove_dim_if<Pred, const volatile quantity_t<Synonym<dimensional_t<Units...>>, T>> {
-        using type = const volatile quantity_t<Synonym<mitamagic::tlist_remove_if_t<Pred, dimensional_t<Units...>>>, T>;
+    template < template <class> class Pred, template <class> class Synonym, class T, class... Units, class... Dim >
+    struct remove_dim_if<Pred, const volatile quantity_t<Synonym<dimensional_t<Units...>>, T, system<Dim...>>> {
+        using type = const volatile quantity_t<Synonym<mitamagic::tlist_remove_if_t<Pred, dimensional_t<Units...>>>, T, system<Dim...>>;
     };
 
     template < template <class> class Pred, class Q >
@@ -192,7 +210,6 @@ namespace mitamagic {
 
     template < class U >
     using reciprocal_t = powered_t<U, -1>;
-
 }
 
 #endif

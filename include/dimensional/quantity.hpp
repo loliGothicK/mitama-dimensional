@@ -8,8 +8,8 @@ namespace mitama {
 template < class >
 struct dimensionless_converter {};
 
-template < template <class> class Synonym, class T >
-struct dimensionless_converter<quantity_t<Synonym<dimensional_t<>>, T>> {
+template < template <class> class Synonym, class T, class... B >
+struct dimensionless_converter<quantity_t<Synonym<dimensional_t<>>, T, system<B...>>> {
   operator T() const { return static_cast<quantity_t<Synonym<dimensional_t<>>, T> const*>(this)->value(); }
 };
 
@@ -18,11 +18,11 @@ struct dimensionless_converter<quantity_t<Synonym<dimensional_t<>>, T>> {
 template < class Quantity >
 class Into;
 
-template < template <class> class Synonym, class T, class... Units >
-class Into<quantity_t<Synonym<dimensional_t<Units...>>, T>> {
-  quantity_t<Synonym<dimensional_t<Units...>>, T> const& quantity_;
+template < template <class> class Synonym, class T, class... Units, class... B >
+class Into<quantity_t<Synonym<dimensional_t<Units...>>, T, system<B...>>> {
+  quantity_t<Synonym<dimensional_t<Units...>>, T, system<B...>> const& quantity_;
 public:
-  constexpr explicit Into(quantity_t<Synonym<dimensional_t<Units...>>, T> const& q): quantity_(q) {}
+  constexpr explicit Into(quantity_t<Synonym<dimensional_t<Units...>>, T, system<B...>> const& q): quantity_(q) {}
   // explicitly deleted
   Into() = delete;
   Into(Into const&) = delete;
@@ -33,7 +33,7 @@ public:
   template < class To,
             std::enable_if_t<is_same_dimensional_v<
               remove_dim_if_t<has_dimensionless_tag, To>,
-              remove_dim_if_t<has_dimensionless_tag, quantity_t<Synonym<dimensional_t<Units...>>, T>>>
+              remove_dim_if_t<has_dimensionless_tag, quantity_t<Synonym<dimensional_t<Units...>>, T, system<B...>>>>
     , bool> = false >
   constexpr operator To() const {
     return To(quantity_.value());
@@ -56,15 +56,15 @@ dimensional_convert(From const& from) {
 
 namespace mitama {
 
-template <class T, template <class> class Synonym, class...Units>
-class quantity_t<Synonym<dimensional_t<Units...>>, T>
+template <class T, template <class> class Synonym, class...Units, class... B>
+class quantity_t<Synonym<dimensional_t<Units...>>, T, system<B...>>
   : public dimensionless_converter<quantity_t<Synonym<dimensional_t<Units...>>, T>>
 {
   T value_;
-
 public:
   using value_type = T;
   using dimension_type = dimensional_t<Units...>;
+  using system_type = system<B...>;
 
   constexpr quantity_t(): value_{} {}
 
@@ -120,57 +120,57 @@ public:
     : value_(il, std::forward<Args>(args)...) {}
 
   template <
-      class D, class U,
-      std::enable_if_t<is_same_dimensional_v<quantity_t, quantity_t<D, U>> &&
+      class D, class U, class S,
+      std::enable_if_t<is_same_dimensional_v<quantity_t, quantity_t<D, U, S>> &&
                            std::is_constructible_v<T, U> &&
                            std::is_convertible_v<U, T>,
                        bool> = false>
-  constexpr quantity_t(quantity_t<D, U> const &o)
+  constexpr quantity_t(quantity_t<D, U, S> const &o)
       : value_(mitamagic::converted_value<quantity_t>(o)) {}
 
   template <
-      class D, class U,
-      std::enable_if_t<is_same_dimensional_v<quantity_t, quantity_t<D, U>> &&
+      class D, class U, class S,
+      std::enable_if_t<is_same_dimensional_v<quantity_t, quantity_t<D, U, S>> &&
                            std::is_constructible_v<T, U> &&
                            !std::is_convertible_v<U, T>,
                        bool> = false>
-  explicit constexpr quantity_t(quantity_t<D, U> const &o)
+  explicit constexpr quantity_t(quantity_t<D, U, S> const &o)
       : value_{mitamagic::converted_value<quantity_t>(o)} {}
 
   template <
-      class D, class U,
-      std::enable_if_t<is_complete_type_v<::mitama::converter<quantity_t<D, U>, quantity_t>> &&
+      class D, class U, class S,
+      std::enable_if_t<is_complete_type_v<::mitama::converter<quantity_t<D, U, S>, quantity_t>> &&
                            std::is_constructible_v<T, U> &&
                            std::is_convertible_v<U, T>,
                        bool> = false>
-  constexpr quantity_t(quantity_t<D, U> const &o)
+  constexpr quantity_t(quantity_t<D, U, S> const &o)
       : value_(::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o)) {}
 
   template <
-      class D, class U,
-      std::enable_if_t<is_complete_type_v<::mitama::converter<quantity_t<D, U>, quantity_t>> &&
+      class D, class U, class S,
+      std::enable_if_t<is_complete_type_v<::mitama::converter<quantity_t<D, U, S>, quantity_t>> &&
                            std::is_constructible_v<T, U> &&
                            !std::is_convertible_v<U, T>,
                        bool> = false>
-  explicit constexpr quantity_t(quantity_t<D, U> const &o)
+  explicit constexpr quantity_t(quantity_t<D, U, S> const &o)
       : value_{::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o)} {}
 
   template <
-      class D, class U,
-      std::enable_if_t<is_same_dimensional_v<quantity_t, quantity_t<D, U>> &&
+      class D, class U, class S,
+      std::enable_if_t<is_same_dimensional_v<quantity_t, quantity_t<D, U, S>> &&
                            std::is_convertible_v<U, T>,
                        bool> = false>
-  constexpr quantity_t &operator=(quantity_t<D, U> const &o) & {
+  constexpr quantity_t &operator=(quantity_t<D, U, S> const &o) & {
     this->value_ = mitamagic::converted_value<quantity_t>(o);
     return *this;
   }
 
   template <
-      class D, class U,
-      std::enable_if_t<is_complete_type_v<::mitama::converter<quantity_t<D, U>, quantity_t>> &&
+      class D, class U, class S,
+      std::enable_if_t<is_complete_type_v<::mitama::converter<quantity_t<D, U, S>, quantity_t>> &&
                            std::is_convertible_v<U, T>,
                        bool> = false>
-  constexpr quantity_t &operator=(quantity_t<D, U> const &o) & {
+  constexpr quantity_t &operator=(quantity_t<D, U, S> const &o) & {
     this->value_ = ::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o);
     return *this;
   }
@@ -326,7 +326,7 @@ public:
 
   auto operator-() const {
     if constexpr (std::is_integral_v<T>) {
-      return quantity_t<Synonym<dimensional_t<Units...>>, decltype(-std::declval<T>())>{ -value_ };
+      return quantity_t<Synonym<dimensional_t<Units...>>, decltype(-std::declval<T>()), system<B...>>{ -value_ };
     }
     else {
       return quantity_t{ -value_ };
@@ -334,7 +334,7 @@ public:
   }
   auto operator+() const {
     if constexpr (std::is_integral_v<T>) {
-      return quantity_t<Synonym<dimensional_t<Units...>>, decltype(+std::declval<T>())>{ +value_ };
+      return quantity_t<Synonym<dimensional_t<Units...>>, decltype(+std::declval<T>()), system<B...>>{ +value_ };
     }
     else {
       return quantity_t{ +value_ };
@@ -353,12 +353,10 @@ template < template <auto> class Pred, class Dim, class T >
 quantity_t(refined<Pred, quantity_t<Dim, T>>) -> quantity_t<Dim, T>;
 
 namespace mitamagic {
-template <class Dim> struct into_dimensional {
-  using type = si_base_units<dimensional_t<units_t<Dim>>>;
-};
+template <class Dim> struct into_dimensional;
 
-template <class Dim> struct into_dimensional<units_t<Dim>> {
-  using type = si_base_units<dimensional_t<units_t<Dim>>>;
+template <int I, class Dim> struct into_dimensional<units_t<I, Dim>> {
+  using type = si_base_units<dimensional_t<units_t<I, Dim>>>;
 };
 
 template <class... Units> struct into_dimensional<dimensional_t<Units...>> {

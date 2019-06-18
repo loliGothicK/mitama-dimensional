@@ -1,6 +1,6 @@
 #ifndef MITAMA_DIMENSIONAL_NONSI_UNITS_TONNE_HPP
 #define MITAMA_DIMENSIONAL_NONSI_UNITS_TONNE_HPP
-#include <dimensional/systems/si/kilogram.hpp>
+#include <dimensional/systems/si/base_units/kilogram.hpp>
 #include <dimensional/quantity.hpp>
 #include <dimensional/io.hpp>
 

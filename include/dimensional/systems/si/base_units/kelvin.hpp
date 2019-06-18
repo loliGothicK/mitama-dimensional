@@ -1,14 +1,13 @@
 #ifndef MITAMA_DIMENSIONAL_SI_UNITS_KELVIN_HPP
 #define MITAMA_DIMENSIONAL_SI_UNITS_KELVIN_HPP
-#include <dimensional/quantity.hpp>
+#include <dimensional/systems/si/base_dimension/thermodynamic_temperature.hpp>
+#include <dimensional/systems/si/prefix.hpp>
+#include <dimensional/units.hpp>
 
 namespace mitama::systems::si {
-// base dimension
-struct thermodynamic_temperature {
-    using is_base_dimension = void;
-};
+using kelvin_base_unit = base_units<thermodynamic_temperature, 0>;
+using kelvin_t = typename kelvin_base_unit::unit_type;
 
-using kelvin_t = make_unit_t<thermodynamic_temperature>;
 using millikelvin_t = scaled_unit_t<kelvin_t, std::milli>;
 using microkelvin_t = scaled_unit_t<kelvin_t, std::milli>;
 using kilokelvin_t = scaled_unit_t<kelvin_t, std::kilo>;

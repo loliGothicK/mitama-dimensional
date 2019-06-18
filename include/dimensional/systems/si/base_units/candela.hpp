@@ -1,13 +1,14 @@
 #ifndef MITAMA_DIMENSIONAL_SI_UNITS_CANDELA_HPP
 #define MITAMA_DIMENSIONAL_SI_UNITS_CANDELA_HPP
-#include <dimensional/quantity.hpp>
+#include <dimensional/systems/si/base_dimension/luminous_intensity.hpp>
+#include <dimensional/systems/si/prefix.hpp>
+#include <dimensional/units.hpp>
 
 namespace mitama::systems::si {
-struct luminous_intensity {
-    using is_base_dimension = void;
-};
 
-using candela_t = make_unit_t<luminous_intensity>;
+using candela_base_unit = base_units<luminous_intensity, 0>;
+
+using candela_t = typename candela_base_unit::unit_type;
 
 template < std::intmax_t N = 1 >
 using candela_ = powered_t<candela_t, N>;

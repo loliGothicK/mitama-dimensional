@@ -5,16 +5,16 @@
 #include <cmath>
 
 namespace mitama {
-    template < class T >
-    auto sin(quantity<systems::si::radian_t, T> const& rad) {
+    template < class T, class S >
+    auto sin(quantity_t<systems::si::radian_t, T, S> const& rad) {
         return std::sin(rad.value());
     }
-    template < class T >
-    auto cos(quantity<systems::si::radian_t, T> const& rad) {
+    template < class T, class S >
+    auto cos(quantity_t<systems::si::radian_t, T, S> const& rad) {
         return std::cos(rad.value());
     }
-    template < class T >
-    auto tan(quantity<systems::si::radian_t, T> const& rad) {
+    template < class T, class S >
+    auto tan(quantity_t<systems::si::radian_t, T, S> const& rad) {
         return std::tan(rad.value());
     }
     template < class T, std::enable_if_t<!is_quantity_v<T>, bool> = false>

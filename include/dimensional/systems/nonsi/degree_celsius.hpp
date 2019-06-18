@@ -1,27 +1,22 @@
-#ifndef MITAMA_DIMENSIONAL_SI_DERIVED_DEGREE_CELSIUS_HPP
-#define MITAMA_DIMENSIONAL_SI_DERIVED_DEGREE_CELSIUS_HPP
+#ifndef MITAMA_DIMENSIONAL_NONSI_DEGREE_CELSIUS_HPP
+#define MITAMA_DIMENSIONAL_NONSI_DEGREE_CELSIUS_HPP
 
-#include <dimensional/systems/si/kelvin.hpp>
+#include <dimensional/systems/si/base_units/kelvin.hpp>
 #include <dimensional/quantity.hpp>
 #include <dimensional/io.hpp>
 
 namespace mitama::systems::nonsi {
-struct celsius_temperature { using is_base_dimension = void; };
+  using degree_celsius_base_unit = base_units<si::thermodynamic_temperature, 1>;
+  using degree_celsius_t = typename degree_celsius_base_unit::unit_type;
+  inline constexpr degree_celsius_t degree_celsius{};
 }
 
 namespace mitama {
-template <> struct symbol_<::mitama::systems::nonsi::celsius_temperature> {
+
+template <> struct symbol_<::mitama::systems::si::thermodynamic_temperature, 1> {
   static constexpr char str[] = "°C";
 };
-}
-namespace mitama::systems::nonsi {
 
-using degree_celsius_t = make_unit_t<systems::nonsi::celsius_temperature>;
-
-inline constexpr degree_celsius_t degree_celsius{};
-}
-
-namespace mitama {
 template <class From, class To>
 struct converter<quantity_t<systems::nonsi::degree_celsius_t, From>,
                  quantity_t<systems::si::kelvin_t, To>>

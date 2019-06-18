@@ -3,21 +3,21 @@
 
 #include <cmath>
 #include <dimensional/quantity.hpp>
-#include <dimensional/systems/si/meter.hpp>
+#include <dimensional/systems/si/base_units/meter.hpp>
 namespace mitama {
 
-template < template <class> class Synonym, class T, class... Units >
-auto sqrt(quantity_t<Synonym<dimensional_t<Units...>>, T> const& quantity) {
-    return quantity_t<Synonym<typename mitamagic::powered_dimensional<dimensional_t<Units...>, std::ratio<1, 2>>::type>, T>
+template < template <class> class Synonym, class T, class... Units, class S >
+auto sqrt(quantity_t<Synonym<dimensional_t<Units...>>, T, S> const& quantity) {
+    return quantity_t<Synonym<typename mitamagic::powered_dimensional<dimensional_t<Units...>, std::ratio<1, 2>>::type>, T, S>
         {
             static_cast<T>(std::sqrt(quantity.value()))
         };
 }
 
 
-template < template <class> class Synonym, class T, class... Units >
-auto cbrt(quantity_t<Synonym<dimensional_t<Units...>>, T> const& quantity) {
-    return quantity_t<Synonym<typename mitamagic::powered_dimensional<dimensional_t<Units...>, std::ratio<1, 3>>::type>, T>
+template < template <class> class Synonym, class T, class... Units, class S >
+auto cbrt(quantity_t<Synonym<dimensional_t<Units...>>, T, S> const& quantity) {
+    return quantity_t<Synonym<typename mitamagic::powered_dimensional<dimensional_t<Units...>, std::ratio<1, 3>>::type>, T, S>
         {
             static_cast<T>(std::cbrt(quantity.value()))
         };

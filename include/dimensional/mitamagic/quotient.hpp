@@ -22,7 +22,7 @@ template <class... Tags> struct dimensionless {
   using is_base_dimension = void;
 };
 template <class D, class E> struct dimensionless<D, E> {
-  using tag = dimension_tag<D, E>;
+  using tag = dimension_tag<0, D, E>;
 };
 template <class> struct is_dimensionless_type : std::false_type {};
 template <class... Tags>
@@ -30,8 +30,8 @@ struct is_dimensionless_type<dimensionless<Tags...>> : std::true_type {};
 
 template <class, class> struct prod { using type = void; };
 
-template <class D, class Exp1, class Exp2, class S1, class S2>
-struct prod<units_t<D, Exp1, S1>, units_t<D, Exp2, S2>> {
+template <int N, class D, class Exp1, class Exp2, class S1, class S2>
+struct prod<units_t<N, D, Exp1, S1>, units_t<N, D, Exp2, S2>> {
   using type = type_list<Exp1, S1, Exp2, S2>;
 };
 template <class, class> struct scaler;
@@ -136,6 +136,7 @@ struct scaled_demension_helper<dimensional_t<L...>,
                                std::index_sequence<I...>> {
   using type = si_base_units<dimensional_t<
       units_t<
+          tlist_element_t<I, type_list<L...>>::index,
           typename tlist_element_t<I, type_list<L...>>::dimension_type,
           typename tlist_element_t<I, type_list<L...>>::exponent,
           ratio_min<typename tlist_element_t<I, type_list<L...>>::scale,
@@ -173,10 +174,10 @@ namespace mitama::mitamagic {
 // dimension exponent inverse implementation
 template <class> struct inversed;
 
-template <class Dim, std::intmax_t N, std::intmax_t D, class S>
-struct inversed<units_t<Dim, std::ratio<N, D>, S>> {
+template <int I, class Dim, std::intmax_t N, std::intmax_t D, class S>
+struct inversed<units_t<I, Dim, std::ratio<N, D>, S>> {
   using type =
-      units_t<Dim, std::ratio_multiply<std::ratio<N, D>, std::ratio<-1>>, S>;
+      units_t<I, Dim, std::ratio_multiply<std::ratio<N, D>, std::ratio<-1>>, S>;
 };
 
 // meta-function for dimension exponent inverse
@@ -204,12 +205,12 @@ template <class, class> struct reduce { using type = void; };
 
 // meta-operator for reduce with two same dimensions
 // partial template specialization for phantom_t
-template <class D, class Exp1, class Exp2, class S1, class S2>
-struct reduce<units_t<D, Exp1, S1>, units_t<D, Exp2, S2>> {
+template <int I, class D, class Exp1, class Exp2, class S1, class S2>
+struct reduce<units_t<I, D, Exp1, S1>, units_t<I, D, Exp2, S2>> {
   using type = std::conditional_t<
       std::ratio_equal_v<std::ratio_add<Exp1, Exp2>, std::ratio<0>>,
-      dimensionless<dimension_tag<D, ratio_max<Exp1, Exp2>>>,
-      units_t<D, std::ratio_add<Exp1, Exp2>, ratio_min<S1, S2>>>;
+      dimensionless<dimension_tag<0, D, ratio_max<Exp1, Exp2>>>,
+      units_t<I, D, std::ratio_add<Exp1, Exp2>, ratio_min<S1, S2>>>;
 };
 
 template <class, class, class, class = void> struct quotient_;
@@ -297,7 +298,8 @@ template <std::intmax_t N, std::intmax_t D, class... PhantomTypes>
 struct powered_dimensional<dimensional_t<PhantomTypes...>,
                            std::ratio<N, D>> {
   using type =
-      dimensional_t<units_t<typename PhantomTypes::dimension_type,
+      dimensional_t<units_t<PhantomTypes::index,
+                            typename PhantomTypes::dimension_type,
                             std::ratio_multiply<typename PhantomTypes::exponent,
                                                 std::ratio<N, D>>,
                             typename PhantomTypes::scale>...>;
@@ -306,7 +308,8 @@ template <template<class>class Synonym, std::intmax_t N, std::intmax_t D, class.
 struct powered_dimensional<Synonym<dimensional_t<PhantomTypes...>>,
                            std::ratio<N, D>> {
   using type =
-      Synonym<dimensional_t<units_t<typename PhantomTypes::dimension_type,
+      Synonym<dimensional_t<units_t<PhantomTypes::index,
+                            typename PhantomTypes::dimension_type,
                             std::ratio_multiply<typename PhantomTypes::exponent,
                                                 std::ratio<N, D>>,
                             typename PhantomTypes::scale>...>>;

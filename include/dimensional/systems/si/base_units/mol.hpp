@@ -1,14 +1,12 @@
 #ifndef MITAMA_DIMENSIONAL_SI_UNITS_MOL_HPP
 #define MITAMA_DIMENSIONAL_SI_UNITS_MOL_HPP
-#include <dimensional/quantity.hpp>
+#include <dimensional/systems/si/base_dimension/amount_of_substance.hpp>
+#include <dimensional/systems/si/prefix.hpp>
+#include <dimensional/units.hpp>
 
 namespace mitama::systems::si {
-// base dimesnion
-struct amount_of_substance {
-    using is_base_dimension = void;
-};
-
-using mol_t = make_unit_t<amount_of_substance>;
+using mole_base_unit = base_units<amount_of_substance, 0>;
+using mol_t = typename mole_base_unit::unit_type;
 using millimol_t = scaled_unit_t<mol_t, std::milli>;
 using micromol_t = scaled_unit_t<mol_t, std::micro>;
 using kilomol_t = scaled_unit_t<mol_t, std::kilo>;

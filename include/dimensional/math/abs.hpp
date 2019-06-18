@@ -6,8 +6,8 @@
 
 namespace mitama {
 
-template < template <class> class Synonym, class T, class... Units >
-auto abs(quantity_t<Synonym<dimensional_t<Units...>>, T> const& quantity) {
+template < template <class> class Synonym, class T, class... Units, class S >
+auto abs(quantity_t<Synonym<dimensional_t<Units...>>, T, S> const& quantity) {
     using std::abs;
     return std::decay_t<decltype(quantity)>{ abs(quantity.value()) };
 }

@@ -12,7 +12,7 @@
 		}
 #define TEST_BODY(prefix, unit_type) \
     using namespace std::literals; \
-    REQUIRE(fmt(1 | prefix * unit_type{}) == "1 ["s + prefix_<std::prefix>::str + symbol_<typename basis_<unit_type>::template type<0>>::str + "]"s);
+    REQUIRE(fmt(1 | prefix * unit_type{}) == "1 ["s + prefix_<std::prefix>::str + symbol_<typename basis_<unit_type>::template type<0>, 0>::str + "]"s);
 #define CATCH_CONFIG_MAIN
 #include <test_util.hpp>
 #include <catch2/catch.hpp>
@@ -52,13 +52,13 @@ TEST_CASE("prefix format tests", "[prefix]") {
 // Second, we test SI unit symbols format.
 TEST_CASE("symbol format tests", "[symbol]") {
   using namespace std::literals;
-  REQUIRE(symbol_<::mitama::systems::si::length>::str == "m"s);
-  REQUIRE(symbol_<electric_current>::str == "A"s);
-  REQUIRE(symbol_<luminous_intensity>::str == "cd"s);
-  REQUIRE(symbol_<thermodynamic_temperature>::str == "K"s);
-  REQUIRE(symbol_<::mitama::systems::si::mass>::str == "g"s);
-  REQUIRE(symbol_<amount_of_substance>::str == "mol"s);
-  REQUIRE(symbol_<::mitama::systems::si::time>::str == "s"s);
+  REQUIRE(symbol_<::mitama::systems::si::length, 0>::str == "m"s);
+  REQUIRE(symbol_<electric_current, 0>::str == "A"s);
+  REQUIRE(symbol_<luminous_intensity, 0>::str == "cd"s);
+  REQUIRE(symbol_<thermodynamic_temperature, 0>::str == "K"s);
+  REQUIRE(symbol_<::mitama::systems::si::mass, 0>::str == "g"s);
+  REQUIRE(symbol_<amount_of_substance, 0>::str == "mol"s);
+  REQUIRE(symbol_<::mitama::systems::si::time, 0>::str == "s"s);
 }
 
 // Third, we test symbol with metric prefix.

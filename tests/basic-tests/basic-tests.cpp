@@ -39,3 +39,15 @@ TEMPLATE_TEST_CASE("validates",
     REQUIRE( (1|TestType{}).validate(validator) == Ok(1|TestType{}) );
     REQUIRE( (-1|TestType{}).validate(validator) == Err(-1) );
 }
+
+#include <dimensional/systems/si/quantity.hpp>
+
+TEMPLATE_TEST_CASE("si-quantity; constructor from values","[quantity][constructor]",
+  meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
+{
+  systems::si::quantity_t<TestType, int> a(1);
+  REQUIRE(a.value() == 1);
+
+  systems::si::quantity_t<scaled_unit_t<TestType, std::milli>, double> b = a;
+  REQUIRE(b.value() == 1000);
+}

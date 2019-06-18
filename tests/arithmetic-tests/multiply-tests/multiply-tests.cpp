@@ -9,8 +9,8 @@ TEMPLATE_TEST_CASE("meter_t multiply",
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a*b)>,
         quantity_t<si_base_units<dimensional_t<
-            units_t<length, std::ratio<1>, std::ratio<1>>,
-            units_t<typename basis_<TestType>::template type<0>, std::ratio<1>, std::ratio<1>>
+            units_t<0, length, std::ratio<1>, std::ratio<1>>,
+            units_t<0, typename basis_<TestType>::template type<0>, std::ratio<1>, std::ratio<1>>
         >>, int>>);
 }
 
@@ -24,8 +24,8 @@ TEMPLATE_TEST_CASE("ampere_t multiply",
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a*b)>,
         quantity_t<si_base_units<dimensional_t<
-            units_t<electric_current, std::ratio<1>, std::ratio<1>>,
-            units_t<typename basis_<TestType>::template type<0>, std::ratio<1>, std::ratio<1>>
+            units_t<0, electric_current, std::ratio<1>, std::ratio<1>>,
+            units_t<0, typename basis_<TestType>::template type<0>, std::ratio<1>, std::ratio<1>>
         >>, int>>);
 }
 
@@ -39,8 +39,8 @@ TEMPLATE_TEST_CASE("candela_t multiply",
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a*b)>,
         quantity_t<si_base_units<dimensional_t<
-            units_t<luminous_intensity, std::ratio<1>, std::ratio<1>>,
-            units_t<typename basis_<TestType>::template type<0>, std::ratio<1>, std::ratio<1>>
+            units_t<0, luminous_intensity, std::ratio<1>, std::ratio<1>>,
+            units_t<0, typename basis_<TestType>::template type<0>, std::ratio<1>, std::ratio<1>>
         >>, int>>);
 }
 
@@ -54,8 +54,8 @@ TEMPLATE_TEST_CASE("kelvin_t multiply",
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a*b)>,
         quantity_t<si_base_units<dimensional_t<
-            units_t<thermodynamic_temperature, std::ratio<1>, std::ratio<1>>,
-            units_t<typename basis_<TestType>::template type<0>, std::ratio<1>, std::ratio<1>>
+            units_t<0, thermodynamic_temperature, std::ratio<1>, std::ratio<1>>,
+            units_t<0, typename basis_<TestType>::template type<0>, std::ratio<1>, std::ratio<1>>
         >>, int>>);
 }
 
@@ -69,8 +69,8 @@ TEMPLATE_TEST_CASE("kilogram_t multiply",
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a*b)>,
         quantity_t<si_base_units<dimensional_t<
-            units_t<mass, std::ratio<1>, std::ratio<1>>,
-            units_t<typename basis_<TestType>::template type<0>, std::ratio<1>, std::ratio<1>>
+            units_t<0, mass, std::ratio<1>, std::ratio<1>>,
+            units_t<0, typename basis_<TestType>::template type<0>, std::ratio<1>, std::ratio<1>>
         >>, int>>);
 }
 
@@ -84,8 +84,8 @@ TEMPLATE_TEST_CASE("mol_t multiply",
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a*b)>,
         quantity_t<si_base_units<dimensional_t<
-            units_t<amount_of_substance, std::ratio<1>, std::ratio<1>>,
-            units_t<typename basis_<TestType>::template type<0>, std::ratio<1>, std::ratio<1>>
+            units_t<0, amount_of_substance, std::ratio<1>, std::ratio<1>>,
+            units_t<0, typename basis_<TestType>::template type<0>, std::ratio<1>, std::ratio<1>>
         >>, int>>);
 }
 
@@ -99,8 +99,8 @@ TEMPLATE_TEST_CASE("second_t multiply",
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a*b)>,
         quantity_t<si_base_units<dimensional_t<
-            units_t<mitama::systems::si::time, std::ratio<1>, std::ratio<1>>,
-            units_t<typename basis_<TestType>::template type<0>, std::ratio<1>, std::ratio<1>>
+            units_t<0, mitama::systems::si::time, std::ratio<1>, std::ratio<1>>,
+            units_t<0, typename basis_<TestType>::template type<0>, std::ratio<1>, std::ratio<1>>
         >>, int>>);
 }
 

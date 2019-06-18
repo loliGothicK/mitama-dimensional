@@ -8,7 +8,10 @@ namespace mitama {
     template < template < auto > class, class >
     class refined;
 
-    template < class, class = double >
+    template < class... >
+    struct system;
+
+    template < class, class = double, class = system<> >
     class quantity_t;
 
     template <class, class> struct converter;

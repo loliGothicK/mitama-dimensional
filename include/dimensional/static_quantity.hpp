@@ -121,7 +121,7 @@ namespace mitama {
                class... Units, template <class> class Synonym, auto Value >
     inline constexpr auto
     pow(static_quantity_t<Synonym<dimensional_t<Units...>>, Value>) noexcept
-        -> static_quantity_t<powered_t<Synonym<dimensional_t<Units...>>, 2>, Pow<N>::invoke(Value)>
+        -> static_quantity_t<powered_t<Synonym<dimensional_t<Units...>>, N>, Pow<N>::invoke(Value)>
         { return {}; }
 
     template < template < auto > class Pred, class Dim, class T > 

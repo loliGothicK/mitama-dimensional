@@ -26,28 +26,28 @@ struct make_synonym<Synonym, dimensional_t<Units...>>{
 template <template<class> class Synonym, class Dim>
 using make_synonym_t = typename make_synonym<Synonym, std::decay_t<Dim>>::type;
 
-template <class, class = void> struct symbol_;
+template <class, int , class = void> struct symbol_;
 template <class, class = void> struct prefix_;
 
-template <> struct symbol_<::mitama::systems::si::length> {
+template <> struct symbol_<::mitama::systems::si::length, 0> {
   static constexpr char str[] = "m";
 };
-template <> struct symbol_<::mitama::systems::si::electric_current> {
+template <> struct symbol_<::mitama::systems::si::electric_current, 0> {
   static constexpr char str[] = "A";
 };
-template <> struct symbol_<::mitama::systems::si::luminous_intensity> {
+template <> struct symbol_<::mitama::systems::si::luminous_intensity, 0> {
   static constexpr char str[] = "cd";
 };
-template <> struct symbol_<::mitama::systems::si::thermodynamic_temperature> {
+template <> struct symbol_<::mitama::systems::si::thermodynamic_temperature, 0> {
   static constexpr char str[] = "K";
 };
-template <> struct symbol_<::mitama::systems::si::mass> {
+template <> struct symbol_<::mitama::systems::si::mass, 0> {
   static constexpr char str[] = "g";
 };
-template <> struct symbol_<::mitama::systems::si::amount_of_substance> {
+template <> struct symbol_<::mitama::systems::si::amount_of_substance, 0> {
   static constexpr char str[] = "mol";
 };
-template <> struct symbol_<::mitama::systems::si::time> {
+template <> struct symbol_<::mitama::systems::si::time, 0> {
   static constexpr char str[] = "s";
 };
 template <> struct prefix_<std::ratio<1>> { static constexpr char str[] = ""; };
@@ -67,16 +67,16 @@ template <> struct prefix_<std::pico> { static constexpr char str[] = "p"; };
 
 template <class, class = void> struct si_formatter;
 
-template <class D, class E, class S>
+template <int I, class D, class E, class S>
 struct si_formatter<
-    units_t<D, E, S>,
+    units_t<I, D, E, S>,
     std::enable_if_t<std::conjunction_v<is_complete_type<prefix_<S>>,
-                                        is_complete_type<symbol_<D>>>>> {
+                                        is_complete_type<symbol_<D, I>>>>> {
   static std::string format() {
     using namespace std::literals;
     using scale = std::conditional_t<std::is_same_v<D, ::mitama::systems::si::mass>,
                                      std::ratio_multiply<S, std::kilo>, S>;
-    return std::string(prefix_<scale>::str) + std::string(symbol_<D>::str) +
+    return std::string(prefix_<scale>::str) + std::string(symbol_<D, I>::str) +
            (E::den == 1
                 ? E::num == 1 ? std::string() : "^"s + std::to_string(E::num)
                 : "^"s + std::to_string(E::num) + "/" + std::to_string(E::den));
@@ -84,24 +84,24 @@ struct si_formatter<
 };
 
 namespace _detail {
-template <template <class> class Synonym, class T, class Head, class... Tail>
+template <template <class> class Synonym, class T, class Head, class... Tail, class S>
 std::string
-abbreviation(quantity_t<Synonym<dimensional_t<Head, Tail...>>, T> const &quantity) {
+abbreviation(quantity_t<Synonym<dimensional_t<Head, Tail...>>, T, S> const &quantity) {
   using namespace std::literals;
   return "[" + si_formatter<Head>::format() +
          ((" "s + si_formatter<Tail>::format()) + ... + "]");
 }
 
-template <template <class> class Synonym, class T>
+template <template <class> class Synonym, class T, class S>
 std::string
-abbreviation(quantity_t<Synonym<dimensional_t<>>, T> const &quantity) {
+abbreviation(quantity_t<Synonym<dimensional_t<>>, T, S> const &quantity) {
   return "[dimensionless]";
 }
 }
 
-template <template <class> class Synonym, class T, class... Units>
+template <template <class> class Synonym, class T, class... Units, class S>
 std::string
-abbreviation(quantity_t<Synonym<dimensional_t<Units...>>, T> const &quantity) {
+abbreviation(quantity_t<Synonym<dimensional_t<Units...>>, T, S> const &quantity) {
   using namespace std::literals::string_literals;
   if constexpr (is_complete_type<
                             abbreviation_<Synonym<dimensional_t<Units...>>>>::value) {
@@ -114,10 +114,10 @@ abbreviation(quantity_t<Synonym<dimensional_t<Units...>>, T> const &quantity) {
   }
 }
 
-template <template <class> class Synonym, class T, class... Units>
+template <template <class> class Synonym, class T, class... Units, class S>
 std::ostream &
 operator<<(std::ostream &os,
-           quantity_t<Synonym<dimensional_t<Units...>>, T> const &quantity) {
+           quantity_t<Synonym<dimensional_t<Units...>>, T, S> const &quantity) {
   using namespace std::literals::string_literals;
   if constexpr (is_complete_type<abbreviation_<Synonym<dimensional_t<Units...>>>>::value) {
     return os << quantity.value() << " [" <<  abbreviation_<Synonym<dimensional_t<Units...>>>::str << "]";

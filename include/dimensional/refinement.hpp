@@ -56,9 +56,9 @@ struct refinement_type_for<
   template <class Q,
             std::enable_if_t<
                 Pred<is_same_dimensional<
-                    std::decay_t<Q>,
-                    quantity<make_dimensional_t<units_t<
-                        typename Symbols::basis, typename Symbols::exp>...>>>>::value,
+                     std::decay_t<Q>,
+                     quantity_t<make_dimensional_t<units_t<0,
+                         typename Symbols::basis, typename Symbols::exp>...>>>>::value,
                 bool> = false>
   constexpr decltype(auto) operator()(Q &&q) const {
     return std::forward<Q>(q);
@@ -69,9 +69,9 @@ struct refinement_type_for<
   template <class Q,
             std::enable_if_t<
                 Pred<is_same_dimensional<
-                    std::decay_t<Q>,
-                    quantity<make_dimensional_t<units_t<
-                        typename Symbols::basis, typename Symbols::exp>...>>>>::value,
+                     std::decay_t<Q>,
+                     quantity_t<make_dimensional_t<units_t<0,
+                         typename Symbols::basis, typename Symbols::exp>...>>>>::value,
                 bool> = false>
   constexpr decltype(auto) operator|=(Q &&q) const {
     return std::forward<Q>(q);
@@ -88,9 +88,9 @@ struct refinement_type<
   template <class Q,
             std::enable_if_t<
                 Pred<is_same_dimensional<
-                    std::decay_t<Q>,
-                    quantity<make_dimensional_t<units_t<
-                        typename Symbols::basis, typename Symbols::exp>...>>>>::value,
+                     std::decay_t<Q>,
+                     quantity_t<make_dimensional_t<units_t<0,
+                         typename Symbols::basis, typename Symbols::exp>...>>>>::value,
                 bool> = false>
   constexpr decltype(auto) operator()(Q &&q) const {
     return std::forward<Q>(q);
@@ -101,9 +101,9 @@ struct refinement_type<
   template <class Q,
             std::enable_if_t<
                 Pred<is_same_dimensional<
-                    std::decay_t<Q>,
-                    quantity<make_dimensional_t<units_t<
-                        typename Symbols::basis, typename Symbols::exp>...>>>>::value,
+                     std::decay_t<Q>,
+                     quantity_t<make_dimensional_t<units_t<0,
+                         typename Symbols::basis, typename Symbols::exp>...>>>>::value,
                 bool> = false>
   constexpr decltype(auto) operator|=(Q &&q) const {
     return std::forward<Q>(q);
@@ -138,7 +138,7 @@ struct partial_refinement_type_for<
             std::enable_if_t<
               Pred<std::conjunction<
                 std::is_base_of<
-                  dimension_tag<typename Symbols::basis, typename Symbols::exp>,
+                  dimension_tag<0, typename Symbols::basis, typename Symbols::exp>,
                   typename std::decay_t<Q>::dimension_type
                 >...
               >>::value,
@@ -153,7 +153,7 @@ struct partial_refinement_type_for<
             std::enable_if_t<
               Pred<std::conjunction<
                 std::is_base_of<
-                  dimension_tag<typename Symbols::basis, typename Symbols::exp>,
+                  dimension_tag<0, typename Symbols::basis, typename Symbols::exp>,
                   typename std::decay_t<Q>::dimension_type
                 >...
               >>::value,
@@ -175,7 +175,7 @@ struct partial_refinement_type<
             std::enable_if_t<
               Pred<std::conjunction<
                 std::is_base_of<
-                  dimension_tag<typename Symbols::basis, typename Symbols::exp>,
+                  dimension_tag<0, typename Symbols::basis, typename Symbols::exp>,
                   typename std::decay_t<Q>::dimension_type
                 >...
               >>::value,
@@ -190,7 +190,7 @@ struct partial_refinement_type<
             std::enable_if_t<
               Pred<std::conjunction<
                 std::is_base_of<
-                  dimension_tag<typename Symbols::basis, typename Symbols::exp>,
+                  dimension_tag<0, typename Symbols::basis, typename Symbols::exp>,
                   typename std::decay_t<Q>::dimension_type
                 >...
               >>::value,
