@@ -1,5 +1,7 @@
 #ifndef MITAMA_DIMENSIONAL_FWD_QUANTITY_FWD_HPP
 #define MITAMA_DIMENSIONAL_FWD_QUANTITY_FWD_HPP
+#include <dimensional/fwd/system.hpp>
+
 namespace mitama {
 
     template < class, auto >
@@ -7,9 +9,6 @@ namespace mitama {
 
     template < template < auto > class, class >
     class refined;
-
-    template < class... >
-    struct system;
 
     template < class, class = double, class = system<> >
     class quantity_t;

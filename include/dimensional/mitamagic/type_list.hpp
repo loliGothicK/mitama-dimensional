@@ -8,7 +8,6 @@
 namespace mitama::mitamagic {
 template <class T> struct guardian_t { using type = T; };
 
-
 template <class... Elems> struct type_list: private Elems... {}; // Type List
 
 template < class T, class TypeList >
@@ -154,6 +153,19 @@ struct tlist_find_if<Pred, Pack<>>
 
 template < template <class> class Pred, class Pack >
 using tlist_find_if_t = typename tlist_find_if<Pred, Pack>::type;
+
+template < class > struct tlist_all_same;
+
+template < template <class...> class Pack, class Head, class... Tail >
+struct tlist_all_same<Pack<Head, Tail...>>
+  : std::conjunction<std::is_same<Head, Tail>...> {};
+
+template < template <class...> class Pack >
+struct tlist_all_same<Pack<>>
+  : std::true_type {};
+
+template < class Pack >
+inline constexpr bool tlist_all_same_v = tlist_all_same<Pack>::value;
 
 } // namespace mitama::mitamagic
 
