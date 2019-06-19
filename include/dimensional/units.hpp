@@ -7,7 +7,7 @@
 
 namespace mitama {
 
-template <int N, class BaseDim, class Characteristic, class Scale>
+template <int N, class BaseDim, class Characteristic, class Scale, class System>
 struct units_t : private dimension_tag<N, BaseDim, Characteristic> {
   static_assert(std::ratio_greater_v<Scale, std::ratio<0>>,
                 "scale must be positive number!");
@@ -17,6 +17,7 @@ struct units_t : private dimension_tag<N, BaseDim, Characteristic> {
   using scale = Scale;
   using tag = dimension_tag<N, BaseDim, Characteristic>;
   using unit_type = make_dimensional_t<units_t<N, BaseDim, Characteristic, Scale>>;
+  using system_type = System;
 };
 
 template < class BaseDim, int N >
