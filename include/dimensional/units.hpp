@@ -7,6 +7,16 @@
 
 namespace mitama {
 
+template < int N, class BaseDim, class Characteristic, class Scale, class... BaseUnits >
+struct unit_type_with_system {
+  using type = make_dimensional_t<units_t<N, BaseDim, Characteristic, Scale, system<BaseUnits...>>>;
+};
+
+template < int N, class BaseDim, class Characteristic, class Scale, class... BaseUnits >
+struct unit_type_with_system<N, BaseDim, Characteristic, Scale, system<BaseUnits...>> {
+  using type = make_dimensional_t<units_t<N, BaseDim, Characteristic, Scale, system<BaseUnits...>>>;
+};
+
 template <int N, class BaseDim, class Characteristic, class Scale, class System>
 struct units_t : private dimension_tag<N, BaseDim, Characteristic> {
   static_assert(std::ratio_greater_v<Scale, std::ratio<0>>,
@@ -17,6 +27,8 @@ struct units_t : private dimension_tag<N, BaseDim, Characteristic> {
   using scale = Scale;
   using tag = dimension_tag<N, BaseDim, Characteristic>;
   using unit_type = make_dimensional_t<units_t<N, BaseDim, Characteristic, Scale>>;
+  template < class... Base >
+  using unit_type_with_system = typename unit_type_with_system<N, BaseDim, Characteristic, Scale, Base...>::type;
   using system_type = System;
 };
 

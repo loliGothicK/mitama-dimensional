@@ -44,17 +44,17 @@ namespace mitama {
     // units_t traits
     template <class> struct is_units : std::false_type {};
 
-    template <int I, class D, class E, class S>
-    struct is_units<units_t<I, D, E, S>> : std::true_type {};
+    template <int I, class D, class E, class S, class Sys>
+    struct is_units<units_t<I, D, E, S, Sys>> : std::true_type {};
 
-    template <int I, class D, class E, class S>
-    struct is_units<const units_t<I, D, E, S>> : std::true_type {};
+    template <int I, class D, class E, class S, class Sys>
+    struct is_units<const units_t<I, D, E, S, Sys>> : std::true_type {};
 
-    template <int I, class D, class E, class S>
-    struct is_units<volatile units_t<I, D, E, S>> : std::true_type {};
+    template <int I, class D, class E, class S, class Sys>
+    struct is_units<volatile units_t<I, D, E, S, Sys>> : std::true_type {};
 
-    template <int I, class D, class E, class S>
-    struct is_units<const volatile units_t<I, D, E, S>> : std::true_type {};
+    template <int I, class D, class E, class S, class Sys>
+    struct is_units<const volatile units_t<I, D, E, S, Sys>> : std::true_type {};
 
     template <class U> inline constexpr bool is_units_v = is_units<U>::value;
 

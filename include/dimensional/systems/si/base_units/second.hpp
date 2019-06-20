@@ -1,13 +1,12 @@
 #ifndef MITAMA_DIMENSIONAL_SI_UNITS_SECOND_HPP
 #define MITAMA_DIMENSIONAL_SI_UNITS_SECOND_HPP
-#include <dimensional/systems/si/base_dimension/time.hpp>
+#include <dimensional/systems/si/base_units/fwd/si_base_units.hpp>
 #include <dimensional/systems/si/prefix.hpp>
 #include <dimensional/units.hpp>
 
 namespace mitama::systems::si {
 
-using second_base_unit = base_units<time, 0>;
-using second_t = typename second_base_unit::unit_type;
+using second_t = typename second_base_unit::unit_type_with_system<::mitama::systems::si::system>;
 
 using millisecond_t = scaled_unit_t<second_t, std::milli>;
 using microsecond_t = scaled_unit_t<second_t, std::micro>;

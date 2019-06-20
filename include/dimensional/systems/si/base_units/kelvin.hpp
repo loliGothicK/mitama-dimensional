@@ -1,12 +1,11 @@
 #ifndef MITAMA_DIMENSIONAL_SI_UNITS_KELVIN_HPP
 #define MITAMA_DIMENSIONAL_SI_UNITS_KELVIN_HPP
-#include <dimensional/systems/si/base_dimension/thermodynamic_temperature.hpp>
+#include <dimensional/systems/si/base_units/fwd/si_base_units.hpp>
 #include <dimensional/systems/si/prefix.hpp>
 #include <dimensional/units.hpp>
 
 namespace mitama::systems::si {
-using kelvin_base_unit = base_units<thermodynamic_temperature, 0>;
-using kelvin_t = typename kelvin_base_unit::unit_type;
+using kelvin_t = typename kelvin_base_unit::unit_type_with_system<::mitama::systems::si::system>;
 
 using millikelvin_t = scaled_unit_t<kelvin_t, std::milli>;
 using microkelvin_t = scaled_unit_t<kelvin_t, std::milli>;
