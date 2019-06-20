@@ -45,7 +45,7 @@ jobs:
     steps:
       - checkout
       - run: apt upgrade -y && apt update -y && apt install -y git
-      - run: git submodule update --init --recursive
+      - run: git submodule sync && git submodule update --remote --init --recursive
       - run: chmod +x ./mitama_build.sh
       - run: ./mitama_build.sh
 
