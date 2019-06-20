@@ -67,9 +67,9 @@ template <> struct prefix_<std::pico> { static constexpr char str[] = "p"; };
 
 template <class, class = void> struct si_formatter;
 
-template <int I, class D, class E, class S>
+template <int I, class D, class E, class S, class Sys>
 struct si_formatter<
-    units_t<I, D, E, S>,
+    units_t<I, D, E, S, Sys>,
     std::enable_if_t<std::conjunction_v<is_complete_type<prefix_<S>>,
                                         is_complete_type<symbol_<D, I>>>>> {
   static std::string format() {

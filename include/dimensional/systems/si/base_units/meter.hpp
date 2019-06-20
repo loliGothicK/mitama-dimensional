@@ -1,15 +1,13 @@
 #ifndef MITAMA_DIMENSIONAL_SI_UNITS_METER_HPP
 #define MITAMA_DIMENSIONAL_SI_UNITS_METER_HPP
-#include <dimensional/systems/si/base_dimension/length.hpp>
+#include <dimensional/systems/si/base_units/fwd/si_base_units.hpp>
 #include <dimensional/systems/si/prefix.hpp>
 #include <dimensional/units.hpp>
 
 namespace mitama::systems::si {
 // base unit
-using meter_base_unit = base_units<length, 0>;
-using metre_base_unit = base_units<length, 0>;
-using meter_t = typename meter_base_unit::unit_type;
-using metre_t = typename metre_base_unit::unit_type;
+using meter_t = typename meter_base_unit::unit_type_with_system<::mitama::systems::si::system>;
+using metre_t = typename metre_base_unit::unit_type_with_system<::mitama::systems::si::system>;
 
 using picometer_t = scaled_unit_t<meter_t, std::pico>;
 using nanometer_t = scaled_unit_t<meter_t, std::nano>;

@@ -1,13 +1,12 @@
 #ifndef MITAMA_DIMENSIONAL_SI_UNITS_KILOGRAM_HPP
 #define MITAMA_DIMENSIONAL_SI_UNITS_KILOGRAM_HPP
-#include <dimensional/systems/si/base_dimension/mass.hpp>
+#include <dimensional/systems/si/base_units/fwd/si_base_units.hpp>
 #include <dimensional/systems/si/prefix.hpp>
 #include <dimensional/units.hpp>
 
 namespace mitama::systems::si {
 // base unit
-using kilogram_base_unit = base_units<mass, 0>;
-using kilogram_t = typename kilogram_base_unit::unit_type;
+using kilogram_t = typename kilogram_base_unit::unit_type_with_system<::mitama::systems::si::system>;
 
 using gram_t = scaled_unit_t<kilogram_t, std::milli>;
 using milligram_t = scaled_unit_t<gram_t, std::milli>;

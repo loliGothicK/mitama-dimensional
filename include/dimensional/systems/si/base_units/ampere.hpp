@@ -1,14 +1,12 @@
 #ifndef MITAMA_DIMENSIONAL_SI_UNITS_AMPERE_HPP
 #define MITAMA_DIMENSIONAL_SI_UNITS_AMPERE_HPP
-#include <dimensional/systems/si/base_dimension/electric_current.hpp>
+#include <dimensional/systems/si/base_units/fwd/si_base_units.hpp>
 #include <dimensional/systems/si/prefix.hpp>
 #include <dimensional/units.hpp>
 
 namespace mitama::systems::si {
 
-using ampere_base_unit = base_units<electric_current, 0>;
-
-using ampere_t = typename ampere_base_unit::unit_type;
+using ampere_t = typename ampere_base_unit::unit_type_with_system<::mitama::systems::si::system>;
 
 using milliampere_t = scaled_unit_t<ampere_t, std::milli>;
 using microampere_t = scaled_unit_t<ampere_t, std::micro>;
