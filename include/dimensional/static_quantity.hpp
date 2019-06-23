@@ -144,23 +144,28 @@ namespace mitama {
 }
 
 namespace mitama::mitamagic {
-    template < std::size_t B, std::size_t E >
-	struct Exponent_ : std::integral_constant<std::size_t, B*Exponent_<B,E-1>::value> {};
+  template < std::size_t, class > struct Exp10;
+  template < std::size_t E, std::size_t... I >
+	struct Exp10<E, std::index_sequence<I...>> : std::integral_constant<std::size_t, E * (1 * ... * ((void)I,10))> {};
 	
-	template < std::size_t B >
-	struct Exponent_<B, 1> : std::integral_constant<std::size_t, B> {};
-	
-	
-	template < std::size_t Head, std::size_t... Digits >
+	template < char Head, char... Digits >
 	struct to_decimal
-		: std::integral_constant<std::size_t, (Head-'0')*Exponent_<10, sizeof...(Digits)>::value + to_decimal<Digits...>::value > {};
+		: std::integral_constant<
+        std::size_t,
+        Exp10<(Head - '0'), std::make_index_sequence<sizeof...(Digits)>>::value
+      + to_decimal<Digits...>::value >
+  {
+    static_assert(
+      ( ('0' <= Head && Head <= '9') && ... && ('0' <= Digits && Digits <= '9') ),
+      "Error");
+  };
 	
-	template < std::size_t Head >
+	template < char Head >
 	struct to_decimal<Head>
 		: std::integral_constant<std::size_t, Head-'0'> {};
 
-    template < std::size_t... Digits >
-    inline constexpr std::size_t to_decimal_v = to_decimal<Digits...>::value;
+  template < char... Digits >
+  inline constexpr std::size_t to_decimal_v = to_decimal<Digits...>::value;
 }
 
 #include <dimensional/systems/si/all.hpp>
