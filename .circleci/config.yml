@@ -13,26 +13,7 @@ executors:
       - image: enumack/mitama-env:<< parameters.compiler >>
 
 jobs:
-  wandbox-test:
-    description: Testing the library using wandbox
-    parameters:
-      compiler:
-        description: "compiler-version"
-        default: "clang-head"
-        type: string
-    executor: default
-    steps:
-      - checkout
-      - run: curl -sLJO https://github.com/LoliGothick/cbt/releases/download/v0.5.2/cbt_linux_amd64.tar
-      - run: tar -vzxf ./cbt_linux_amd64.tar
-      - run: chmod +x ./cbt
-      - run: ./cbt wandbox cpp src/overview.cpp --compiler=<< parameters.compiler >> --std=c++17 --boost=1.65.0 --sprout --warning --pedantic=errors
-      - store_artifacts:
-          path: /results/permlink
-          destination: raw-test-output
-      - store_artifacts:
-          path: /results
-  full-test:
+  test:
     description: Testing the library using Catch2
     parameters:
       compiler:
@@ -45,30 +26,30 @@ jobs:
     steps:
       - checkout
       - run: apt upgrade -y && apt update -y && apt install -y git
-      - run: git submodule sync && git submodule update --init --recursive
+      - run: git submodule sync && git submodule update --init --recursive --remote
       - run: chmod +x ./mitama_build.sh
       - run: ./mitama_build.sh
 
 workflows:
   build:
     jobs:
-      - full-test:
+      - test:
           compiler: clang-8.0.0
-      - full-test:
+      - test:
           compiler: clang-7.1.0
-      - full-test:
+      - test:
           compiler: clang-7.0.1
-      - full-test:
+      - test:
           compiler: clang-7.0.0
-      - full-test:
+      - test:
           compiler: clang-6.0.1
-      - full-test:
+      - test:
           compiler: clang-6.0.0
-      - full-test:
+      - test:
           compiler: gcc-9.1
-      - full-test:
+      - test:
           compiler: gcc-8.3
-      - full-test:
+      - test:
           compiler: gcc-8.2
-      - full-test:
+      - test:
           compiler: gcc-8.1
