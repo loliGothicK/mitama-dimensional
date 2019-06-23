@@ -4,8 +4,8 @@ TEMPLATE_TEST_CASE("meter_t division",
                    ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
 {
     using namespace Catch::literals;
-    quantity<meter_t, double> a = 2;
-    quantity<TestType, double> b = 10;
+    quantity_t<meter_t, double> a = 2;
+    quantity_t<TestType, double> b = 10;
     REQUIRE( (a / b).value() == 0.2_a );
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a/b)>,
@@ -20,8 +20,8 @@ TEMPLATE_TEST_CASE("ampere_t division",
                    meter_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
 {
     using namespace Catch::literals;
-    quantity<ampere_t, double> a = 2;
-    quantity<TestType, double> b = 10;
+    quantity_t<ampere_t, double> a = 2;
+    quantity_t<TestType, double> b = 10;
     REQUIRE( (a / b).value() == 0.2_a );
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a/b)>,
@@ -36,8 +36,8 @@ TEMPLATE_TEST_CASE("candela_t division",
                    meter_t, ampere_t, kelvin_t, kilogram_t, mol_t, second_t)
 {
     using namespace Catch::literals;
-    quantity<candela_t, double> a = 2;
-    quantity<TestType, double> b = 10;
+    quantity_t<candela_t, double> a = 2;
+    quantity_t<TestType, double> b = 10;
     REQUIRE( (a / b).value() == 0.2_a );
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a/b)>,
@@ -52,8 +52,8 @@ TEMPLATE_TEST_CASE("kelvin_t division",
                    meter_t, ampere_t, candela_t, kilogram_t, mol_t, second_t)
 {
     using namespace Catch::literals;
-    quantity<kelvin_t, double> a = 2;
-    quantity<TestType, double> b = 10;
+    quantity_t<kelvin_t, double> a = 2;
+    quantity_t<TestType, double> b = 10;
     REQUIRE( (a / b).value() == 0.2_a );
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a/b)>,
@@ -68,8 +68,8 @@ TEMPLATE_TEST_CASE("kilogram_t division",
                    meter_t, ampere_t, candela_t, kelvin_t, mol_t, second_t)
 {
     using namespace Catch::literals;
-    quantity<kilogram_t, double> a = 2;
-    quantity<TestType, double> b = 10;
+    quantity_t<kilogram_t, double> a = 2;
+    quantity_t<TestType, double> b = 10;
     REQUIRE( (a / b).value() == 0.2_a );
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a/b)>,
@@ -84,8 +84,8 @@ TEMPLATE_TEST_CASE("mol_t division",
                    meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, second_t)
 {
     using namespace Catch::literals;
-    quantity<mol_t, double> a = 2;
-    quantity<TestType, double> b = 10;
+    quantity_t<mol_t, double> a = 2;
+    quantity_t<TestType, double> b = 10;
     REQUIRE( (a / b).value() == 0.2_a );
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a/b)>,
@@ -100,8 +100,8 @@ TEMPLATE_TEST_CASE("second_t division",
                    meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t)
 {
     using namespace Catch::literals;
-    quantity<second_t, double> a = 2;
-    quantity<TestType, double> b = 10;
+    quantity_t<second_t, double> a = 2;
+    quantity_t<TestType, double> b = 10;
     REQUIRE( (a / b).value() == 0.2_a );
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a/b)>,

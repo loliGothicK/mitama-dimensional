@@ -25,7 +25,7 @@ auto cbrt(quantity_t<Synonym<dimensional_t<Units...>>, T, S> const& quantity) {
 
 template < class... Quantities,
     std::enable_if_t<(sizeof...(Quantities) == 2 || sizeof...(Quantities) == 3)
-                  && std::conjunction_v<::mitama::is_same_dimensional<Quantities, ::mitama::quantity<::mitama::systems::si::meter_t>>...>,
+                  && std::conjunction_v<::mitama::is_same_dimensional<Quantities, ::mitama::quantity_t<::mitama::systems::si::meter_t>>...>,
                 bool> = false>
 auto hypot(Quantities... quantities) {
     return ::mitama::common_quantity_t<std::decay_t<Quantities>...>{ std::hypot(static_cast<::mitama::common_quantity_t<std::decay_t<Quantities>...>>(quantities).value()...) };

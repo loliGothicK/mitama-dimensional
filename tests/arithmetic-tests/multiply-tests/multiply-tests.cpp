@@ -3,8 +3,8 @@ TEMPLATE_TEST_CASE("meter_t multiply",
                    "[quantity][arithmetic]",
                    ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
 {
-    quantity<meter_t, int> a = 2;
-    quantity<TestType, int> b = 3;
+    quantity_t<meter_t, int> a = 2;
+    quantity_t<TestType, int> b = 3;
     REQUIRE( (a * b).value() == 6 );
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a*b)>,
@@ -18,8 +18,8 @@ TEMPLATE_TEST_CASE("ampere_t multiply",
                    "[quantity][arithmetic]",
                    meter_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
 {
-    quantity<ampere_t, int> a = 2;
-    quantity<TestType, int> b = 3;
+    quantity_t<ampere_t, int> a = 2;
+    quantity_t<TestType, int> b = 3;
     REQUIRE( (a * b).value() == 6 );
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a*b)>,
@@ -33,8 +33,8 @@ TEMPLATE_TEST_CASE("candela_t multiply",
                    "[quantity][arithmetic]",
                    meter_t, ampere_t, kelvin_t, kilogram_t, mol_t, second_t)
 {
-    quantity<candela_t, int> a = 2;
-    quantity<TestType, int> b = 3;
+    quantity_t<candela_t, int> a = 2;
+    quantity_t<TestType, int> b = 3;
     REQUIRE( (a * b).value() == 6 );
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a*b)>,
@@ -48,8 +48,8 @@ TEMPLATE_TEST_CASE("kelvin_t multiply",
                    "[quantity][arithmetic]",
                    meter_t, ampere_t, candela_t, kilogram_t, mol_t, second_t)
 {
-    quantity<kelvin_t, int> a = 2;
-    quantity<TestType, int> b = 3;
+    quantity_t<kelvin_t, int> a = 2;
+    quantity_t<TestType, int> b = 3;
     REQUIRE( (a * b).value() == 6 );
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a*b)>,
@@ -63,8 +63,8 @@ TEMPLATE_TEST_CASE("kilogram_t multiply",
                    "[quantity][arithmetic]",
                    meter_t, ampere_t, candela_t, kelvin_t, mol_t, second_t)
 {
-    quantity<kilogram_t, int> a = 2;
-    quantity<TestType, int> b = 3;
+    quantity_t<kilogram_t, int> a = 2;
+    quantity_t<TestType, int> b = 3;
     REQUIRE( (a * b).value() == 6 );
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a*b)>,
@@ -78,8 +78,8 @@ TEMPLATE_TEST_CASE("mol_t multiply",
                    "[quantity][arithmetic]",
                    meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, second_t)
 {
-    quantity<mol_t, int> a = 2;
-    quantity<TestType, int> b = 3;
+    quantity_t<mol_t, int> a = 2;
+    quantity_t<TestType, int> b = 3;
     REQUIRE( (a * b).value() == 6 );
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a*b)>,
@@ -93,8 +93,8 @@ TEMPLATE_TEST_CASE("second_t multiply",
                    "[quantity][arithmetic]",
                    meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t)
 {
-    quantity<second_t, int> a = 2;
-    quantity<TestType, int> b = 3;
+    quantity_t<second_t, int> a = 2;
+    quantity_t<TestType, int> b = 3;
     REQUIRE( (a * b).value() == 6 );
     REQUIRE(
         std::is_same_v<std::decay_t<decltype(a*b)>,
