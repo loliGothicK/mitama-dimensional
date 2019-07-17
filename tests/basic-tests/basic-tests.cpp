@@ -36,8 +36,8 @@ TEMPLATE_TEST_CASE("validates",
             return mitama::success(v);
     };
 
-    REQUIRE( (1|TestType{}).validate(validator) == success(1|TestType{}) );
-    REQUIRE( (-1|TestType{}).validate(validator) == failure(-1) );
+    REQUIRE( (1|TestType{}).validate(validator) == mitama::success(1|TestType{}) );
+    REQUIRE( (-1|TestType{}).validate(validator) == mitama::failure(-1) );
 }
 
 #include <dimensional/systems/si/quantity.hpp>
