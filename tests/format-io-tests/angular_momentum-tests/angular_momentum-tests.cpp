@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/angular_momentum.hpp>
+#include <mitama/dimensional/systems/si/derived_units/angular_momentum.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("angular_momentum format test", "[quantity][abbreviation]") {

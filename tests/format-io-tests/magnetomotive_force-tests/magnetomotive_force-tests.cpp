@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/magnetomotive_force.hpp>
+#include <mitama/dimensional/systems/si/derived_units/magnetomotive_force.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("magnetomotive_force format test", "[quantity][abbreviation]") {

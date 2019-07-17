@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/heat_capacity.hpp>
+#include <mitama/dimensional/systems/si/derived_units/heat_capacity.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("heat_capacity format test", "[quantity][abbreviation]") {

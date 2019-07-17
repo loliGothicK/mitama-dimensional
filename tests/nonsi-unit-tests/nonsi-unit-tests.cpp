@@ -1,13 +1,13 @@
 // main is provided in tests-main.cpp
 #include <catch2/catch.hpp>
-#include <dimensional/quantity.hpp>
-#include <dimensional/systems/si/all.hpp>
-#include <dimensional/systems/nonsi/degree_angle.hpp>
-#include <dimensional/systems/si/prefix.hpp>
+#include <mitama/dimensional/quantity.hpp>
+#include <mitama/dimensional/systems/si/all.hpp>
+#include <mitama/dimensional/systems/nonsi/degree_angle.hpp>
+#include <mitama/dimensional/systems/si/prefix.hpp>
 #include <random>
 #include <test_util.hpp>
-#include <dimensional/expr.hpp>
-#include <dimensional/arithmetic.hpp>
+#include <mitama/dimensional/expr.hpp>
+#include <mitama/dimensional/arithmetic.hpp>
 
 using namespace mitama;
 namespace si = mitama::systems::si;
@@ -16,10 +16,10 @@ TEST_CASE("degree angle and radian",
           "[quantity][systems/nonsi][degree_angle]")
 {
     using namespace Catch::literals;
-    quantity<nsi::degree_angle> s1 = 90;
-    quantity<si::angle> c = s1;
+    quantity_t<nsi::degree_angle_t> s1 = 90;
+    quantity_t<si::radian_t> c = s1;
     REQUIRE(c.value() == 1.570796_a);
-    quantity<nsi::degree_angle> s2 = c;
+    quantity_t<nsi::degree_angle_t> s2 = c;
     REQUIRE(s2.value() == 90._a);
 }
 
@@ -32,26 +32,26 @@ TEST_CASE("degree amgle and radian generate tests",
         test_util::RandomGenerator<double>::uniform( -360, 360 )
             .take(1000)
             .required([](auto value){
-                quantity<nsi::degree_angle> c = value;
-                quantity<si::angle> s = c;
+                quantity_t<nsi::degree_angle_t> c = value;
+                quantity_t<si::radian_t> s = c;
                 return c.value() / s.value() == 57.295779_a;
             }));
     REQUIRE(
         test_util::RandomGenerator<double>::uniform( -6.283185, 6.283185)
             .take(1)
             .required([](auto value){
-                quantity<si::angle> s = value;
-                quantity<nsi::degree_angle> c = s;
+                quantity_t<si::radian_t> s = value;
+                quantity_t<nsi::degree_angle_t> c = s;
                 return c.value() / s.value() == 57.295779_a;
             }));
 }
 
-#include <dimensional/systems/information/byte.hpp>
-#include <dimensional/systems/information/prefix.hpp>
-#include <dimensional/systems/information/shannon.hpp>
-#include <dimensional/systems/information/nat.hpp>
-#include <dimensional/systems/information/hartley.hpp>
-#include <dimensional/systems/information/conversions.hpp>
+#include <mitama/dimensional/systems/information/byte.hpp>
+#include <mitama/dimensional/systems/information/prefix.hpp>
+#include <mitama/dimensional/systems/information/shannon.hpp>
+#include <mitama/dimensional/systems/information/nat.hpp>
+#include <mitama/dimensional/systems/information/hartley.hpp>
+#include <mitama/dimensional/systems/information/conversions.hpp>
 #include <boost/format.hpp>
 
 TEST_CASE("information format", "[info]") {

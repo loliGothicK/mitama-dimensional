@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/magnetic_susceptibility.hpp>
+#include <mitama/dimensional/systems/si/derived_units/magnetic_susceptibility.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("magnetic_susceptibility format test", "[quantity][abbreviation]") {

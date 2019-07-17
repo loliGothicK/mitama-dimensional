@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/angular_velocity.hpp>
+#include <mitama/dimensional/systems/si/derived_units/angular_velocity.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("angular_velocity format test", "[quantity][abbreviation]") {

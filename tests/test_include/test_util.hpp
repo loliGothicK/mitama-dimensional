@@ -5,7 +5,7 @@
 #include <utility>
 #include <tuple>
 #include <random>
-#include <Result.hpp>
+#include <mitama/result/Result.hpp>
 
 #define IS_INVALID_EXPR(...)                                     \
   IS_INVALID_EXPR_IMPL1(__VA_ARGS__)                             \

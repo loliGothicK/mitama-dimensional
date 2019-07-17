@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/diffusion_coefficient.hpp>
+#include <mitama/dimensional/systems/si/derived_units/diffusion_coefficient.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("diffusion_coefficient format test", "[quantity][abbreviation]") {

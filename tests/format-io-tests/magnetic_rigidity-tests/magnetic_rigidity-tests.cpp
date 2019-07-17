@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/magnetic_rigidity.hpp>
+#include <mitama/dimensional/systems/si/derived_units/magnetic_rigidity.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("magnetic_rigidity format test", "[quantity][abbreviation]") {

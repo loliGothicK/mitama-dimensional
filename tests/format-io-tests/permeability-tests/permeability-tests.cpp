@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/permeability.hpp>
+#include <mitama/dimensional/systems/si/derived_units/permeability.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("permeability format test", "[quantity][abbreviation]") {

@@ -15,6 +15,11 @@ include_directories(
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/catch2/single_include
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/tests/test_include
   )
+
+if(MSVC)
+    INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
+endif()
+
 enable_testing()
 
 add_subdirectory(tests/arithmetic-tests)

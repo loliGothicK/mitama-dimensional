@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/absorbed_dose_rate.hpp>
+#include <mitama/dimensional/systems/si/derived_units/absorbed_dose_rate.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("absorbed_dose_rate format test", "[quantity][abbreviation]") {

@@ -1,11 +1,11 @@
 // main is provided in tests-main.cpp
 #include <catch2/catch.hpp>
-#include <dimensional/quantity.hpp>
-#include <dimensional/systems/si/all.hpp>
-#include <dimensional/systems/si/prefix.hpp>
-#include <dimensional/arithmetic.hpp>
-#include <dimensional/delta.hpp>
-#include <dimensional/systems/nonsi/degree_celsius.hpp>
+#include <mitama/dimensional/quantity.hpp>
+#include <mitama/dimensional/systems/si/all.hpp>
+#include <mitama/dimensional/systems/si/prefix.hpp>
+#include <mitama/dimensional/arithmetic.hpp>
+#include <mitama/dimensional/delta.hpp>
+#include <mitama/dimensional/systems/nonsi/degree_celsius.hpp>
 #include <test_util.hpp>
 
 using mitama::delta, mitama::systems::si::meter_t, mitama::systems::si::ampere_t, mitama::systems::si::candela_t, mitama::systems::si::kelvin_t, mitama::systems::si::kilogram_t, mitama::systems::si::mol_t, mitama::systems::si::second_t;
@@ -25,7 +25,8 @@ TEMPLATE_TEST_CASE("delta addition",
     delta d = (2|TestType{}) - (1|TestType{});
     REQUIRE(d + (2|TestType{}) == (3|TestType{}));
     REQUIRE((2|TestType{}) + d == (3|TestType{}));
-    REQUIRE(d + d == (2|TestType{}));
+    auto res = d + d;
+    REQUIRE(res == (2|TestType{}));
 }
 
 TEMPLATE_TEST_CASE("delta subtraction",

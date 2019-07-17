@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/action.hpp>
+#include <mitama/dimensional/systems/si/derived_units/action.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("action format test", "[quantity][abbreviation]") {

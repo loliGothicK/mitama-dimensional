@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/power_density.hpp>
+#include <mitama/dimensional/systems/si/derived_units/power_density.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("power_density format test", "[quantity][abbreviation]") {

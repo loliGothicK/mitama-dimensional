@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/conductance.hpp>
+#include <mitama/dimensional/systems/si/derived_units/conductance.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("conductance_t format test", "[quantity][abbreviation]") {

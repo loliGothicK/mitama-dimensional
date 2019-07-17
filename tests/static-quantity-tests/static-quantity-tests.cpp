@@ -1,8 +1,8 @@
 // main is provided in tests-main.cpp
-#include <dimensional/quantity.hpp>
-#include <dimensional/static_quantity.hpp>
-#include <dimensional/systems/si/meter.hpp>
-#include <dimensional/io.hpp>
+#include <mitama/dimensional/quantity.hpp>
+#include <mitama/dimensional/static_quantity.hpp>
+#include <mitama/dimensional/systems/si/base_units/meter.hpp>
+#include <mitama/dimensional/io.hpp>
 #include <iostream>
 #include <catch2/catch.hpp>
 

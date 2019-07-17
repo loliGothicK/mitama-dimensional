@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/torque.hpp>
+#include <mitama/dimensional/systems/si/derived_units/torque.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("torque format test", "[quantity][abbreviation]") {

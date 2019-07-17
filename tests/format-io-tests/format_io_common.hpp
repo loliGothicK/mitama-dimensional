@@ -1,11 +1,11 @@
 #pragma once
 #include <boost/format.hpp>
 #include <catch2/catch.hpp>
-#include <dimensional/arithmetic.hpp>
-#include <dimensional/io.hpp>
-#include <dimensional/systems/si/prefix.hpp>
-#include <dimensional/quantity.hpp>
-#include <dimensional/systems/si/all.hpp>
+#include <mitama/dimensional/arithmetic.hpp>
+#include <mitama/dimensional/io.hpp>
+#include <mitama/dimensional/systems/si/prefix.hpp>
+#include <mitama/dimensional/quantity.hpp>
+#include <mitama/dimensional/systems/si/all.hpp>
 #include <test_util.hpp>
 
 using namespace mitama;

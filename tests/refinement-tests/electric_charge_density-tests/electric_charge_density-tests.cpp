@@ -1,8 +1,8 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/all.hpp>
-#include <dimensional/systems/si/derived_units/electric_charge_density.hpp>
-#include <dimensional/refinement.hpp>
+#include <mitama/dimensional/systems/si/all.hpp>
+#include <mitama/dimensional/systems/si/derived_units/electric_charge_density.hpp>
+#include <mitama/dimensional/refinement.hpp>
 #include <test_util.hpp>
 
 using namespace mitama;

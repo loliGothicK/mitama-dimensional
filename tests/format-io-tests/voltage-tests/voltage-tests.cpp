@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/voltage.hpp>
+#include <mitama/dimensional/systems/si/derived_units/voltage.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("voltage_t format test", "[quantity][abbreviation]") {

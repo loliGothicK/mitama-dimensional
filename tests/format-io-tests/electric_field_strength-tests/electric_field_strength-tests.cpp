@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/electric_field_strength.hpp>
+#include <mitama/dimensional/systems/si/derived_units/electric_field_strength.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("electric_field_strength format test", "[quantity][abbreviation]") {

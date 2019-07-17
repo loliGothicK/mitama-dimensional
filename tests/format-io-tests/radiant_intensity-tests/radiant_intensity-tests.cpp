@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/radiant_intensity.hpp>
+#include <mitama/dimensional/systems/si/derived_units/radiant_intensity.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("radiant_intensity format test", "[quantity][abbreviation]") {

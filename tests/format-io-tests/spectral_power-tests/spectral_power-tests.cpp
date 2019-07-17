@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/spectral_power.hpp>
+#include <mitama/dimensional/systems/si/derived_units/spectral_power.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("spectral_power format test", "[quantity][abbreviation]") {
