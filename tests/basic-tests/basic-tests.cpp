@@ -29,15 +29,15 @@ TEMPLATE_TEST_CASE("validates",
                    "[quantity][validate]",
                    second_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t)
 {
-    auto validator = [](auto v) -> mitama::Result<quantity_t<TestType, int>, int> {
+    auto validator = [](auto v) -> mitama::result<quantity_t<TestType, int>, int> {
         if (v.value() < 0)
-            return mitama::Err(v.value());
+            return mitama::failure(v.value());
         else
-            return mitama::Ok(v);
+            return mitama::success(v);
     };
 
-    REQUIRE( (1|TestType{}).validate(validator) == Ok(1|TestType{}) );
-    REQUIRE( (-1|TestType{}).validate(validator) == Err(-1) );
+    REQUIRE( (1|TestType{}).validate(validator) == success(1|TestType{}) );
+    REQUIRE( (-1|TestType{}).validate(validator) == failure(-1) );
 }
 
 #include <dimensional/systems/si/quantity.hpp>

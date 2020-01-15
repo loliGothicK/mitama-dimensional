@@ -232,24 +232,18 @@ public:
     return l * this->value() != r * o.value();
   }
 
-  template <
-      class D, class U,
-      std::enable_if_t<
-        std::conjunction_v<
-          is_complete_type<::mitama::converter<quantity_t<D, U>, quantity_t>>,
-          is_less_comparable_with<T, U>>
-        , bool> = false>
+  template <class D, class U,
+    std::enable_if_t<
+      is_complete_type_v<::mitama::converter<quantity_t<D, U>, quantity_t>>,
+  bool> = false>
   constexpr bool operator<(quantity_t<D, U> const &o) const {
     return this->value_ < ::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o);
   }
 
-  template <
-      class D, class U,
-      std::enable_if_t<
-        std::conjunction_v<
-          is_same_dimensional<quantity_t, quantity_t<D, U>>,
-          is_less_comparable_with<T, U>>
-        , bool> = false>
+  template <class D, class U,
+    std::enable_if_t<
+      is_same_dimensional<quantity_t, quantity_t<D, U>>::value,
+  bool> = false>
   constexpr bool operator<(quantity_t<D, U> const &o) const {
     auto [l, r] = mitamagic::scaler<dimension_type, typename quantity_t<D, U>::dimension_type>::template value<std::common_type_t<T, U>>();
     return l * this->value() < r * o.value();
