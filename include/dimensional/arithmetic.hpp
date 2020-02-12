@@ -14,7 +14,7 @@ template <class L, class R,
           std::enable_if_t<
             std::conjunction_v<
                 is_same_dimensional<std::decay_t<L>, std::decay_t<R>>,
-                is_addable_with<typename std::decay_t<L>::value_type, typename std::decay_t<R>::value_type>>
+                dimensional_ext::is_addable_with<typename std::decay_t<L>::value_type, typename std::decay_t<R>::value_type>>
         , bool> = false>
 constexpr auto
 operator+(L &&lhs, R &&rhs)
@@ -37,7 +37,7 @@ template <class L, class R,
           std::enable_if_t<
             std::conjunction_v<
                 is_same_dimensional<std::decay_t<L>, std::decay_t<R>>,
-                is_subtractible_with<typename std::decay_t<L>::value_type, typename std::decay_t<R>::value_type>>
+                dimensional_ext::is_subtractible_with<typename std::decay_t<L>::value_type, typename std::decay_t<R>::value_type>>
         , bool> = false>
 constexpr auto
 operator-(L &&lhs, R &&rhs)
@@ -60,7 +60,7 @@ template <class L, class R,
           std::enable_if_t<std::conjunction_v<
             is_quantity<std::decay_t<L>>,
             is_quantity<std::decay_t<R>>,
-            is_multipliable_with<typename std::decay_t<L>::value_type, typename std::decay_t<R>::value_type>>
+            dimensional_ext::is_multipliable_with<typename std::decay_t<L>::value_type, typename std::decay_t<R>::value_type>>
         , bool> = false>
 constexpr auto
 operator*(L &&lhs, R &&rhs)
@@ -82,7 +82,7 @@ template <class L,
           std::enable_if_t<
             std::conjunction_v<
                 is_quantity<std::decay_t<L>>,
-                is_multipliable<typename std::decay_t<L>::value_type>>
+                dimensional_ext::is_multipliable<typename std::decay_t<L>::value_type>>
         , bool> = false>
 constexpr auto
 operator*(L &&lhs, typename std::decay_t<L>::value_type const& rhs)
@@ -94,7 +94,7 @@ template <class R,
           std::enable_if_t<
             std::conjunction_v<
                 is_quantity<std::decay_t<R>>,
-                is_multipliable<typename std::decay_t<R>::value_type>>
+                dimensional_ext::is_multipliable<typename std::decay_t<R>::value_type>>
         , bool> = false>
 constexpr auto
 operator*(typename std::decay_t<R>::value_type const& lhs, R&& rhs)
@@ -106,7 +106,7 @@ template <class L, class R,
           std::enable_if_t<std::conjunction_v<
             is_quantity<std::decay_t<L>>,
             is_quantity<std::decay_t<R>>,
-            is_dividable_with<typename std::decay_t<L>::value_type, typename std::decay_t<R>::value_type>>
+            dimensional_ext::is_dividable_with<typename std::decay_t<L>::value_type, typename std::decay_t<R>::value_type>>
         , bool> = false>
 constexpr auto
 operator/(L &&lhs, R &&rhs)
@@ -123,7 +123,7 @@ template <class L,
           std::enable_if_t<
             std::conjunction_v<
                 is_quantity<std::decay_t<L>>,
-                is_dividable<typename std::decay_t<L>::value_type>>
+                dimensional_ext::is_dividable<typename std::decay_t<L>::value_type>>
         , bool> = false>
 constexpr auto
 operator/(L &&lhs, typename std::decay_t<L>::value_type const& rhs)
@@ -135,7 +135,7 @@ template <class R,
           std::enable_if_t<
             std::conjunction_v<
                 is_quantity<std::decay_t<R>>,
-                is_dividable<typename std::decay_t<R>::value_type>>
+                dimensional_ext::is_dividable<typename std::decay_t<R>::value_type>>
         , bool> = false>
 constexpr auto
 operator/(typename std::decay_t<R>::value_type const& lhs, R&& rhs)

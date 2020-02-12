@@ -24,7 +24,7 @@ struct lexical_converter<quantity_t<Synonym<dimensional_t<Head, Tail...>>, T>>
 {
   template < class Quantity >
   static constexpr auto convert(Quantity&& value) {
-    if constexpr (is_complete_type_v<converter<std::decay_t<Quantity>, quantity_t<Synonym<dimensional_t<Head>>, T>>>)
+    if constexpr (dimensional_ext::is_complete_type_v<converter<std::decay_t<Quantity>, quantity_t<Synonym<dimensional_t<Head>>, T>>>)
     {
       return quantity_t<Synonym<dimensional_t<Head>>, T>{
           converter<std::decay_t<Quantity>, quantity_t<Synonym<dimensional_t<Head>>, T>>::convert(value)};
@@ -41,7 +41,7 @@ struct lexical_converter<quantity_t<Synonym<dimensional_t<Head>>, T>>
 {
   template < class Quantity >
   static constexpr auto convert(Quantity&& value) {
-    if constexpr (is_complete_type_v<converter<std::decay_t<Quantity>, quantity_t<Synonym<dimensional_t<Head>>, T>>>)
+    if constexpr (dimensional_ext::is_complete_type_v<converter<std::decay_t<Quantity>, quantity_t<Synonym<dimensional_t<Head>>, T>>>)
     {
       return quantity_t<Synonym<dimensional_t<Head>>, T>{
           converter<std::decay_t<Quantity>, quantity_t<Synonym<dimensional_t<Head>>, T>>::convert(value)};

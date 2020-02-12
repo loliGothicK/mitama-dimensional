@@ -114,10 +114,10 @@ struct refinement_type<
 };
 
 template <class... Requires>
-inline constexpr refinement_type_for<void, identity, Requires...> accepts_for{};
+inline constexpr refinement_type_for<void, dimensional_ext::identity, Requires...> accepts_for{};
 
 template <class Requires>
-inline constexpr refinement_type<void, identity, Requires> accepts{};
+inline constexpr refinement_type<void, dimensional_ext::identity, Requires> accepts{};
 
 template <class... Requires>
 inline constexpr refinement_type_for<void, std::negation, Requires...> rejects_for{};
@@ -204,10 +204,10 @@ struct partial_refinement_type<
 };
 
 template <class... Requires>
-inline constexpr partial_refinement_type_for<void, identity, Requires...> partial_accepts_for{};
+inline constexpr partial_refinement_type_for<void, dimensional_ext::identity, Requires...> partial_accepts_for{};
 
 template <class Requires>
-inline constexpr partial_refinement_type<void, identity, Requires> partial_accepts{};
+inline constexpr partial_refinement_type<void, dimensional_ext::identity, Requires> partial_accepts{};
 
 template <class... Requires>
 inline constexpr partial_refinement_type_for<void, std::negation, Requires...> partial_rejects_for{};

@@ -3,7 +3,7 @@
 #include <type_traits>
 #include <utility>
 
-namespace mitama {
+namespace mitama::dimensional_ext {
 
 template < class T > struct identity: T { using type = T; };
 template < class T > using identity_t = typename identity<T>::type;
@@ -16,6 +16,15 @@ template <class T>
 struct is_complete_type<T, std::void_t<decltype(sizeof(T))>> : std::true_type {};
 
 template <class T> inline constexpr bool is_complete_type_v = is_complete_type<T>::value;
+
+template < class, class, class = void >
+struct is_less_comparable_with: std::false_type {};
+
+template < class T, class U >
+struct is_less_comparable_with<T, U, std::void_t<decltype(std::declval<T const&>() < std::declval<U const&>())>>: std::true_type {};
+
+template < class T >
+using is_less_comparable = is_less_comparable_with<T, T>;
 
 template < class, class, class = void >
 struct is_greater_comparable_with: std::false_type {};
