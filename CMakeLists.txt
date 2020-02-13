@@ -4,10 +4,7 @@ set(CMAKE_CXX_STANDARD 17) # ...C++17
 set(CMAKE_CXX_STANDARD_REQUIRED ON) #...is required...
 set(CMAKE_CXX_EXTENSIONS OFF) #...without compiler extensions like gnu++17
 find_package(Threads REQUIRED)
-find_package(Boost 1.62.0 REQUIRED
-  COMPONENTS
-  stacktrace_addr2line
-)
+find_package(Boost 1.62.0 REQUIRED)
 ## Set our project name
 project(mitama-dimensional)
 
