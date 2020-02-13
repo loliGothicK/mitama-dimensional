@@ -86,7 +86,7 @@ struct si_formatter<
 namespace _detail {
 template <template <class> class Synonym, class T, class Head, class... Tail, class S>
 std::string
-abbreviation(quantity_t<Synonym<dimensional_t<Head, Tail...>>, T, S> const &quantity) {
+abbreviation(quantity_t<Synonym<dimensional_t<Head, Tail...>>, T, S> const &) {
   using namespace std::literals;
   return "[" + si_formatter<Head>::format() +
          ((" "s + si_formatter<Tail>::format()) + ... + "]");
@@ -94,7 +94,7 @@ abbreviation(quantity_t<Synonym<dimensional_t<Head, Tail...>>, T, S> const &quan
 
 template <template <class> class Synonym, class T, class S>
 std::string
-abbreviation(quantity_t<Synonym<dimensional_t<>>, T, S> const &quantity) {
+abbreviation(quantity_t<Synonym<dimensional_t<>>, T, S> const &) {
   return "[dimensionless]";
 }
 }
