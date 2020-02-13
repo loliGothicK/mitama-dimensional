@@ -15,7 +15,7 @@ inline namespace electric_current_literals {
     { return mitama::systems::si::quantity_t<mitama::systems::si::milliampere_t, long double>{value}; }
 
     inline constexpr auto
-    operator"" _\u03BCA(long double value)
+    operator"" _uA(long double value)
     { return mitama::systems::si::quantity_t<mitama::systems::si::microampere_t, long double>{value}; }
 
     inline constexpr auto

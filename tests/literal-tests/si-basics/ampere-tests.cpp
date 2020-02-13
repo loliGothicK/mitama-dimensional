@@ -34,7 +34,7 @@ TEST_CASE("micro-ampere literals",
 {
     using namespace mitama::literals;
     REQUIRE(std::is_same_v<
-        decltype(1.0_μA),
+        decltype(1.0_uA),
         si::quantity_t<si::microampere_t, long double>
     >);
 }
