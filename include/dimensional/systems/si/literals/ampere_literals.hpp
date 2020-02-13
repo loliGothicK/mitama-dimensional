@@ -8,32 +8,27 @@ inline namespace si_literals {
 inline namespace electric_current_literals {
     inline constexpr auto
     operator"" _A(long double value)
-    -> mitama::systems::si::quantity_t<mitama::systems::si::ampere_t, long double>
-    { return {value}; }
+    { return mitama::systems::si::quantity_t<mitama::systems::si::ampere_t, long double>{value}; }
 
     inline constexpr auto
     operator"" _mA(long double value)
-    -> mitama::systems::si::quantity_t<mitama::systems::si::milliampere_t, long double>
-    { return {value}; }
+    { return mitama::systems::si::quantity_t<mitama::systems::si::milliampere_t, long double>{value}; }
 
     inline constexpr auto
     operator"" _\u03BCA(long double value)
-    -> mitama::systems::si::quantity_t<mitama::systems::si::microampere_t, long double>
-    { return {value}; }
+    { return mitama::systems::si::quantity_t<mitama::systems::si::microampere_t, long double>{value}; }
 
     inline constexpr auto
     operator"" _nA(long double value)
-    -> mitama::systems::si::quantity_t<mitama::systems::si::nanoampere_t, long double>
-    { return {value}; }
+    { return mitama::systems::si::quantity_t<mitama::systems::si::nanoampere_t, long double>{value}; }
 
     inline constexpr auto
     operator"" _kA(long double value)
-    -> mitama::systems::si::quantity_t<mitama::systems::si::kiloampere_t, long double>
-    { return {value}; }
+    { return mitama::systems::si::quantity_t<mitama::systems::si::kiloampere_t, long double>{value}; }
 
+    inline constexpr auto
     operator"" _MA(long double value)
-    -> mitama::systems::si::quantity_t<mitama::systems::si::megaampere_t, long double>
-    { return {value}; }
+    { return mitama::systems::si::quantity_t<mitama::systems::si::megaampere_t, long double>{value}; }
 
 }}}}
 #endif

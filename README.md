@@ -18,7 +18,6 @@ Please refer to the [document](https://loligothick.github.io/mitama-dimensional/
 - pre defined SI derived units
 - **USER DEFINED DIMENSION**
 - formatted output
-- dimensional refinement
 
 ## Examples
 
@@ -98,31 +97,6 @@ int main() {
     mitama::quantity_t area = width * height;
 }
 ```
-
-- [dimensional refinement](https://loligothick.github.io/mitama-dimensional/UserManual/dimensional-refinement/)
-  
-```cpp
-#include <dimensional/quantity.hpp>
-#include <dimensional/arithmetic.hpp>
-#include <dimensional/systems/si/all.hpp>
-#include <dimensional/systems/si/derived_units/area.hpp>
-#include <dimensional/refinement.hpp>
-
-int main() {
-    namespace si = mitama::systems::si;
-    using mitama::accepts_for, mitama::sym::L;
-
-    // width = 2 m
-    mitama::quantity_t<si::meter_t, int> width = 2;
-    // height = 3 mm
-    mitama::quantity_t<si::millimeter_t, int> height = 3;
-    // area = 6000 mm^2
-    mitama::quantity_t area = accepts_for<L<2>> |= width * height;
-    //                        ^~~~~~~~~~~~~~~~
-    //                        refine for L^2
-}
-```
-
 
 - [user defined dimension example](https://loligothick.github.io/mitama-dimensional/UserManual/user-defined-dimension/)
 
