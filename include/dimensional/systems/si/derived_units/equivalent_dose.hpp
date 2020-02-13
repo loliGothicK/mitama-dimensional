@@ -3,13 +3,13 @@
 #include <dimensional/systems/si/base_dimension/equivalent_dose.hpp>
 #include <dimensional/quantity.hpp>
 #include <dimensional/io.hpp>
-#include <dimensional/refinement.hpp>
+
 
 namespace mitama::systems::si {
 using sievert_base_unit = base_units<equivalent_dose, 0>;
 using sievert_t = typename sievert_base_unit::unit_type;
 inline constexpr sievert_t sievert{};
-using equivalent_dose_r = make_refinement_symbol_t<sievert_t>;
+
 }
 
 namespace mitama {

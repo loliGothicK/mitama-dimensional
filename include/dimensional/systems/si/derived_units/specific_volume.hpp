@@ -3,7 +3,7 @@
 #include <dimensional/systems/si/all.hpp>
 #include <dimensional/quantity.hpp>
 #include <dimensional/io.hpp>
-#include <dimensional/refinement.hpp>
+
 
 
 namespace mitama::systems::si {
@@ -11,7 +11,7 @@ template<class> struct specific_volume_synonym{};
 using specific_volume_t = make_synonym_t<specific_volume_synonym, decltype(meter<3> / kilogram<>)>;
 
 inline constexpr specific_volume_t specific_volume{};
-using specific_volume_r = make_refinement_symbol_t<specific_volume_t>;
+
 }
 
 namespace mitama {

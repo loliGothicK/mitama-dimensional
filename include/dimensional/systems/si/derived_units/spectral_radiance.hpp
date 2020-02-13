@@ -3,7 +3,7 @@
 #include <dimensional/systems/si/all.hpp>
 #include <dimensional/quantity.hpp>
 #include <dimensional/io.hpp>
-#include <dimensional/refinement.hpp>
+
 #include "power.hpp"
 #include "solid_angle.hpp"
 
@@ -12,7 +12,7 @@ template<class> struct spectral_radiance_synonym{};
 using spectral_radiance_t = make_synonym_t<spectral_radiance_synonym, decltype( watt / (steradian * meter<3>) )>;
 
 inline constexpr spectral_radiance_t spectral_radiance{};
-using spectral_radiance_r = make_refinement_symbol_t<spectral_radiance_t>;
+
 }
 
 namespace mitama {

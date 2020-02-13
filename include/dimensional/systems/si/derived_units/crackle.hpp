@@ -3,7 +3,7 @@
 #include <dimensional/systems/si/all.hpp>
 #include <dimensional/quantity.hpp>
 #include <dimensional/io.hpp>
-#include <dimensional/refinement.hpp>
+
 
 
 namespace mitama::systems::si {
@@ -11,7 +11,7 @@ template<class> struct crackle_synonym{};
 using crackle_t = make_synonym_t<crackle_synonym, decltype(meters * second<-5>)>;
 
 inline constexpr crackle_t crackle{};
-using crackle_r = make_refinement_symbol_t<crackle_t>;
+
 }
 
 namespace mitama {

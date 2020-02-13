@@ -3,7 +3,7 @@
 #include <dimensional/systems/si/all.hpp>
 #include <dimensional/quantity.hpp>
 #include <dimensional/io.hpp>
-#include <dimensional/refinement.hpp>
+
 
 
 namespace mitama::systems::si {
@@ -11,7 +11,7 @@ template<class> struct capacitance_synonym{};
 using capacitance_t = make_synonym_t<capacitance_synonym, decltype(kilogram<-1> * meter<-2> * second<4> * ampere<2>)>;
 
 inline constexpr capacitance_t farad{};
-using capacitance_r = make_refinement_symbol_t<capacitance_t>;
+
 }
 
 namespace mitama {

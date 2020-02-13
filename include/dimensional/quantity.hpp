@@ -190,10 +190,10 @@ public:
       class D, class U,
       std::enable_if_t<
         std::conjunction_v<
-          dimensional_ext::is_complete_type<::mitama::converter<quantity_t<D, U>, quantity_t>>,
+          dimensional_ext::is_complete_type<::mitama::converter<quantity_t<D, U, system_type>, quantity_t>>,
           dimensional_ext::is_greater_or_equal_comparable_with<T, U>>
         , bool> = false>
-  constexpr bool operator==(quantity_t<D, U> const &o) const {
+  constexpr bool operator==(quantity_t<D, U, system_type> const &o) const {
     return this->value_ == ::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o);
   }
 
@@ -201,10 +201,10 @@ public:
       class D, class U,
       std::enable_if_t<
         std::conjunction_v<
-          is_same_dimensional<quantity_t, quantity_t<D, U>>,
+          is_same_dimensional<quantity_t, quantity_t<D, U, system_type>>,
           dimensional_ext::is_greater_or_equal_comparable_with<T, U>>
         , bool> = false>
-  constexpr bool operator==(quantity_t<D, U> const &o) const {
+  constexpr bool operator==(quantity_t<D, U, system_type> const &o) const {
     auto [l, r] = mitamagic::scaler<dimension_type, typename quantity_t<D, U>::dimension_type>::template value<std::common_type_t<T, U>>();
     return l * this->value() == r * o.value();
   }
@@ -213,10 +213,10 @@ public:
       class D, class U,
       std::enable_if_t<
         std::conjunction_v<
-          dimensional_ext::is_complete_type<::mitama::converter<quantity_t<D, U>, quantity_t>>,
+          dimensional_ext::is_complete_type<::mitama::converter<quantity_t<D, U, system_type>, quantity_t>>,
           dimensional_ext::is_notequal_comparable_with<T, U>>
         , bool> = false>
-  constexpr bool operator!=(quantity_t<D, U> const &o) const {
+  constexpr bool operator!=(quantity_t<D, U, system_type> const &o) const {
     return this->value_ != ::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o);
   }
 
@@ -224,10 +224,10 @@ public:
       class D, class U,
       std::enable_if_t<
         std::conjunction_v<
-          is_same_dimensional<quantity_t, quantity_t<D, U>>,
+          is_same_dimensional<quantity_t, quantity_t<D, U, system_type>>,
           dimensional_ext::is_notequal_comparable_with<T, U>>
         , bool> = false>
-  constexpr bool operator!=(quantity_t<D, U> const &o) const {
+  constexpr bool operator!=(quantity_t<D, U, system_type> const &o) const {
     auto [l, r] = mitamagic::scaler<dimension_type, typename quantity_t<D, U>::dimension_type>::template value<std::common_type_t<T, U>>();
     return l * this->value() != r * o.value();
   }
@@ -236,10 +236,10 @@ public:
       class D, class U,
       std::enable_if_t<
         std::conjunction_v<
-          dimensional_ext::is_complete_type<::mitama::converter<quantity_t<D, U>, quantity_t>>,
+          dimensional_ext::is_complete_type<::mitama::converter<quantity_t<D, U, system_type>, quantity_t>>,
           dimensional_ext::is_less_comparable_with<T, U>>
         , bool> = false>
-  constexpr bool operator<(quantity_t<D, U> const &o) const {
+  constexpr bool operator<(quantity_t<D, U, system_type> const &o) const {
     return this->value_ < ::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o);
   }
 
@@ -247,10 +247,10 @@ public:
       class D, class U,
       std::enable_if_t<
         std::conjunction_v<
-          is_same_dimensional<quantity_t, quantity_t<D, U>>,
+          is_same_dimensional<quantity_t, quantity_t<D, U, system_type>>,
           dimensional_ext::is_less_comparable_with<T, U>>
         , bool> = false>
-  constexpr bool operator<(quantity_t<D, U> const &o) const {
+  constexpr bool operator<(quantity_t<D, U, system_type> const &o) const {
     auto [l, r] = mitamagic::scaler<dimension_type, typename quantity_t<D, U>::dimension_type>::template value<std::common_type_t<T, U>>();
     return l * this->value() < r * o.value();
   }
@@ -259,10 +259,10 @@ public:
       class D, class U,
       std::enable_if_t<
         std::conjunction_v<
-          dimensional_ext::is_complete_type<::mitama::converter<quantity_t<D, U>, quantity_t>>,
+          dimensional_ext::is_complete_type<::mitama::converter<quantity_t<D, U, system_type>, quantity_t>>,
           dimensional_ext::is_less_or_equal_comparable_with<T, U>>
         , bool> = false>
-  constexpr bool operator<=(quantity_t<D, U> const &o) const {
+  constexpr bool operator<=(quantity_t<D, U, system_type> const &o) const {
     return this->value_ <= ::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o);
   }
 
@@ -270,10 +270,10 @@ public:
       class D, class U,
       std::enable_if_t<
         std::conjunction_v<
-          is_same_dimensional<quantity_t, quantity_t<D, U>>,
+          is_same_dimensional<quantity_t, quantity_t<D, U, system_type>>,
           dimensional_ext::is_less_or_equal_comparable_with<T, U>>
         , bool> = false>
-  constexpr bool operator<=(quantity_t<D, U> const &o) const {
+  constexpr bool operator<=(quantity_t<D, U, system_type> const &o) const {
     auto [l, r] = mitamagic::scaler<dimension_type, typename quantity_t<D, U>::dimension_type>::template value<std::common_type_t<T, U>>();
     return l * this->value() <= r * o.value();
   }
@@ -282,10 +282,10 @@ public:
       class D, class U,
       std::enable_if_t<
         std::conjunction_v<
-          dimensional_ext::is_complete_type<::mitama::converter<quantity_t<D, U>, quantity_t>>,
+          dimensional_ext::is_complete_type<::mitama::converter<quantity_t<D, U, system_type>, quantity_t>>,
           dimensional_ext::is_greater_comparable_with<T, U>>
         , bool> = false>
-  constexpr bool operator>(quantity_t<D, U> const &o) const {
+  constexpr bool operator>(quantity_t<D, U, system_type> const &o) const {
     return this->value_ > ::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o);
   }
 
@@ -293,10 +293,10 @@ public:
       class D, class U,
       std::enable_if_t<
         std::conjunction_v<
-          is_same_dimensional<quantity_t, quantity_t<D, U>>,
+          is_same_dimensional<quantity_t, quantity_t<D, U, system_type>>,
           dimensional_ext::is_greater_comparable_with<T, U>>
         , bool> = false>
-  constexpr bool operator>(quantity_t<D, U> const &o) const {
+  constexpr bool operator>(quantity_t<D, U, system_type> const &o) const {
     auto [l, r] = mitamagic::scaler<dimension_type, typename quantity_t<D, U>::dimension_type>::template value<std::common_type_t<T, U>>();
     return l * this->value() > r * o.value();
   }
@@ -305,10 +305,10 @@ public:
       class D, class U,
       std::enable_if_t<
         std::conjunction_v<
-          dimensional_ext::is_complete_type<::mitama::converter<quantity_t<D, U>, quantity_t>>,
+          dimensional_ext::is_complete_type<::mitama::converter<quantity_t<D, U, system_type>, quantity_t>>,
           dimensional_ext::is_greater_or_equal_comparable_with<T, U>>
         , bool> = false>
-  constexpr bool operator>=(quantity_t<D, U> const &o) const {
+  constexpr bool operator>=(quantity_t<D, U, system_type> const &o) const {
     return this->value_ >= ::mitama::converter<quantity_t<D, U>, quantity_t>::convert(o);
   }
 
@@ -316,10 +316,10 @@ public:
       class D, class U,
       std::enable_if_t<
         std::conjunction_v<
-          is_same_dimensional<quantity_t, quantity_t<D, U>>,
+          is_same_dimensional<quantity_t, quantity_t<D, U, system_type>>,
           dimensional_ext::is_greater_or_equal_comparable_with<T, U>>
         , bool> = false>
-  constexpr bool operator>=(quantity_t<D, U> const &o) const {
+  constexpr bool operator>=(quantity_t<D, U, system_type> const &o) const {
     auto [l, r] = mitamagic::scaler<dimension_type, typename quantity_t<D, U>::dimension_type>::template value<std::common_type_t<T, U>>();
     return l * this->value() >= r * o.value();
   }

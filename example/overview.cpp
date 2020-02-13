@@ -5,7 +5,7 @@
 #include <dimensional/systems/si/derived_units/area.hpp>
 #include <dimensional/systems/si/derived_units/angle.hpp>
 #include <dimensional/io.hpp>
-#include <dimensional/refinement.hpp>
+
 #include <dimensional/systems/si/prefix.hpp>
 #include <dimensional/math/all.hpp>
 #include <dimensional/systems/currency/jpy.hpp>

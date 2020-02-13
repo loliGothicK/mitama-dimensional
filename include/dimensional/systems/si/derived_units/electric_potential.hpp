@@ -3,7 +3,7 @@
 #include <dimensional/systems/si/all.hpp>
 #include <dimensional/quantity.hpp>
 #include <dimensional/io.hpp>
-#include <dimensional/refinement.hpp>
+
 
 
 namespace mitama::systems::si {
@@ -12,7 +12,7 @@ using electric_potential_t = make_synonym_t<electric_potential_synonym, decltype
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_VOLTAGE_HPP
 inline constexpr electric_potential_t volts{};
-using electric_potential_r = make_refinement_symbol_t<electric_potential_t>;
+
 template < std::intmax_t N > 
 inline constexpr powered_t<electric_potential_t, N> volt{}; 
 #endif

@@ -3,7 +3,7 @@
 #include <dimensional/systems/si/all.hpp>
 #include <dimensional/quantity.hpp>
 #include <dimensional/io.hpp>
-#include <dimensional/refinement.hpp>
+
 
 
 namespace mitama::systems::si {
@@ -12,7 +12,7 @@ using radiant_flux_t = make_synonym_t<radiant_flux_synonym, decltype(kilogram<> 
 
 #ifndef MITAMA_DIMENSIONAL_DERIVED_UNITS_POWER_HPP
 inline constexpr radiant_flux_t watt{};
-using radiant_flux_r = make_refinement_symbol_t<radiant_flux_t>;
+
 #endif
 }
 

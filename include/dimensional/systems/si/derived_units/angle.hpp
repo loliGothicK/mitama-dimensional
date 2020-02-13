@@ -3,13 +3,13 @@
 #include <dimensional/systems/si/base_dimension/angle.hpp>
 #include <dimensional/units.hpp>
 #include <dimensional/io.hpp>
-#include <dimensional/refinement.hpp>
+
 
 namespace mitama::systems::si {
 using radian_base_unit = base_units<angle, 0>;
 using radian_t = typename radian_base_unit::unit_type;
 inline constexpr radian_t radian{};
-using radian_r = make_refinement_symbol_t<radian_t>;
+
 }
 
 namespace mitama {

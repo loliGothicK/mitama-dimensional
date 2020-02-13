@@ -3,7 +3,7 @@
 #include <dimensional/systems/si/all.hpp>
 #include <dimensional/quantity.hpp>
 #include <dimensional/io.hpp>
-#include <dimensional/refinement.hpp>
+
 #include "power.hpp"
 
 
@@ -12,7 +12,7 @@ template<class> struct thermal_resistance_synonym{};
 using thermal_resistance_t = make_synonym_t<thermal_resistance_synonym, decltype(kelvin<> / watt)>;
 
 inline constexpr thermal_resistance_t thermal_resistance{};
-using thermal_resistance_r = make_refinement_symbol_t<thermal_resistance_t>;
+
 }
 
 namespace mitama {

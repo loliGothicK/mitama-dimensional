@@ -3,7 +3,7 @@
 #include <dimensional/systems/si/all.hpp>
 #include <dimensional/quantity.hpp>
 #include <dimensional/io.hpp>
-#include <dimensional/refinement.hpp>
+
 #include "energy.hpp"
 #include "magnetic_flux_density.hpp"
 
@@ -12,7 +12,7 @@ template<class> struct magnetic_dipole_moment_synonym{};
 using magnetic_dipole_moment_t = make_synonym_t<magnetic_dipole_moment_synonym, decltype(joule / tesla)>;
 
 inline constexpr magnetic_dipole_moment_t magnetic_dipole_moment{};
-using magnetic_dipole_moment_r = make_refinement_symbol_t<magnetic_dipole_moment_t>;
+
 }
 
 namespace mitama {

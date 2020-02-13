@@ -3,7 +3,7 @@
 #include <dimensional/systems/si/all.hpp>
 #include <dimensional/quantity.hpp>
 #include <dimensional/io.hpp>
-#include <dimensional/refinement.hpp>
+
 
 
 namespace mitama::systems::si {
@@ -12,7 +12,7 @@ using thermal_diffusivity_t = make_synonym_t<thermal_diffusivity_synonym, declty
 
 #if !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_KINEMATIC_VISCOSITY_HPP) && !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_DIFFUSION_COEFFICIENT_HPP)
 inline constexpr thermal_diffusivity_t thermal_diffusivity{};
-using thermal_diffusivity_r = make_refinement_symbol_t<thermal_diffusivity_t>;
+
 #endif
 }
 
