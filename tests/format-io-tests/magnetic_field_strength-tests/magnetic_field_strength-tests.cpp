@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/magnetic_field_strength.hpp>
-#include <dimensional/systems/si/quantity.hpp>
+#include <mitama/dimensional/systems/si/derived_units/magnetic_field_strength.hpp>
+#include <mitama/dimensional/systems/si/quantity.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("magnetic_field_strength format test", "[quantity][abbreviation]") {

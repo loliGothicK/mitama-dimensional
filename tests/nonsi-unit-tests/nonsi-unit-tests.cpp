@@ -1,12 +1,12 @@
 // main is provided in tests-main.cpp
 #include <catch2/catch.hpp>
-#include <dimensional/quantity.hpp>
-#include <dimensional/systems/si/all.hpp>
-#include <dimensional/systems/nonsi/degree_angle.hpp>
-#include <dimensional/systems/si/prefix.hpp>
+#include <mitama/dimensional/quantity.hpp>
+#include <mitama/dimensional/systems/si/all.hpp>
+#include <mitama/dimensional/systems/nonsi/degree_angle.hpp>
+#include <mitama/dimensional/systems/si/prefix.hpp>
 #include <random>
 #include <test_util.hpp>
-#include <dimensional/arithmetic.hpp>
+#include <mitama/dimensional/arithmetic.hpp>
 
 using namespace mitama;
 namespace si = mitama::systems::si;
@@ -45,12 +45,12 @@ TEST_CASE("degree amgle and radian generate tests",
             }));
 }
 
-#include <dimensional/systems/information/byte.hpp>
-#include <dimensional/systems/information/prefix.hpp>
-#include <dimensional/systems/information/shannon.hpp>
-#include <dimensional/systems/information/nat.hpp>
-#include <dimensional/systems/information/hartley.hpp>
-#include <dimensional/systems/information/conversions.hpp>
+#include <mitama/dimensional/systems/information/byte.hpp>
+#include <mitama/dimensional/systems/information/prefix.hpp>
+#include <mitama/dimensional/systems/information/shannon.hpp>
+#include <mitama/dimensional/systems/information/nat.hpp>
+#include <mitama/dimensional/systems/information/hartley.hpp>
+#include <mitama/dimensional/systems/information/conversions.hpp>
 #include <boost/format.hpp>
 
 TEST_CASE("information format", "[info]") {

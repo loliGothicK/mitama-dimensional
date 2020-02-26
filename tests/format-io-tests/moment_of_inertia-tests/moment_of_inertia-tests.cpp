@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/moment_of_inertia.hpp>
-#include <dimensional/systems/si/quantity.hpp>
+#include <mitama/dimensional/systems/si/derived_units/moment_of_inertia.hpp>
+#include <mitama/dimensional/systems/si/quantity.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("moment_of_inertia format test", "[quantity][abbreviation]") {

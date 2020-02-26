@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/temperature_gradient.hpp>
-#include <dimensional/systems/si/quantity.hpp>
+#include <mitama/dimensional/systems/si/derived_units/temperature_gradient.hpp>
+#include <mitama/dimensional/systems/si/quantity.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("temperature_gradient format test", "[quantity][abbreviation]") {

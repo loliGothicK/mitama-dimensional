@@ -1,12 +1,12 @@
 // main is provided in tests-main.cpp
 #include <catch2/catch.hpp>
-#include <dimensional/quantity.hpp>
-#include <dimensional/systems/si/all.hpp>
-#include <dimensional/systems/nonsi/degree_celsius.hpp>
-#include <dimensional/systems/si/prefix.hpp>
+#include <mitama/dimensional/quantity.hpp>
+#include <mitama/dimensional/systems/si/all.hpp>
+#include <mitama/dimensional/systems/nonsi/degree_celsius.hpp>
+#include <mitama/dimensional/systems/si/prefix.hpp>
 #include <random>
 #include <test_util.hpp>
-#include <dimensional/arithmetic.hpp>
+#include <mitama/dimensional/arithmetic.hpp>
 
 using namespace mitama;
 using namespace mitama::systems::si;

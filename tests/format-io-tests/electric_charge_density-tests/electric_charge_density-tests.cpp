@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/electric_charge_density.hpp>
-#include <dimensional/systems/si/quantity.hpp>
+#include <mitama/dimensional/systems/si/derived_units/electric_charge_density.hpp>
+#include <mitama/dimensional/systems/si/quantity.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("electric_charge_density format test", "[quantity][abbreviation]") {

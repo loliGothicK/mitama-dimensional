@@ -5,8 +5,8 @@ fi
 cat <<EOS > $1-tests/$1-tests.cpp
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/derived_units/$1.hpp>
-#include <dimensional/systems/si/quantity.hpp>
+#include <mitama/dimensional/systems/si/derived_units/$1.hpp>
+#include <mitama/dimensional/systems/si/quantity.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("$2 format test", "[quantity][abbreviation]") {

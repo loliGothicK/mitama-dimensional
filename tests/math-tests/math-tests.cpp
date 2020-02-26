@@ -1,13 +1,13 @@
 // main is provided in tests-main.cpp
 #include <catch2/catch.hpp>
-#include <dimensional/quantity.hpp>
-#include <dimensional/systems/si/all.hpp>
-#include <dimensional/systems/si/prefix.hpp>
+#include <mitama/dimensional/quantity.hpp>
+#include <mitama/dimensional/systems/si/all.hpp>
+#include <mitama/dimensional/systems/si/prefix.hpp>
 #include <random>
 #include <test_util.hpp>
-#include <dimensional/arithmetic.hpp>
-#include <dimensional/math/all.hpp>
-#include <dimensional/systems/si/derived_units/angle.hpp>
+#include <mitama/dimensional/arithmetic.hpp>
+#include <mitama/dimensional/math/all.hpp>
+#include <mitama/dimensional/systems/si/derived_units/angle.hpp>
 
 using namespace mitama;
 using Catch::Detail::Approx;

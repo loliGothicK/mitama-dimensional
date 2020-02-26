@@ -1,13 +1,13 @@
 // main is provided in tests-main.cpp
 #include <catch2/catch.hpp>
-#include <dimensional/systems/si/quantity.hpp>
-#include <dimensional/systems/si/prefix.hpp>
-#include <dimensional/arithmetic.hpp>
+#include <mitama/dimensional/systems/si/quantity.hpp>
+#include <mitama/dimensional/systems/si/prefix.hpp>
+#include <mitama/dimensional/arithmetic.hpp>
 #include <test_util.hpp>
 
 namespace si = mitama::systems::si;
 
-#include <dimensional/systems/si/literals/ampere_literals.hpp>
+#include <mitama/dimensional/systems/si/literals/ampere_literals.hpp>
 
 TEST_CASE("ampere literals",
           "[quantity][literals]")

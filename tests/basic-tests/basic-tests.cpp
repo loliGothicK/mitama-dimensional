@@ -1,10 +1,10 @@
 // main is provided in tests-main.cpp
 #include <catch2/catch.hpp>
-#include <dimensional/quantity.hpp>
-#include <dimensional/systems/si/all.hpp>
-#include <dimensional/systems/si/prefix.hpp>
-#include <dimensional/systems/si/quantity.hpp>
-#include <dimensional/arithmetic.hpp>
+#include <mitama/dimensional/quantity.hpp>
+#include <mitama/dimensional/systems/si/all.hpp>
+#include <mitama/dimensional/systems/si/prefix.hpp>
+#include <mitama/dimensional/systems/si/quantity.hpp>
+#include <mitama/dimensional/arithmetic.hpp>
 
 #include <test_util.hpp>
 
@@ -38,7 +38,7 @@ TEMPLATE_TEST_CASE("validates",
     REQUIRE( (-1|TestType{}).validate(validator) == mitama::failure(-1) );
 }
 
-#include <dimensional/systems/si/quantity.hpp>
+#include <mitama/dimensional/systems/si/quantity.hpp>
 
 TEMPLATE_TEST_CASE("si-quantity; constructor from values","[quantity][constructor]",
                    si::meter_t, si::ampere_t, si::candela_t, si::kelvin_t, si::kilogram_t, si::mol_t, si::second_t)
