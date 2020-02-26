@@ -395,9 +395,12 @@ operator/(U1, U2) {
   return {};
 }
 
-template <class Dim, class T>
-constexpr std::enable_if_t<is_dimensional_quantifier<Dim>::value, quantity_t<Dim, std::decay_t<T>>>
-operator|(T &&t, Dim) {
+template <template <class> class Syn, class Dim, class T>
+constexpr
+std::enable_if_t<
+  is_dimensional_quantifier<Syn<Dim>>::value,
+  quantity_t<Syn<Dim>, std::decay_t<T>, typename Dim::system_type>>
+operator|(T &&t, Syn<Dim>) {
   return { mitama::decay_copy(std::forward<T>(t)) };
 }
 

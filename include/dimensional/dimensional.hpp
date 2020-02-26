@@ -32,12 +32,27 @@ struct dimensional_t : private Units::tag... // for Dimensional tags
   static_assert(std::conjunction_v<std::bool_constant<
                     (mitamagic::dimension_count_v<Units, Units...> == 1)>...>,
                 "same dimension is not allowed");
-   // sanity check for system
-   static_assert(mitamagic::tlist_all_same_v<
+  // sanity check for system
+  static_assert(mitamagic::tlist_all_same_v<
                   mitamagic::tlist_remove_if_t<is_wildcard,
                     mitamagic::type_list<typename Units::system_type...>>>,
                 "different units within a dimension");
   static constexpr std::size_t value = sizeof...(Units);
+  using system_type
+    = mitamagic::tlist_element_t<0,
+        std::conditional_t<
+          std::is_same_v<
+            mitamagic::type_list<>,
+            mitamagic::tlist_remove_if_t<is_wildcard,
+              mitamagic::type_list<typename Units::system_type...>
+            >
+          >,
+          mitamagic::type_list<system<>>,
+          mitamagic::tlist_remove_if_t<is_wildcard,
+            mitamagic::type_list<typename Units::system_type...>
+          >
+        >
+      >;
 };
 
 template <class... Units>

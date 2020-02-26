@@ -5,7 +5,6 @@
 #include <dimensional/systems/si/prefix.hpp>
 #include <random>
 #include <test_util.hpp>
-#include <dimensional/expr.hpp>
 #include <dimensional/arithmetic.hpp>
 #include <dimensional/math/all.hpp>
 #include <dimensional/systems/si/derived_units/angle.hpp>

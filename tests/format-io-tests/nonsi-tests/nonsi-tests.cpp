@@ -9,6 +9,7 @@
 #include <dimensional/systems/nonsi/minute.hpp>
 #include <dimensional/systems/nonsi/tonne.hpp>
 #include <dimensional/systems/nonsi/degree_celsius.hpp>
+#include <dimensional/systems/si/quantity.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("hectare format test", "[quantity][abbreviation]") {

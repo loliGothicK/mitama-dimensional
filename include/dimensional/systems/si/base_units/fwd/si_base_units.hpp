@@ -7,6 +7,8 @@
 #include <dimensional/systems/si/base_dimension/length.hpp>
 #include <dimensional/systems/si/base_dimension/amount_of_substance.hpp>
 #include <dimensional/systems/si/base_dimension/time.hpp>
+#include <dimensional/systems/si/base_dimension/angle.hpp>
+#include <dimensional/systems/si/base_dimension/solid_angle.hpp>
 #include <dimensional/units.hpp>
 #include <dimensional/system.hpp>
 
@@ -19,6 +21,8 @@ using meter_base_unit = base_units<length, 0>;
 using metre_base_unit = base_units<length, 0>;
 using mole_base_unit = base_units<amount_of_substance, 0>;
 using second_base_unit = base_units<time, 0>;
+using angle_base_unit = base_units<angle, 0>;
+using solid_angle_base_unit = base_units<solid_angle, 0>;
 
 using system
     = ::mitama::system<
@@ -28,7 +32,9 @@ using system
         kilogram_base_unit,
         meter_base_unit,
         mole_base_unit,
-        second_base_unit
+        second_base_unit,
+        angle_base_unit,
+        solid_angle_base_unit
     >;
 }
 
