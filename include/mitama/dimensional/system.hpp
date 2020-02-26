@@ -17,6 +17,12 @@ namespace mitama {
   struct common_system;
 
   template < class... Dim >
+  struct common_system<system<Dim...>, system<Dim...>>
+  {
+    using type = system<Dim...>;
+  };
+
+  template < class... Dim >
   struct common_system<system<>, system<Dim...>>
   {
     using type = system<Dim...>;

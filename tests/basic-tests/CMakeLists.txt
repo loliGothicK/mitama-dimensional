@@ -3,7 +3,7 @@ message(STATUS "Building basic test")
 set(target basic-tests)
 message(STATUS "Building library ${target}")
 
-set(sources basic-tests.cpp tests-main.cpp)
+set(sources basic-tests.cpp relationals.cpp tests-main.cpp)
 
 add_executable(${target} ${sources})
 add_test(basic "${EXECUTABLE_OUTPUT_PATH}/${target}")

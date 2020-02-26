@@ -3,7 +3,7 @@
 #include <mitama/dimensional/systems/si/all.hpp>
 #include <mitama/dimensional/quantity.hpp>
 #include <mitama/dimensional/io.hpp>
-#include <mitama/dimensional/refinement.hpp>
+
 #include "energy.hpp"
 
 namespace mitama::systems::si {
@@ -11,7 +11,7 @@ template<class> struct molar_energy_synonym{};
 using molar_energy_t = make_synonym_t<molar_energy_synonym, decltype(joule / mol<>)>;
 
 inline constexpr molar_energy_t molar_energy{};
-using molar_energy_r = make_refinement_symbol_t<molar_energy_t>;
+
 }
 
 namespace mitama {

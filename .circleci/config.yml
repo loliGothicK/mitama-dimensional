@@ -27,8 +27,8 @@ jobs:
       - checkout
       - run: apt upgrade -y && apt update -y && apt install -y git
       - run: git submodule sync && git submodule update --init --recursive --remote
-      - run: chmod +x ./mitama_build.sh
-      - run: ./mitama_build.sh
+      - run: mkdir -p build && cd build && cmake .. && make -j5 && ctest 2>&1 | tee ./ctset.log
+  
 
 workflows:
   build:

@@ -3,33 +3,31 @@
 #include <mitama/dimensional/quantity.hpp>
 #include <mitama/dimensional/systems/si/all.hpp>
 #include <mitama/dimensional/systems/si/prefix.hpp>
+#include <mitama/dimensional/systems/si/quantity.hpp>
 #include <mitama/dimensional/arithmetic.hpp>
-#include <mitama/dimensional/refinement.hpp>
-#include <mitama/dimensional/systems/nonsi/minute.hpp>
-#include <mitama/dimensional/systems/nonsi/hour.hpp>
-#include <mitama/dimensional/systems/nonsi/day.hpp>
+
 #include <test_util.hpp>
 
 using namespace mitama;
-using namespace mitama::systems::si;
-using namespace mitama::systems::nonsi;
+namespace si = mitama::systems::si;
+namespace nonsi = mitama::systems::nonsi;
 
 TEMPLATE_TEST_CASE("constructor from values",
                    "[quantity][constructor]",
-                   meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
+                   si::meter_t, si::ampere_t, si::candela_t, si::kelvin_t, si::kilogram_t, si::mol_t, si::second_t)
 {
-    quantity_t<TestType, int> a(1);
-    REQUIRE( a.value() == 1 );
+    si::quantity_t<TestType, int> a(1);
+    REQUIRE( a == (1|TestType{}) );
 
-    quantity_t<scaled_unit_t<TestType, std::milli>, double> b = a;
+    si::quantity_t<scaled_unit_t<TestType, std::milli>, double> b = a;
     REQUIRE( b.value() == 1000 );
 }
 
 TEMPLATE_TEST_CASE("validates",
                    "[quantity][validate]",
-                   second_t, meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t)
+                   si::meter_t, si::ampere_t, si::candela_t, si::kelvin_t, si::kilogram_t, si::mol_t, si::second_t)
 {
-    auto validator = [](auto v) -> mitama::result<quantity_t<TestType, int>, int> {
+    auto validator = [](auto v) -> mitama::result<si::quantity_t<TestType, int>, int> {
         if (v.value() < 0)
             return mitama::failure(v.value());
         else
@@ -43,7 +41,7 @@ TEMPLATE_TEST_CASE("validates",
 #include <mitama/dimensional/systems/si/quantity.hpp>
 
 TEMPLATE_TEST_CASE("si-quantity; constructor from values","[quantity][constructor]",
-  meter_t, ampere_t, candela_t, kelvin_t, kilogram_t, mol_t, second_t)
+                   si::meter_t, si::ampere_t, si::candela_t, si::kelvin_t, si::kilogram_t, si::mol_t, si::second_t)
 {
   systems::si::quantity_t<TestType, int> a(1);
   REQUIRE(a.value() == 1);

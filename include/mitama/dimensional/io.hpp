@@ -70,8 +70,8 @@ template <class, class = void> struct si_formatter;
 template <int I, class D, class E, class S, class Sys>
 struct si_formatter<
     units_t<I, D, E, S, Sys>,
-    std::enable_if_t<std::conjunction_v<is_complete_type<prefix_<S>>,
-                                        is_complete_type<symbol_<D, I>>>>> {
+    std::enable_if_t<std::conjunction_v<dimensional_ext::is_complete_type<prefix_<S>>,
+                                        dimensional_ext::is_complete_type<symbol_<D, I>>>>> {
   static std::string format() {
     using namespace std::literals;
     using scale = std::conditional_t<std::is_same_v<D, ::mitama::systems::si::mass>,
@@ -86,7 +86,7 @@ struct si_formatter<
 namespace _detail {
 template <template <class> class Synonym, class T, class Head, class... Tail, class S>
 std::string
-abbreviation(quantity_t<Synonym<dimensional_t<Head, Tail...>>, T, S> const &quantity) {
+abbreviation(quantity_t<Synonym<dimensional_t<Head, Tail...>>, T, S> const &) {
   using namespace std::literals;
   return "[" + si_formatter<Head>::format() +
          ((" "s + si_formatter<Tail>::format()) + ... + "]");
@@ -94,7 +94,7 @@ abbreviation(quantity_t<Synonym<dimensional_t<Head, Tail...>>, T, S> const &quan
 
 template <template <class> class Synonym, class T, class S>
 std::string
-abbreviation(quantity_t<Synonym<dimensional_t<>>, T, S> const &quantity) {
+abbreviation(quantity_t<Synonym<dimensional_t<>>, T, S> const &) {
   return "[dimensionless]";
 }
 }
@@ -103,11 +103,11 @@ template <template <class> class Synonym, class T, class... Units, class S>
 std::string
 abbreviation(quantity_t<Synonym<dimensional_t<Units...>>, T, S> const &quantity) {
   using namespace std::literals::string_literals;
-  if constexpr (is_complete_type<
+  if constexpr (dimensional_ext::is_complete_type<
                             abbreviation_<Synonym<dimensional_t<Units...>>>>::value) {
     return "["s +  abbreviation_<Synonym<dimensional_t<Units...>>>::str << "]";
   } else if constexpr (std::conjunction_v<
-                    is_complete_type<prefix_<typename Units::scale>>...>) {
+                    dimensional_ext::is_complete_type<prefix_<typename Units::scale>>...>) {
     return "["s + mitama::_detail::abbreviation(quantity) + "]";
   } else {
     static_assert([]{ return false; }(), "error: abbreviation is not available");
@@ -119,9 +119,9 @@ std::ostream &
 operator<<(std::ostream &os,
            quantity_t<Synonym<dimensional_t<Units...>>, T, S> const &quantity) {
   using namespace std::literals::string_literals;
-  if constexpr (is_complete_type<abbreviation_<Synonym<dimensional_t<Units...>>>>::value) {
+  if constexpr (dimensional_ext::is_complete_type<abbreviation_<Synonym<dimensional_t<Units...>>>>::value) {
     return os << quantity.value() << " [" <<  abbreviation_<Synonym<dimensional_t<Units...>>>::str << "]";
-  } else if constexpr (std::conjunction_v<is_complete_type<prefix_<typename Units::scale>>...>) {
+  } else if constexpr (std::conjunction_v<dimensional_ext::is_complete_type<prefix_<typename Units::scale>>...>) {
     return os << quantity.value() << " " << mitama::_detail::abbreviation(quantity);
   } else {
     static_assert([]{ return false; }(), "error: abbreviation is not available");

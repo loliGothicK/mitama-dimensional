@@ -3,7 +3,7 @@
 #include <mitama/dimensional/systems/si/all.hpp>
 #include <mitama/dimensional/quantity.hpp>
 #include <mitama/dimensional/io.hpp>
-#include <mitama/dimensional/refinement.hpp>
+
 
 
 namespace mitama::systems::si {
@@ -11,7 +11,7 @@ template<class> struct area_density_synonym{};
 using area_density_t = make_synonym_t<area_density_synonym, decltype(meter<-2> * kilogram<>)>;
 
 inline constexpr area_density_t area_density{};
-using area_density_r = make_refinement_symbol_t<area_density_t>;
+
 }
 
 namespace mitama {

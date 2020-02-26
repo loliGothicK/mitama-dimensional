@@ -3,7 +3,7 @@
 #include <mitama/dimensional/systems/si/all.hpp>
 #include <mitama/dimensional/quantity.hpp>
 #include <mitama/dimensional/io.hpp>
-#include <mitama/dimensional/refinement.hpp>
+
 
 
 namespace mitama::systems::si {
@@ -12,7 +12,7 @@ using resistance_t = make_synonym_t<resistance_synonym, decltype(kilogram<> * me
 
 #if !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_REACTANCE_HPP) && !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_REACTANCE_HPP)
 inline constexpr resistance_t ohm{};
-using resistance_r = make_refinement_symbol_t<resistance_t>;
+
 #endif
 }
 

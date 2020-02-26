@@ -3,7 +3,7 @@
 #include <mitama/dimensional/systems/si/all.hpp>
 #include <mitama/dimensional/quantity.hpp>
 #include <mitama/dimensional/io.hpp>
-#include <mitama/dimensional/refinement.hpp>
+
 #include "angle.hpp"
 
 
@@ -12,7 +12,7 @@ template<class> struct angular_velocity_synonym{};
 using angular_velocity_t = make_synonym_t<angular_velocity_synonym, decltype(radian / seconds)>;
 
 inline constexpr angular_velocity_t angular_velocity{};
-using angular_velocity_r = make_refinement_symbol_t<angular_velocity_t>;
+
 }
 
 namespace mitama {

@@ -1,2 +1,0 @@
-find ../../include/dimensional/systems/si/derived_units -name '*.hpp' | xargs -I{} basename {} | sed -E 's/(.*)\.hpp/\1/' | xargs -I{} ./refinement-test-gen.sh {}
-find . -maxdepth 1 -type d | sed -E 's/(.*)/add_subdirectory(\1)/' > ./CMakeLists.txt

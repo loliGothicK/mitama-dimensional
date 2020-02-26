@@ -3,7 +3,7 @@
 #include <mitama/dimensional/systems/si/all.hpp>
 #include <mitama/dimensional/quantity.hpp>
 #include <mitama/dimensional/io.hpp>
-#include <mitama/dimensional/refinement.hpp>
+
 #include "power.hpp"
 #include "solid_angle.hpp"
 
@@ -12,7 +12,7 @@ template<class> struct radiance_synonym{};
 using radiance_t = make_synonym_t<radiance_synonym, decltype( watt / steradian * meter<-2> )>;
 
 inline constexpr radiance_t radiance{};
-using radiance_r = make_refinement_symbol_t<radiance_t>;
+
 }
 
 namespace mitama {

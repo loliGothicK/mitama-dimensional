@@ -3,7 +3,7 @@
 #include <mitama/dimensional/systems/si/all.hpp>
 #include <mitama/dimensional/quantity.hpp>
 #include <mitama/dimensional/io.hpp>
-#include <mitama/dimensional/refinement.hpp>
+
 #include "power.hpp"
 #include "solid_angle.hpp"
 
@@ -12,7 +12,7 @@ template<class> struct radiant_intensity_synonym{};
 using radiant_intensity_t = make_synonym_t<radiant_intensity_synonym, decltype(watt / steradian)>;
 
 inline constexpr radiant_intensity_t radiant_intensity{};
-using radiant_intensity_r = make_refinement_symbol_t<radiant_intensity_t>;
+
 }
 
 namespace mitama {

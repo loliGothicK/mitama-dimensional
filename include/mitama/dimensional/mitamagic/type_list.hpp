@@ -95,17 +95,6 @@ template <template <class> class Pred, class TypeList>
 inline constexpr bool tlist_all_match_if_v =
     tlist_all_match_if<Pred, TypeList>::value;
 
-template <template <class...> class, class> struct repack;
-
-template <template <class...> class Pack, template <class...> class _,
-          class... Elems>
-struct repack<Pack, _<Elems...>> {
-  using type = Pack<Elems...>;
-};
-
-template <template <class...> class P, class P_>
-using repack_t = typename repack<P, P_>::type;
-
 template <template <class> class, class, class> struct tlist_remove_if_impl;
 
 template <template <class> class Pred, template <class...> class tPack,

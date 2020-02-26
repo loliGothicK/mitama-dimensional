@@ -3,7 +3,7 @@
 #include <mitama/dimensional/systems/si/all.hpp>
 #include <mitama/dimensional/quantity.hpp>
 #include <mitama/dimensional/io.hpp>
-#include <mitama/dimensional/refinement.hpp>
+
 #include "solid_angle.hpp"
 
 namespace mitama::systems::si {
@@ -11,7 +11,7 @@ template<class> struct luminous_flux_synonym{};
 using luminous_flux_t = make_synonym_t<luminous_flux_synonym, decltype(candela<> * steradian)>;
 
 inline constexpr luminous_flux_t lumen{};
-using luminous_flux_r = make_refinement_symbol_t<luminous_flux_t>;
+
 }
 
 namespace mitama {

@@ -6,7 +6,6 @@
 #include <mitama/dimensional/systems/si/prefix.hpp>
 #include <random>
 #include <test_util.hpp>
-#include <mitama/dimensional/expr.hpp>
 #include <mitama/dimensional/arithmetic.hpp>
 
 using namespace mitama;

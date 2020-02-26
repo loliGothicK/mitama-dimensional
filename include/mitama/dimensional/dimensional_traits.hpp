@@ -157,7 +157,7 @@ namespace mitamagic {
     template <class From, class To>
     struct is_dimensional_convertible
         : std::conjunction<
-            is_complete_type<converter<std::decay_t<From>, std::decay_t<To>>>,
+            dimensional_ext::is_complete_type<converter<std::decay_t<From>, std::decay_t<To>>>,
             is_same_dimensional<std::decay_t<From>, std::decay_t<To>>>
     {};
 

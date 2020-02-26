@@ -3,7 +3,7 @@
 #include <type_traits>
 #include <utility>
 
-namespace mitama {
+namespace mitama::dimensional_ext {
 
 template < class T > struct identity: T { using type = T; };
 template < class T > using identity_t = typename identity<T>::type;

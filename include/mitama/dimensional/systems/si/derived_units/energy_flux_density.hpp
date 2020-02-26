@@ -3,7 +3,7 @@
 #include <mitama/dimensional/systems/si/all.hpp>
 #include <mitama/dimensional/quantity.hpp>
 #include <mitama/dimensional/io.hpp>
-#include <mitama/dimensional/refinement.hpp>
+
 #include "energy.hpp"
 
 namespace mitama::systems::si {
@@ -11,7 +11,7 @@ template<class> struct energy_flux_density_synonym{};
 using energy_flux_density_t = make_synonym_t<energy_flux_density_synonym, decltype( joule * meter<-2> * second<-1> )>;
 
 inline constexpr energy_flux_density_t energy_flux_density{};
-using energy_flux_density_r = make_refinement_symbol_t<energy_flux_density_t>;
+
 }
 
 namespace mitama {

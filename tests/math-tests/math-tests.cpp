@@ -5,7 +5,6 @@
 #include <mitama/dimensional/systems/si/prefix.hpp>
 #include <random>
 #include <test_util.hpp>
-#include <mitama/dimensional/expr.hpp>
 #include <mitama/dimensional/arithmetic.hpp>
 #include <mitama/dimensional/math/all.hpp>
 #include <mitama/dimensional/systems/si/derived_units/angle.hpp>

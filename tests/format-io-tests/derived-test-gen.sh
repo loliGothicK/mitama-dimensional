@@ -6,6 +6,8 @@ cat <<EOS > $1-tests/$1-tests.cpp
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
 #include <mitama/dimensional/systems/si/derived_units/$1.hpp>
+#include <mitama/dimensional/systems/si/quantity.hpp>
+#include <mitama/dimensional/systems/si/quantity.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("$1 format test", "[quantity][abbreviation]") {
@@ -15,7 +17,9 @@ TEST_CASE("$1 quantifier format test", "[quantity][abbreviation]") {
   REQUIRE(fmt(1 | systems::si::$1) == "1 [$2]");
 }
 TEST_CASE("$1 type test", "[quantity][abbreviation]") {
-  REQUIRE(mitama::is_same_dimensional_v<std::decay_t<decltype(1|systems::si::$1)>, mitama::quantity_t<std::decay_t<decltype($3)>>>);
+  REQUIRE(mitama::is_same_dimensional_v<
+    std::decay_t<decltype(1|systems::si::$1)>,
+    mitama::systems::si::quantity_t<std::decay_t<decltype($3)>>>);
 }
 EOS
 cat <<EOS > $1-tests/CMakeLists.txt

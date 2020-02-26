@@ -9,6 +9,7 @@
 #include <mitama/dimensional/systems/nonsi/minute.hpp>
 #include <mitama/dimensional/systems/nonsi/tonne.hpp>
 #include <mitama/dimensional/systems/nonsi/degree_celsius.hpp>
+#include <mitama/dimensional/systems/si/quantity.hpp>
 #include "../format_io_common.hpp"
 
 TEST_CASE("hectare format test", "[quantity][abbreviation]") {

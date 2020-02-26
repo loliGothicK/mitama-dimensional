@@ -3,7 +3,7 @@
 #include <mitama/dimensional/systems/si/all.hpp>
 #include <mitama/dimensional/quantity.hpp>
 #include <mitama/dimensional/io.hpp>
-#include <mitama/dimensional/refinement.hpp>
+
 
 
 namespace mitama::systems::si {
@@ -12,7 +12,7 @@ using kinematic_viscosity_t = make_synonym_t<kinematic_viscosity_synonym, declty
 
 #if !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_THERMAL_DIFFUSIVITY_HPP) && !defined(MITAMA_DIMENSIONAL_DERIVED_UNITS_DIFFUSION_COEFFICIENT_HPP)
 inline constexpr kinematic_viscosity_t kinematic_viscosity{};
-using kinematic_viscosity_r = make_refinement_symbol_t<kinematic_viscosity_t>;
+
 #endif
 }
 

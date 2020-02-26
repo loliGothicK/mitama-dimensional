@@ -4,11 +4,12 @@ set(CMAKE_CXX_STANDARD 17) # ...C++17
 set(CMAKE_CXX_STANDARD_REQUIRED ON) #...is required...
 set(CMAKE_CXX_EXTENSIONS OFF) #...without compiler extensions like gnu++17
 find_package(Threads REQUIRED)
-
+find_package(Boost 1.62.0 REQUIRED)
 ## Set our project name
 project(mitama-dimensional)
 
 include_directories(
+  PUBLIC ${Boost_INCLUDE_DIRS}
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/tests
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/mitama-cpp-result/include
@@ -27,7 +28,6 @@ add_subdirectory(tests/basic-tests)
 add_subdirectory(tests/delta-tests)
 add_subdirectory(tests/derived-unit-tests)
 add_subdirectory(tests/format-io-tests)
+add_subdirectory(tests/literal-tests)
 add_subdirectory(tests/math-tests)
 add_subdirectory(tests/nonsi-unit-tests)
-add_subdirectory(tests/refinement-tests)
-add_subdirectory(tests/static-quantity-tests)

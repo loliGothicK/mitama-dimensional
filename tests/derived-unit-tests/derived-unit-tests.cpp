@@ -6,7 +6,6 @@
 #include <mitama/dimensional/systems/si/prefix.hpp>
 #include <random>
 #include <test_util.hpp>
-#include <mitama/dimensional/expr.hpp>
 #include <mitama/dimensional/arithmetic.hpp>
 
 using namespace mitama;
@@ -46,18 +45,3 @@ TEST_CASE("degree celsius and kelvin generate tests",
                 return s.value() - c.value() == 273.15_a;
             }));
 }
-
-TEST_CASE("degree celsius and kelvin lexical tests",
-          "[quantity][derived-units][temperature]")
-{
-    using namespace Catch::literals;
-    {
-        quantity_t<decltype(kelvin<>/mol<>)> _ = as_expr(1|kelvins) / (2|mols) + as_expr(2|degree_celsius) / (2|mols);
-        REQUIRE(_.value() == 137.575_a);
-    }
-    {
-        quantity_t<decltype(kelvin<>/mol<>)> _ = (as_expr(11|kelvins) - as_expr(1|kelvins)) / (2|mols) + (as_expr(21|degree_celsius) - as_expr(1|degree_celsius)) / (2|mols);
-        REQUIRE(_.value() == 15._a);
-    }
-}
-
