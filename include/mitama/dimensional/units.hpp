@@ -40,7 +40,14 @@ template <class, class> struct scaled_unit;
 template <template <class> class Synonym, class Base, class Scale>
 struct scaled_unit<Synonym<dimensional_t<Base>>, Scale> {
   using type = make_dimensional_t<
-      units_t<Base::index, typename Base::dimension_type, typename Base::exponent, std::ratio_multiply<typename Base::scale, Scale>>>;
+      units_t<
+        Base::index,
+        typename Base::dimension_type,
+        typename Base::exponent,
+        std::ratio_multiply<typename Base::scale, Scale>,
+        typename Base::system_type
+      >
+    >;
 };
 
 template <class Base, class R>

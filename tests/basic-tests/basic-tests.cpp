@@ -16,11 +16,11 @@ TEMPLATE_TEST_CASE("constructor from values",
                    "[quantity][constructor]",
                    si::meter_t, si::ampere_t, si::candela_t, si::kelvin_t, si::kilogram_t, si::mol_t, si::second_t)
 {
-    si::quantity_t<TestType, int> a(1);
-    REQUIRE( a == (1|TestType{}) );
+    si::quantity_t<TestType, int> a = 1 | si::kilo * TestType{};
+    REQUIRE( a == (1'000|TestType{}) );
 
     si::quantity_t<scaled_unit_t<TestType, std::milli>, double> b = a;
-    REQUIRE( b.value() == 1000 );
+    REQUIRE( b.value() == 1'000'000 );
 }
 
 TEMPLATE_TEST_CASE("validates",
